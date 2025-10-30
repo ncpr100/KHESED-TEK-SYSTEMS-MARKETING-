@@ -9,12 +9,12 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
-            alt="KHESED-TEK"
+            alt="KHESED-TEK SYSTEMS"
             width={36}
             height={36}
             priority
           />
-          <span className="font-semibold">KHESED-TEK</span>
+          <span className="font-semibold">KHESED-TEK SYSTEMS</span>
         </Link>
         <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
           <Link href="/#features">Features</Link>

@@ -62,7 +62,7 @@ export default function HomePage() {
       </section>
 
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-2">Sobre KHESED-TEK</h2>
+        <h2 className="text-3xl font-semibold mb-2">Sobre KHESED-TEK SYSTEMS</h2>
         <p style={{ color: 'var(--muted)' }}>
           Creamos herramientas digitales para servir a iglesias y organizaciones con excelencia, integridad e innovación.
         </p>

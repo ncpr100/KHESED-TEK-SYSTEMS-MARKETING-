@@ -1,10 +1,10 @@
-// SEO and structured data utilities for KHESED-TEK
+// SEO and structured data utilities for KHESED-TEK SYSTEMS
 
-// Organization schema for KHESED-TEK
+// Organization schema for KHESED-TEK SYSTEMS
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "KHESED-TEK",
+  "name": "KHESED-TEK SYSTEMS",
   "description": "Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones en Colombia",
   "url": "https://www.khesed-tek.com",
   "logo": "https://www.khesed-tek.com/logo.png",
@@ -40,7 +40,7 @@ export const organizationSchema = {
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "KHESED-TEK",
+  "name": "KHESED-TEK SYSTEMS",
   "description": "Especialistas en tecnología para iglesias y organizaciones religiosas",
   "image": "https://www.khesed-tek.com/logo.png",
   "telephone": "+57-302-123-4410",
@@ -71,7 +71,7 @@ export const serviceSchema = {
   "serviceType": "Church Management Technology",
   "provider": {
     "@type": "Organization",
-    "name": "KHESED-TEK"
+    "name": "KHESED-TEK SYSTEMS"
   },
   "areaServed": {
     "@type": "Country",
@@ -92,7 +92,7 @@ export const serviceSchema = {
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "KHESED-TEK",
+  "name": "KHESED-TEK SYSTEMS",
   "description": "Soluciones tecnológicas para iglesias y organizaciones",
   "url": "https://www.khesed-tek.com",
   "potentialAction": {
@@ -102,7 +102,7 @@ export const websiteSchema = {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "KHESED-TEK",
+    "name": "KHESED-TEK SYSTEMS",
     "logo": {
       "@type": "ImageObject",
       "url": "https://www.khesed-tek.com/logo.png"
@@ -114,12 +114,12 @@ export const websiteSchema = {
 export const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "name": "Contacto - KHESED-TEK",
+  "name": "Contacto - KHESED-TEK SYSTEMS",
   "description": "Contáctanos para una demostración personalizada de nuestras soluciones tecnológicas",
   "url": "https://www.khesed-tek.com/contact",
   "mainEntity": {
     "@type": "Organization",
-    "name": "KHESED-TEK",
+    "name": "KHESED-TEK SYSTEMS",
     "contactPoint": [
       {
         "@type": "ContactPoint",

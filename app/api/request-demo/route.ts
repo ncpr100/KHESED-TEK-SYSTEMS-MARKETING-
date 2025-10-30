@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
 
     // Prepare email body with CRM info
     const emailBody = `
-Nueva solicitud de demo - KHESED-TEK
+Nueva solicitud de demo - KHESED-TEK SYSTEMS
 ${leadId ? `\n🆔 CRM ID: ${leadId}` : ''}
 ${leadScore ? `📊 Lead Score: ${leadScore}/100 (${leadPriority?.label})` : ''}
 
@@ -168,7 +168,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
     if (resend) {
       try {
         const { data, error } = await resend.emails.send({
-          from: 'KHESED-TEK Demo <onboarding@resend.dev>',
+          from: 'KHESED-TEK SYSTEMS Demo <onboarding@resend.dev>',
           to: process.env.CONTACT_EMAIL || 'soporte@khesed-tek.com',
           reply_to: payload.email,
           subject: `${leadPriority?.level === 'high' ? '🔥 PRIORITARIO - ' : ''}Nueva solicitud de demo - ${payload.name}`,

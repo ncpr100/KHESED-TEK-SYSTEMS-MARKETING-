@@ -133,7 +133,7 @@ async function getSystemHealth() {
 
 function getTroubleshootingGuide() {
   return {
-    title: "KHESED-TEK System Troubleshooting Guide",
+    title: "KHESED-TEK SYSTEMS System Troubleshooting Guide",
     lastUpdated: "2024-10-30",
     sections: [
       {
@@ -303,7 +303,7 @@ fetch('/api/security/admin?action=stats')
 
 function getAPIReference() {
   return {
-    title: "KHESED-TEK API Reference",
+    title: "KHESED-TEK SYSTEMS API Reference",
     baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
     endpoints: [
       {

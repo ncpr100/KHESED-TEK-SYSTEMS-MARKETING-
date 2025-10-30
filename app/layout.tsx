@@ -6,30 +6,30 @@ import { organizationSchema, localBusinessSchema, websiteSchema } from '@/lib/se
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'KHESED-TEK - Soluciones Tecnológicas para Iglesias',
+  title: 'KHESED-TEK SYSTEMS - Soluciones Tecnológicas para Iglesias',
   description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones. Innovación que impulsa tu misión con excelencia, integridad e innovación.',
   keywords: 'tecnología para iglesias, software religioso, gestión de iglesias, Colombia, Barranquilla, sistemas para iglesias, transformación digital religiosa',
-  authors: [{ name: 'KHESED-TEK' }],
-  creator: 'KHESED-TEK',
-  publisher: 'KHESED-TEK',
+  authors: [{ name: 'KHESED-TEK SYSTEMS' }],
+  creator: 'KHESED-TEK SYSTEMS',
+  publisher: 'KHESED-TEK SYSTEMS',
   openGraph: {
-    title: 'KHESED-TEK - Soluciones Tecnológicas para Iglesias',
+    title: 'KHESED-TEK SYSTEMS - Soluciones Tecnológicas para Iglesias',
     description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones.',
     type: 'website',
     locale: 'es_CO',
-    siteName: 'KHESED-TEK',
+    siteName: 'KHESED-TEK SYSTEMS',
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'KHESED-TEK Logo',
+        alt: 'KHESED-TEK SYSTEMS Logo',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KHESED-TEK - Soluciones Tecnológicas para Iglesias',
+    title: 'KHESED-TEK SYSTEMS - Soluciones Tecnológicas para Iglesias',
     description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones.',
     images: ['/logo.png'],
   },
