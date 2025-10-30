@@ -135,18 +135,18 @@ export class RateLimiter {
     const rules: AbuseDetectionRule[] = [
       {
         name: 'rapid_fire',
-        condition: (entry) => entry.count > this.config.maxRequests * 2,
+        condition: (entry) => entry.count > this.config.maxRequests * 5, // Increased from 2 to 5
         action: 'block',
-        duration: 30 * 60 * 1000 // 30 minutes
+        duration: 15 * 60 * 1000 // Reduced from 30 to 15 minutes
       },
       {
         name: 'persistent_limit_hitting',
         condition: (entry) => {
           const rate = entry.count / ((Date.now() - entry.firstRequest) / 1000);
-          return rate > this.config.maxRequests / (this.config.windowMs / 1000) * 1.5;
+          return rate > this.config.maxRequests / (this.config.windowMs / 1000) * 3; // Increased from 1.5 to 3
         },
         action: 'block',
-        duration: 15 * 60 * 1000 // 15 minutes
+        duration: 10 * 60 * 1000 // Reduced from 15 to 10 minutes
       }
     ];
 
@@ -207,6 +207,16 @@ export class RateLimiter {
 
   clearAuditLogs(): void {
     this.auditLogs = [];
+  }
+
+  // Clear all blocked IPs (for development/testing)
+  clearBlockedIPs(): void {
+    this.blockedIPs.clear();
+  }
+
+  // Get blocked IPs list
+  getBlockedIPs(): Map<string, number> {
+    return new Map(this.blockedIPs);
   }
 
   // Clean up expired entries to prevent memory leaks

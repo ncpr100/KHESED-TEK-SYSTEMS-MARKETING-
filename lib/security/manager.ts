@@ -22,7 +22,7 @@ export const defaultSecurityConfig: SecurityConfig = {
     },
     contact: {
       windowMs: 60 * 60 * 1000, // 1 hour
-      maxRequests: 3,
+      maxRequests: 10, // Increased from 3 to 10
       message: 'Too many contact form submissions. Please try again later.'
     }
   },
