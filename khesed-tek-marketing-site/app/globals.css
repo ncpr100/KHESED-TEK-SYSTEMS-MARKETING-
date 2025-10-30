@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #0e0e10;
+  --surface: #17171a;
+  --border: #232329;
+  --text: #e7e7ea;
+  --muted: #9aa0a6;
+  --brand: #6ee7ff;
+  --brand2: #8b5cf6;
+}
+
+html, body { 
+  background: var(--bg); 
+  color: var(--text); 
+}
+
+a { color: var(--brand); }
+a:hover { color: var(--brand2); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ffffff, #c7c7d1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-btn {
+  background: linear-gradient(90deg, var(--brand), var(--brand2));
+  color: #0b0b0d;
+}
