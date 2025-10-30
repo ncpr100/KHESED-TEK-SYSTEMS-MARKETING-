@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@/components/analytics';
 import { GA_TRACKING_ID } from '@/lib/analytics';
 import { organizationSchema, localBusinessSchema, websiteSchema } from '@/lib/seo';
+import { GlobalMarketProvider } from '@/lib/global-market';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -106,8 +107,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body className="bg-[var(--bg)] text-[var(--text)]">
-        {children}
-        <Analytics />
+        <GlobalMarketProvider>
+          {children}
+          <Analytics />
+        </GlobalMarketProvider>
       </body>
     </html>
   );

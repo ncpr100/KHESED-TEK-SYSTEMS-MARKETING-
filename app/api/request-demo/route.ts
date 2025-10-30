@@ -1,18 +1,10 @@
 import { NextRequest } from 'next/server';
-import { Resend } from 'resend';
 import { getCRM } from '@/lib/crm/manager';
 import { Lead, ActivityType } from '@/lib/crm/types';
-import { DefaultLeadScoring, getLeadPriority } from '@/lib/crm/scoring';
+import { MarketAwareLeadScoring, getMarketAwarePriority } from '@/lib/crm/market-scoring';
+import { sendMarketAwareEmail, detectMarketFromEmail, type Market } from '@/lib/email-service';
 
-// Lazy-load Resend to avoid build-time API key requirement
-function getResend() {
-  if (!process.env.RESEND_API_KEY) {
-    return null;
-  }
-  return new Resend(process.env.RESEND_API_KEY);
-}
-
-const leadScoring = new DefaultLeadScoring();
+const leadScoring = new MarketAwareLeadScoring();
 
 export async function POST(request: NextRequest) {
   console.log('=== Contact Form Debug Info ===');
@@ -45,6 +37,9 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Detect market from form data
+    const market = detectMarketFromEmail(payload.email, payload);
 
     // Create CRM lead first (before email to ensure we capture even if email fails)
     let leadId: string | undefined;
@@ -100,10 +95,10 @@ export async function POST(request: NextRequest) {
             });
           }
 
-          // Calculate lead score
+          // Calculate market-aware lead score
           const activities = await adapter.getActivities(leadId!);
           leadScore = leadScoring.calculate(leadResult.data, activities.data || []);
-          leadPriority = getLeadPriority(leadScore);
+          leadPriority = getMarketAwarePriority(leadScore, market, leadResult.data);
           
           // Update lead with score
           await adapter.updateLead(leadId!, { score: leadScore });
@@ -117,94 +112,55 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Prepare email body with CRM info
-    const emailBody = `
-Nueva solicitud de demo - KHESED-TEK SYSTEMS
-${leadId ? `\n🆔 CRM ID: ${leadId}` : ''}
-${leadScore ? `📊 Lead Score: ${leadScore}/100 (${leadPriority?.label})` : ''}
-
-👤 Nombre: ${payload.name}
-📧 Correo: ${payload.email}
-🏢 Organización: ${payload.org || 'No especificada'}
-📱 WhatsApp: ${payload.whatsapp || 'No especificado'}
-🎯 Quiere demo: ${payload.wantsDemo ? 'Sí' : 'No'}
-
-Mensaje:
-${payload.message || 'Sin mensaje'}
-
-Recibido: ${new Date(payload.receivedAt).toLocaleString('es-CO', { timeZone: 'America/Bogota' })}
-${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediatamente' : ''}
-    `.trim();
-
     // Log form submission to console (for development/testing)
     console.log('\n🎉 ===== NEW FORM SUBMISSION =====');
-    console.log(emailBody);
+    console.log(`Market: ${market}, Lead ID: ${leadId}, Score: ${leadScore}`);
     console.log('==================================\n');
 
-    // Send email notification
-    const resend = getResend();
-    let emailSent = false;
-    let emailData = null;
-    
-    if (resend) {
-      try {
-        const { data, error } = await resend.emails.send({
-          from: 'KHESED-TEK SYSTEMS Demo <onboarding@resend.dev>',
-          to: process.env.CONTACT_EMAIL || 'soporte@khesed-tek.com',
-          reply_to: payload.email,
-          subject: `${leadPriority?.level === 'high' ? '🔥 PRIORITARIO - ' : ''}Nueva solicitud de demo - ${payload.name}`,
-          text: emailBody,
-        });
+    // Send market-aware email notification
+    const emailResult = await sendMarketAwareEmail({
+      name: payload.name,
+      email: payload.email,
+      org: payload.org,
+      whatsapp: payload.whatsapp,
+      message: payload.message,
+      wantsDemo: payload.wantsDemo,
+      receivedAt: payload.receivedAt,
+      market,
+      leadId,
+      leadScore,
+      priority: leadPriority
+    });
 
-        if (error) {
-          console.error('❌ Resend email failed:', error);
-          console.log('💡 To fix: Set valid RESEND_API_KEY in .env.local (see EMAIL_SETUP_INSTRUCTIONS.md)');
-          // If email fails but CRM succeeded, log the email failure
-          if (crm && leadId) {
-            const adapter = crm.getAdapter();
-            await adapter.logActivity(leadId, {
-              type: ActivityType.NOTE_ADDED,
-              description: `Email notification failed: ${error.message}`,
-              timestamp: new Date(),
-              metadata: { error: error.message, type: 'email_failure' },
-            });
-          }
-        } else {
-          emailSent = true;
-          emailData = data;
-          console.log('✅ Email sent successfully:', data?.id);
-        }
-      } catch (emailError) {
-        console.error('Email sending failed:', emailError);
-        // Log email failure in CRM if available
-        if (crm && leadId) {
-          const adapter = crm.getAdapter();
-          await adapter.logActivity(leadId, {
-            type: ActivityType.NOTE_ADDED,
-            description: `Email sending failed: ${emailError instanceof Error ? emailError.message : 'Unknown error'}`,
-            timestamp: new Date(),
-            metadata: { error: emailError, type: 'email_failure' },
-          });
-        }
-      }
-    } else {
-      console.log('⚠️  Resend not configured - email notification skipped');
-      console.log('💡 To enable emails: Set RESEND_API_KEY in .env.local (see EMAIL_SETUP_INSTRUCTIONS.md)');
-    }
+    let emailSent = emailResult.success;
+    let emailData = emailResult.data;
 
-    // Log successful email send in CRM
-    if (emailSent && crm && leadId) {
+    // Log email result in CRM
+    if (crm && leadId) {
       const adapter = crm.getAdapter();
-      await adapter.logActivity(leadId, {
-        type: ActivityType.EMAIL_SENT,
-        description: 'Demo request notification email sent to team',
-        timestamp: new Date(),
-        metadata: { 
-          emailId: emailData?.id,
-          recipient: process.env.CONTACT_EMAIL,
-          type: 'internal_notification' 
-        },
-      });
+      if (emailResult.success) {
+        await adapter.logActivity(leadId, {
+          type: ActivityType.EMAIL_SENT,
+          description: `Demo request notification sent to ${emailResult.market} team`,
+          timestamp: new Date(),
+          metadata: { 
+            emailId: emailData?.id,
+            market: emailResult.market,
+            type: 'internal_notification' 
+          },
+        });
+      } else {
+        await adapter.logActivity(leadId, {
+          type: ActivityType.NOTE_ADDED,
+          description: `Email notification failed: ${emailResult.error}`,
+          timestamp: new Date(),
+          metadata: { 
+            error: emailResult.error, 
+            market: emailResult.market,
+            type: 'email_failure' 
+          },
+        });
+      }
     }
 
     // Trigger email automation campaign
@@ -244,6 +200,8 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
       leadId,
       leadScore,
       priority: leadPriority?.label,
+      market,
+      emailSent
     });
 
     return Response.json({ 
@@ -252,6 +210,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
       leadId,
       leadScore,
       priority: leadPriority?.label,
+      market
     });
   } catch (err) {
     console.error('Request Demo Error:', err);

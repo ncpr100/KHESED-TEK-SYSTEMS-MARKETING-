@@ -1,40 +1,85 @@
-// SEO and structured data utilities for KHESED-TEK SYSTEMS
+// SEO and structured data utilities for KHESED-TEK SYSTEMS - Global Markets
 
-// Organization schema for KHESED-TEK SYSTEMS
-export const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "KHESED-TEK SYSTEMS",
-  "description": "Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones en Colombia",
-  "url": "https://www.khesed-tek.com",
-  "logo": "https://www.khesed-tek.com/logo.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+57-302-123-4410",
-    "contactType": "sales",
-    "availableLanguage": "Spanish"
+// Market-specific configurations
+const MARKET_CONFIG = {
+  LATAM: {
+    name: 'KHESED-TEK SYSTEMS',
+    description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones en LATAM',
+    url: 'https://www.khesed-tek.com',
+    language: 'Spanish',
+    serviceArea: 'Latin America',
+    locality: 'Barranquilla',
+    region: 'Atlántico',
+    country: 'CO',
+    coordinates: { lat: '10.9878', lng: '-74.7889' }
   },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Barranquilla",
-    "addressRegion": "Atlántico", 
-    "addressCountry": "CO"
+  USA: {
+    name: 'KHESED-TEK SYSTEMS',
+    description: 'Reliable, secure and elegant technology solutions for churches and organizations in the USA',
+    url: 'https://www.khesed-tek.us', // Future domain
+    language: 'English',
+    serviceArea: 'United States',
+    locality: 'United States',
+    region: 'National',
+    country: 'US',
+    coordinates: { lat: '39.8283', lng: '-98.5795' } // Geographic center of USA
   },
-  "sameAs": [
-    "https://wa.me/573021234410"
-  ],
-  "serviceArea": {
-    "@type": "Country",
-    "name": "Colombia"
-  },
-  "knowsAbout": [
-    "Church Management Systems",
-    "Digital Transformation",
-    "Custom Software Development",
-    "Religious Organization Technology",
-    "Colombian Church Technology"
-  ]
-};
+  GLOBAL: {
+    name: 'KHESED-TEK SYSTEMS',
+    description: 'Global technology solutions for churches and religious organizations worldwide',
+    url: 'https://www.khesed-tek.com',
+    language: 'English',
+    serviceArea: 'Worldwide',
+    locality: 'Global',
+    region: 'International',
+    country: 'Global',
+    coordinates: { lat: '0', lng: '0' }
+  }
+} as const;
+
+// Generate market-specific organization schema
+export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 'LATAM') {
+  const config = MARKET_CONFIG[market];
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": config.name,
+    "description": config.description,
+    "url": config.url,
+    "logo": `${config.url}/logo.png`,
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+57-302-123-4410",
+      "contactType": "sales",
+      "availableLanguage": config.language
+    },
+    "address": market === 'GLOBAL' ? undefined : {
+      "@type": "PostalAddress",
+      "addressLocality": config.locality,
+      "addressRegion": config.region,
+      "addressCountry": config.country
+    },
+    "sameAs": [
+      "https://wa.me/573021234410"
+    ],
+    "serviceArea": {
+      "@type": market === 'GLOBAL' ? "Place" : "Country",
+      "name": config.serviceArea
+    },
+    "knowsAbout": [
+      "Church Management Systems",
+      "Digital Transformation", 
+      "Custom Software Development",
+      "Religious Organization Technology",
+      market === 'LATAM' ? "Colombian Church Technology" : 
+      market === 'USA' ? "American Church Technology" : "Global Church Technology"
+    ]
+  };
+}
+
+// Organization schema for KHESED-TEK SYSTEMS (default LATAM)
+export const organizationSchema = generateOrganizationSchema('LATAM');
 
 // Local business schema
 export const localBusinessSchema = {

@@ -3,16 +3,51 @@ import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 import { trackFormSubmission, trackEmailClick, trackWhatsAppClick } from '@/lib/analytics';
-import { useABTest, getVariantContent, trackABTestConversion, FORM_TITLE_TEST } from '@/lib/ab-testing';
+import { useABTest, getVariantContent, trackABTestConversion, FORM_TITLE_TEST, FORM_TITLE_CONTENT } from '@/lib/ab-testing';
 import { contactPageSchema, generateBreadcrumbSchema } from '@/lib/seo';
+import { useGlobalMarket } from '@/lib/global-market';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   
-  const formTitleVariant = useABTest(FORM_TITLE_TEST);
-  const formTitle = getVariantContent(FORM_TITLE_TEST, formTitleVariant);
+  const { market, language } = useGlobalMarket();
+  
+  const formTitleVariant = useABTest(FORM_TITLE_TEST, market);
+  const formTitle = getVariantContent(FORM_TITLE_TEST, formTitleVariant, language, FORM_TITLE_CONTENT);
+
+  // Market-specific contact information
+  const getMarketSpecificContact = () => {
+    switch (market) {
+      case 'USA':
+        return {
+          email: 'usa@khesed-tek.com',
+          whatsapp: '+1 (555) 123-4567',
+          location: 'Miami, FL, USA',
+          timezone: 'EST/EDT',
+          supportHours: '9 AM - 6 PM EST'
+        };
+      case 'GLOBAL':
+        return {
+          email: 'global@khesed-tek.com',
+          whatsapp: '+57 302 123 4410',
+          location: 'Available Worldwide',
+          timezone: 'Multiple Timezones',
+          supportHours: '24/7 Global Support'
+        };
+      default: // LATAM
+        return {
+          email: 'soporte@khesed-tek.com',
+          whatsapp: '+57 302 123 4410',
+          location: 'Barranquilla, Atlántico, Colombia',
+          timezone: 'COT (UTC-5)',
+          supportHours: '8 AM - 6 PM COT'
+        };
+    }
+  };
+
+  const contactInfo = getMarketSpecificContact();
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Inicio', url: 'https://www.khesed-tek.com' },
@@ -40,7 +75,7 @@ export default function ContactPage() {
 
       // Track successful form submission
       trackFormSubmission('demo_request', true);
-      trackABTestConversion(FORM_TITLE_TEST.testId, formTitleVariant, 'form_submit');
+      trackABTestConversion(FORM_TITLE_TEST.testId, formTitleVariant, 'form_submit', market);
 
       setSubmitted(true);
       (e.target as HTMLFormElement).reset();
@@ -76,30 +111,39 @@ export default function ContactPage() {
 
         <div className="grid sm:grid-cols-3 gap-5 mb-8">
           <div className="card p-5">
-            <div className="text-xs uppercase tracking-wide text-[#b9bec7] mb-1">Correo</div>
+            <div className="text-xs uppercase tracking-wide text-[#b9bec7] mb-1">
+              {language === 'en' ? 'Email' : 'Correo'}
+            </div>
             <a 
-              href="mailto:soporte@khesed-tek.com" 
+              href={`mailto:${contactInfo.email}`} 
               className="text-[var(--text)] hover:underline"
               onClick={() => trackEmailClick('contact_page')}
             >
-              soporte@khesed-tek.com
+              {contactInfo.email}
             </a>
           </div>
           <div className="card p-5">
             <div className="text-xs uppercase tracking-wide text-[#b9bec7] mb-1">WhatsApp</div>
             <a 
-              href="https://wa.me/573021234410" 
+              href={`https://wa.me/${contactInfo.whatsapp.replace(/[^\d]/g, '')}`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-[var(--text)] hover:underline"
               onClick={() => trackWhatsAppClick('contact_page')}
             >
-              +57 302 123 4410
+              {contactInfo.whatsapp}
             </a>
           </div>
           <div className="card p-5">
-            <div className="text-xs uppercase tracking-wide text-[#b9bec7] mb-1">Ubicación</div>
-            <div className="text-[var(--text)]">Barranquilla, Atlántico, Colombia</div>
+            <div className="text-xs uppercase tracking-wide text-[#b9bec7] mb-1">
+              {language === 'en' ? 'Location' : 'Ubicación'}
+            </div>
+            <div className="text-[var(--text)]">{contactInfo.location}</div>
+            {contactInfo.supportHours && (
+              <div className="text-xs text-[#b9bec7] mt-1">
+                {language === 'en' ? 'Support: ' : 'Soporte: '}{contactInfo.supportHours}
+              </div>
+            )}
           </div>
         </div>
 

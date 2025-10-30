@@ -2,18 +2,21 @@
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 import { trackCTAClick } from '@/lib/analytics';
-import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, CTA_BUTTON_TEST } from '@/lib/ab-testing';
+import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
+import { useGlobalMarket } from '@/lib/global-market';
 
 export default function HomePage() {
-  const heroVariant = useABTest(HERO_HEADLINE_TEST);
-  const ctaVariant = useABTest(CTA_BUTTON_TEST);
+  const { market, language } = useGlobalMarket();
   
-  const heroText = getVariantContent(HERO_HEADLINE_TEST, heroVariant);
-  const ctaText = getVariantContent(CTA_BUTTON_TEST, ctaVariant);
+  const heroVariant = useABTest(HERO_HEADLINE_TEST, market);
+  const ctaVariant = useABTest(CTA_BUTTON_TEST, market);
+  
+  const heroText = getVariantContent(HERO_HEADLINE_TEST, heroVariant, language, HERO_HEADLINE_CONTENT);
+  const ctaText = getVariantContent(CTA_BUTTON_TEST, ctaVariant, language, CTA_BUTTON_CONTENT);
 
   const handleCTAClick = () => {
     trackCTAClick('hero_section', ctaText);
-    trackABTestConversion(CTA_BUTTON_TEST.testId, ctaVariant, 'cta_click');
+    trackABTestConversion(CTA_BUTTON_TEST.testId, ctaVariant, 'cta_click', market);
   };
 
   return (
