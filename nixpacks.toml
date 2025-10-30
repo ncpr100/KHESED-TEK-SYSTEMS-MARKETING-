@@ -1,0 +1,15 @@
+[variables]
+NODE_ENV = 'production'
+NEXT_TELEMETRY_DISABLED = '1'
+
+[phases.setup]
+nixpkgs = ['nodejs_18', 'npm']
+
+[phases.install]
+cmd = 'npm ci'
+
+[phases.build]
+cmd = 'npm run build'
+
+[start]
+cmd = 'npm start'
