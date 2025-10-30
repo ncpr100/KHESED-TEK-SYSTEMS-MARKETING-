@@ -27,7 +27,7 @@ export default function HomePage() {
             'radial-gradient(1200px 400px at 10% -10%, rgba(110,231,255,.07), transparent 60%), radial-gradient(900px 300px at 90% -20%, rgba(139,92,246,.08), transparent 55%), var(--bg)',
         }}
       >
-        <h1 className="text-4xl sm:text-6xl font-bold mb-3 gradient-text">
+        <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
           {heroText}
         </h1>
         <p className="max-w-3xl mx-auto text-lg mb-6" style={{ color: 'var(--muted)' }}>
