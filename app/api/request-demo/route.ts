@@ -3,7 +3,6 @@ import { Resend } from 'resend';
 import { getCRM } from '@/lib/crm/manager';
 import { Lead, ActivityType } from '@/lib/crm/types';
 import { DefaultLeadScoring, getLeadPriority } from '@/lib/crm/scoring';
-import { securityManager } from '@/lib/security/manager';
 
 // Lazy-load Resend to avoid build-time API key requirement
 function getResend() {
@@ -15,36 +14,13 @@ function getResend() {
 
 const leadScoring = new DefaultLeadScoring();
 
-function generateSessionId(req: NextRequest): string {
-  const ip = getClientIP(req);
-  const userAgent = req.headers.get('user-agent') || 'unknown';
-  return Buffer.from(`${ip}:${userAgent}`).toString('base64');
-}
-
-function getClientIP(req: NextRequest): string {
-  const forwarded = req.headers.get('x-forwarded-for');
-  if (forwarded) {
-    return forwarded.split(',')[0].trim();
-  }
+export async function POST(request: NextRequest) {
+  console.log('=== Contact Form Debug Info ===');
+  console.log('NODE_ENV:', process.env.NODE_ENV);
+  console.log('Request URL:', request.url);
   
-  const realIP = req.headers.get('x-real-ip');
-  if (realIP) {
-    return realIP;
-  }
-  
-  return 'unknown';
-}
-
-export async function POST(req: NextRequest) {
   try {
-    // Apply security protection with contact rate limiting
-    const sessionId = generateSessionId(req);
-    const protection = await securityManager.protectRoute(req, 'contact', false, sessionId);
-    if (!protection.success) {
-      return protection.response!;
-    }
-
-    const formData = await req.formData();
+    const formData = await request.formData();
     const payload = {
       name: String(formData.get('name') || '').trim(),
       email: String(formData.get('email') || '').trim(),
@@ -56,7 +32,7 @@ export async function POST(req: NextRequest) {
     };
 
     if (!payload.name || !payload.email) {
-      return await securityManager.createSecureResponse(
+      return Response.json(
         { ok: false, error: 'Nombre y correo son obligatorios.' }, 
         { status: 400 }
       );
@@ -64,7 +40,7 @@ export async function POST(req: NextRequest) {
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(payload.email)) {
-      return await securityManager.createSecureResponse(
+      return Response.json(
         { ok: false, error: 'Correo electrónico inválido.' }, 
         { status: 400 }
       );
@@ -160,6 +136,11 @@ Recibido: ${new Date(payload.receivedAt).toLocaleString('es-CO', { timeZone: 'Am
 ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediatamente' : ''}
     `.trim();
 
+    // Log form submission to console (for development/testing)
+    console.log('\n🎉 ===== NEW FORM SUBMISSION =====');
+    console.log(emailBody);
+    console.log('==================================\n');
+
     // Send email notification
     const resend = getResend();
     let emailSent = false;
@@ -176,7 +157,8 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
         });
 
         if (error) {
-          console.error('Resend error:', error);
+          console.error('❌ Resend email failed:', error);
+          console.log('💡 To fix: Set valid RESEND_API_KEY in .env.local (see EMAIL_SETUP_INSTRUCTIONS.md)');
           // If email fails but CRM succeeded, log the email failure
           if (crm && leadId) {
             const adapter = crm.getAdapter();
@@ -190,7 +172,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
         } else {
           emailSent = true;
           emailData = data;
-          console.log('Email sent successfully:', data?.id);
+          console.log('✅ Email sent successfully:', data?.id);
         }
       } catch (emailError) {
         console.error('Email sending failed:', emailError);
@@ -206,7 +188,8 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
         }
       }
     } else {
-      console.log('Resend not configured - email notification skipped');
+      console.log('⚠️  Resend not configured - email notification skipped');
+      console.log('💡 To enable emails: Set RESEND_API_KEY in .env.local (see EMAIL_SETUP_INSTRUCTIONS.md)');
     }
 
     // Log successful email send in CRM
@@ -263,7 +246,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
       priority: leadPriority?.label,
     });
 
-    return await securityManager.createSecureResponse({ 
+    return Response.json({ 
       ok: true, 
       id: emailData?.id,
       leadId,
@@ -272,7 +255,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
     });
   } catch (err) {
     console.error('Request Demo Error:', err);
-    return await securityManager.createSecureResponse(
+    return Response.json(
       { ok: false, error: 'Error al procesar la solicitud.' }, 
       { status: 500 }
     );

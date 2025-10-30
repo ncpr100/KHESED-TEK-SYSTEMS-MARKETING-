@@ -7,12 +7,12 @@ export const defaultSecurityConfig: SecurityConfig = {
   rateLimiting: {
     global: {
       windowMs: 15 * 60 * 1000, // 15 minutes
-      maxRequests: 100,
+      maxRequests: 200, // Increased from 100 to 200
       message: 'Too many requests. Please try again later.'
     },
     api: {
       windowMs: 15 * 60 * 1000, // 15 minutes
-      maxRequests: 50,
+      maxRequests: 100, // Increased from 50 to 100
       message: 'API rate limit exceeded. Please try again later.'
     },
     auth: {
@@ -22,7 +22,7 @@ export const defaultSecurityConfig: SecurityConfig = {
     },
     contact: {
       windowMs: 60 * 60 * 1000, // 1 hour
-      maxRequests: 10, // Increased from 3 to 10
+      maxRequests: 25, // Increased from 10 to 25
       message: 'Too many contact form submissions. Please try again later.'
     }
   },

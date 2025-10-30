@@ -53,7 +53,7 @@ export class RateLimiter {
     const ip = this.getClientIP(req);
     const shouldBlock = this.checkAbuseRules(entry, ip);
     if (shouldBlock) {
-      this.blockIP(ip, 15 * 60 * 1000); // Block for 15 minutes
+      this.blockIP(ip, 5 * 60 * 1000); // Block for 5 minutes instead of 15
       return {
         allowed: false,
         remaining: 0,
@@ -135,18 +135,18 @@ export class RateLimiter {
     const rules: AbuseDetectionRule[] = [
       {
         name: 'rapid_fire',
-        condition: (entry) => entry.count > this.config.maxRequests * 5, // Increased from 2 to 5
+        condition: (entry) => entry.count > this.config.maxRequests * 10, // Increased from 5 to 10
         action: 'block',
-        duration: 15 * 60 * 1000 // Reduced from 30 to 15 minutes
+        duration: 10 * 60 * 1000 // Reduced from 15 to 10 minutes
       },
       {
         name: 'persistent_limit_hitting',
         condition: (entry) => {
           const rate = entry.count / ((Date.now() - entry.firstRequest) / 1000);
-          return rate > this.config.maxRequests / (this.config.windowMs / 1000) * 3; // Increased from 1.5 to 3
+          return rate > this.config.maxRequests / (this.config.windowMs / 1000) * 5; // Increased from 3 to 5
         },
         action: 'block',
-        duration: 10 * 60 * 1000 // Reduced from 15 to 10 minutes
+        duration: 5 * 60 * 1000 // Reduced from 10 to 5 minutes
       }
     ];
 
