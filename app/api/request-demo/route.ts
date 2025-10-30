@@ -5,7 +5,14 @@ import { Lead, ActivityType } from '@/lib/crm/types';
 import { DefaultLeadScoring, getLeadPriority } from '@/lib/crm/scoring';
 import { securityManager } from '@/lib/security/manager';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-load Resend to avoid build-time API key requirement
+function getResend() {
+  if (!process.env.RESEND_API_KEY) {
+    return null;
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+}
+
 const leadScoring = new DefaultLeadScoring();
 
 function generateSessionId(req: NextRequest): string {
@@ -154,41 +161,63 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
     `.trim();
 
     // Send email notification
-    const { data, error } = await resend.emails.send({
-      from: 'KHESED-TEK Demo <onboarding@resend.dev>',
-      to: process.env.CONTACT_EMAIL || 'soporte@khesed-tek.com',
-      reply_to: payload.email,
-      subject: `${leadPriority?.level === 'high' ? '🔥 PRIORITARIO - ' : ''}Nueva solicitud de demo - ${payload.name}`,
-      text: emailBody,
-    });
-
-    if (error) {
-      console.error('Resend error:', error);
-      // If email fails but CRM succeeded, log the email failure
-      if (crm && leadId) {
-        const adapter = crm.getAdapter();
-        await adapter.logActivity(leadId, {
-          type: ActivityType.NOTE_ADDED,
-          description: `Email notification failed: ${error.message}`,
-          timestamp: new Date(),
-          metadata: { error: error.message, type: 'email_failure' },
+    const resend = getResend();
+    let emailSent = false;
+    let emailData = null;
+    
+    if (resend) {
+      try {
+        const { data, error } = await resend.emails.send({
+          from: 'KHESED-TEK Demo <onboarding@resend.dev>',
+          to: process.env.CONTACT_EMAIL || 'soporte@khesed-tek.com',
+          reply_to: payload.email,
+          subject: `${leadPriority?.level === 'high' ? '🔥 PRIORITARIO - ' : ''}Nueva solicitud de demo - ${payload.name}`,
+          text: emailBody,
         });
+
+        if (error) {
+          console.error('Resend error:', error);
+          // If email fails but CRM succeeded, log the email failure
+          if (crm && leadId) {
+            const adapter = crm.getAdapter();
+            await adapter.logActivity(leadId, {
+              type: ActivityType.NOTE_ADDED,
+              description: `Email notification failed: ${error.message}`,
+              timestamp: new Date(),
+              metadata: { error: error.message, type: 'email_failure' },
+            });
+          }
+        } else {
+          emailSent = true;
+          emailData = data;
+          console.log('Email sent successfully:', data?.id);
+        }
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Log email failure in CRM if available
+        if (crm && leadId) {
+          const adapter = crm.getAdapter();
+          await adapter.logActivity(leadId, {
+            type: ActivityType.NOTE_ADDED,
+            description: `Email sending failed: ${emailError instanceof Error ? emailError.message : 'Unknown error'}`,
+            timestamp: new Date(),
+            metadata: { error: emailError, type: 'email_failure' },
+          });
+        }
       }
-      return await securityManager.createSecureResponse(
-        { ok: false, error: 'Error al enviar el correo.' }, 
-        { status: 500 }
-      );
+    } else {
+      console.log('Resend not configured - email notification skipped');
     }
 
     // Log successful email send in CRM
-    if (crm && leadId) {
+    if (emailSent && crm && leadId) {
       const adapter = crm.getAdapter();
       await adapter.logActivity(leadId, {
         type: ActivityType.EMAIL_SENT,
         description: 'Demo request notification email sent to team',
         timestamp: new Date(),
         metadata: { 
-          emailId: data?.id,
+          emailId: emailData?.id,
           recipient: process.env.CONTACT_EMAIL,
           type: 'internal_notification' 
         },
@@ -228,7 +257,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
     }
 
     console.log('✓ Demo request processed:', {
-      emailId: data?.id,
+      emailId: emailData?.id,
       leadId,
       leadScore,
       priority: leadPriority?.label,
@@ -236,7 +265,7 @@ ${leadPriority?.level === 'high' ? '\n🔥 LEAD PRIORITARIO - Contactar inmediat
 
     return await securityManager.createSecureResponse({ 
       ok: true, 
-      id: data?.id,
+      id: emailData?.id,
       leadId,
       leadScore,
       priority: leadPriority?.label,
