@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+interface NextStep {
+  priority: 'low' | 'medium' | 'high' | 'none';
+  action: string;
+  description: string;
+  impact: string;
+}
+
 export async function GET(request: NextRequest) {
   try {
     // Check what services are configured
@@ -30,7 +37,7 @@ export async function GET(request: NextRequest) {
         email_automation: !!(process.env.SENDGRID_API_KEY || (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS)) ? 'ready' : 'pending',
         advanced_security: !!(process.env.JWT_SECRET && process.env.API_SECRET) ? 'ready' : 'basic'
       },
-      next_steps: []
+      next_steps: [] as NextStep[]
     };
 
     // Add recommendations
