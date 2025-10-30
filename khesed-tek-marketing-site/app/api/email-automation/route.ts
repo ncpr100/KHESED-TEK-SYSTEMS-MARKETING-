@@ -23,10 +23,17 @@ export async function POST(request: NextRequest) {
 
     const emailEngine = getEmailEngine();
     if (!emailEngine) {
-      return await securityManager.createSecureResponse(
-        { error: 'Email automation not configured' },
-        { status: 503 }
-      );
+      // If no email service configured, log the action and return success
+      console.log('Email automation not configured - logging email action:', { action, data });
+      
+      return await securityManager.createSecureResponse({
+        success: true,
+        message: 'Email action logged successfully. Email automation pending setup.',
+        email_logged: true,
+        action: action,
+        data: data,
+        next_steps: 'Configure SendGrid API key or SMTP settings to enable automated emails'
+      });
     }
 
     switch (action) {
