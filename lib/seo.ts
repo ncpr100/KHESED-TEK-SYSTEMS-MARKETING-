@@ -7,7 +7,7 @@ export const organizationSchema = {
   "name": "KHESED-TEK",
   "description": "Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones en Colombia",
   "url": "https://www.khesed-tek.com",
-  "logo": "https://www.khesed-tek.com/khesed-tek-logo.png",
+  "logo": "https://www.khesed-tek.com/logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+57-302-123-4410",
@@ -42,7 +42,7 @@ export const localBusinessSchema = {
   "@type": "LocalBusiness",
   "name": "KHESED-TEK",
   "description": "Especialistas en tecnología para iglesias y organizaciones religiosas",
-  "image": "https://www.khesed-tek.com/khesed-tek-logo.png",
+  "image": "https://www.khesed-tek.com/logo.png",
   "telephone": "+57-302-123-4410",
   "email": "soporte@khesed-tek.com",
   "url": "https://www.khesed-tek.com",
@@ -105,7 +105,7 @@ export const websiteSchema = {
     "name": "KHESED-TEK",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.khesed-tek.com/khesed-tek-logo.png"
+      "url": "https://www.khesed-tek.com/logo.png"
     }
   }
 };

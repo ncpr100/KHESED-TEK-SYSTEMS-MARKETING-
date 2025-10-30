@@ -8,7 +8,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/khesed-tek-logo.png"
+            src="/logo.png"
             alt="KHESED-TEK"
             width={36}
             height={36}

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'KHESED-TEK',
     images: [
       {
-        url: '/khesed-tek-logo.png',
+        url: '/logo.png',
         width: 1200,
         height: 630,
         alt: 'KHESED-TEK Logo',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'KHESED-TEK - Soluciones Tecnológicas para Iglesias',
     description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones.',
-    images: ['/khesed-tek-logo.png'],
+    images: ['/logo.png'],
   },
   robots: {
     index: true,
