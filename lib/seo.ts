@@ -1,41 +1,48 @@
-// SEO and structured data utilities for KHESED-TEK SYSTEMS - Global Markets
+// SEO Configuration for global markets
+const baseConfig = {
+  metadataBase: new URL('https://www.khesed-tek-systems.org'),
+  title: 'KHESED-TEK SYSTEMS - Soluciones tecnológicas para iglesias',
+  description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones religiosas.',
+  applicationName: 'KHESED-TEK SYSTEMS',
+  authors: [{ name: 'KHESED-TEK SYSTEMS' }],
+  creator: 'KHESED-TEK SYSTEMS',
+  publisher: 'KHESED-TEK SYSTEMS',
+  url: 'https://www.khesed-tek-systems.org',
+};
 
 // Market-specific configurations
 const MARKET_CONFIG = {
   LATAM: {
-    name: 'KHESED-TEK SYSTEMS',
-    description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones en LATAM',
-    url: 'https://www.khesed-tek.com',
+    name: 'KHESED-TEK SYSTEMS Colombia',
+    description: 'Soluciones tecnológicas para iglesias y organizaciones religiosas en Colombia',
+    url: 'https://www.khesed-tek-systems.org',
     language: 'Spanish',
-    serviceArea: 'Latin America',
     locality: 'Barranquilla',
     region: 'Atlántico',
-    country: 'CO',
-    coordinates: { lat: '10.9878', lng: '-74.7889' }
+    country: 'Colombia',
+    serviceArea: 'Colombia y Latinoamérica'
   },
   USA: {
-    name: 'KHESED-TEK SYSTEMS',
-    description: 'Reliable, secure and elegant technology solutions for churches and organizations in the USA',
-    url: 'https://www.khesed-tek.us', // Future domain
+    name: 'KHESED-TEK SYSTEMS USA',
+    description: 'Technology solutions for churches and religious organizations in the United States',
+    url: 'https://www.khesed-tek-systems.org',
     language: 'English',
-    serviceArea: 'United States',
-    locality: 'United States',
-    region: 'National',
-    country: 'US',
-    coordinates: { lat: '39.8283', lng: '-98.5795' } // Geographic center of USA
+    locality: 'Miami',
+    region: 'Florida',
+    country: 'United States',
+    serviceArea: 'United States'
   },
   GLOBAL: {
-    name: 'KHESED-TEK SYSTEMS',
+    name: 'KHESED-TEK SYSTEMS International',
     description: 'Global technology solutions for churches and religious organizations worldwide',
-    url: 'https://www.khesed-tek.com',
-    language: 'English',
-    serviceArea: 'Worldwide',
+    url: 'https://www.khesed-tek-systems.org',
+    language: ['Spanish', 'English'],
     locality: 'Global',
-    region: 'International',
-    country: 'Global',
-    coordinates: { lat: '0', lng: '0' }
+    region: 'Worldwide',
+    country: 'Multiple',
+    serviceArea: 'Global'
   }
-} as const;
+};
 
 // Generate market-specific organization schema
 export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 'LATAM') {
@@ -87,10 +94,10 @@ export const localBusinessSchema = {
   "@type": "LocalBusiness",
   "name": "KHESED-TEK SYSTEMS",
   "description": "Especialistas en tecnología para iglesias y organizaciones religiosas",
-  "image": "https://www.khesed-tek.com/logo.png",
+  "image": "https://www.khesed-tek-systems.org/logo.png",
   "telephone": "+57-302-123-4410",
-  "email": "soporte@khesed-tek.com",
-  "url": "https://www.khesed-tek.com",
+  "email": "soporte@khesed-tek-systems.org",
+  "url": "https://www.khesed-tek-systems.org",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Barranquilla",
@@ -139,10 +146,10 @@ export const websiteSchema = {
   "@type": "WebSite",
   "name": "KHESED-TEK SYSTEMS",
   "description": "Soluciones tecnológicas para iglesias y organizaciones",
-  "url": "https://www.khesed-tek.com",
+  "url": "https://www.khesed-tek-systems.org",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.khesed-tek.com/search?q={search_term_string}",
+    "target": "https://www.khesed-tek-systems.org/search?q={search_term_string}",
     "query-input": "required name=search_term_string"
   },
   "publisher": {
@@ -150,7 +157,7 @@ export const websiteSchema = {
     "name": "KHESED-TEK SYSTEMS",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.khesed-tek.com/logo.png"
+      "url": "https://www.khesed-tek-systems.org/logo.png"
     }
   }
 };
@@ -161,7 +168,7 @@ export const contactPageSchema = {
   "@type": "ContactPage",
   "name": "Contacto - KHESED-TEK SYSTEMS",
   "description": "Contáctanos para una demostración personalizada de nuestras soluciones tecnológicas",
-  "url": "https://www.khesed-tek.com/contact",
+  "url": "https://www.khesed-tek-systems.org/contact",
   "mainEntity": {
     "@type": "Organization",
     "name": "KHESED-TEK SYSTEMS",
@@ -174,7 +181,7 @@ export const contactPageSchema = {
       },
       {
         "@type": "ContactPoint", 
-        "email": "soporte@khesed-tek.com",
+        "email": "soporte@khesed-tek-systems.org",
         "contactType": "customer support",
         "availableLanguage": "Spanish"
       }

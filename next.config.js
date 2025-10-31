@@ -4,7 +4,7 @@ const nextConfig = {
 
   // Image optimization for global CDN
   images: {
-    domains: ['khesed-tek.com', 'khesed-tek.us'],
+    domains: ['khesed-tek-systems.org', 'khesed-tek-systems.us'],
     formats: ['image/webp', 'image/avif'],
   },
 

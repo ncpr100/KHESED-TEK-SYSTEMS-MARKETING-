@@ -326,7 +326,7 @@ export default function GlobalMarketPage() {
               timezone: 'UTC-5 to UTC-8',
               languages: language === 'es' ? 'Español, Inglés, Portugués' : 'Spanish, English, Portuguese',
               hours: '24/7',
-              contact: 'global@khesed-tek.com',
+              contact: 'global@khesed-tek-systems.org',
               flag: '🌎'
             },
             {
@@ -334,7 +334,7 @@ export default function GlobalMarketPage() {
               timezone: 'UTC+0 to UTC+3',
               languages: language === 'es' ? 'Inglés, Francés, Alemán' : 'English, French, German',
               hours: '6AM-10PM CET',
-              contact: 'europe@khesed-tek.com',
+              contact: 'europe@khesed-tek-systems.org',
               flag: '🇪🇺'
             },
             {
@@ -342,7 +342,7 @@ export default function GlobalMarketPage() {
               timezone: 'UTC+8 to UTC+12',
               languages: language === 'es' ? 'Inglés, Mandarín' : 'English, Mandarin',
               hours: '8AM-8PM AEST',
-              contact: 'apac@khesed-tek.com',
+              contact: 'apac@khesed-tek-systems.org',
               flag: '🌏'
             },
             {
@@ -350,7 +350,7 @@ export default function GlobalMarketPage() {
               timezone: 'UTC+0 to UTC+4',
               languages: language === 'es' ? 'Inglés, Árabe, Francés' : 'English, Arabic, French',
               hours: '7AM-7PM CAT',
-              contact: 'mea@khesed-tek.com',
+              contact: 'mea@khesed-tek-systems.org',
               flag: '🌍'
             }
           ].map((region, idx) => (
@@ -386,7 +386,7 @@ export default function GlobalMarketPage() {
               🌐 {language === 'es' ? 'Equipo Global' : 'Global Team'}
             </h3>
             <div className="space-y-2 text-sm">
-              <div>📧 global@khesed-tek.com</div>
+              <div>📧 global@khesed-tek-systems.org</div>
               <div>📞 {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
               <div>🌐 {language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</div>
               <div>⏰ {language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</div>

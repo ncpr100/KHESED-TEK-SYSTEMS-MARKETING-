@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.khesed-tek.com',
+    canonical: 'https://www.khesed-tek-systems.org',
   },
   category: 'Technology',
   verification: {

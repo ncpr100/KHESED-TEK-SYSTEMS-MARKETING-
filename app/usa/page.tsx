@@ -339,7 +339,7 @@ export default function USAMarketPage() {
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4">📞 USA Sales Team</h3>
             <div className="space-y-2 text-sm">
-              <div>📧 usa@khesed-tek.com</div>
+              <div>📧 usa@khesed-tek-systems.org</div>
               <div>📞 +1 (555) 123-4567</div>
               <div>🏢 Miami, FL (Expansion Office)</div>
               <div>🕐 Monday-Friday 9AM-6PM EST</div>

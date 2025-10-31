@@ -1,4 +1,6 @@
 'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 import { trackCTAClick } from '@/lib/analytics';
@@ -6,7 +8,20 @@ import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST
 import { useGlobalMarket } from '@/lib/global-market';
 
 export default function HomePage() {
-  const { market, language } = useGlobalMarket();
+  const router = useRouter();
+  const { market, language, isLoading, geoData } = useGlobalMarket();
+  
+  // Redirect to market-specific page based on user location
+  useEffect(() => {
+    if (!isLoading && geoData && market) {
+      const marketPath = market.toLowerCase();
+      
+      // Small delay to ensure proper loading
+      setTimeout(() => {
+        router.push(`/${marketPath}`);
+      }, 500);
+    }
+  }, [isLoading, geoData, market, router]);
   
   const heroVariant = useABTest(HERO_HEADLINE_TEST, market);
   const ctaVariant = useABTest(CTA_BUTTON_TEST, market);
@@ -18,6 +33,19 @@ export default function HomePage() {
     trackCTAClick('hero_section', ctaText);
     trackABTestConversion(CTA_BUTTON_TEST.testId, ctaVariant, 'cta_click', market);
   };
+
+  // Show loading state while determining market
+  if (isLoading) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-cyan-400 mx-auto"></div>
+          <p className="mt-4 text-gray-400">Detectando tu ubicación...</p>
+          <p className="text-sm text-gray-500">Detecting your location...</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen">

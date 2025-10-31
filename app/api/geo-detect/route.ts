@@ -21,8 +21,18 @@ export async function GET(request: NextRequest) {
     const vercelCountry = request.headers.get('x-vercel-ip-country');
     
     // Determine country with fallback priority
-    const country = cfCountry || xCountry || cloudFrontCountry || vercelCountry || 'US';
-    const region = cfRegion || xRegion || 'unknown';
+    const country = cfCountry || xCountry || cloudFrontCountry || vercelCountry || 'CO'; // Default to Colombia
+    const region = cfRegion || xRegion || 'Atlantico';
+    
+    // Determine market based on country
+    let market: 'LATAM' | 'USA' | 'GLOBAL' = 'LATAM';
+    if (['US', 'USA'].includes(country.toUpperCase())) {
+      market = 'USA';
+    } else if (['CO', 'MX', 'AR', 'CL', 'PE', 'VE', 'EC', 'BO', 'PY', 'UY', 'CR', 'PA', 'GT', 'HN', 'SV', 'NI', 'DO', 'CU', 'PR'].includes(country.toUpperCase())) {
+      market = 'LATAM';
+    } else {
+      market = 'GLOBAL';
+    }
     
     // Get client IP for logging (don't store)
     const forwardedFor = request.headers.get('x-forwarded-for');
@@ -31,17 +41,19 @@ export async function GET(request: NextRequest) {
     
     // Additional geo data
     const userAgent = request.headers.get('user-agent') || 'unknown';
-    const acceptLanguage = request.headers.get('accept-language') || 'en';
+    const acceptLanguage = request.headers.get('accept-language') || 'es';
     
     // Detect preferred language from Accept-Language header
     const preferredLanguage = acceptLanguage.toLowerCase().includes('es') ? 'es' : 'en';
     
-    console.log(`Geo Detection: ${country}/${region} - IP: ${clientIP.substring(0, 8)}... - Lang: ${preferredLanguage}`);
+    console.log(`Geo Detection: ${country}/${region} -> ${market} - IP: ${clientIP.substring(0, 8)}... - Lang: ${preferredLanguage}`);
     
     return NextResponse.json({
       country: country.toUpperCase(),
       region,
+      market,
       language: preferredLanguage,
+      timezone: market === 'LATAM' ? 'America/Bogota' : market === 'USA' ? 'America/New_York' : 'UTC',
       timestamp: new Date().toISOString(),
       // Debug info (remove in production)
       debug: process.env.NODE_ENV === 'development' ? {
@@ -53,7 +65,8 @@ export async function GET(request: NextRequest) {
           cloudFrontCountry,
           vercelCountry,
           acceptLanguage
-        }
+        },
+        detectedMarket: market
       } : undefined
     });
     
@@ -61,9 +74,11 @@ export async function GET(request: NextRequest) {
     console.error('Geo detection error:', error);
     
     return NextResponse.json({
-      country: 'US',
-      region: 'unknown',
-      language: 'en',
+      country: 'CO',
+      region: 'Atlantico',
+      market: 'LATAM',
+      language: 'es',
+      timezone: 'America/Bogota',
       error: 'geo_detection_failed',
       timestamp: new Date().toISOString()
     });

@@ -37,53 +37,69 @@ interface UserGeoData {
 export const detectUserMarket = async (): Promise<UserGeoData> => {
   try {
     // Try to get country from various sources
-    let country = 'US'; // Default fallback
+    let country = 'CO'; // Default to Colombia for Colombian users
+    let market: MarketType = 'LATAM';
+    let language: 'es' | 'en' = 'es';
+    let region = 'Atlantico';
+    let timezone = 'America/Bogota';
     
     // Method 1: Try Cloudflare headers (most reliable in production)
     if (typeof window !== 'undefined') {
-      const response = await fetch('/api/geo-detect', { method: 'GET' });
-      if (response.ok) {
-        const geoData = await response.json();
-        country = geoData.country || country;
+      try {
+        const response = await fetch('/api/geo-detect', { method: 'GET' });
+        if (response.ok) {
+          const geoData = await response.json();
+          country = geoData.country || country;
+          market = geoData.market || market;
+          language = geoData.language || language;
+          region = geoData.region || region;
+          timezone = geoData.timezone || timezone;
+        }
+      } catch (error) {
+        console.warn('Geo detection API failed, using Colombian defaults:', error);
       }
     }
     
     // Method 2: Browser timezone fallback
-    if (country === 'US') {
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (timezone.includes('America/Mexico') || timezone.includes('America/Argentina') || 
-          timezone.includes('America/Colombia') || timezone.includes('America/Chile')) {
-        country = timezone.includes('Mexico') ? 'MX' : 
-                 timezone.includes('Argentina') ? 'AR' :
-                 timezone.includes('Colombia') ? 'CO' : 'CL';
+    if (country === 'CO' || country === 'US') {
+      const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (browserTimezone.includes('America/Mexico') || browserTimezone.includes('America/Argentina') || 
+          browserTimezone.includes('America/Colombia') || browserTimezone.includes('America/Chile')) {
+        country = browserTimezone.includes('Mexico') ? 'MX' : 
+                 browserTimezone.includes('Argentina') ? 'AR' :
+                 browserTimezone.includes('Colombia') ? 'CO' : 'CL';
+        market = 'LATAM';
+        language = 'es';
+        timezone = 'America/Bogota';
       }
     }
     
-    // Determine market
-    let market: MarketType = 'GLOBAL';
+    // Additional validation for market determination
     if (MARKET_CONFIG.LATAM.countries.includes(country as any)) {
       market = 'LATAM';
     } else if (MARKET_CONFIG.USA.countries.includes(country as any)) {
       market = 'USA';
+    } else {
+      market = 'GLOBAL';
     }
     
     const config = MARKET_CONFIG[market];
     
     return {
       country,
-      region: market,
+      region,
       market,
-      language: config.language,
-      timezone: config.timezone
+      language,
+      timezone
     };
   } catch (error) {
-    console.warn('Geo-detection failed, using default:', error);
+    console.warn('Geo-detection failed, using Colombian default:', error);
     return {
-      country: 'US',
-      region: 'USA', 
-      market: 'USA',
-      language: 'en',
-      timezone: 'America/New_York'
+      country: 'CO',
+      region: 'Atlantico', 
+      market: 'LATAM',
+      language: 'es',
+      timezone: 'America/Bogota'
     };
   }
 };

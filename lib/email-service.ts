@@ -12,29 +12,29 @@ interface MarketConfig {
 }
 
 // Market-specific email configuration
-const MARKET_EMAIL_CONFIG: Record<Market, MarketConfig> = {
+const MARKET_EMAIL_CONFIG = {
   LATAM: {
-    from: 'KHESED-TEK SYSTEMS <soporte@khesed-tek.com>',
-    to: process.env.CONTACT_EMAIL_LATAM || 'soporte@khesed-tek.com',
-    language: 'es',
+    from: 'KHESED-TEK SYSTEMS <soporte@khesed-tek-systems.org>',
+    to: process.env.CONTACT_EMAIL_LATAM || 'soporte@khesed-tek-systems.org',
     timezone: 'America/Bogota',
+    language: 'es',
     currency: 'COP'
   },
   USA: {
-    from: 'KHESED-TEK SYSTEMS <usa@khesed-tek.com>',
-    to: process.env.CONTACT_EMAIL_USA || 'usa@khesed-tek.com',
-    language: 'en',
+    from: 'KHESED-TEK SYSTEMS <usa@khesed-tek-systems.org>',
+    to: process.env.CONTACT_EMAIL_USA || 'usa@khesed-tek-systems.org',
     timezone: 'America/New_York',
+    language: 'en',
     currency: 'USD'
   },
   GLOBAL: {
-    from: 'KHESED-TEK SYSTEMS <global@khesed-tek.com>',
-    to: process.env.CONTACT_EMAIL_GLOBAL || 'global@khesed-tek.com',
-    language: 'en',
+    from: 'KHESED-TEK SYSTEMS <global@khesed-tek-systems.org>',
+    to: process.env.CONTACT_EMAIL_GLOBAL || 'global@khesed-tek-systems.org',
     timezone: 'UTC',
+    language: 'en',
     currency: 'USD'
   }
-};
+} as const;
 
 // Multi-language email templates
 const EMAIL_TEMPLATES = {
@@ -147,7 +147,7 @@ export async function sendMarketAwareEmail(
   
   const market = emailData.market || detectMarketFromEmail(emailData.email, emailData);
   const config = MARKET_EMAIL_CONFIG[market];
-  const template = EMAIL_TEMPLATES[templateType][config.language];
+  const template = EMAIL_TEMPLATES[templateType][config.language as 'es' | 'en'];
   
   const resend = getResend();
   if (!resend) {

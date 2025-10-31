@@ -22,7 +22,7 @@ export default function ContactPage() {
     switch (market) {
       case 'USA':
         return {
-          email: 'usa@khesed-tek.com',
+          email: 'usa@khesed-tek-systems.org',
           whatsapp: '+1 (555) 123-4567',
           location: 'Miami, FL, USA',
           timezone: 'EST/EDT',
@@ -30,7 +30,7 @@ export default function ContactPage() {
         };
       case 'GLOBAL':
         return {
-          email: 'global@khesed-tek.com',
+          email: 'global@khesed-tek-systems.org',
           whatsapp: '+57 302 123 4410',
           location: 'Available Worldwide',
           timezone: 'Multiple Timezones',
@@ -38,7 +38,7 @@ export default function ContactPage() {
         };
       default: // LATAM
         return {
-          email: 'soporte@khesed-tek.com',
+          email: 'soporte@khesed-tek-systems.org',
           whatsapp: '+57 302 123 4410',
           location: 'Barranquilla, Atlántico, Colombia',
           timezone: 'COT (UTC-5)',
@@ -50,8 +50,8 @@ export default function ContactPage() {
   const contactInfo = getMarketSpecificContact();
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Inicio', url: 'https://www.khesed-tek.com' },
-    { name: 'Contacto', url: 'https://www.khesed-tek.com/contact' }
+    { name: 'Inicio', url: 'https://www.khesed-tek-systems.org' },
+    { name: 'Contacto', url: 'https://www.khesed-tek-systems.org/contact' }
   ]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
