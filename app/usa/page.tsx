@@ -65,7 +65,7 @@ export default function USAMarketPage() {
       </section>
 
       {/* USA-Specific Features */}
-      <section className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
+      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
         {[
           { 
             pill: 'Enterprise', 
@@ -325,6 +325,30 @@ export default function USAMarketPage() {
               </ul>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* About Section - Nosotros */}
+      <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
+        <h2 className="text-3xl font-semibold mb-6">About KHESED-TEK SYSTEMS</h2>
+        <p style={{ color: 'var(--muted)' }} className="text-lg mb-8">
+          We are a Colombian technology company specializing in church management solutions. 
+          We developed KHESED-TEK-CMS, our comprehensive management system designed specifically 
+          for religious organizations. This marketing website showcases our flagship product.
+        </p>
+        <div className="grid sm:grid-cols-3 gap-6 text-center">
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
+            <div className="text-sm text-[var(--muted)]">Churches served internationally</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">5+</div>
+            <div className="text-sm text-[var(--muted)]">Years of church technology expertise</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">24/7</div>
+            <div className="text-sm text-[var(--muted)]">Global support coverage</div>
+          </div>
         </div>
       </section>
 

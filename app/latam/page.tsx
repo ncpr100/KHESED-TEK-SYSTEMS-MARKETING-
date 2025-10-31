@@ -39,8 +39,9 @@ export default function LatamMarketPage() {
             {heroText}
           </h1>
           <p className="max-w-3xl mx-auto text-lg mb-6" style={{ color: 'var(--muted)' }}>
-            Transformamos iglesias colombianas con tecnología confiable, segura y elegante. 
-            Más de 50 iglesias en Barranquilla ya confían en nuestras soluciones.
+            KHESED-TEK SYSTEMS presenta KHESED-TEK-CMS: nuestro sistema de gestión integral 
+            diseñado específicamente para iglesias colombianas. Más de 50 congregaciones en 
+            Barranquilla ya confían en nuestra solución.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a
@@ -57,53 +58,53 @@ export default function LatamMarketPage() {
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
               onClick={() => trackCTAClick('latam_whatsapp', 'WhatsApp directo')}
             >
-              📱 WhatsApp directo
+              ▣ WhatsApp directo
             </a>
           </div>
           <div className="text-sm text-[var(--muted)]">
-            ⏰ Soporte en horario colombiano (COT) • 💬 Atención en español • 🏛️ Especialistas en iglesias
+            ● Soporte en horario colombiano (COT) • ◆ Atención en español • ▣ Especialistas en iglesias
           </div>
         </div>
       </section>
 
       {/* LATAM-Specific Features */}
-      <section className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
+      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
         {[
           { 
             pill: 'WhatsApp', 
             title: 'Integración nativa con WhatsApp', 
             desc: 'Conecta directamente con tu congregación a través de la plataforma favorita en Colombia.',
-            icon: '📱'
+            icon: '▣'
           },
           { 
             pill: 'Pagos Locales', 
             title: 'Diezmos y ofrendas en COP', 
             desc: 'PSE, Bancolombia, Efecty y transferencias locales para facilitar las donaciones.',
-            icon: '💰'
+            icon: '◆'
           },
           { 
             pill: 'Soporte Local', 
             title: 'Equipo en Barranquilla', 
             desc: 'Atención personalizada en tu zona horaria con comprensión de la cultura local.',
-            icon: '🇨🇴'
+            icon: '●'
           },
           { 
             pill: 'Eventos', 
             title: 'Gestión de cultos y actividades', 
             desc: 'Organiza servicios, células, retiros y eventos especiales de manera eficiente.',
-            icon: '📅'
+            icon: '◗'
           },
           { 
             pill: 'Membresía', 
             title: 'Base de datos de miembros', 
             desc: 'Registro completo de congregación con historial de participación y crecimiento.',
-            icon: '👥'
+            icon: '◉'
           },
           { 
             pill: 'Multimedia', 
             title: 'Transmisiones en vivo', 
             desc: 'Streaming integrado para cultos virtuales y alcance de nuevas audiencias.',
-            icon: '📺'
+            icon: '▢'
           },
         ].map((f) => (
           <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>
@@ -162,7 +163,7 @@ export default function LatamMarketPage() {
               <div className="mb-4">
                 <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 <div className="text-sm text-[var(--muted)] mb-2">
-                  📍 {testimonial.location} • 👥 {testimonial.members}
+                  ▪ {testimonial.location} • ◉ {testimonial.members}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)]">
                   📈 {testimonial.result}
@@ -250,7 +251,31 @@ export default function LatamMarketPage() {
         </div>
 
         <div className="text-sm text-[var(--muted)]">
-          💳 Acepta PSE, Bancolombia, Efecty y transferencias • 📞 Soporte telefónico incluido
+          ◆ Acepta PSE, Bancolombia, Efecty y transferencias • ● Soporte telefónico incluido
+        </div>
+      </section>
+
+      {/* About Section - Nosotros */}
+      <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
+        <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
+        <p style={{ color: 'var(--muted)' }} className="text-lg mb-8">
+          Somos una empresa colombiana especializada en tecnología para iglesias. Desarrollamos 
+          KHESED-TEK-CMS, nuestro sistema de gestión integral diseñado específicamente para 
+          congregaciones latinoamericanas. Esta página web promociona nuestro producto principal.
+        </p>
+        <div className="grid sm:grid-cols-3 gap-6 text-center">
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
+            <div className="text-sm text-[var(--muted)]">Iglesias atendidas en Colombia</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">5+</div>
+            <div className="text-sm text-[var(--muted)]">Años especializados en iglesias</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">24/7</div>
+            <div className="text-sm text-[var(--muted)]">Soporte en español</div>
+          </div>
         </div>
       </section>
 
@@ -263,16 +288,16 @@ export default function LatamMarketPage() {
         
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">📞 Contacto directo</h3>
+            <h3 className="font-semibold mb-4">▣ Contacto directo</h3>
             <div className="space-y-2 text-sm">
-              <div>📧 soporte@khesed-tek-systems.org</div>
-              <div>📱 +57 302 123 4410 (WhatsApp)</div>
-              <div>🏢 Barranquilla, Atlántico, Colombia</div>
-              <div>⏰ Lunes a Viernes 8AM - 6PM (COT)</div>
+              <div>✉ soporte@khesed-tek-systems.org</div>
+              <div>▣ +57 302 123 4410 (WhatsApp)</div>
+              <div>◗ Barranquilla, Atlántico, Colombia</div>
+              <div>● Lunes a Viernes 8AM - 6PM (COT)</div>
             </div>
           </div>
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">🎯 Demo personalizada</h3>
+            <h3 className="font-semibold mb-4">◆ Demo personalizada</h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div>✓ Demostración adaptada a tu iglesia</div>
               <div>✓ Análisis de necesidades sin costo</div>

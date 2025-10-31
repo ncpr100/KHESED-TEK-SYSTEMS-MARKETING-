@@ -69,7 +69,8 @@ export default function GlobalMarketPage() {
       </section>
 
       {/* Global-Specific Features */}
-      <section className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
+            {/* Global Features */}
+      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
         {[
           { 
             pill: 'Multi-Language', 
