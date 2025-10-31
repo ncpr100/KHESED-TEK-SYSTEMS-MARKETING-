@@ -1,9 +1,18 @@
 'use client';
+import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
-import { trackCTAClick } from '@/lib/analytics';
+import { trackCTAClick, trackServiceView } from '@/lib/analytics';
+import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
+import FeatureComparisonTable from '@/components/pricing/feature-comparison';
+import LocalizedPriceDisplay from '@/components/pricing/currency-localization';
+import { PricingPlan } from '@/types/pricing';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
+import TestimonialsSection from '@/components/social-proof/testimonials-section';
+import TrustSignalsSection, { TrustBadges } from '@/components/social-proof/trust-signals';
+import ROICalculator from '@/components/conversion/roi-calculator';
+import DemoVideoSection from '@/components/conversion/demo-video-section';
 
 export default function LatamMarketPage() {
   const { market, language } = useGlobalMarket();
@@ -66,6 +75,16 @@ export default function LatamMarketPage() {
           </div>
         </div>
       </section>
+
+      {/* Demo Video Section */}
+      <DemoVideoSection 
+        market="LATAM" 
+        language="es" 
+        className="bg-[var(--surface)]"
+      />
+
+      {/* Trust Signals */}
+      <TrustSignalsSection className="bg-[var(--bg)]" />
 
       {/* LATAM-Specific Features */}
       <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
@@ -181,88 +200,110 @@ export default function LatamMarketPage() {
       </section>
 
       {/* LATAM Pricing Section */}
-      <section className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-4">Planes adaptados al mercado colombiano</h2>
-        <p className="text-[var(--muted)] mb-8">
-          Precios justos en pesos colombianos con métodos de pago locales
-        </p>
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Planes adaptados al mercado colombiano</h2>
+          <p className="text-[var(--muted)] mb-4">
+            Precios justos con métodos de pago locales y soporte en español
+          </p>
+          <div className="text-sm text-[var(--muted)]">
+            <LocalizedPriceDisplay basePrice={149.99} showEstimates={true} />
+          </div>
+        </div>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {[
             {
+              id: "small",
               name: "Iglesia Pequeña",
-              price: "$299,000 COP",
+              price: "$149.99 USD",
               period: "/mes",
               members: "Hasta 200 miembros",
-              features: ["Gestión básica de miembros", "WhatsApp integrado", "Soporte en español", "Pagos PSE"]
+              features: ["Gestión básica de miembros", "WhatsApp integrado", "Soporte en español", "Pagos PSE"],
+              ctaText: "Comenzar gratis",
+              ctaUrl: "/contact?plan=small"
             },
             {
+              id: "medium",
               name: "Iglesia Mediana", 
-              price: "$599,000 COP",
+              price: "$299.99 USD",
               period: "/mes",
               members: "Hasta 1,000 miembros",
               features: ["Todo lo anterior", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo"],
-              popular: true
+              popular: true,
+              ctaText: "Más popular",
+              ctaUrl: "/contact?plan=medium"
             },
             {
+              id: "large",
               name: "Iglesia Grande",
-              price: "$999,000 COP", 
+              price: "$599.99 USD", 
               period: "/mes",
               members: "Miembros ilimitados",
-              features: ["Todo lo anterior", "Multi-campus", "API personalizada", "Soporte prioritario"]
+              features: ["Todo lo anterior", "Multi-campus", "API personalizada", "Soporte prioritario"],
+              ctaText: "Solicitar demo",
+              ctaUrl: "/contact?plan=large"
             }
           ].map((plan, idx) => (
-            <div key={idx} className={`card p-6 ${plan.popular ? 'border-[var(--brand)] shadow-lg' : ''}`}>
-              {plan.popular && (
-                <div className="text-center mb-4">
-                  <span className="bg-[var(--brand)] text-black text-xs font-bold px-3 py-1 rounded-full">
-                    MÁS POPULAR
-                  </span>
-                </div>
-              )}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-                <div className="text-2xl font-bold gradient-text mb-1">
-                  {plan.price}<span className="text-sm text-[var(--muted)]">{plan.period}</span>
-                </div>
-                <div className="text-sm text-[var(--muted)]">{plan.members}</div>
-              </div>
-              <ul className="space-y-2 mb-6">
-                {plan.features.map((feature, fidx) => (
-                  <li key={fidx} className="flex items-center gap-2 text-sm">
-                    <span className="text-green-400">✓</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/contact"
-                className={`block text-center font-semibold px-4 py-2 rounded-lg transition ${
-                  plan.popular 
-                    ? 'gradient-btn text-black' 
-                    : 'border border-[var(--border)] hover:border-[var(--brand)]'
-                }`}
-                onClick={() => trackCTAClick('latam_pricing', `Plan ${plan.name}`)}
-              >
-                Solicitar demo
-              </a>
-            </div>
+            <AnimatedPricingCard
+              key={plan.id}
+              plan={plan as PricingPlan}
+              index={idx}
+              onSelect={(planId) => trackCTAClick('latam_pricing', `Plan ${planId}`)}
+            />
           ))}
         </div>
 
-        <div className="text-sm text-[var(--muted)]">
+        {/* Feature Comparison Table */}
+        <FeatureComparisonTable 
+          plans={[
+            { id: "small", name: "Iglesia Pequeña", price: "$149.99", period: "/mes", members: "200", features: [] },
+            { id: "medium", name: "Iglesia Mediana", price: "$299.99", period: "/mes", members: "1,000", features: [], popular: true },
+            { id: "large", name: "Iglesia Grande", price: "$599.99", period: "/mes", members: "Ilimitado", features: [] }
+          ]}
+          language="es"
+          className="mt-16"
+        />
+
+        <div className="text-sm text-[var(--muted)] text-center mt-8">
           ◆ Acepta PSE, Bancolombia, Efecty y transferencias • ● Soporte telefónico incluido
         </div>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Calcule su Retorno de Inversión</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Descubra cuánto puede ahorrar su iglesia con KHESED-TEK
+          </p>
+        </div>
+        <ROICalculator 
+          language="es" 
+          market="LATAM" 
+          showDetailed={true}
+          className="max-w-4xl mx-auto"
+        />
       </section>
 
       {/* About Section - Nosotros */}
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
         <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
-        <p style={{ color: 'var(--muted)' }} className="text-lg mb-8">
-          Somos una empresa colombiana especializada en tecnología para iglesias. Desarrollamos 
-          KHESED-TEK-CMS, nuestro sistema de gestión integral diseñado específicamente para 
-          congregaciones latinoamericanas. Esta página web promociona nuestro producto principal.
-        </p>
+        <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
+          <p>
+            KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. 
+            Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
+            soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.
+          </p>
+          <p>
+            Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus 
+            tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades 
+            de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.
+          </p>
+          <p className="font-medium text-[var(--brand)]">
+            Permítanos construir la base tecnológica que respalda y amplifica su impacto.
+          </p>
+        </div>
         <div className="grid sm:grid-cols-3 gap-6 text-center">
           <div>
             <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
@@ -278,6 +319,14 @@ export default function LatamMarketPage() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection 
+        autoRotate={true}
+        showMetrics={true}
+        variant="carousel"
+        className="bg-[var(--surface)]"
+      />
 
       {/* Local Contact Section */}
       <section className="max-w-4xl mx-auto text-center px-6 py-12">

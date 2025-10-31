@@ -93,10 +93,22 @@ export default function HomePage() {
       </section>
 
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-2">Sobre KHESED-TEK SYSTEMS</h2>
-        <p style={{ color: 'var(--muted)' }}>
-          Incrustamos LA GRACIA DE DIOS en la tecnología para crear herramientas digitales para servir a iglesias y organizaciones con excelencia, integridad e innovación.
-        </p>
+        <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
+        <div style={{ color: 'var(--muted)' }} className="text-lg space-y-4">
+          <p>
+            KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. 
+            Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
+            soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.
+          </p>
+          <p>
+            Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus 
+            tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades 
+            de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.
+          </p>
+          <p className="font-medium text-[var(--brand)]">
+            Permítanos construir la base tecnológica que respalda y amplifica su impacto.
+          </p>
+        </div>
       </section>
 
       <Footer />

@@ -4,6 +4,14 @@ import Footer from '@/components/marketing/footer';
 import { trackCTAClick } from '@/lib/analytics';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
+import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
+import FeatureComparisonTable from '@/components/pricing/feature-comparison';
+import LocalizedPriceDisplay from '@/components/pricing/currency-localization';
+import { PricingPlan } from '@/types/pricing';
+import DemoVideoSection from '@/components/conversion/demo-video-section';
+import TrustSignals from '@/components/social-proof/trust-signals';
+import ROICalculator from '@/components/conversion/roi-calculator';
+import TestimonialsSection from '@/components/social-proof/testimonials-section';
 
 export default function GlobalMarketPage() {
   const { market, language } = useGlobalMarket();
@@ -66,6 +74,42 @@ export default function GlobalMarketPage() {
             🌐 24/7 Global Support • 🗣️ Multi-language • ⏰ All Timezones • 🔒 International Compliance
           </div>
         </div>
+      </section>
+
+      {/* Demo Video Section */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <DemoVideoSection 
+          primaryVideo={{
+            id: 'global-demo',
+            title: language === 'es' ? 'Ve KHESED-TEK en acción' : 'See KHESED-TEK in Action',
+            description: language === 'es' 
+              ? 'Descubre cómo iglesias de todo el mundo están transformando sus ministerios'
+              : 'Discover how churches worldwide are transforming their ministries',
+            thumbnailUrl: '/images/demo-thumbnail.jpg',
+            videoUrl: 'https://www.youtube.com/watch?v=demo-video-id',
+            duration: '5:30',
+            type: 'youtube',
+            market: 'GLOBAL',
+            language: language,
+            features: [
+              language === 'es' ? 'Gestión multiidioma' : 'Multi-language management',
+              language === 'es' ? 'Soporte global 24/7' : 'Global 24/7 support', 
+              language === 'es' ? 'Cumplimiento internacional' : 'International compliance',
+              language === 'es' ? 'Integración con sistemas locales' : 'Local systems integration'
+            ]
+          }}
+          market="GLOBAL"
+          language={language}
+        />
+      </section>
+
+      {/* Trust Signals */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <TrustSignals 
+          layout="grid"
+          showDescriptions={true}
+          animated={true}
+        />
       </section>
 
       {/* Global-Specific Features */}
@@ -215,95 +259,109 @@ export default function GlobalMarketPage() {
       </section>
 
       {/* Global Pricing */}
-      <section className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-4">
-          {language === 'es' ? 'Precios globales transparentes' : 'Transparent Global Pricing'}
-        </h2>
-        <p className="text-[var(--muted)] mb-8">
-          {language === 'es' 
-            ? 'Precios justos en tu moneda local con métodos de pago regionales'
-            : 'Fair pricing in your local currency with regional payment methods'
-          }
-        </p>
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Precios globales transparentes' : 'Transparent Global Pricing'}
+          </h2>
+          <p className="text-[var(--muted)] mb-4">
+            {language === 'es' 
+              ? 'Precios justos en tu moneda local con métodos de pago regionales'
+              : 'Fair pricing in your local currency with regional payment methods'
+            }
+          </p>
+          <div className="text-sm text-[var(--muted)]">
+            <LocalizedPriceDisplay basePrice={149.99} showEstimates={true} />
+          </div>
+        </div>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {[
             {
-              name: language === 'es' ? 'Iglesia Local' : 'Local Church',
-              price: "$199 USD",
+              id: "small",
+              name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church',
+              price: "$149.99 USD",
               period: language === 'es' ? '/mes' : '/month',
-              members: language === 'es' ? 'Hasta 1,000 miembros' : 'Up to 1,000 members',
+              members: language === 'es' ? 'Hasta 200 miembros' : 'Up to 200 members',
               features: language === 'es' 
                 ? ["Gestión básica de miembros", "Soporte multiidioma", "Pagos locales", "Migración asistida"]
-                : ["Basic member management", "Multi-language support", "Local payments", "Assisted migration"]
+                : ["Basic member management", "Multi-language support", "Local payments", "Assisted migration"],
+              ctaText: language === 'es' ? 'Solicitar demo' : 'Request demo',
+              ctaUrl: "/contact?plan=small"
             },
             {
-              name: language === 'es' ? 'Iglesia Regional' : 'Regional Church', 
-              price: "$499 USD",
+              id: "medium",
+              name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', 
+              price: "$299.99 USD",
               period: language === 'es' ? '/mes' : '/month',
-              members: language === 'es' ? 'Hasta 5,000 miembros' : 'Up to 5,000 members',
+              members: language === 'es' ? 'Hasta 1,000 miembros' : 'Up to 1,000 members',
               features: language === 'es'
                 ? ["Todo lo anterior", "Multi-campus", "Reportes avanzados", "Soporte prioritario"]
                 : ["Everything above", "Multi-campus", "Advanced reporting", "Priority support"],
-              popular: true
+              popular: true,
+              ctaText: language === 'es' ? 'Más popular' : 'Most Popular',
+              ctaUrl: "/contact?plan=medium"
             },
             {
-              name: language === 'es' ? 'Red Internacional' : 'International Network',
-              price: language === 'es' ? 'Personalizado' : 'Custom', 
-              period: language === 'es' ? '' : '',
+              id: "large",
+              name: language === 'es' ? 'Iglesia Grande' : 'Large Church',
+              price: "$599.99 USD", 
+              period: language === 'es' ? '/mes' : '/month',
               members: language === 'es' ? 'Miembros ilimitados' : 'Unlimited members',
               features: language === 'es'
                 ? ["Todo lo anterior", "API personalizada", "Cumplimiento GDPR", "Soporte 24/7"]
-                : ["Everything above", "Custom API", "GDPR compliance", "24/7 support"]
+                : ["Everything above", "Custom API", "GDPR compliance", "24/7 support"],
+              ctaText: language === 'es' ? 'Contactar ventas' : 'Contact Sales',
+              ctaUrl: "/contact?plan=large"
             }
           ].map((plan, idx) => (
-            <div key={idx} className={`card p-6 ${plan.popular ? 'border-[var(--brand)] shadow-lg' : ''}`}>
-              {plan.popular && (
-                <div className="text-center mb-4">
-                  <span className="bg-[var(--brand)] text-black text-xs font-bold px-3 py-1 rounded-full">
-                    {language === 'es' ? 'MÁS POPULAR' : 'MOST POPULAR'}
-                  </span>
-                </div>
-              )}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-                <div className="text-2xl font-bold gradient-text mb-1">
-                  {plan.price}{plan.period && <span className="text-sm text-[var(--muted)]">{plan.period}</span>}
-                </div>
-                <div className="text-sm text-[var(--muted)]">{plan.members}</div>
-              </div>
-              <ul className="space-y-2 mb-6">
-                {plan.features.map((feature, fidx) => (
-                  <li key={fidx} className="flex items-center gap-2 text-sm">
-                    <span className="text-green-400">✓</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/contact"
-                className={`block text-center font-semibold px-4 py-2 rounded-lg transition ${
-                  plan.popular 
-                    ? 'gradient-btn text-black' 
-                    : 'border border-[var(--border)] hover:border-[var(--brand)]'
-                }`}
-                onClick={() => trackCTAClick('global_pricing', `Plan ${plan.name}`)}
-              >
-                {plan.price === 'Custom' || plan.price === 'Personalizado'
-                  ? (language === 'es' ? 'Contactar ventas' : 'Contact sales')
-                  : (language === 'es' ? 'Solicitar demo' : 'Request demo')
-                }
-              </a>
-            </div>
+            <AnimatedPricingCard
+              key={plan.id}
+              plan={plan as PricingPlan}
+              index={idx}
+              onSelect={(planId: string) => trackCTAClick('global_pricing', `Plan ${planId}`)}
+            />
           ))}
         </div>
 
-        <div className="text-sm text-[var(--muted)]">
+        {/* Feature Comparison Table */}
+        <FeatureComparisonTable 
+          plans={[
+            { id: "small", name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "200", features: [] },
+            { id: "medium", name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "1,000", features: [], popular: true },
+            { id: "large", name: language === 'es' ? 'Iglesia Grande' : 'Large Church', price: "$599.99", period: language === 'es' ? '/mes' : '/month', members: "Unlimited", features: [] }
+          ]}
+          language={language}
+          className="mt-16"
+        />
+
+        <div className="text-sm text-[var(--muted)] text-center mt-8">
           💳 {language === 'es' 
             ? 'Stripe, Wise, transferencias bancarias • 🌍 Cumplimiento GDPR/LGPD • 🔒 Certificaciones ISO'
             : 'Stripe, Wise, bank transfers • 🌍 GDPR/LGPD compliant • 🔒 ISO certified'
           }
         </div>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Calcula tu ROI' : 'Calculate Your ROI'}
+          </h2>
+          <p className="text-[var(--muted)] text-lg">
+            {language === 'es' 
+              ? 'Descubre cuánto puede ahorrar tu iglesia con KHESED-TEK'
+              : 'Discover how much your church can save with KHESED-TEK'
+            }
+          </p>
+        </div>
+        <ROICalculator 
+          language={language} 
+          market="GLOBAL" 
+          showDetailed={true}
+          className="max-w-4xl mx-auto"
+        />
       </section>
 
       {/* Regional Support Centers */}
@@ -366,6 +424,74 @@ export default function GlobalMarketPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Client Testimonials */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Iglesias satisfechas mundialmente' : 'Satisfied Churches Worldwide'}
+          </h2>
+          <p className="text-[var(--muted)] text-lg">
+            {language === 'es' 
+              ? 'Únete a cientos de iglesias ya transformando sus ministerios'
+              : 'Join hundreds of churches already transforming their ministries'
+            }
+          </p>
+        </div>
+        <TestimonialsSection 
+          autoRotate={true}
+          showMetrics={true}
+          variant="carousel"
+          className="max-w-4xl mx-auto"
+        />
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
+        <h2 className="text-3xl font-semibold mb-6">
+          {language === 'es' ? 'Sobre KHESED-TEK SYSTEMS' : 'About KHESED-TEK SYSTEMS'}
+        </h2>
+        <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
+          <p>
+            {language === 'es' 
+              ? 'KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.'
+              : 'KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. Based in Barranquilla, Atlántico, we empower churches and faith-based organizations by designing customized artificial intelligence and integration solutions that address their unique operational challenges.'
+            }
+          </p>
+          <p>
+            {language === 'es'
+              ? 'Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.'
+              : 'We understand that your mission is spiritual, but your operations are practical. Our goal is to streamline your administrative tasks, optimize resource allocation, and enhance productivity. By handling the complexities of technology, we free your team to focus on what matters most: serving your congregation and strengthening your community.'
+            }
+          </p>
+          <p className="font-medium text-[var(--brand)]">
+            {language === 'es'
+              ? 'Permítanos construir la base tecnológica que respalda y amplifica su impacto.'
+              : 'Let us build the technological foundation that supports and amplifies your impact.'
+            }
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-3 gap-6 text-center">
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
+            <div className="text-sm text-[var(--muted)]">
+              {language === 'es' ? 'Iglesias atendidas globalmente' : 'Churches served globally'}
+            </div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">15+</div>
+            <div className="text-sm text-[var(--muted)]">
+              {language === 'es' ? 'Países con presencia' : 'Countries with presence'}
+            </div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">24/7</div>
+            <div className="text-sm text-[var(--muted)]">
+              {language === 'es' ? 'Soporte global' : 'Global support'}
+            </div>
+          </div>
         </div>
       </section>
 

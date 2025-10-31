@@ -4,6 +4,14 @@ import Footer from '@/components/marketing/footer';
 import { trackCTAClick } from '@/lib/analytics';
 import { useABTest, getVariantContent, trackABTestConversion, USA_VALUE_PROP_TEST, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
+import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
+import FeatureComparisonTable from '@/components/pricing/feature-comparison';
+import LocalizedPriceDisplay from '@/components/pricing/currency-localization';
+import { PricingPlan } from '@/types/pricing';
+import TestimonialsSection from '@/components/social-proof/testimonials-section';
+import TrustSignalsSection from '@/components/social-proof/trust-signals';
+import ROICalculator from '@/components/conversion/roi-calculator';
+import DemoVideoSection from '@/components/conversion/demo-video-section';
 
 export default function USAMarketPage() {
   const { market, language } = useGlobalMarket();
@@ -63,6 +71,16 @@ export default function USAMarketPage() {
           </div>
         </div>
       </section>
+
+      {/* Demo Video Section */}
+      <DemoVideoSection 
+        market="USA" 
+        language="en" 
+        className="bg-[var(--surface)]"
+      />
+
+      {/* Trust Signals */}
+      <TrustSignalsSection className="bg-[var(--bg)]" />
 
       {/* USA-Specific Features */}
       <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
@@ -187,82 +205,90 @@ export default function USAMarketPage() {
       </section>
 
       {/* USA Enterprise Pricing */}
-      <section className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-4">Enterprise Pricing for American Churches</h2>
-        <p className="text-[var(--muted)] mb-8">
-          Transparent pricing with no hidden fees. Annual discounts available.
-        </p>
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Enterprise Pricing for American Churches</h2>
+          <p className="text-[var(--muted)] mb-4">
+            Transparent pricing with no hidden fees. Annual discounts available.
+          </p>
+          <div className="text-sm text-[var(--muted)]">
+            <LocalizedPriceDisplay basePrice={149.99} showEstimates={true} />
+          </div>
+        </div>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {[
             {
-              name: "Growing Church",
-              price: "$299",
+              id: "small",
+              name: "Small Church",
+              price: "$149.99",
               period: "/month",
-              members: "Up to 1,500 members",
+              members: "Up to 200 members",
               features: ["Core church management", "Basic integrations", "Email support", "Training included"],
-              annual: "$2,990/year (save 17%)"
+              ctaText: "Start Free Trial",
+              ctaUrl: "/contact?plan=small"
             },
             {
-              name: "Established Church", 
-              price: "$699",
+              id: "medium",
+              name: "Medium Church", 
+              price: "$299.99",
               period: "/month",
-              members: "Up to 5,000 members",
+              members: "Up to 1,000 members",
               features: ["Multi-campus support", "Advanced integrations", "Phone + email support", "Custom training"],
               popular: true,
-              annual: "$6,990/year (save 17%)"
+              ctaText: "Most Popular",
+              ctaUrl: "/contact?plan=medium"
             },
             {
-              name: "Mega Church",
-              price: "Custom", 
-              period: "pricing",
+              id: "large",
+              name: "Large Church",
+              price: "$599.99", 
+              period: "/month",
               members: "Unlimited members",
               features: ["Enterprise features", "Dedicated support", "Custom integrations", "SLA guarantees"],
-              annual: "Contact for enterprise discount"
+              ctaText: "Contact Sales",
+              ctaUrl: "/contact?plan=large"
             }
           ].map((plan, idx) => (
-            <div key={idx} className={`card p-6 ${plan.popular ? 'border-[var(--brand)] shadow-lg' : ''}`}>
-              {plan.popular && (
-                <div className="text-center mb-4">
-                  <span className="bg-[var(--brand)] text-black text-xs font-bold px-3 py-1 rounded-full">
-                    MOST POPULAR
-                  </span>
-                </div>
-              )}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-                <div className="text-2xl font-bold gradient-text mb-1">
-                  {plan.price}{plan.price !== 'Custom' && <span className="text-sm text-[var(--muted)]">{plan.period}</span>}
-                </div>
-                <div className="text-sm text-[var(--muted)] mb-2">{plan.members}</div>
-                <div className="text-xs text-green-400">{plan.annual}</div>
-              </div>
-              <ul className="space-y-2 mb-6">
-                {plan.features.map((feature, fidx) => (
-                  <li key={fidx} className="flex items-center gap-2 text-sm">
-                    <span className="text-green-400">✓</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/contact"
-                className={`block text-center font-semibold px-4 py-2 rounded-lg transition ${
-                  plan.popular 
-                    ? 'gradient-btn text-black' 
-                    : 'border border-[var(--border)] hover:border-[var(--brand)]'
-                }`}
-                onClick={() => trackCTAClick('usa_pricing', `Plan ${plan.name}`)}
-              >
-                {plan.price === 'Custom' ? 'Contact Sales' : 'Start Free Trial'}
-              </a>
-            </div>
+            <AnimatedPricingCard
+              key={plan.id}
+              plan={plan as PricingPlan}
+              index={idx}
+              onSelect={(planId: string) => trackCTAClick('usa_pricing', `Plan ${planId}`)}
+            />
           ))}
         </div>
 
-        <div className="text-sm text-[var(--muted)]">
+        {/* Feature Comparison Table */}
+        <FeatureComparisonTable 
+          plans={[
+            { id: "small", name: "Small Church", price: "$149.99", period: "/month", members: "200", features: [] },
+            { id: "medium", name: "Medium Church", price: "$299.99", period: "/month", members: "1,000", features: [], popular: true },
+            { id: "large", name: "Large Church", price: "$599.99", period: "/month", members: "Unlimited", features: [] }
+          ]}
+          language="en"
+          className="mt-16"
+        />
+
+        <div className="text-sm text-[var(--muted)] text-center mt-8">
           💳 Stripe, ACH, Wire Transfer accepted • 📞 Dedicated account manager included • 🔒 SOX compliant
         </div>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Calculate Your ROI</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Discover how much your church can save with KHESED-TEK
+          </p>
+        </div>
+        <ROICalculator 
+          language="en" 
+          market="USA" 
+          showDetailed={true}
+          className="max-w-4xl mx-auto"
+        />
       </section>
 
       {/* Enterprise Features Showcase */}
@@ -331,11 +357,21 @@ export default function USAMarketPage() {
       {/* About Section - Nosotros */}
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
         <h2 className="text-3xl font-semibold mb-6">About KHESED-TEK SYSTEMS</h2>
-        <p style={{ color: 'var(--muted)' }} className="text-lg mb-8">
-          We are a Colombian technology company specializing in church management solutions. 
-          We developed KHESED-TEK-CMS, our comprehensive management system designed specifically 
-          for religious organizations. This marketing website showcases our flagship product.
-        </p>
+        <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
+          <p>
+            KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. 
+            Based in Barranquilla, Atlántico, we empower churches and faith-based organizations by designing customized 
+            artificial intelligence and integration solutions that address their unique operational challenges.
+          </p>
+          <p>
+            We understand that your mission is spiritual, but your operations are practical. Our goal is to streamline 
+            your administrative tasks, optimize resource allocation, and enhance productivity. By handling the complexities 
+            of technology, we free your team to focus on what matters most: serving your congregation and strengthening your community.
+          </p>
+          <p className="font-medium text-[var(--brand)]">
+            Let us build the technological foundation that supports and amplifies your impact.
+          </p>
+        </div>
         <div className="grid sm:grid-cols-3 gap-6 text-center">
           <div>
             <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
@@ -352,7 +388,22 @@ export default function USAMarketPage() {
         </div>
       </section>
 
-      {/* USA Contact Section */}
+      {/* Client Testimonials */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Trusted by Churches Nationwide</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Join hundreds of churches already transforming their ministries
+          </p>
+        </div>
+        <TestimonialsSection 
+          variant="carousel"
+          autoRotate={true}
+          showMetrics={true}
+        />
+      </section>
+
+      {/* Contact Section */}
       <section className="max-w-4xl mx-auto text-center px-6 py-12">
         <h2 className="text-3xl font-semibold mb-2">Ready to Scale Your Ministry?</h2>
         <p style={{ color: 'var(--muted)' }} className="mb-8">

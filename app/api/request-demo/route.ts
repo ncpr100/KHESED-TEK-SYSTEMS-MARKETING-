@@ -3,6 +3,7 @@ import { getCRM } from '@/lib/crm/manager';
 import { Lead, ActivityType } from '@/lib/crm/types';
 import { MarketAwareLeadScoring, getMarketAwarePriority } from '@/lib/crm/market-scoring';
 import { sendMarketAwareEmail, detectMarketFromEmail, type Market } from '@/lib/email-service';
+import { trackDemoRequest, trackContactSubmission, detectUserMarket } from '@/lib/analytics';
 
 const leadScoring = new MarketAwareLeadScoring();
 
@@ -116,6 +117,22 @@ export async function POST(request: NextRequest) {
     console.log('\n🎉 ===== NEW FORM SUBMISSION =====');
     console.log(`Market: ${market}, Lead ID: ${leadId}, Score: ${leadScore}`);
     console.log('==================================\n');
+
+    // Track analytics events for lead generation and conversion
+    try {
+      const geoData = await detectUserMarket();
+      
+      // Track the appropriate conversion event
+      if (payload.wantsDemo) {
+        await trackDemoRequest(payload, geoData);
+        console.log('✓ Demo request tracked in GA4');
+      } else {
+        await trackContactSubmission(payload, geoData);
+        console.log('✓ Contact submission tracked in GA4');
+      }
+    } catch (analyticsError) {
+      console.warn('Analytics tracking error (non-critical):', analyticsError);
+    }
 
     // Send market-aware email notification
     const emailResult = await sendMarketAwareEmail({
