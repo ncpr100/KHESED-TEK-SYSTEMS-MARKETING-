@@ -18,11 +18,11 @@ This guide explains how to update and manage demo videos for the KHESED-TEK mark
 
 ### Environment Variables (Railway Dashboard)
 ```bash
-NEXT_PUBLIC_LATAM_DEMO_VIDEO=https://www.youtube.com/embed/V_MXGdSBbAI
-NEXT_PUBLIC_USA_DEMO_VIDEO=https://www.youtube.com/embed/9bZkp7q19f0
-NEXT_PUBLIC_LATAM_QUICK_TOUR=https://www.youtube.com/embed/3JZ_D3ELwOQ
-NEXT_PUBLIC_USA_QUICK_TOUR=https://www.youtube.com/embed/JNDFGgdUNMo
-NEXT_PUBLIC_GLOBAL_DEMO=https://www.youtube.com/embed/F-0L1xTOGn8
+NEXT_PUBLIC_LATAM_DEMO_VIDEO=https://www.youtube.com/embed/qk-Baf42lBo
+NEXT_PUBLIC_USA_DEMO_VIDEO=https://www.youtube.com/embed/qk-Baf42lBo
+NEXT_PUBLIC_LATAM_QUICK_TOUR=https://www.youtube.com/embed/qk-Baf42lBo
+NEXT_PUBLIC_USA_QUICK_TOUR=https://www.youtube.com/embed/qk-Baf42lBo
+NEXT_PUBLIC_GLOBAL_DEMO=https://www.youtube.com/embed/qk-Baf42lBo
 ```
 
 ## How to Create KHESED-TEK Demo Videos
