@@ -152,10 +152,16 @@ export default function ROICalculator({
   };
 
   const formatCurrency = (amount: number) => {
+    // Use en-US format for consistent decimal points (not commas) across all markets
+    const formattedAmount = amount.toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    });
+    
     if (market === 'LATAM') {
-      return `$${amount.toLocaleString('es-CO')} USD`;
+      return `$${formattedAmount} USD`;
     }
-    return `$${amount.toLocaleString('en-US')}`;
+    return `$${formattedAmount}`;
   };
 
   const t = getTranslations(language);
@@ -414,7 +420,7 @@ function generateInsights(
 
   if (language === 'es') {
     // Always highlight our implementation advantage
-    insights.push(`Ahorro en implementación: $${results.implementationSavings.toLocaleString()} vs competidores (implementación y capacitación GRATIS).`);
+    insights.push(`Ahorro en implementación: $${results.implementationSavings.toLocaleString('en-US')} vs competidores (implementación y capacitación GRATIS).`);
     
     if (results.yearlyROI > 20) {
       insights.push('ROI positivo: Su inversión generará retornos superiores al 20% anual.');
@@ -441,7 +447,7 @@ function generateInsights(
     }
   } else {
     // Always highlight our implementation advantage
-    insights.push(`Implementation savings: $${results.implementationSavings.toLocaleString()} vs competitors (FREE setup and training).`);
+    insights.push(`Implementation savings: $${results.implementationSavings.toLocaleString('en-US')} vs competitors (FREE setup and training).`);
     
     if (results.yearlyROI > 20) {
       insights.push('Positive ROI: Your investment will generate returns above 20% annually.');

@@ -381,7 +381,7 @@ export default function LatamMarketPage() {
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4">▣ Contacto directo</h3>
             <div className="space-y-2 text-sm">
-              <div>✉ soporte@khesed-tek-systems.org</div>
+              <div>✉ contacto@khesed-tek-systems.org</div>
               <div>▣ +57 302 123 4410 (WhatsApp)</div>
               <div>◗ Barranquilla, Atlántico, Colombia</div>
               <div>● Lunes a Viernes 8AM - 6PM (COT)</div>

@@ -62,7 +62,7 @@ export default function ContactPage() {
         };
       default: // LATAM
         return {
-          email: 'soporte@khesed-tek-systems.org',
+          email: 'contacto@khesed-tek-systems.org',
           whatsapp: '+57 302 123 4410',
           location: 'Barranquilla, Atlántico, Colombia',
           timezone: 'COT (UTC-5)',

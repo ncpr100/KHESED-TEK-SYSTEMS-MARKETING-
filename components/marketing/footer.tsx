@@ -4,8 +4,8 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-4 mb-4">
         <div className="card p-4">
           <div className="text-xs uppercase tracking-wide text-[#b9bec7]">Correo</div>
-          <a href="mailto:soporte@khesed-tek.com" className="text-[var(--text)] hover:underline">
-            soporte@khesed-tek.com
+          <a href="mailto:contacto@khesed-tek-systems.org" className="text-[var(--text)] hover:underline">
+            contacto@khesed-tek-systems.org
           </a>
         </div>
         <div className="card p-4">

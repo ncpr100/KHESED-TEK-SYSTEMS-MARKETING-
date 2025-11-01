@@ -599,7 +599,7 @@ export default function GlobalMarketPage() {
               🌐 {language === 'es' ? 'Equipo Global' : 'Global Team'}
             </h3>
             <div className="space-y-2 text-sm">
-              <div>📧 global@khesed-tek-systems.org</div>
+              <div>📧 contact@khesed-tek-systems.org</div>
               <div>☎ {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
               <div>🌐 {language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</div>
               <div>⏰ {language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</div>

@@ -13,23 +13,28 @@ interface MarketConfig {
 
 // Market-specific email configuration
 const MARKET_EMAIL_CONFIG = {
-  LATAM: {
-    from: 'KHESED-TEK SYSTEMS <soporte@khesed-tek-systems.org>',
-    to: process.env.CONTACT_EMAIL_LATAM || 'soporte@khesed-tek-systems.org',
+  'LATAM': {
+    from: 'KHESED-TEK SYSTEMS <contacto@khesed-tek-systems.org>',
+    to: process.env.CONTACT_EMAIL_LATAM || 'contacto@khesed-tek-systems.org',
+    name: 'LATAM',
     timezone: 'America/Bogota',
     language: 'es',
-    currency: 'COP'
+    currency: 'USD'
   },
-  USA: {
-    from: 'KHESED-TEK SYSTEMS <usa@khesed-tek-systems.org>',
-    to: process.env.CONTACT_EMAIL_USA || 'usa@khesed-tek-systems.org',
+  
+  'USA': {
+    from: 'KHESED-TEK SYSTEMS <contact@khesed-tek-systems.org>',
+    to: process.env.CONTACT_EMAIL_USA || 'contact@khesed-tek-systems.org',
+    name: 'USA',
     timezone: 'America/New_York',
     language: 'en',
     currency: 'USD'
   },
-  GLOBAL: {
+  
+  'GLOBAL': {
     from: 'KHESED-TEK SYSTEMS <global@khesed-tek-systems.org>',
     to: process.env.CONTACT_EMAIL_GLOBAL || 'global@khesed-tek-systems.org',
+    name: 'GLOBAL',
     timezone: 'UTC',
     language: 'en',
     currency: 'USD'

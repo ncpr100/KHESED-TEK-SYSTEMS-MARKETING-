@@ -96,7 +96,7 @@ export const localBusinessSchema = {
   "description": "Especialistas en tecnología para iglesias y organizaciones religiosas",
   "image": "https://www.khesed-tek-systems.org/logo.png",
   "telephone": "+57-302-123-4410",
-  "email": "soporte@khesed-tek-systems.org",
+  "email": "contacto@khesed-tek-systems.org",
   "url": "https://www.khesed-tek-systems.org",
   "address": {
     "@type": "PostalAddress",
@@ -181,7 +181,7 @@ export const contactPageSchema = {
       },
       {
         "@type": "ContactPoint", 
-        "email": "soporte@khesed-tek-systems.org",
+        "email": "contacto@khesed-tek-systems.org",
         "contactType": "customer support",
         "availableLanguage": "Spanish"
       }
