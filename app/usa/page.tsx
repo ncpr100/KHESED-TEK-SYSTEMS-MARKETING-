@@ -83,46 +83,63 @@ export default function USAMarketPage() {
       <TrustSignalsSection className="bg-[var(--bg)]" />
 
       {/* USA-Specific Features */}
-      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
-        {[
-          { 
-            pill: 'Enterprise', 
-            title: 'Multi-campus management', 
-            desc: 'Unified platform for mega-churches with multiple locations and complex organizational structures.',
-            icon: '🏢'
-          },
-          { 
-            pill: 'Integrations', 
-            title: 'Seamless third-party apps', 
-            desc: 'Connect with Salesforce, Mailchimp, Zoom, Teams, and 50+ popular ministry tools.',
-            icon: '🔗'
-          },
-          { 
-            pill: 'Compliance', 
-            title: 'SOX & GDPR ready', 
-            desc: 'Enterprise-grade security and compliance for financial reporting and data protection.',
-            icon: '🛡️'
-          },
-          { 
-            pill: 'Analytics', 
-            title: 'Advanced reporting', 
-            desc: 'Business intelligence dashboard with KPIs, trends, and predictive analytics.',
-            icon: '📊'
-          },
-          { 
-            pill: 'API', 
-            title: 'Custom development', 
-            desc: 'RESTful API and webhooks for custom integrations and workflow automation.',
-            icon: '⚡'
-          },
-          { 
-            pill: 'Support', 
-            title: '24/7 enterprise support', 
-            desc: 'Dedicated account manager with SLA guarantees and priority response times.',
-            icon: '🎯'
-          },
+      <section id="features" className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Enterprise-Grade Features</h2>
+          <p className="text-[var(--muted)] text-lg mb-6">
+            Advanced capabilities that set KHESED-TEK apart from Planning Center, Breeze, and other competitors
+          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
+            🏆 Outperforming ChurchTrac, Aplos, and TouchPoint in key areas
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {[
+            { 
+              pill: 'AI-Powered', 
+              title: 'Smart Volunteer Matching', 
+              desc: 'AI automatically matches volunteers with ministries based on spiritual gifts assessment. Planning Center offers basic scheduling; we provide intelligent recommendations.',
+              icon: '🤖',
+              advantage: 'vs Planning Center: 75% more efficient volunteer placement'
+            },
+            { 
+              pill: 'Enterprise', 
+              title: 'Multi-Campus Intelligence', 
+              desc: 'Advanced analytics across multiple locations with predictive insights. TouchPoint charges $20K+/year; we include it standard.',
+              icon: '🏢',
+              advantage: 'vs TouchPoint: 60% cost savings with superior analytics'
+            },
+            { 
+              pill: 'Automation', 
+              title: 'Comprehensive Workflow Engine', 
+              desc: 'Complete automation system with custom triggers and AI responses. Breeze offers none; ChurchTrac has limited automation.',
+              icon: '⚡',
+              advantage: 'vs Breeze/ChurchTrac: Unique advanced automation'
+            },
+            { 
+              pill: 'Integration', 
+              title: 'Unified Social Media Manager', 
+              desc: 'Native Facebook, Instagram, YouTube, TikTok management with AI scheduling. Competitors require separate tools.',
+              icon: '�',
+              advantage: 'vs All: First ChMS with complete social integration'
+            },
+            { 
+              pill: 'Intelligence', 
+              title: 'Predictive Engagement Analytics', 
+              desc: 'AI predicts member disengagement and suggests interventions. No competitor offers predictive member retention.',
+              icon: '📊',
+              advantage: 'vs All: Unique predictive member analytics'
+            },
+            { 
+              pill: 'Security', 
+              title: 'SOX & Enterprise Compliance', 
+              desc: 'Built-in SOX compliance, GDPR ready, enterprise security. Aplos focuses only on accounting compliance.',
+              icon: '🛡️',
+              advantage: 'vs Aplos: Complete compliance beyond accounting'
+            },
         ].map((f) => (
-          <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>
+          <div className="card p-6 hover:-translate-y-1 transition group" key={f.title}>
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl">{f.icon}</span>
               <span
@@ -132,10 +149,35 @@ export default function USAMarketPage() {
                 {f.pill}
               </span>
             </div>
-            <h3 className="text-xl font-semibold mt-3 mb-1">{f.title}</h3>
-            <p style={{ color: 'var(--muted)' }}>{f.desc}</p>
+            <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
+            <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
+            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
+              ✨ {f.advantage}
+            </div>
           </div>
         ))}
+        </div>
+
+        {/* Competitive Advantage Callout */}
+        <div className="card p-6 bg-gradient-to-r from-[var(--brand)]/5 to-[var(--brand2)]/5 border-[var(--brand)]/20">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold mb-4">🏆 Why Churches Choose KHESED-TEK Over Competitors</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <strong className="text-[var(--brand)]">vs Planning Center ($100+/month):</strong>
+                <p className="text-[var(--muted)]">Same features + AI automation at competitive price</p>
+              </div>
+              <div>
+                <strong className="text-[var(--brand)]">vs TouchPoint ($20K+/year):</strong>
+                <p className="text-[var(--muted)]">Enterprise features at 80% less cost</p>
+              </div>
+              <div>
+                <strong className="text-[var(--brand)]">vs Breeze/ChurchTrac:</strong>
+                <p className="text-[var(--muted)]">Advanced AI features they don't offer</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* USA Enterprise Case Studies */}

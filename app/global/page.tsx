@@ -113,59 +113,96 @@ export default function GlobalMarketPage() {
       </section>
 
       {/* Global-Specific Features */}
-            {/* Global Features */}
-      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
-        {[
-          { 
-            pill: 'Multi-Language', 
-            title: language === 'es' ? 'Soporte multiidioma' : 'Multi-language support', 
-            desc: language === 'es' 
-              ? 'Plataforma disponible en español, inglés, portugués, francés y más idiomas.'
-              : 'Platform available in Spanish, English, Portuguese, French, and more languages.',
-            icon: '🗣️'
-          },
-          { 
-            pill: 'Timezone', 
-            title: language === 'es' ? 'Cobertura global 24/7' : 'Global 24/7 coverage', 
-            desc: language === 'es'
-              ? 'Soporte técnico y atención al cliente en todas las zonas horarias del mundo.'
-              : 'Technical support and customer service across all world timezones.',
-            icon: '🌐'
-          },
-          { 
-            pill: 'Compliance', 
-            title: language === 'es' ? 'Cumplimiento internacional' : 'International compliance', 
-            desc: language === 'es'
-              ? 'GDPR, LGPD, y regulaciones locales de protección de datos implementadas.'
-              : 'GDPR, LGPD, and local data protection regulations implemented.',
-            icon: '🛡️'
-          },
-          { 
-            pill: 'Currency', 
-            title: language === 'es' ? 'Múltiples monedas' : 'Multi-currency support', 
-            desc: language === 'es'
-              ? 'Pagos y donaciones en USD, EUR, GBP, CAD, AUD y monedas locales.'
-              : 'Payments and donations in USD, EUR, GBP, CAD, AUD and local currencies.',
-            icon: '💰'
-          },
-          { 
-            pill: 'Integration', 
-            title: language === 'es' ? 'Integraciones globales' : 'Global integrations', 
-            desc: language === 'es'
-              ? 'Conecta con sistemas bancarios, plataformas locales y herramientas regionales.'
-              : 'Connect with banking systems, local platforms and regional tools.',
-            icon: '🔗'
-          },
-          { 
-            pill: 'Migration', 
-            title: language === 'es' ? 'Migración asistida' : 'Assisted migration', 
-            desc: language === 'es'
-              ? 'Equipo especializado para migrar desde cualquier sistema existente.'
-              : 'Specialized team to migrate from any existing system.',
-            icon: '📦'
-          },
+      {/* Global Features */}
+      <section id="features" className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Características Globales Avanzadas' : 'Advanced Global Features'}
+          </h2>
+          <p className="text-[var(--muted)] text-lg mb-6">
+            {language === 'es' 
+              ? 'Capacidades únicas que superan a Planning Center, Breeze, ChurchTrac y otros líderes del mercado'
+              : 'Unique capabilities that outperform Planning Center, Breeze, ChurchTrac, and other market leaders'
+            }
+          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
+            🏆 {language === 'es' 
+              ? 'Superando a TouchPoint, Aplos y Realm en características clave'
+              : 'Outperforming TouchPoint, Aplos, and Realm in key features'
+            }
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {[
+            { 
+              pill: language === 'es' ? 'IA Global' : 'Global AI', 
+              title: language === 'es' ? 'Adaptación Cultural Inteligente' : 'Intelligent Cultural Adaptation', 
+              desc: language === 'es' 
+                ? 'IA que adapta automáticamente la interfaz según el contexto cultural. Planning Center y Realm solo ofrecen traducciones básicas.'
+                : 'AI that automatically adapts interface based on cultural context. Planning Center and Realm only offer basic translations.',
+              icon: '🌍',
+              advantage: language === 'es' 
+                ? 'vs Planning Center/Realm: Adaptación cultural inteligente única'
+                : 'vs Planning Center/Realm: Unique intelligent cultural adaptation'
+            },
+            { 
+              pill: language === 'es' ? 'Multi-idioma' : 'Multi-Language', 
+              title: language === 'es' ? 'Soporte Nativo Multiidioma' : 'Native Multi-Language Support', 
+              desc: language === 'es'
+                ? 'Español, inglés, portugués con IA contextual. Breeze y ChurchTrac no tienen soporte multiidioma.'
+                : 'Spanish, English, Portuguese with contextual AI. Breeze and ChurchTrac lack multi-language support.',
+              icon: '🗣️',
+              advantage: language === 'es'
+                ? 'vs Breeze/ChurchTrac: Único con multiidioma nativo'
+                : 'vs Breeze/ChurchTrac: Only system with native multi-language'
+            },
+            { 
+              pill: language === 'es' ? 'Pagos' : 'Payments', 
+              title: language === 'es' ? 'Métodos de Pago Regionales' : 'Regional Payment Methods', 
+              desc: language === 'es'
+                ? 'Nequi, PSE, SEPA, Alipay y métodos locales integrados. Competidores solo Stripe/PayPal.'
+                : 'Nequi, PSE, SEPA, Alipay and local methods integrated. Competitors only offer Stripe/PayPal.',
+              icon: '💰',
+              advantage: language === 'es'
+                ? 'vs Todos: Métodos de pago regionales únicos'
+                : 'vs All: Unique regional payment methods'
+            },
+            { 
+              pill: language === 'es' ? 'Automatización' : 'Automation', 
+              title: language === 'es' ? 'Motor de Automatización Global' : 'Global Automation Engine', 
+              desc: language === 'es'
+                ? 'Automatización avanzada con triggers culturales. TouchPoint cuesta $20K+; nosotros lo incluimos estándar.'
+                : 'Advanced automation with cultural triggers. TouchPoint costs $20K+; we include it standard.',
+              icon: '⚡',
+              advantage: language === 'es'
+                ? 'vs TouchPoint: 70% menos costo con características superiores'
+                : 'vs TouchPoint: 70% less cost with superior features'
+            },
+            { 
+              pill: language === 'es' ? 'Cumplimiento' : 'Compliance', 
+              title: language === 'es' ? 'Cumplimiento Multi-jurisdiccional' : 'Multi-Jurisdictional Compliance', 
+              desc: language === 'es'
+                ? 'GDPR, LGPD, SOX automático por región. Aplos solo contabilidad; nosotros cumplimiento completo.'
+                : 'GDPR, LGPD, SOX automatic by region. Aplos only accounting; we provide complete compliance.',
+              icon: '🛡️',
+              advantage: language === 'es'
+                ? 'vs Aplos: Cumplimiento completo vs solo contabilidad'
+                : 'vs Aplos: Complete compliance vs accounting only'
+            },
+            { 
+              pill: language === 'es' ? 'Análisis' : 'Analytics', 
+              title: language === 'es' ? 'Análisis Predictivo Global' : 'Global Predictive Analytics', 
+              desc: language === 'es'
+                ? 'IA predice tendencias por región y cultura. Ningún competidor ofrece análisis predictivo cultural.'
+                : 'AI predicts trends by region and culture. No competitor offers cultural predictive analytics.',
+              icon: '�',
+              advantage: language === 'es'
+                ? 'vs Todos: Análisis predictivo cultural único'
+                : 'vs All: Unique cultural predictive analytics'
+            },
         ].map((f) => (
-          <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>
+          <div className="card p-6 hover:-translate-y-1 transition group" key={f.title}>
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl">{f.icon}</span>
               <span
@@ -175,10 +212,59 @@ export default function GlobalMarketPage() {
                 {f.pill}
               </span>
             </div>
-            <h3 className="text-xl font-semibold mt-3 mb-1">{f.title}</h3>
-            <p style={{ color: 'var(--muted)' }}>{f.desc}</p>
+            <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
+            <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
+            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
+              ✨ {f.advantage}
+            </div>
           </div>
         ))}
+        </div>
+
+        {/* Competitive Advantage Callout */}
+        <div className="card p-6 bg-gradient-to-r from-[var(--brand)]/5 to-[var(--brand2)]/5 border-[var(--brand)]/20">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold mb-4">
+              🏆 {language === 'es' 
+                ? 'Por Qué las Iglesias Globales Eligen KHESED-TEK'
+                : 'Why Global Churches Choose KHESED-TEK Over Competitors'
+              }
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <strong className="text-[var(--brand)]">
+                  vs Planning Center ({language === 'es' ? '$100+/mes' : '$100+/month'}):
+                </strong>
+                <p className="text-[var(--muted)]">
+                  {language === 'es' 
+                    ? 'Características culturales + IA a precio competitivo'
+                    : 'Cultural features + AI at competitive price'
+                  }
+                </p>
+              </div>
+              <div>
+                <strong className="text-[var(--brand)]">
+                  vs TouchPoint ({language === 'es' ? '$20K+/año' : '$20K+/year'}):
+                </strong>
+                <p className="text-[var(--muted)]">
+                  {language === 'es'
+                    ? 'Características empresariales 70% menos costo'
+                    : 'Enterprise features at 70% less cost'
+                  }
+                </p>
+              </div>
+              <div>
+                <strong className="text-[var(--brand)]">vs Breeze/ChurchTrac/Realm:</strong>
+                <p className="text-[var(--muted)]">
+                  {language === 'es'
+                    ? 'IA cultural que ellos no ofrecen'
+                    : 'Cultural AI features they don\'t offer'
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Global Success Stories */}

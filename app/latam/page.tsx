@@ -87,46 +87,63 @@ export default function LatamMarketPage() {
       <TrustSignalsSection className="bg-[var(--bg)]" />
 
       {/* LATAM-Specific Features */}
-      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
-        {[
-          { 
-            pill: 'WhatsApp', 
-            title: 'Integración nativa con WhatsApp', 
-            desc: 'Conecta directamente con tu congregación a través de la plataforma favorita en Colombia.',
-            icon: '▣'
-          },
-          { 
-            pill: 'Pagos Locales', 
-            title: 'Diezmos y ofrendas en COP', 
-            desc: 'PSE, Bancolombia, Efecty y transferencias locales para facilitar las donaciones.',
-            icon: '◆'
-          },
-          { 
-            pill: 'Soporte Local', 
-            title: 'Equipo en Barranquilla', 
-            desc: 'Atención personalizada en tu zona horaria con comprensión de la cultura local.',
-            icon: '●'
-          },
-          { 
-            pill: 'Eventos', 
-            title: 'Gestión de cultos y actividades', 
-            desc: 'Organiza servicios, células, retiros y eventos especiales de manera eficiente.',
-            icon: '◗'
-          },
-          { 
-            pill: 'Membresía', 
-            title: 'Base de datos de miembros', 
-            desc: 'Registro completo de congregación con historial de participación y crecimiento.',
-            icon: '◉'
-          },
-          { 
-            pill: 'Multimedia', 
-            title: 'Transmisiones en vivo', 
-            desc: 'Streaming integrado para cultos virtuales y alcance de nuevas audiencias.',
-            icon: '▢'
-          },
+      <section id="features" className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Características Únicas para Latinoamérica</h2>
+          <p className="text-[var(--muted)] text-lg mb-6">
+            Capacidades culturalmente adaptadas que ningún competidor internacional ofrece
+          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
+            🏆 Superando a Planning Center, Breeze y ChurchTrac en el mercado latino
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {[
+            { 
+              pill: 'Exclusivo', 
+              title: 'WhatsApp Business Nativo', 
+              desc: 'Primer ChMS con WhatsApp Business completamente integrado. Planning Center, Breeze y otros no tienen esta funcionalidad esencial para Latinoamérica.',
+              icon: '💬',
+              advantage: 'vs Todos: Único con WhatsApp Business nativo'
+            },
+            { 
+              pill: 'Cultural', 
+              title: 'Métodos de Pago Colombianos', 
+              desc: 'Nequi, PSE, transferencias bancarias locales incluidas. Competidores internacionales solo ofrecen Stripe/PayPal.',
+              icon: '💰',
+              advantage: 'vs Internacionales: Pagos locales 100% integrados'
+            },
+            { 
+              pill: 'IA Avanzada', 
+              title: 'Emparejamiento Inteligente', 
+              desc: 'IA empareja voluntarios con ministerios basado en dones espirituales. ChurchTrac y Breeze solo tienen programación básica.',
+              icon: '🤖',
+              advantage: 'vs ChurchTrac/Breeze: IA única para voluntarios'
+            },
+            { 
+              pill: 'Automatización', 
+              title: 'Motor de Oración Automatizado', 
+              desc: 'Sistema único de seguimiento pastoral con IA para análisis emocional. Ningún competidor tiene automatización pastoral.',
+              icon: '🙏',
+              advantage: 'vs Todos: Automatización pastoral exclusiva'
+            },
+            { 
+              pill: 'Cultural', 
+              title: 'Adaptación Cultural IA', 
+              desc: 'Sistema que adapta automáticamente la interfaz al contexto cultural latino. Competidores usan traducciones básicas.',
+              icon: '🌎',
+              advantage: 'vs Todos: Adaptación cultural inteligente'
+            },
+            { 
+              pill: 'Predictivo', 
+              title: 'Análisis de Engagement', 
+              desc: 'IA predice deserción de miembros y sugiere intervenciones. Planning Center solo tiene reportes básicos.',
+              icon: '📊',
+              advantage: 'vs Planning Center: Predicción avanzada única'
+            },
         ].map((f) => (
-          <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>
+          <div className="card p-6 hover:-translate-y-1 transition group" key={f.title}>
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl">{f.icon}</span>
               <span
@@ -136,10 +153,35 @@ export default function LatamMarketPage() {
                 {f.pill}
               </span>
             </div>
-            <h3 className="text-xl font-semibold mt-3 mb-1">{f.title}</h3>
-            <p style={{ color: 'var(--muted)' }}>{f.desc}</p>
+            <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
+            <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
+            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
+              ✨ {f.advantage}
+            </div>
           </div>
         ))}
+        </div>
+
+        {/* Competitive Advantage Callout */}
+        <div className="card p-6 bg-gradient-to-r from-[var(--brand)]/5 to-[var(--brand2)]/5 border-[var(--brand)]/20">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold mb-4">🏆 Por Qué las Iglesias Eligen KHESED-TEK Sobre Competidores</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <strong className="text-[var(--brand)]">vs Planning Center (Inglés):</strong>
+                <p className="text-[var(--muted)]">Culturalmente adaptado + métodos de pago locales</p>
+              </div>
+              <div>
+                <strong className="text-[var(--brand)]">vs Breeze/ChurchTrac:</strong>
+                <p className="text-[var(--muted)]">IA avanzada + WhatsApp nativo incluido</p>
+              </div>
+              <div>
+                <strong className="text-[var(--brand)]">vs Aplos:</strong>
+                <p className="text-[var(--muted)]">ChMS completo vs solo contabilidad</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Colombian Church Success Stories */}
