@@ -5,7 +5,7 @@ import { TrustSignal, TrustSignalsProps } from '@/types/testimonials';
 // Trust signals data
 const TRUST_SIGNALS: TrustSignal[] = [
   {
-    id: 'ssl-security',
+    id: 'ssl-security-latam',
     type: 'security',
     icon: '♡',
     title: 'SSL Seguro',
@@ -14,7 +14,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
     market: 'LATAM'
   },
   {
-    id: 'ssl-security-en',
+    id: 'ssl-security-usa',
     type: 'security',
     icon: '♡',
     title: 'SSL Secure',
@@ -23,11 +23,19 @@ const TRUST_SIGNALS: TrustSignal[] = [
     market: 'USA'
   },
   {
-    id: 'gdpr-compliance',
+    id: 'gdpr-compliance-latam',
+    type: 'compliance',
+    icon: '♡',
+    title: 'Cumplimiento GDPR',
+    description: 'Cumplimiento total de protección de datos',
+    market: 'LATAM'
+  },
+  {
+    id: 'gdpr-compliance-global',
     type: 'compliance',
     icon: '♡',
     title: 'GDPR Compliant',
-    description: 'Cumplimiento total de protección de datos',
+    description: 'Full data protection compliance',
     market: 'GLOBAL'
   },
   {
@@ -185,7 +193,7 @@ export function TrustBadges({
 }) {
   const badges = [
     { icon: '♡', text: 'SSL Seguro' },
-    { icon: '○', text: 'GDPR' },
+    { icon: '○', text: 'Cumplimiento GDPR' },
     { icon: '⚡', text: '99.9% Uptime' },
     { icon: '☎', text: '24/7 Soporte' }
   ];
