@@ -23,7 +23,26 @@ NEXT_PUBLIC_USA_DEMO_VIDEO=https://www.youtube.com/embed/qk-Baf42lBo
 NEXT_PUBLIC_LATAM_QUICK_TOUR=https://www.youtube.com/embed/qk-Baf42lBo
 NEXT_PUBLIC_USA_QUICK_TOUR=https://www.youtube.com/embed/qk-Baf42lBo
 NEXT_PUBLIC_GLOBAL_DEMO=https://www.youtube.com/embed/qk-Baf42lBo
+
+# Optional: Cache-busting parameter (prevents browser caching old videos)
+NEXT_PUBLIC_VIDEO_CACHE_BUST=20251101-1
 ```
+
+### 🚨 **Browser Cache Solution**
+**Problem**: After updating Railway environment variables, browsers may still show old videos due to caching.
+
+**Solution**: Use the `NEXT_PUBLIC_VIDEO_CACHE_BUST` environment variable to force browsers to load new videos.
+
+**How it works**:
+- When you change video URLs, also update `NEXT_PUBLIC_VIDEO_CACHE_BUST` to any new value
+- This adds `&cb=20251101-1` to iframe URLs, making browsers treat it as a new resource
+- No need to ask users to clear cache or hard refresh
+
+**Example Usage**:
+1. **Change video**: `NEXT_PUBLIC_LATAM_DEMO_VIDEO=https://www.youtube.com/embed/NEW_VIDEO_ID`
+2. **Bump cache buster**: `NEXT_PUBLIC_VIDEO_CACHE_BUST=20251101-2` (increment the number)
+3. **Deploy**: Railway automatically redeploys
+4. **Result**: All users immediately see new video, no cache clearing needed
 
 ## How to Create KHESED-TEK Demo Videos
 
