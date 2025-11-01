@@ -147,9 +147,9 @@ export default function TrustSignalsSection({
   market
 }: TrustSignalsProps) {
 
-  // Filter signals based on market
+  // Filter signals based on market - STRICT filtering, no GLOBAL spillover
   const filteredSignals = market 
-    ? signals.filter(signal => !signal.market || signal.market === market || signal.market === 'GLOBAL')
+    ? signals.filter(signal => signal.market === market)
     : signals;
 
   const getLayoutClasses = () => {
