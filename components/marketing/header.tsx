@@ -1,8 +1,24 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
+  const pathname = usePathname();
+  
+  // Determine market context and language
+  const isLatamMarket = pathname.includes('/latam');
+  const isUSAMarket = pathname.includes('/usa');
+  const isGlobalMarket = pathname.includes('/global');
+  const language = isLatamMarket ? 'es' : 'en';
+  
+  // Get base path for navigation links
+  const basePath = isLatamMarket ? '/latam' : isUSAMarket ? '/usa' : isGlobalMarket ? '/global' : '';
+  
+  const featuresText = language === 'es' ? 'Características' : 'Features';
+  const aboutText = language === 'es' ? 'Nosotros' : 'About';
+  const contactText = language === 'es' ? 'Contacto' : 'Contact';
+
   return (
     <header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
@@ -17,9 +33,9 @@ export default function Header() {
           <span className="font-semibold">KHESED-TEK SYSTEMS</span>
         </Link>
         <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
-          <Link href="/#features">Features</Link>
-          <Link href="/#about">Nosotros</Link>
-          <Link href="/contact">Contacto</Link>
+          <Link href={`${basePath}#features`}>{featuresText}</Link>
+          <Link href={`${basePath}#about`}>{aboutText}</Link>
+          <Link href="/contact">{contactText}</Link>
         </nav>
       </div>
     </header>
