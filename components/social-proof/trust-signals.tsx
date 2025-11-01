@@ -7,7 +7,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security',
     type: 'security',
-    icon: '🔒',
+    icon: '♡',
     title: 'SSL Seguro',
     description: 'Encriptación de datos de nivel bancario',
     value: '256-bit',
@@ -16,7 +16,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-en',
     type: 'security',
-    icon: '🔒',
+    icon: '♡',
     title: 'SSL Secure',
     description: 'Bank-level data encryption',
     value: '256-bit',
@@ -25,7 +25,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'gdpr-compliance',
     type: 'compliance',
-    icon: '🛡️',
+    icon: '♡',
     title: 'GDPR Compliant',
     description: 'Cumplimiento total de protección de datos',
     market: 'GLOBAL'
@@ -58,7 +58,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count',
     type: 'clients',
-    icon: '🏛️',
+    icon: '田',
     title: 'Iglesias',
     description: 'Confían en nuestra plataforma',
     value: '200+'
@@ -66,7 +66,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage',
     type: 'certification',
-    icon: '📞',
+    icon: '☎',
     title: 'Soporte',
     description: 'Disponible cuando lo necesitas',
     value: '24/7'
@@ -184,10 +184,10 @@ export function TrustBadges({
   className?: string;
 }) {
   const badges = [
-    { icon: '🔒', text: 'SSL Seguro' },
-    { icon: '✅', text: 'GDPR' },
+    { icon: '♡', text: 'SSL Seguro' },
+    { icon: '○', text: 'GDPR' },
     { icon: '⚡', text: '99.9% Uptime' },
-    { icon: '📞', text: '24/7 Soporte' }
+    { icon: '☎', text: '24/7 Soporte' }
   ];
 
   return (

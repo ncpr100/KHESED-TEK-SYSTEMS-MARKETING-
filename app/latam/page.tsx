@@ -42,7 +42,7 @@ export default function LatamMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4">
-            🇨🇴 Mercado LATAM - Especialistas en Colombia
+            ▣ Mercado LATAM - Especialistas en Colombia
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {heroText}
@@ -94,7 +94,7 @@ export default function LatamMarketPage() {
             Capacidades culturalmente adaptadas que ningún competidor internacional ofrece
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
-            🏆 Superando a Planning Center, Breeze y ChurchTrac en el mercado latino
+            ◆ Superando a Planning Center, Breeze y ChurchTrac en el mercado latino
           </div>
         </div>
 
@@ -104,42 +104,42 @@ export default function LatamMarketPage() {
               pill: 'Exclusivo', 
               title: 'WhatsApp Business Nativo', 
               desc: 'Primer ChMS con WhatsApp Business completamente integrado. Planning Center, Breeze y otros no tienen esta funcionalidad esencial para Latinoamérica.',
-              icon: '💬',
+              icon: '◆',
               advantage: 'vs Todos: Único con WhatsApp Business nativo'
             },
             { 
               pill: 'Cultural', 
               title: 'Métodos de Pago Colombianos', 
               desc: 'Nequi, PSE, transferencias bancarias locales incluidas. Competidores internacionales solo ofrecen Stripe/PayPal.',
-              icon: '💰',
+              icon: '◉',
               advantage: 'vs Internacionales: Pagos locales 100% integrados'
             },
             { 
               pill: 'IA Avanzada', 
               title: 'Emparejamiento Inteligente', 
               desc: 'IA empareja voluntarios con ministerios basado en dones espirituales. ChurchTrac y Breeze solo tienen programación básica.',
-              icon: '🤖',
+              icon: '⚙',
               advantage: 'vs ChurchTrac/Breeze: IA única para voluntarios'
             },
             { 
               pill: 'Automatización', 
               title: 'Motor de Oración Automatizado', 
               desc: 'Sistema único de seguimiento pastoral con IA para análisis emocional. Ningún competidor tiene automatización pastoral.',
-              icon: '🙏',
+              icon: '◗',
               advantage: 'vs Todos: Automatización pastoral exclusiva'
             },
             { 
               pill: 'Cultural', 
               title: 'Adaptación Cultural IA', 
               desc: 'Sistema que adapta automáticamente la interfaz al contexto cultural latino. Competidores usan traducciones básicas.',
-              icon: '🌎',
+              icon: '◉',
               advantage: 'vs Todos: Adaptación cultural inteligente'
             },
             { 
               pill: 'Predictivo', 
               title: 'Análisis de Engagement', 
               desc: 'IA predice deserción de miembros y sugiere intervenciones. Planning Center solo tiene reportes básicos.',
-              icon: '📊',
+              icon: '▢',
               advantage: 'vs Planning Center: Predicción avanzada única'
             },
         ].map((f) => (
@@ -156,7 +156,7 @@ export default function LatamMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ✨ {f.advantage}
+              ⚡ {f.advantage}
             </div>
           </div>
         ))}
@@ -165,7 +165,7 @@ export default function LatamMarketPage() {
         {/* Competitive Advantage Callout */}
         <div className="card p-6 bg-gradient-to-r from-[var(--brand)]/5 to-[var(--brand2)]/5 border-[var(--brand)]/20">
           <div className="text-center">
-            <h3 className="text-xl font-semibold mb-4">🏆 Por Qué las Iglesias Eligen KHESED-TEK Sobre Competidores</h3>
+            <h3 className="text-xl font-semibold mb-4">◆ Por Qué las Iglesias Eligen KHESED-TEK Sobre Competidores</h3>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div>
                 <strong className="text-[var(--brand)]">vs Planning Center (Inglés):</strong>
@@ -227,7 +227,7 @@ export default function LatamMarketPage() {
                   ▪ {testimonial.location} • ◉ {testimonial.members}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)]">
-                  📈 {testimonial.result}
+                  ▢ {testimonial.result}
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">

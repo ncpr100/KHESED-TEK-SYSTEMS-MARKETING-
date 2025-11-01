@@ -41,7 +41,7 @@ export default function USAMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4">
-            🇺🇸 USA Market - Enterprise Church Solutions
+            ▣ USA Market - Enterprise Church Solutions
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {valuePropText}
@@ -63,11 +63,11 @@ export default function USAMarketPage() {
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
               onClick={() => trackCTAClick('usa_phone', 'Call Sales Team')}
             >
-              📞 Call Sales Team
+              ☎ Call Sales Team
             </a>
           </div>
           <div className="text-sm text-[var(--muted)]">
-            🕐 EST/PST Business Hours • 💬 English Support • 🏢 Enterprise-Ready
+            ◆ EST/PST Business Hours • ● English Support • ▣ Enterprise-Ready
           </div>
         </div>
       </section>
@@ -90,7 +90,7 @@ export default function USAMarketPage() {
             Advanced capabilities that set KHESED-TEK apart from Planning Center, Breeze, and other competitors
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
-            🏆 Outperforming ChurchTrac, Aplos, and TouchPoint in key areas
+            ◆ Outperforming ChurchTrac, Aplos, and TouchPoint in key areas
           </div>
         </div>
 
@@ -100,21 +100,21 @@ export default function USAMarketPage() {
               pill: 'AI-Powered', 
               title: 'Smart Volunteer Matching', 
               desc: 'AI automatically matches volunteers with ministries based on spiritual gifts assessment. Planning Center offers basic scheduling; we provide intelligent recommendations.',
-              icon: '🤖',
+              icon: '⚙',
               advantage: 'vs Planning Center: 75% more efficient volunteer placement'
             },
             { 
               pill: 'Enterprise', 
               title: 'Multi-Campus Intelligence', 
               desc: 'Advanced analytics across multiple locations with predictive insights. TouchPoint charges $20K+/year; we include it standard.',
-              icon: '🏢',
+              icon: '▣',
               advantage: 'vs TouchPoint: 60% cost savings with superior analytics'
             },
             { 
               pill: 'Automation', 
               title: 'Comprehensive Workflow Engine', 
               desc: 'Complete automation system with custom triggers and AI responses. Breeze offers none; ChurchTrac has limited automation.',
-              icon: '⚡',
+              icon: '●',
               advantage: 'vs Breeze/ChurchTrac: Unique advanced automation'
             },
             { 
@@ -128,14 +128,14 @@ export default function USAMarketPage() {
               pill: 'Intelligence', 
               title: 'Predictive Engagement Analytics', 
               desc: 'AI predicts member disengagement and suggests interventions. No competitor offers predictive member retention.',
-              icon: '📊',
+              icon: '▢',
               advantage: 'vs All: Unique predictive member analytics'
             },
             { 
               pill: 'Security', 
               title: 'SOX & Enterprise Compliance', 
               desc: 'Built-in SOX compliance, GDPR ready, enterprise security. Aplos focuses only on accounting compliance.',
-              icon: '🛡️',
+              icon: '◆',
               advantage: 'vs Aplos: Complete compliance beyond accounting'
             },
         ].map((f) => (
@@ -152,7 +152,7 @@ export default function USAMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ✨ {f.advantage}
+              ◆ {f.advantage}
             </div>
           </div>
         ))}
@@ -199,7 +199,7 @@ export default function USAMarketPage() {
               result: "40% increase in digital engagement",
               quote: "KHESED-TEK's platform scaled with our rapid growth perfectly.",
               pastor: "Pastor John Wilson",
-              stats: "↗️ 40% engagement • 💰 $2M+ managed • ⚡ 99.9% uptime"
+              stats: "◆ 40% engagement • ◉ $2M+ managed • ● 99.9% uptime"
             },
             {
               church: "New Life Ministry",
@@ -209,7 +209,7 @@ export default function USAMarketPage() {
               result: "60% improvement in operational efficiency",
               quote: "The multi-campus features transformed our church operations.",
               pastor: "Pastor Sarah Johnson",
-              stats: "📈 60% efficiency • 🎯 95% member satisfaction • 💡 50+ integrations"
+              stats: "▢ 60% efficiency • ◆ 95% member satisfaction • ● 50+ integrations"
             },
             {
               church: "Faith Center International",
@@ -219,17 +219,17 @@ export default function USAMarketPage() {
               result: "80% reduction in administrative overhead", 
               quote: "Enterprise-grade reliability with ministry-focused features.",
               pastor: "Pastor David Martinez",
-              stats: "⚡ 80% admin reduction • 🌐 12 campus sync • 📱 Mobile-first"
+              stats: "● 80% admin reduction • ◉ 12 campus sync • ▢ Mobile-first"
             }
           ].map((testimonial, idx) => (
             <div key={idx} className="card p-6">
               <div className="mb-4">
                 <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 <div className="text-sm text-[var(--muted)] mb-2">
-                  📍 {testimonial.location} • 👥 {testimonial.members} • 🏢 {testimonial.campuses}
+                  ◗ {testimonial.location} • ◉ {testimonial.members} • ▣ {testimonial.campuses}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)]">
-                  📈 {testimonial.result}
+                  ▢ {testimonial.result}
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
@@ -313,7 +313,7 @@ export default function USAMarketPage() {
         />
 
         <div className="text-sm text-[var(--muted)] text-center mt-8">
-          💳 Stripe, ACH, Wire Transfer accepted • 📞 Dedicated account manager included • 🔒 SOX compliant
+          ◉ Stripe, ACH, Wire Transfer accepted • ◗ Dedicated account manager included • ◆ SOX compliant
         </div>
       </section>
 
@@ -345,7 +345,7 @@ export default function USAMarketPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {[
             {
-              category: "🏢 Multi-Campus Operations",
+              category: "▣ Multi-Campus Operations",
               features: [
                 "Centralized management across all locations",
                 "Location-specific reporting and analytics", 
@@ -363,7 +363,7 @@ export default function USAMarketPage() {
               ]
             },
             {
-              category: "📊 Advanced Analytics",
+              category: "▢ Advanced Analytics",
               features: [
                 "Executive dashboard with KPIs",
                 "Predictive attendance modeling",
@@ -372,7 +372,7 @@ export default function USAMarketPage() {
               ]
             },
             {
-              category: "🛡️ Security & Compliance",
+              category: "◆ Security & Compliance",
               features: [
                 "SOX compliance for financial reporting",
                 "GDPR & data protection compliance",
@@ -454,17 +454,17 @@ export default function USAMarketPage() {
         
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">📞 USA Sales Team</h3>
+            <h3 className="font-semibold mb-4">☎ USA Sales Team</h3>
             <div className="space-y-2 text-sm">
               <div>📧 usa@khesed-tek-systems.org</div>
-              <div>📞 +1 (555) 123-4567</div>
-              <div>🏢 Miami, FL (Expansion Office)</div>
+              <div>☎ +1 (555) 123-4567</div>
+              <div>▣ Miami, FL (Expansion Office)</div>
               <div>🕐 Monday-Friday 9AM-6PM EST</div>
               <div>🌐 Nationwide support coverage</div>
             </div>
           </div>
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">🎯 Enterprise Demo</h3>
+            <h3 className="font-semibold mb-4">◆ Enterprise Demo</h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div>✓ Customized platform demonstration</div>
               <div>✓ Technical requirements assessment</div>

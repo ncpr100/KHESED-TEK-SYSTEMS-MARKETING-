@@ -233,7 +233,7 @@ export default function DemoVideoSection({
                 className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
                 onClick={() => trackCTAClick('demo_video', 'request_live_demo')}
               >
-                <span>📅</span>
+                <span>�</span>
                 {t.scheduleLive}
               </a>
             </div>
@@ -293,7 +293,7 @@ export default function DemoVideoSection({
             </div>
             
             <div className="space-y-3">
-              <div className="text-3xl">🎯</div>
+              <div className="text-3xl">○</div>
               <h4 className="font-semibold">{t.benefits.personalized.title}</h4>
               <p className="text-[var(--muted)] text-sm">{t.benefits.personalized.description}</p>
             </div>

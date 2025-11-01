@@ -188,7 +188,7 @@ export default function TestimonialsSection({
                 </div>
                 {currentTestimonial.location && (
                   <div className="text-sm text-[var(--muted)]">
-                    📍 {currentTestimonial.location}
+                    ○ {currentTestimonial.location}
                   </div>
                 )}
               </div>
@@ -238,7 +238,7 @@ export default function TestimonialsSection({
                   onClick={() => setIsPlaying(!isPlaying)}
                   className="text-sm text-[var(--muted)] hover:text-[var(--brand)] transition"
                 >
-                  {isPlaying ? '⏸️ Pausar' : '▶️ Reproducir'}
+                  {isPlaying ? '⏸ Pausar' : '▶ Reproducir'}
                 </button>
               </div>
             </>

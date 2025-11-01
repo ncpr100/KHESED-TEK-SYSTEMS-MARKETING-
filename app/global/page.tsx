@@ -41,7 +41,7 @@ export default function GlobalMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4">
-            🌍 Global Market - Worldwide Ministry Solutions
+            田 Global Market - Worldwide Ministry Solutions
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {heroText}
@@ -67,11 +67,11 @@ export default function GlobalMarketPage() {
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
               onClick={() => trackCTAClick('global_calendar', language === 'es' ? 'Agendar demo' : 'Schedule demo')}
             >
-              📅 {language === 'es' ? 'Agendar demo' : 'Schedule demo'}
+              � {language === 'es' ? 'Agendar demo' : 'Schedule demo'}
             </a>
           </div>
           <div className="text-sm text-[var(--muted)]">
-            🌐 24/7 Global Support • 🗣️ Multi-language • ⏰ All Timezones • 🔒 International Compliance
+            田 24/7 Global Support • � Multi-language • ⏰ All Timezones • ♡ International Compliance
           </div>
         </div>
       </section>
@@ -141,7 +141,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es' 
                 ? 'IA que adapta automáticamente la interfaz según el contexto cultural. Planning Center y Realm solo ofrecen traducciones básicas.'
                 : 'AI that automatically adapts interface based on cultural context. Planning Center and Realm only offer basic translations.',
-              icon: '🌍',
+              icon: '田',
               advantage: language === 'es' 
                 ? 'vs Planning Center/Realm: Adaptación cultural inteligente única'
                 : 'vs Planning Center/Realm: Unique intelligent cultural adaptation'
@@ -152,7 +152,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'Español, inglés, portugués con IA contextual. Breeze y ChurchTrac no tienen soporte multiidioma.'
                 : 'Spanish, English, Portuguese with contextual AI. Breeze and ChurchTrac lack multi-language support.',
-              icon: '🗣️',
+              icon: '�',
               advantage: language === 'es'
                 ? 'vs Breeze/ChurchTrac: Único con multiidioma nativo'
                 : 'vs Breeze/ChurchTrac: Only system with native multi-language'
@@ -163,7 +163,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'Nequi, PSE, SEPA, Alipay y métodos locales integrados. Competidores solo Stripe/PayPal.'
                 : 'Nequi, PSE, SEPA, Alipay and local methods integrated. Competitors only offer Stripe/PayPal.',
-              icon: '💰',
+              icon: '$',
               advantage: language === 'es'
                 ? 'vs Todos: Métodos de pago regionales únicos'
                 : 'vs All: Unique regional payment methods'
@@ -185,7 +185,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'GDPR, LGPD, SOX automático por región. Aplos solo contabilidad; nosotros cumplimiento completo.'
                 : 'GDPR, LGPD, SOX automatic by region. Aplos only accounting; we provide complete compliance.',
-              icon: '🛡️',
+              icon: '♡',
               advantage: language === 'es'
                 ? 'vs Aplos: Cumplimiento completo vs solo contabilidad'
                 : 'vs Aplos: Complete compliance vs accounting only'
@@ -215,7 +215,7 @@ export default function GlobalMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ✨ {f.advantage}
+              ⚡ {f.advantage}
             </div>
           </div>
         ))}
@@ -327,10 +327,10 @@ export default function GlobalMarketPage() {
                   <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 </div>
                 <div className="text-sm text-[var(--muted)] mb-2">
-                  📍 {testimonial.location} • 👥 {testimonial.members} • 🗣️ {testimonial.languages}
+                  ○ {testimonial.location} • � {testimonial.members} • � {testimonial.languages}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)]">
-                  📈 {testimonial.result}
+                  ⚡ {testimonial.result}
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
@@ -423,8 +423,8 @@ export default function GlobalMarketPage() {
 
         <div className="text-sm text-[var(--muted)] text-center mt-8">
           💳 {language === 'es' 
-            ? 'Stripe, Wise, transferencias bancarias • 🌍 Cumplimiento GDPR/LGPD • 🔒 Certificaciones ISO'
-            : 'Stripe, Wise, bank transfers • 🌍 GDPR/LGPD compliant • 🔒 ISO certified'
+            ? 'Stripe, Wise, transferencias bancarias • 田 Cumplimiento GDPR/LGPD • ♡ Certificaciones ISO'
+            : 'Stripe, Wise, bank transfers • 田 GDPR/LGPD compliant • ♡ ISO certified'
           }
         </div>
       </section>
@@ -496,7 +496,7 @@ export default function GlobalMarketPage() {
               languages: language === 'es' ? 'Inglés, Árabe, Francés' : 'English, Arabic, French',
               hours: '7AM-7PM CAT',
               contact: 'mea@khesed-tek-systems.org',
-              flag: '🌍'
+              flag: '田'
             }
           ].map((region, idx) => (
             <div key={idx} className="card p-6 text-center">
@@ -504,8 +504,8 @@ export default function GlobalMarketPage() {
               <h3 className="font-semibold mb-2">{region.region}</h3>
               <div className="space-y-1 text-sm text-[var(--muted)]">
                 <div>🕐 {region.timezone}</div>
-                <div>🗣️ {region.languages}</div>
-                <div>📞 {region.hours}</div>
+                <div>� {region.languages}</div>
+                <div>☎ {region.hours}</div>
                 <div>📧 {region.contact}</div>
               </div>
             </div>
@@ -600,15 +600,15 @@ export default function GlobalMarketPage() {
             </h3>
             <div className="space-y-2 text-sm">
               <div>📧 global@khesed-tek-systems.org</div>
-              <div>📞 {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
+              <div>☎ {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
               <div>🌐 {language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</div>
               <div>⏰ {language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</div>
-              <div>🗣️ {language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</div>
+              <div>� {language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</div>
             </div>
           </div>
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4">
-              🎯 {language === 'es' ? 'Demo Internacional' : 'International Demo'}
+              ○ {language === 'es' ? 'Demo Internacional' : 'International Demo'}
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div>✓ {language === 'es' ? 'Demostración en tu idioma' : 'Demo in your language'}</div>
