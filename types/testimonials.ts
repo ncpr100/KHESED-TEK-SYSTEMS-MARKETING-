@@ -46,4 +46,5 @@ export interface TrustSignalsProps {
   showDescriptions?: boolean;
   animated?: boolean;
   className?: string;
+  market?: 'LATAM' | 'USA' | 'GLOBAL';
 }

@@ -84,7 +84,10 @@ export default function LatamMarketPage() {
       />
 
       {/* Trust Signals */}
-      <TrustSignalsSection className="bg-[var(--bg)]" />
+      <TrustSignalsSection 
+        market="LATAM" 
+        className="bg-[var(--bg)]" 
+      />
 
       {/* LATAM-Specific Features */}
       <section id="features" className="max-w-6xl mx-auto px-6 py-12">

@@ -56,28 +56,85 @@ const TRUST_SIGNALS: TrustSignal[] = [
     market: 'USA'
   },
   {
-    id: 'uptime-guarantee',
+    id: 'uptime-guarantee-latam',
+    type: 'uptime',
+    icon: '⚡',
+    title: 'Disponibilidad',
+    description: 'Disponibilidad garantizada',
+    value: '99.9%',
+    market: 'LATAM'
+  },
+  {
+    id: 'uptime-guarantee-usa',
     type: 'uptime',
     icon: '⚡',
     title: 'Uptime',
-    description: 'Disponibilidad garantizada',
-    value: '99.9%'
+    description: 'Guaranteed availability',
+    value: '99.9%',
+    market: 'USA'
   },
   {
-    id: 'client-count',
+    id: 'uptime-guarantee-global',
+    type: 'uptime',
+    icon: '⚡',
+    title: 'Uptime',
+    description: 'Guaranteed worldwide availability',
+    value: '99.9%',
+    market: 'GLOBAL'
+  },
+  {
+    id: 'client-count-latam',
     type: 'clients',
     icon: '田',
     title: 'Iglesias',
     description: 'Confían en nuestra plataforma',
-    value: '200+'
+    value: '200+',
+    market: 'LATAM'
   },
   {
-    id: 'support-coverage',
+    id: 'client-count-usa',
+    type: 'clients',
+    icon: '田',
+    title: 'Churches',
+    description: 'Trust our platform',
+    value: '200+',
+    market: 'USA'
+  },
+  {
+    id: 'client-count-global',
+    type: 'clients',
+    icon: '田',
+    title: 'Organizations',
+    description: 'Trust our platform worldwide',
+    value: '200+',
+    market: 'GLOBAL'
+  },
+  {
+    id: 'support-coverage-latam',
     type: 'certification',
     icon: '☎',
     title: 'Soporte',
     description: 'Disponible cuando lo necesitas',
-    value: '24/7'
+    value: '24/7',
+    market: 'LATAM'
+  },
+  {
+    id: 'support-coverage-usa',
+    type: 'certification',
+    icon: '☎',
+    title: 'Support',
+    description: 'Available when you need it',
+    value: '24/7',
+    market: 'USA'
+  },
+  {
+    id: 'support-coverage-global',
+    type: 'certification',
+    icon: '☎',
+    title: 'Support',
+    description: 'Available worldwide',
+    value: '24/7',
+    market: 'GLOBAL'
   }
 ];
 
@@ -86,8 +143,14 @@ export default function TrustSignalsSection({
   layout = 'grid',
   showDescriptions = true,
   animated = true,
-  className = ""
+  className = "",
+  market
 }: TrustSignalsProps) {
+
+  // Filter signals based on market
+  const filteredSignals = market 
+    ? signals.filter(signal => !signal.market || signal.market === market || signal.market === 'GLOBAL')
+    : signals;
 
   const getLayoutClasses = () => {
     switch (layout) {
@@ -113,20 +176,48 @@ export default function TrustSignalsSection({
     }
   };
 
+  // Get section translations based on market
+  const getSectionTranslations = () => {
+    switch (market) {
+      case 'LATAM':
+        return {
+          title: 'Seguridad y Confianza',
+          subtitle: 'Protegemos tu información con los más altos estándares de seguridad'
+        };
+      case 'USA':
+        return {
+          title: 'Security & Trust',
+          subtitle: 'We protect your information with the highest security standards'
+        };
+      case 'GLOBAL':
+        return {
+          title: 'Security & Trust',
+          subtitle: 'We protect your information with international security standards'
+        };
+      default:
+        return {
+          title: 'Seguridad y Confianza',
+          subtitle: 'Protegemos tu información con los más altos estándares de seguridad'
+        };
+    }
+  };
+
+  const translations = getSectionTranslations();
+
   return (
     <section className={`py-12 ${className}`}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h3 className="text-xl font-semibold mb-2">Seguridad y Confianza</h3>
+          <h3 className="text-xl font-semibold mb-2">{translations.title}</h3>
           <p className="text-[var(--muted)] text-sm">
-            Protegemos tu información con los más altos estándares de seguridad
+            {translations.subtitle}
           </p>
         </div>
 
         {/* Trust Signals Grid/Layout */}
         <div className={getLayoutClasses()}>
-          {signals.map((signal, index) => (
+          {filteredSignals.map((signal, index) => (
             <div
               key={signal.id}
               className={`${getItemClasses(layout)} ${animated ? 'hover:scale-105' : ''}`}
@@ -164,7 +255,7 @@ export default function TrustSignalsSection({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Verificar
+                  {market === 'LATAM' ? 'Verificar' : 'Verify'}
                 </a>
               )}
             </div>
@@ -174,8 +265,17 @@ export default function TrustSignalsSection({
         {/* Additional Security Statement */}
         <div className="text-center mt-8 p-4 bg-[var(--surface)] rounded-xl border border-[var(--border)]">
           <div className="text-sm text-[var(--muted)] leading-relaxed">
-            🔐 <strong>Compromiso de Seguridad:</strong> Todos los datos están encriptados en tránsito y en reposo. 
-            Realizamos auditorías de seguridad regulares y cumplimos con las regulaciones internacionales de protección de datos.
+            {market === 'LATAM' ? (
+              <>
+                🔐 <strong>Compromiso de Seguridad:</strong> Todos los datos están encriptados en tránsito y en reposo. 
+                Realizamos auditorías de seguridad regulares y cumplimos con las regulaciones internacionales de protección de datos.
+              </>
+            ) : (
+              <>
+                🔐 <strong>Security Commitment:</strong> All data is encrypted in transit and at rest. 
+                We conduct regular security audits and comply with international data protection regulations.
+              </>
+            )}
           </div>
         </div>
       </div>

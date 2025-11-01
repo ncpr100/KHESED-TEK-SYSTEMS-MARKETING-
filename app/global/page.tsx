@@ -109,6 +109,7 @@ export default function GlobalMarketPage() {
           layout="grid"
           showDescriptions={true}
           animated={true}
+          market="GLOBAL"
         />
       </section>
 
