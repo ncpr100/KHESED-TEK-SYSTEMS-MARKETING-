@@ -3,46 +3,10 @@
 import { useState, useEffect } from 'react';
 import { DemoVideo, VideoModalProps, DemoVideoSectionProps } from '@/types/demo-video';
 import { trackCTAClick } from '@/lib/analytics';
+import { PRODUCTION_DEMO_VIDEOS, getVideosByMarket, getMainDemoVideo } from '@/lib/demo-videos';
 
-// Sample demo videos (in production, fetch from CMS)
-const DEMO_VIDEOS: DemoVideo[] = [
-  {
-    id: 'demo-overview-es',
-    title: 'KHESED-TEK: Demostración Completa',
-    description: 'Vea cómo nuestro sistema transforma la gestión de su iglesia en solo 5 minutos.',
-    thumbnailUrl: '/images/demo-thumbnail-es.jpg', // You'll need to add this
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video
-    duration: '5:30',
-    type: 'youtube',
-    market: 'LATAM',
-    language: 'es',
-    features: ['Gestión de miembros', 'Donaciones en línea', 'Eventos', 'Reportes']
-  },
-  {
-    id: 'demo-overview-en',
-    title: 'KHESED-TEK: Complete Demonstration',
-    description: 'See how our system transforms your church management in just 5 minutes.',
-    thumbnailUrl: '/images/demo-thumbnail-en.jpg',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    duration: '5:30',
-    type: 'youtube',
-    market: 'USA',
-    language: 'en',
-    features: ['Member management', 'Online donations', 'Events', 'Reports']
-  },
-  {
-    id: 'quick-tour-es',
-    title: 'Tour Rápido - 2 Minutos',
-    description: 'Un vistazo rápido a las funciones principales del sistema.',
-    thumbnailUrl: '/images/quick-tour-es.jpg',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    duration: '2:15',
-    type: 'youtube',
-    market: 'LATAM',
-    language: 'es',
-    features: ['Dashboard', 'Navegación', 'Funciones clave']
-  }
-];
+// Use production video configuration
+const DEMO_VIDEOS = PRODUCTION_DEMO_VIDEOS;
 
 // Video Modal Component
 function VideoModal({ video, isOpen, onClose, onPlay, onComplete }: VideoModalProps) {
@@ -140,14 +104,36 @@ export default function DemoVideoSection({
   const [selectedVideo, setSelectedVideo] = useState<DemoVideo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Filter videos by market and language
-  const filteredVideos = videos.filter(v => 
-    (v.market === market || v.market === 'GLOBAL') && v.language === language
-  );
+  // Filter videos by market and language using utility function
+  const filteredVideos = getVideosByMarket(market, language);
 
-  const mainVideo = primaryVideo || filteredVideos[0];
+  // Use smart main video selection or provided primary video
+  const mainVideo = primaryVideo || getMainDemoVideo(market, language) || filteredVideos[0];
 
-  if (!mainVideo) return null;
+  if (!mainVideo) {
+    // Fallback content if no videos available
+    return (
+      <section className={`py-16 ${className}`}>
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Demo próximamente disponible' : 'Demo coming soon'}
+          </h2>
+          <p className="text-[var(--muted)] mb-8">
+            {language === 'es' 
+              ? 'Estamos preparando una demostración impresionante para usted.'
+              : 'We are preparing an amazing demonstration for you.'
+            }
+          </p>
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
+          >
+            {language === 'es' ? 'Solicitar demo personalizada' : 'Request personalized demo'}
+          </a>
+        </div>
+      </section>
+    );
+  }
 
   const handleVideoPlay = (video: DemoVideo) => {
     setSelectedVideo(video);
