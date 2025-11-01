@@ -36,12 +36,12 @@ const CHURCH_PROFILES: Record<string, ChurchProfile> = {
   }
 };
 
-// KHESED-TEK pricing based on church size
+// KHESED-TEK pricing based on church size - NO implementation or training fees!
 const PRICING_TIERS = {
-  small: { monthly: 149.99, setup: 299, training: 199 },
-  medium: { monthly: 299.99, setup: 599, training: 399 },
-  large: { monthly: 599.99, setup: 1199, training: 799 },
-  mega: { monthly: 999.99, setup: 1999, training: 1299 }
+  small: { monthly: 149.99, setup: 0, training: 0 },
+  medium: { monthly: 299.99, setup: 0, training: 0 },
+  large: { monthly: 599.99, setup: 0, training: 0 },
+  mega: { monthly: 999.99, setup: 0, training: 0 }
 };
 
 export default function ROICalculator({
@@ -70,6 +70,13 @@ export default function ROICalculator({
     
     // Calculate savings with realistic percentages
     const softwareCostSavings = inputs.currentSoftwareCost - pricing.monthly; // Can be negative
+    
+    // Competitive advantage: Most church software charges $500-2000 for setup + training
+    const competitorImplementationCost = inputs.churchSize === 'small' ? 800 : 
+                                       inputs.churchSize === 'medium' ? 1200 :
+                                       inputs.churchSize === 'large' ? 2000 : 3000;
+    const implementationSavings = competitorImplementationCost; // We charge $0, competitors charge this
+    
     const adminEfficiency = inputs.adminHoursPerWeek * 0.15; // Realistic 15% time savings
     const volunteerEfficiency = inputs.volunteerHours * 0.10; // Conservative 10% volunteer time savings
     const timeValueSavings = (adminEfficiency * profile.averageHourlyValue + volunteerEfficiency * 10) * 4.33; // monthly
@@ -81,29 +88,31 @@ export default function ROICalculator({
     const totalMonthlySavings = timeValueSavings + processEfficiencyValue; // Only count real operational savings
     const netMonthlySavings = totalMonthlySavings + softwareCostSavings; // Include software cost difference (can be negative)
     
-    // Calculate investment
+    // Calculate investment - KHESED-TEK advantage: $0 setup and training costs!
     const monthlyInvestment = pricing.monthly;
-    const totalInvestment = pricing.monthly + pricing.setup + pricing.training;
+    const totalInvestment = pricing.monthly; // Only first month, no setup costs!
     
-    // Realistic ROI calculations based on NET cash flow
+    // Realistic ROI calculations based on NET cash flow + implementation savings advantage
     const monthlyNetCashFlow = netMonthlySavings; // Net benefit after all costs
     const yearlyNetCashFlow = monthlyNetCashFlow * 12;
-    const totalFirstYearCost = (pricing.monthly * 12) + pricing.setup + pricing.training;
+    const firstYearSavings = yearlyNetCashFlow + implementationSavings; // Add one-time implementation savings
+    const totalFirstYearCost = pricing.monthly * 12; // Only subscription cost, no setup!
     
     // ROI = (Net Benefit - Total Investment) / Total Investment * 100
-    const yearlyROI = monthlyNetCashFlow > 0 ? ((yearlyNetCashFlow - totalFirstYearCost) / totalFirstYearCost) * 100 : -100;
+    const yearlyROI = firstYearSavings > 0 ? ((firstYearSavings - totalFirstYearCost) / totalFirstYearCost) * 100 : -100;
     const monthlyROI = monthlyNetCashFlow > 0 ? ((monthlyNetCashFlow - monthlyInvestment) / monthlyInvestment) * 100 : -100;
     
-    // Payback period: How long to recover initial investment through net savings
+    // Payback period: Much faster with no upfront costs!
     const paybackPeriod = monthlyNetCashFlow > 0 ? totalInvestment / Math.max(monthlyNetCashFlow, 1) : 999; // 999 = never pays back
-    const netYearlyValue = yearlyNetCashFlow;
+    const netYearlyValue = firstYearSavings;
 
     // Generate realistic insights
     const insights = generateInsights(inputs, profile, {
       monthlySavings: netMonthlySavings,
       monthlyInvestment,
       paybackPeriod,
-      yearlyROI
+      yearlyROI,
+      implementationSavings: competitorImplementationCost
     }, language);
 
     const newCalculation: ROICalculation = {
@@ -111,13 +120,13 @@ export default function ROICalculator({
       savings: {
         softwareCost: softwareCostSavings, // Can be negative (additional cost)
         timeValue: timeValueSavings,
-        efficiencyGains: processEfficiencyValue,
-        total: netMonthlySavings // Net total after all costs
+        efficiencyGains: processEfficiencyValue + (implementationSavings / 12), // Include amortized implementation savings
+        total: netMonthlySavings + (implementationSavings / 12) // Net total including amortized implementation advantage
       },
       investment: {
         monthlySubscription: pricing.monthly,
-        implementationCost: pricing.setup,
-        trainingCost: pricing.training,
+        implementationCost: pricing.setup, // $0 - our competitive advantage!
+        trainingCost: pricing.training, // $0 - our competitive advantage!
         total: totalInvestment
       },
       roi: {
@@ -347,11 +356,15 @@ export default function ROICalculator({
                     </div>
                     <div className="flex justify-between">
                       <span>{t.implementation}</span>
-                      <span className="font-medium">{formatCurrency(calculation.investment.implementationCost)} {t.oneTime}</span>
+                      <span className="font-bold text-green-400">GRATIS (${formatCurrency(800)}-${formatCurrency(3000)} ahorro)</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t.training}</span>
-                      <span className="font-medium">{formatCurrency(calculation.investment.trainingCost)} {t.oneTime}</span>
+                      <span className="font-bold text-green-400">GRATIS (incluido)</span>
+                    </div>
+                    <div className="border-t border-[var(--border)] pt-2 flex justify-between font-semibold">
+                      <span>Total inicial</span>
+                      <span className="text-[var(--brand)]">{formatCurrency(calculation.investment.monthlySubscription)} (solo 1er mes)</span>
                     </div>
                   </div>
                 </div>
@@ -364,7 +377,7 @@ export default function ROICalculator({
               <ul className="space-y-2 text-sm">
                 {calculation.insights.map((insight, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <span className="text-[var(--brand)] mt-1">💡</span>
+                    <span className="text-[var(--brand)] mt-1">○</span>
                     <span>{insight}</span>
                   </li>
                 ))}
@@ -394,22 +407,25 @@ export default function ROICalculator({
 function generateInsights(
   inputs: ROIInput, 
   profile: ChurchProfile, 
-  results: { monthlySavings: number; monthlyInvestment: number; paybackPeriod: number; yearlyROI: number },
+  results: { monthlySavings: number; monthlyInvestment: number; paybackPeriod: number; yearlyROI: number; implementationSavings: number },
   language: 'es' | 'en'
 ): string[] {
   const insights: string[] = [];
 
   if (language === 'es') {
+    // Always highlight our implementation advantage
+    insights.push(`Ahorro en implementación: $${results.implementationSavings.toLocaleString()} vs competidores (implementación y capacitación GRATIS).`);
+    
     if (results.yearlyROI > 20) {
       insights.push('ROI positivo: Su inversión generará retornos superiores al 20% anual.');
     } else if (results.yearlyROI < 0) {
       insights.push('Inversión a largo plazo: Los beneficios se materializarán gradualmente.');
     }
     
-    if (results.paybackPeriod < 24) {
+    if (results.paybackPeriod < 12) {
+      insights.push('Retorno rápido: Sin costos iniciales, recupera la inversión en menos de 1 año.');
+    } else if (results.paybackPeriod < 24) {
       insights.push('Retorno razonable: Recuperará su inversión en menos de 2 años.');
-    } else if (results.paybackPeriod > 60) {
-      insights.push('Considere el valor estratégico: El ROI financiero puede tardar más de 5 años.');
     }
     
     if (inputs.manualProcesses >= 7) {
@@ -424,16 +440,19 @@ function generateInsights(
       insights.push('Escalabilidad necesaria: Un sistema robusto es esencial para iglesias grandes.');
     }
   } else {
+    // Always highlight our implementation advantage
+    insights.push(`Implementation savings: $${results.implementationSavings.toLocaleString()} vs competitors (FREE setup and training).`);
+    
     if (results.yearlyROI > 20) {
       insights.push('Positive ROI: Your investment will generate returns above 20% annually.');
     } else if (results.yearlyROI < 0) {
       insights.push('Long-term investment: Benefits will materialize gradually over time.');
     }
     
-    if (results.paybackPeriod < 24) {
+    if (results.paybackPeriod < 12) {
+      insights.push('Quick payback: With no upfront costs, you recover investment in less than 1 year.');
+    } else if (results.paybackPeriod < 24) {
       insights.push('Reasonable payback: You\'ll recover your investment in less than 2 years.');
-    } else if (results.paybackPeriod > 60) {
-      insights.push('Consider strategic value: Financial ROI may take over 5 years.');
     }
     
     if (inputs.manualProcesses >= 7) {
