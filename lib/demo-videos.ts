@@ -5,11 +5,11 @@ import { DemoVideo } from '@/types/demo-video';
 
 // Environment variables for video URLs (fallback to safe defaults)
 const VIDEO_URLS = {
-  LATAM_MAIN_DEMO: process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/V_MXGdSBbAI',
-  USA_MAIN_DEMO: process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/9bZkp7q19f0',
-  LATAM_QUICK_TOUR: process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/3JZ_D3ELwOQ',
-  USA_QUICK_TOUR: process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/JNDFGgdUNMo',
-  GLOBAL_OVERVIEW: process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/F-0L1xTOGn8'
+  LATAM_MAIN_DEMO: process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo',
+  USA_MAIN_DEMO: process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo',
+  LATAM_QUICK_TOUR: process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo',
+  USA_QUICK_TOUR: process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo',
+  GLOBAL_OVERVIEW: process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/qk-Baf42lBo'
 };
 
 // Production-ready demo video configuration
