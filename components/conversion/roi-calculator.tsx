@@ -68,30 +68,39 @@ export default function ROICalculator({
     const profile = CHURCH_PROFILES[inputs.churchSize];
     const pricing = PRICING_TIERS[inputs.churchSize];
     
-    // Calculate savings
-    const softwareCostSavings = Math.max(0, inputs.currentSoftwareCost - pricing.monthly);
-    const adminEfficiency = inputs.adminHoursPerWeek * 0.3; // 30% time savings
-    const volunteerEfficiency = inputs.volunteerHours * 0.25; // 25% volunteer time savings
+    // Calculate savings with realistic percentages
+    const softwareCostSavings = inputs.currentSoftwareCost - pricing.monthly; // Can be negative
+    const adminEfficiency = inputs.adminHoursPerWeek * 0.15; // Realistic 15% time savings
+    const volunteerEfficiency = inputs.volunteerHours * 0.10; // Conservative 10% volunteer time savings
     const timeValueSavings = (adminEfficiency * profile.averageHourlyValue + volunteerEfficiency * 10) * 4.33; // monthly
     
-    // Process efficiency gains (based on manual processes score)
-    const processEfficiencyValue = inputs.manualProcesses * 50 * (profile.adminComplexity / 10);
+    // Process efficiency gains (evidence-based: $25 per manual process eliminated per month)
+    const manualProcessesEliminated = Math.min(inputs.manualProcesses * 0.6, inputs.manualProcesses); // 60% of processes can be automated
+    const processEfficiencyValue = manualProcessesEliminated * 25; // $25 per process per month
     
-    const totalMonthlySavings = softwareCostSavings + timeValueSavings + processEfficiencyValue;
+    const totalMonthlySavings = timeValueSavings + processEfficiencyValue; // Only count real operational savings
+    const netMonthlySavings = totalMonthlySavings + softwareCostSavings; // Include software cost difference (can be negative)
     
     // Calculate investment
     const monthlyInvestment = pricing.monthly;
     const totalInvestment = pricing.monthly + pricing.setup + pricing.training;
     
-    // ROI calculations
-    const monthlyROI = ((totalMonthlySavings - monthlyInvestment) / monthlyInvestment) * 100;
-    const yearlyROI = (((totalMonthlySavings * 12) - (monthlyInvestment * 12)) / (monthlyInvestment * 12)) * 100;
-    const paybackPeriod = totalInvestment / Math.max(totalMonthlySavings - monthlyInvestment, 1);
-    const netYearlyValue = (totalMonthlySavings - monthlyInvestment) * 12;
+    // Realistic ROI calculations based on NET cash flow
+    const monthlyNetCashFlow = netMonthlySavings; // Net benefit after all costs
+    const yearlyNetCashFlow = monthlyNetCashFlow * 12;
+    const totalFirstYearCost = (pricing.monthly * 12) + pricing.setup + pricing.training;
+    
+    // ROI = (Net Benefit - Total Investment) / Total Investment * 100
+    const yearlyROI = monthlyNetCashFlow > 0 ? ((yearlyNetCashFlow - totalFirstYearCost) / totalFirstYearCost) * 100 : -100;
+    const monthlyROI = monthlyNetCashFlow > 0 ? ((monthlyNetCashFlow - monthlyInvestment) / monthlyInvestment) * 100 : -100;
+    
+    // Payback period: How long to recover initial investment through net savings
+    const paybackPeriod = monthlyNetCashFlow > 0 ? totalInvestment / Math.max(monthlyNetCashFlow, 1) : 999; // 999 = never pays back
+    const netYearlyValue = yearlyNetCashFlow;
 
-    // Generate insights
+    // Generate realistic insights
     const insights = generateInsights(inputs, profile, {
-      monthlySavings: totalMonthlySavings,
+      monthlySavings: netMonthlySavings,
       monthlyInvestment,
       paybackPeriod,
       yearlyROI
@@ -100,10 +109,10 @@ export default function ROICalculator({
     const newCalculation: ROICalculation = {
       inputs,
       savings: {
-        softwareCost: softwareCostSavings,
+        softwareCost: softwareCostSavings, // Can be negative (additional cost)
         timeValue: timeValueSavings,
         efficiencyGains: processEfficiencyValue,
-        total: totalMonthlySavings
+        total: netMonthlySavings // Net total after all costs
       },
       investment: {
         monthlySubscription: pricing.monthly,
@@ -275,22 +284,22 @@ export default function ROICalculator({
             {/* ROI Summary */}
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
-                <div className="text-2xl font-bold gradient-text mb-1">
-                  {formatCurrency(calculation.savings.total)}
+                <div className={`text-2xl font-bold mb-1 ${calculation.savings.total >= 0 ? 'gradient-text' : 'text-red-400'}`}>
+                  {calculation.savings.total >= 0 ? '+' : ''}{formatCurrency(calculation.savings.total)}
                 </div>
                 <div className="text-sm text-[var(--muted)]">{t.monthlySavings}</div>
               </div>
               
               <div className="text-center p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
-                <div className="text-2xl font-bold gradient-text mb-1">
-                  {calculation.roi.yearly.toFixed(0)}%
+                <div className={`text-2xl font-bold mb-1 ${calculation.roi.yearly >= 0 ? 'gradient-text' : 'text-red-400'}`}>
+                  {calculation.roi.yearly >= 0 ? '+' : ''}{calculation.roi.yearly.toFixed(0)}%
                 </div>
                 <div className="text-sm text-[var(--muted)]">{t.yearlyROI}</div>
               </div>
               
               <div className="text-center p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
-                <div className="text-2xl font-bold gradient-text mb-1">
-                  {calculation.roi.paybackPeriod.toFixed(1)}
+                <div className={`text-2xl font-bold mb-1 ${calculation.roi.paybackPeriod < 36 ? 'gradient-text' : 'text-yellow-400'}`}>
+                  {calculation.roi.paybackPeriod > 100 ? '∞' : calculation.roi.paybackPeriod.toFixed(1)}
                 </div>
                 <div className="text-sm text-[var(--muted)]">{t.paybackMonths}</div>
               </div>
@@ -306,20 +315,24 @@ export default function ROICalculator({
                   <h5 className="font-medium mb-3 text-green-400">{t.savingsBreakdown}</h5>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>{t.softwareSavings}</span>
-                      <span className="font-medium">{formatCurrency(calculation.savings.softwareCost)}/mes</span>
+                      <span>{calculation.savings.softwareCost >= 0 ? t.softwareSavings : 'Costo adicional de software'}</span>
+                      <span className={`font-medium ${calculation.savings.softwareCost >= 0 ? '' : 'text-red-400'}`}>
+                        {calculation.savings.softwareCost >= 0 ? '+' : ''}{formatCurrency(calculation.savings.softwareCost)}/mes
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t.timeSavings}</span>
-                      <span className="font-medium">{formatCurrency(calculation.savings.timeValue)}/mes</span>
+                      <span className="font-medium text-green-400">+{formatCurrency(calculation.savings.timeValue)}/mes</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t.efficiencyGains}</span>
-                      <span className="font-medium">{formatCurrency(calculation.savings.efficiencyGains)}/mes</span>
+                      <span className="font-medium text-green-400">+{formatCurrency(calculation.savings.efficiencyGains)}/mes</span>
                     </div>
                     <div className="border-t border-[var(--border)] pt-2 flex justify-between font-semibold">
                       <span>{t.totalSavings}</span>
-                      <span className="text-green-400">{formatCurrency(calculation.savings.total)}/mes</span>
+                      <span className={`${calculation.savings.total >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        {calculation.savings.total >= 0 ? '+' : ''}{formatCurrency(calculation.savings.total)}/mes
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -377,7 +390,7 @@ export default function ROICalculator({
   );
 }
 
-// Helper function to generate insights based on calculation
+// Helper function to generate realistic insights based on calculation
 function generateInsights(
   inputs: ROIInput, 
   profile: ChurchProfile, 
@@ -387,44 +400,52 @@ function generateInsights(
   const insights: string[] = [];
 
   if (language === 'es') {
-    if (results.yearlyROI > 100) {
-      insights.push('Excelente ROI: Su inversión se duplicará en el primer año.');
+    if (results.yearlyROI > 20) {
+      insights.push('ROI positivo: Su inversión generará retornos superiores al 20% anual.');
+    } else if (results.yearlyROI < 0) {
+      insights.push('Inversión a largo plazo: Los beneficios se materializarán gradualmente.');
     }
     
-    if (results.paybackPeriod < 6) {
-      insights.push('Retorno rápido: Recuperará su inversión en menos de 6 meses.');
+    if (results.paybackPeriod < 24) {
+      insights.push('Retorno razonable: Recuperará su inversión en menos de 2 años.');
+    } else if (results.paybackPeriod > 60) {
+      insights.push('Considere el valor estratégico: El ROI financiero puede tardar más de 5 años.');
     }
     
     if (inputs.manualProcesses >= 7) {
-      insights.push('Alto potencial de automatización: Sus procesos manuales pueden optimizarse significativamente.');
+      insights.push('Potencial de automatización: Puede eliminar aproximadamente 60% de procesos manuales.');
     }
     
     if (inputs.adminHoursPerWeek > 20) {
-      insights.push('Importante ahorro de tiempo: Reducirá considerablemente las horas administrativas.');
+      insights.push('Ahorro de tiempo estimado: Reducción del 15% en horas administrativas.');
     }
     
-    if (profile.memberCount > 500 && inputs.growthGoals === 'aggressive') {
-      insights.push('Escalabilidad garantizada: El sistema crecerá con su iglesia sin costos adicionales.');
+    if (profile.memberCount > 500) {
+      insights.push('Escalabilidad necesaria: Un sistema robusto es esencial para iglesias grandes.');
     }
   } else {
-    if (results.yearlyROI > 100) {
-      insights.push('Excellent ROI: Your investment will double in the first year.');
+    if (results.yearlyROI > 20) {
+      insights.push('Positive ROI: Your investment will generate returns above 20% annually.');
+    } else if (results.yearlyROI < 0) {
+      insights.push('Long-term investment: Benefits will materialize gradually over time.');
     }
     
-    if (results.paybackPeriod < 6) {
-      insights.push('Quick payback: You\'ll recover your investment in less than 6 months.');
+    if (results.paybackPeriod < 24) {
+      insights.push('Reasonable payback: You\'ll recover your investment in less than 2 years.');
+    } else if (results.paybackPeriod > 60) {
+      insights.push('Consider strategic value: Financial ROI may take over 5 years.');
     }
     
     if (inputs.manualProcesses >= 7) {
-      insights.push('High automation potential: Your manual processes can be significantly optimized.');
+      insights.push('Automation potential: You can eliminate approximately 60% of manual processes.');
     }
     
     if (inputs.adminHoursPerWeek > 20) {
-      insights.push('Significant time savings: You\'ll considerably reduce administrative hours.');
+      insights.push('Estimated time savings: 15% reduction in administrative hours.');
     }
     
-    if (profile.memberCount > 500 && inputs.growthGoals === 'aggressive') {
-      insights.push('Guaranteed scalability: The system will grow with your church without additional costs.');
+    if (profile.memberCount > 500) {
+      insights.push('Scalability needed: A robust system is essential for large churches.');
     }
   }
 
