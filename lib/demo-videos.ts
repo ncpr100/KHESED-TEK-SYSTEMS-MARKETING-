@@ -40,7 +40,7 @@ const VIDEO_URLS = {
 
 // Debug logging for environment variables (client-side only)
 if (typeof window !== 'undefined') {
-  console.log('🌍 Environment Variables Debug - Updated 2025-11-04:', {
+  console.log('🌍 Environment Variables Debug - Updated 2025-11-04 TEST:', {
     NODE_ENV: process.env.NODE_ENV,
     LATAM_DEMO: process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO,
     USA_DEMO: process.env.NEXT_PUBLIC_USA_DEMO_VIDEO,
@@ -49,7 +49,8 @@ if (typeof window !== 'undefined') {
     GLOBAL_DEMO: process.env.NEXT_PUBLIC_GLOBAL_DEMO,
     CACHE_BUST: process.env.NEXT_PUBLIC_VIDEO_CACHE_BUST,
     finalURLs: VIDEO_URLS,
-    buildTime: new Date().toISOString()
+    buildTime: new Date().toISOString(),
+    testStatus: 'WORKFLOW_VERIFICATION'
   });
 }
 
