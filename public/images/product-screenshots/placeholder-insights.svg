@@ -1,0 +1,85 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#17171a"/>
+  
+  <!-- Header -->
+  <rect width="800" height="60" fill="#232329"/>
+  <rect x="20" y="15" width="120" height="30" rx="4" fill="#6ee7ff"/>
+  <text x="80" y="35" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="14" font-weight="bold">KHESED-TEK</text>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="60" width="200" height="390" fill="#1a1a1e"/>
+  
+  <!-- Analytics selected -->
+  <rect x="20" y="305" width="160" height="35" rx="4" fill="#f59e0b" fill-opacity="0.1"/>
+  <circle cx="35" cy="322" r="8" fill="#f59e0b"/>
+  <text x="55" y="327" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">Pastoral Insights</text>
+  
+  <!-- Main content -->
+  <rect x="200" y="60" width="600" height="390" fill="#0e0e10"/>
+  
+  <!-- Header -->
+  <text x="220" y="100" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Insights Pastorales</text>
+  <text x="220" y="125" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="14">Análisis inteligente para el cuidado pastoral</text>
+  
+  <!-- Filter buttons -->
+  <rect x="220" y="145" width="80" height="30" rx="15" fill="#f59e0b"/>
+  <text x="260" y="164" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Semanal</text>
+  
+  <rect x="310" y="145" width="80" height="30" rx="15" fill="#232329"/>
+  <text x="350" y="164" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="11">Mensual</text>
+  
+  <rect x="400" y="145" width="80" height="30" rx="15" fill="#232329"/>
+  <text x="440" y="164" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="11">Trimestral</text>
+  
+  <!-- Key insights cards -->
+  <rect x="220" y="190" width="170" height="100" rx="8" fill="#232329"/>
+  <text x="240" y="215" fill="#4ade80" font-family="Arial, sans-serif" font-size="14">Crecimiento Espiritual</text>
+  <text x="240" y="240" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="28" font-weight="bold">+18%</text>
+  <text x="240" y="260" fill="#4ade80" font-family="Arial, sans-serif" font-size="12">Participación en grupos</text>
+  <text x="240" y="275" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="10">vs. mes anterior</text>
+  
+  <rect x="410" y="190" width="170" height="100" rx="8" fill="#232329"/>
+  <text x="430" y="215" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="14">Necesidades Pastorales</text>
+  <text x="430" y="240" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="28" font-weight="bold">23</text>
+  <text x="430" y="260" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="12">Visitas pendientes</text>
+  <text x="430" y="275" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="10">Alta prioridad: 7</text>
+  
+  <rect x="600" y="190" width="170" height="100" rx="8" fill="#232329"/>
+  <text x="620" y="215" fill="#f59e0b" font-family="Arial, sans-serif" font-size="14">Nivel de Compromiso</text>
+  <text x="620" y="240" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="28" font-weight="bold">8.4</text>
+  <text x="620" y="260" fill="#f59e0b" font-family="Arial, sans-serif" font-size="12">Promedio semanal</text>
+  <text x="620" y="275" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="10">Escala 1-10</text>
+  
+  <!-- Pastoral care priorities -->
+  <text x="220" y="320" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Prioridades de Cuidado Pastoral</text>
+  
+  <rect x="220" y="335" width="550" height="30" fill="#ef4444" fill-opacity="0.2"/>
+  <circle cx="235" cy="350" r="6" fill="#ef4444"/>
+  <text x="250" y="355" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">María González - Pérdida familiar reciente</text>
+  <text x="620" y="355" fill="#ef4444" font-family="Arial, sans-serif" font-size="11">URGENTE</text>
+  
+  <rect x="220" y="370" width="550" height="30" fill="#f59e0b" fill-opacity="0.2"/>
+  <circle cx="235" cy="385" r="6" fill="#f59e0b"/>
+  <text x="250" y="390" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">Carlos Rodríguez - Problemas matrimoniales</text>
+  <text x="620" y="390" fill="#f59e0b" font-family="Arial, sans-serif" font-size="11">ALTA</text>
+  
+  <rect x="220" y="405" width="550" height="30" fill="#6ee7ff" fill-opacity="0.2"/>
+  <circle cx="235" cy="420" r="6" fill="#6ee7ff"/>
+  <text x="250" y="425" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">Ana López - Seguimiento nuevo miembro</text>
+  <text x="620" y="425" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="11">MEDIA</text>
+  
+  <!-- AI insights indicator -->
+  <rect x="500" y="145" width="100" height="30" rx="15" fill="#8b5cf6" fill-opacity="0.2"/>
+  <text x="550" y="164" text-anchor="middle" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="11">🤖 IA Activa</text>
+  
+  <!-- Action icons -->
+  <rect x="650" y="145" width="30" height="20" rx="4" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="665" y="158" text-anchor="middle" fill="#f59e0b" font-family="Arial, sans-serif" font-size="8">📊</text>
+  
+  <rect x="690" y="145" width="30" height="20" rx="4" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="705" y="158" text-anchor="middle" fill="#4ade80" font-family="Arial, sans-serif" font-size="8">💒</text>
+  
+  <rect x="730" y="145" width="30" height="20" rx="4" fill="#6ee7ff" fill-opacity="0.2"/>
+  <text x="745" y="158" text-anchor="middle" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="8">🔔</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#17171a"/>
+  
+  <!-- Header -->
+  <rect width="800" height="60" fill="#232329"/>
+  <rect x="20" y="15" width="120" height="30" rx="4" fill="#6ee7ff"/>
+  <text x="80" y="35" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="14" font-weight="bold">KHESED-TEK</text>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="60" width="200" height="390" fill="#1a1a1e"/>
+  
+  <!-- Sermon Helper selected -->
+  <rect x="20" y="260" width="160" height="35" rx="4" fill="#8b5cf6" fill-opacity="0.1"/>
+  <circle cx="35" cy="277" r="8" fill="#8b5cf6"/>
+  <text x="55" y="282" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">Sermones</text>
+  
+  <!-- Main content -->
+  <rect x="200" y="60" width="600" height="390" fill="#0e0e10"/>
+  
+  <!-- Header -->
+  <text x="220" y="100" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Asistente de Sermones</text>
+  <text x="220" y="125" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="14">Planifica y organiza tus predicaciones</text>
+  
+  <!-- Action buttons -->
+  <rect x="220" y="145" width="120" height="35" rx="6" fill="#8b5cf6"/>
+  <text x="280" y="167" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="12" font-weight="bold">+ Nuevo Sermón</text>
+  
+  <rect x="360" y="145" width="100" height="35" rx="6" fill="#232329"/>
+  <text x="410" y="167" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">Calendario</text>
+  
+  <rect x="480" y="145" width="100" height="35" rx="6" fill="#232329"/>
+  <text x="530" y="167" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="12">Series</text>
+  
+  <!-- Current sermon card -->
+  <rect x="220" y="195" width="350" height="120" rx="8" fill="#232329"/>
+  <text x="240" y="220" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="14">Próximo Domingo</text>
+  <text x="240" y="245" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="20" font-weight="bold">"Fe en Tiempos Difíciles"</text>
+  <text x="240" y="265" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="12">Serie: Creciendo en Fe - Mensaje 3/6</text>
+  <text x="240" y="285" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="12">📖 Santiago 1:2-4</text>
+  <text x="240" y="300" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="11">Duración estimada: 35 min</text>
+  
+  <!-- Preparation status -->
+  <rect x="590" y="195" width="180" height="120" rx="8" fill="#232329"/>
+  <text x="610" y="220" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Estado de Preparación</text>
+  
+  <rect x="610" y="235" width="140" height="20" rx="10" fill="#4ade80" fill-opacity="0.2"/>
+  <rect x="610" y="235" width="105" height="20" rx="10" fill="#4ade80"/>
+  <text x="680" y="248" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="10" font-weight="bold">75% Completo</text>
+  
+  <text x="610" y="270" fill="#4ade80" font-family="Arial, sans-serif" font-size="11">✓ Bosquejo terminado</text>
+  <text x="610" y="285" fill="#4ade80" font-family="Arial, sans-serif" font-size="11">✓ Ilustraciones listas</text>
+  <text x="610" y="300" fill="#f59e0b" font-family="Arial, sans-serif" font-size="11">⚠ Práctica pendiente</text>
+  
+  <!-- Sermon outline -->
+  <text x="220" y="345" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Bosquejo del Sermón</text>
+  
+  <rect x="220" y="360" width="550" height="30" fill="#8b5cf6" fill-opacity="0.1"/>
+  <text x="235" y="380" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">I. Introducción: La Realidad del Sufrimiento</text>
+  
+  <rect x="220" y="395" width="550" height="25" fill="#232329"/>
+  <text x="250" y="412" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="11">• Estadísticas sobre dificultades actuales</text>
+  
+  <rect x="220" y="425" width="550" height="25" fill="#232329"/>
+  <text x="250" y="442" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="11">• Testimonio personal de superación</text>
+  
+  <!-- Bible study tools -->
+  <rect x="600" y="145" width="30" height="20" rx="4" fill="#8b5cf6" fill-opacity="0.2"/>
+  <text x="615" y="158" text-anchor="middle" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="8">📖</text>
+  
+  <rect x="640" y="145" width="30" height="20" rx="4" fill="#6ee7ff" fill-opacity="0.2"/>
+  <text x="655" y="158" text-anchor="middle" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="8">🎤</text>
+  
+  <rect x="680" y="145" width="30" height="20" rx="4" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="695" y="158" text-anchor="middle" fill="#4ade80" font-family="Arial, sans-serif" font-size="8">⏱️</text>
+  
+  <rect x="720" y="145" width="30" height="20" rx="4" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="735" y="158" text-anchor="middle" fill="#f59e0b" font-family="Arial, sans-serif" font-size="8">💡</text>
+</svg>

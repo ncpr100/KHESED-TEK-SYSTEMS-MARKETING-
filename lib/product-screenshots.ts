@@ -28,22 +28,22 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
     description: 'Procesamiento seguro de donaciones con reportes en tiempo real'
   },
   {
-    src: '/images/product-screenshots/placeholder-dashboard.svg',
-    alt: 'Calendario de Eventos',
-    title: 'Planificación de Eventos',
-    description: 'Gestión completa de eventos y actividades de la iglesia'
+    src: '/images/product-screenshots/placeholder-volunteers.svg',
+    alt: 'Gestión de Voluntarios',
+    title: 'Coordinación de Voluntarios',
+    description: 'Organiza y gestiona tu equipo de servicio en todos los ministerios'
   },
   {
-    src: '/images/product-screenshots/placeholder-members.svg',
-    alt: 'Reportes Avanzados',
-    title: 'Reportes y Analytics',
-    description: 'Análisis detallado con gráficos y métricas personalizables'
+    src: '/images/product-screenshots/placeholder-sermons.svg',
+    alt: 'Asistente de Sermones',
+    title: 'Planificador de Sermones',
+    description: 'Herramientas avanzadas para preparar y organizar predicaciones'
   },
   {
-    src: '/images/product-screenshots/placeholder-donations.svg',
-    alt: 'Sistema de Comunicación',
-    title: 'Comunicación Automática',
-    description: 'Envío masivo de emails, SMS y notificaciones push'
+    src: '/images/product-screenshots/placeholder-insights.svg',
+    alt: 'Insights Pastorales',
+    title: 'Análisis Pastoral',
+    description: 'Insights inteligentes para el cuidado y crecimiento de la congregación'
   }
 ];
 
@@ -68,22 +68,22 @@ const USA_SCREENSHOTS: CarouselImage[] = [
     description: 'Secure donation processing with real-time financial tracking'
   },
   {
-    src: '/images/product-screenshots/placeholder-dashboard.svg',
-    alt: 'Event Management',
-    title: 'Event Planning & Management',
-    description: 'Complete event lifecycle management with registration'
+    src: '/images/product-screenshots/placeholder-volunteers.svg',
+    alt: 'Volunteer Management',
+    title: 'Volunteer Coordination',
+    description: 'Organize and manage your ministry service teams efficiently'
   },
   {
-    src: '/images/product-screenshots/placeholder-members.svg',
-    alt: 'Advanced Analytics',
-    title: 'Business Intelligence',
-    description: 'Advanced reporting with customizable dashboards and insights'
+    src: '/images/product-screenshots/placeholder-sermons.svg',
+    alt: 'Sermon Planning Tool',
+    title: 'Sermon Assistant',
+    description: 'Advanced tools for sermon preparation and preaching calendar'
   },
   {
-    src: '/images/product-screenshots/placeholder-donations.svg',
-    alt: 'System Integrations',
-    title: 'Enterprise Integrations',
-    description: 'Seamless integration with existing church systems and tools'
+    src: '/images/product-screenshots/placeholder-insights.svg',
+    alt: 'Pastoral Analytics',
+    title: 'Pastoral Insights',
+    description: 'AI-powered analytics for pastoral care and congregation growth'
   }
 ];
 
@@ -108,16 +108,22 @@ const GLOBAL_SCREENSHOTS: CarouselImage[] = [
     description: 'GDPR, data privacy, and regional compliance features'
   },
   {
-    src: '/images/product-screenshots/placeholder-dashboard.svg',
-    alt: 'Multi-Language Interface',
-    title: 'Localization Support',
-    description: 'Interface available in multiple languages with RTL support'
+    src: '/images/product-screenshots/placeholder-volunteers.svg',
+    alt: 'Global Volunteer Management',
+    title: 'Worldwide Ministry Teams',
+    description: 'Coordinate volunteers across multiple locations and time zones'
   },
   {
-    src: '/images/product-screenshots/placeholder-donations.svg',
-    alt: 'Global Reporting',
-    title: 'Worldwide Analytics',
-    description: 'Cross-timezone reporting with regional performance metrics'
+    src: '/images/product-screenshots/placeholder-sermons.svg',
+    alt: 'Multi-Language Preaching',
+    title: 'Global Sermon Planning',
+    description: 'Sermon tools with multi-language support and cultural adaptation'
+  },
+  {
+    src: '/images/product-screenshots/placeholder-insights.svg',
+    alt: 'Global Church Analytics',
+    title: 'International Insights',
+    description: 'Cross-cultural analytics and worldwide ministry effectiveness metrics'
   }
 ];
 

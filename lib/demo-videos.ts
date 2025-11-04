@@ -30,11 +30,11 @@ function addCacheBust(url: string): string {
 
 // Environment variables for video URLs (fallback to safe defaults)
 const VIDEO_URLS = {
-  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo'),
-  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo'),
-  LATAM_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo'),
-  USA_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo'),
-  GLOBAL_OVERVIEW: addCacheBust(process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/qk-Baf42lBo')
+  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
+  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
+  LATAM_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
+  USA_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
+  GLOBAL_OVERVIEW: addCacheBust(process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/1fW2zDQnUV0')
 };
 
 // Debug logging for environment variables (client-side only)

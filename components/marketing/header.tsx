@@ -62,6 +62,16 @@ export default function Header() {
             <Link href={featuresHref}>{featuresText}</Link>
             <Link href={aboutHref}>{aboutText}</Link>
             <Link href={contactHref}>{contactText}</Link>
+            {/* Admin Access - Development Only */}
+            {process.env.NODE_ENV === 'development' && (
+              <Link 
+                href="/admin/carousel" 
+                className="text-[var(--brand)] hover:text-[var(--brand2)] font-medium"
+                title="Admin: Upload Carousel Images"
+              >
+                🔧 Admin
+              </Link>
+            )}
           </nav>
           
           {/* Add back navigation for contact page */}
