@@ -12,9 +12,14 @@ export default function Header() {
   const isLatamMarket = pathname.includes('/latam');
   const isUSAMarket = pathname.includes('/usa');
   const isGlobalMarket = pathname.includes('/global');
+  const isContactPage = pathname === '/contact';
   
   // Get base path for navigation links
   const basePath = isLatamMarket ? '/latam' : isUSAMarket ? '/usa' : isGlobalMarket ? '/global' : '';
+  
+  // Fix fragment navigation: if on contact page, go to homepage sections
+  const featuresHref = isContactPage ? '/#features' : `${basePath}#features`;
+  const aboutHref = isContactPage ? '/#about' : `${basePath}#about`;
   
   // Use global market context for language, not path-based
   const featuresText = language === 'es' ? 'Características' : 'Features';
@@ -37,8 +42,8 @@ export default function Header() {
         
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
-            <Link href={`${basePath}#features`}>{featuresText}</Link>
-            <Link href={`${basePath}#about`}>{aboutText}</Link>
+            <Link href={featuresHref}>{featuresText}</Link>
+            <Link href={aboutHref}>{aboutText}</Link>
             <Link href="/contact">{contactText}</Link>
           </nav>
           
