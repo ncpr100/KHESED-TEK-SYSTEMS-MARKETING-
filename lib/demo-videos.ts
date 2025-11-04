@@ -6,10 +6,26 @@ import { DemoVideo } from '@/types/demo-video';
 // Cache-busting system for video URL updates
 function addCacheBust(url: string): string {
   const cacheBust = process.env.NEXT_PUBLIC_VIDEO_CACHE_BUST;
+  
+  // Debug logging for cache-busting
+  if (typeof window !== 'undefined') {
+    console.log('🔧 Cache-bust Debug:', {
+      originalUrl: url,
+      cacheBustValue: cacheBust,
+      isSet: !!cacheBust
+    });
+  }
+  
   if (!cacheBust) return url;
   
   const separator = url.includes('?') ? '&' : '?';
-  return `${url}${separator}cb=${cacheBust}`;
+  const finalUrl = `${url}${separator}cb=${cacheBust}`;
+  
+  if (typeof window !== 'undefined') {
+    console.log('🔧 Cache-bust Result:', finalUrl);
+  }
+  
+  return finalUrl;
 }
 
 // Environment variables for video URLs (fallback to safe defaults)
@@ -20,6 +36,19 @@ const VIDEO_URLS = {
   USA_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo'),
   GLOBAL_OVERVIEW: addCacheBust(process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/qk-Baf42lBo')
 };
+
+// Debug logging for environment variables (client-side only)
+if (typeof window !== 'undefined') {
+  console.log('🌍 Environment Variables Debug:', {
+    LATAM_DEMO: process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO,
+    USA_DEMO: process.env.NEXT_PUBLIC_USA_DEMO_VIDEO,
+    LATAM_TOUR: process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR,
+    USA_TOUR: process.env.NEXT_PUBLIC_USA_QUICK_TOUR,
+    GLOBAL_DEMO: process.env.NEXT_PUBLIC_GLOBAL_DEMO,
+    CACHE_BUST: process.env.NEXT_PUBLIC_VIDEO_CACHE_BUST,
+    finalURLs: VIDEO_URLS
+  });
+}
 
 // Production-ready demo video configuration
 export const PRODUCTION_DEMO_VIDEOS: DemoVideo[] = [

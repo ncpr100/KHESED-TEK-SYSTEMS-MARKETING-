@@ -16,7 +16,20 @@ function buildVideoUrl(baseUrl: string, params: Record<string, string | number>)
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, String(value));
   });
-  return url.toString();
+  
+  const finalUrl = url.toString();
+  
+  // Debug logging for video URL generation
+  if (typeof window !== 'undefined') {
+    console.log('🎬 Video URL Debug:', {
+      baseUrl,
+      params,
+      finalUrl,
+      cacheBustEnv: process.env.NEXT_PUBLIC_VIDEO_CACHE_BUST
+    });
+  }
+  
+  return finalUrl;
 }
 
 // Video Modal Component
