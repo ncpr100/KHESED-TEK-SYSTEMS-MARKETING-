@@ -114,12 +114,12 @@ const FEATURE_COMPARISONS: FeatureComparison[] = [
 
 const CATEGORIES = {
   core: { name: 'Funciones Básicas', icon: '⚡' },
-  communication: { name: 'Comunicación', icon: '♡' },
-  support: { name: 'Soporte', icon: '○' },
-  advanced: { name: 'Funciones Avanzadas', icon: '⚡' },
-  analytics: { name: 'Reportes y Analytics', icon: '田' },
-  media: { name: 'Multimedia', icon: '○' },
-  security: { name: 'Seguridad', icon: '♡' }
+  communication: { name: 'Comunicación', icon: '💬' },
+  support: { name: 'Soporte', icon: '🎧' },
+  advanced: { name: 'Funciones Avanzadas', icon: '🚀' },
+  analytics: { name: 'Reportes y Analytics', icon: '📊' },
+  media: { name: 'Multimedia', icon: '🎥' },
+  security: { name: 'Seguridad', icon: '🔒' }
 };
 
 export default function FeatureComparisonTable({ 
