@@ -7,123 +7,123 @@ export interface ProductScreenshots {
   GLOBAL: CarouselImage[];
 }
 
-// LATAM Market Screenshots (Spanish)
+// LATAM Market Screenshots (Spanish) - REAL APPLICATION SCREENSHOTS
 const LATAM_SCREENSHOTS: CarouselImage[] = [
   {
-    src: '/images/product-screenshots/placeholder-dashboard.svg',
+    src: '/images/product-screenshots/real-dashboard.svg',
     alt: 'Panel Principal KHESED-TEK',
-    title: 'Panel de Control Principal',
-    description: 'Vista general del dashboard con métricas clave de la iglesia'
+    title: 'Perspectivas Pastorales',
+    description: 'Inteligencia ministerial avanzada con métricas de crecimiento y análisis de tendencias'
   },
   {
-    src: '/images/product-screenshots/placeholder-members.svg', 
+    src: '/images/product-screenshots/real-members.svg', 
     alt: 'Gestión de Miembros',
-    title: 'Gestión de Miembros',
-    description: 'Sistema completo para administrar la base de datos de miembros'
+    title: 'Sistema de Miembros',
+    description: 'Base de datos completa con seguimiento de actividad y estado de membresía'
   },
   {
-    src: '/images/product-screenshots/placeholder-donations.svg',
+    src: '/images/product-screenshots/real-donations.svg',
     alt: 'Sistema de Donaciones',
-    title: 'Donaciones en Línea',
-    description: 'Procesamiento seguro de donaciones con reportes en tiempo real'
+    title: 'Donaciones Seguras',
+    description: 'Procesamiento multicanal con PSE, Nequi, tarjetas y reportes en tiempo real'
   },
   {
-    src: '/images/product-screenshots/placeholder-volunteers.svg',
-    alt: 'Gestión de Voluntarios',
-    title: 'Coordinación de Voluntarios',
-    description: 'Organiza y gestiona tu equipo de servicio en todos los ministerios'
+    src: '/images/product-screenshots/real-volunteer-system.svg',
+    alt: 'Sistema de Voluntarios Inteligente',
+    title: 'Coordinación de Voluntarios con IA',
+    description: 'Pipeline automatizado de reclutamiento y gestión de voluntarios con inteligencia artificial'
   },
   {
-    src: '/images/product-screenshots/placeholder-sermons.svg',
-    alt: 'Asistente de Sermones',
-    title: 'Planificador de Sermones',
-    description: 'Herramientas avanzadas para preparar y organizar predicaciones'
+    src: '/images/product-screenshots/real-sermons-management.svg',
+    alt: 'Gestión de Sermones KHESED-TEK',
+    title: 'Asistente de Sermones con IA',
+    description: 'Herramientas avanzadas para preparar y organizar predicaciones con ayuda de inteligencia artificial'
   },
   {
-    src: '/images/product-screenshots/placeholder-insights.svg',
-    alt: 'Insights Pastorales',
-    title: 'Análisis Pastoral',
-    description: 'Insights inteligentes para el cuidado y crecimiento de la congregación'
+    src: '/images/product-screenshots/real-pastoral-insights.svg',
+    alt: 'Perspectivas Pastorales',
+    title: 'Análisis Pastoral Inteligente',
+    description: 'Dashboard avanzado con insights de donaciones, membresía y métricas de crecimiento ministerial'
   }
 ];
 
-// USA Market Screenshots (English)
+// USA Market Screenshots (English) - REAL APPLICATION SCREENSHOTS
 const USA_SCREENSHOTS: CarouselImage[] = [
   {
-    src: '/images/product-screenshots/placeholder-dashboard.svg',
+    src: '/images/product-screenshots/real-dashboard.svg',
     alt: 'KHESED-TEK Main Dashboard',
     title: 'Executive Dashboard',
-    description: 'Comprehensive overview with key church metrics and KPIs'
+    description: 'Comprehensive pastoral insights with advanced church metrics and growth analytics'
   },
   {
-    src: '/images/product-screenshots/placeholder-members.svg',
+    src: '/images/product-screenshots/real-members.svg',
     alt: 'Member Management System',
     title: 'Member Management',
-    description: 'Complete CRM system for church member administration'
+    description: 'Complete CRM system for church member administration with activity tracking'
   },
   {
-    src: '/images/product-screenshots/placeholder-donations.svg',
+    src: '/images/product-screenshots/real-donations.svg',
     alt: 'Online Giving Platform',
     title: 'Digital Giving Platform',
-    description: 'Secure donation processing with real-time financial tracking'
+    description: 'Secure multi-channel donation processing with real-time financial tracking'
   },
   {
-    src: '/images/product-screenshots/placeholder-volunteers.svg',
-    alt: 'Volunteer Management',
-    title: 'Volunteer Coordination',
-    description: 'Organize and manage your ministry service teams efficiently'
+    src: '/images/product-screenshots/real-volunteer-system.svg',
+    alt: 'AI-Powered Volunteer Management',
+    title: 'Intelligent Volunteer Coordination',
+    description: 'Automated recruitment pipeline and volunteer management with artificial intelligence'
   },
   {
-    src: '/images/product-screenshots/placeholder-sermons.svg',
-    alt: 'Sermon Planning Tool',
-    title: 'Sermon Assistant',
-    description: 'Advanced tools for sermon preparation and preaching calendar'
+    src: '/images/product-screenshots/real-sermons-management.svg',
+    alt: 'KHESED-TEK Sermon Management',
+    title: 'AI Sermon Assistant',
+    description: 'Advanced sermon preparation and preaching calendar with AI-powered tools'
   },
   {
-    src: '/images/product-screenshots/placeholder-insights.svg',
-    alt: 'Pastoral Analytics',
-    title: 'Pastoral Insights',
-    description: 'AI-powered analytics for pastoral care and congregation growth'
+    src: '/images/product-screenshots/real-pastoral-insights.svg',
+    alt: 'Pastoral Analytics Dashboard',
+    title: 'Advanced Pastoral Insights',
+    description: 'AI-powered analytics for donations, membership growth, and ministry effectiveness metrics'
   }
 ];
 
-// Global Market Screenshots (Multi-language)
+// Global Market Screenshots (Multi-language) - REAL APPLICATION SCREENSHOTS
 const GLOBAL_SCREENSHOTS: CarouselImage[] = [
   {
-    src: '/images/product-screenshots/placeholder-dashboard.svg',
+    src: '/images/product-screenshots/real-dashboard.svg',
     alt: 'KHESED-TEK Global Dashboard',
     title: 'Multi-Language Dashboard',
-    description: 'Global church management with multi-timezone support'
+    description: 'Global church management with pastoral insights and multi-timezone support'
   },
   {
-    src: '/images/product-screenshots/placeholder-donations.svg',
+    src: '/images/product-screenshots/real-donations.svg',
     alt: 'Multi-Currency Support',
     title: 'International Giving',
-    description: 'Support for multiple currencies and payment methods worldwide'
+    description: 'Support for multiple currencies and payment methods worldwide with secure processing'
   },
   {
-    src: '/images/product-screenshots/placeholder-members.svg',
+    src: '/images/product-screenshots/real-members.svg',
     alt: 'Global Compliance',
     title: 'International Compliance',
-    description: 'GDPR, data privacy, and regional compliance features'
+    description: 'GDPR, data privacy, and regional compliance features with member management'
   },
   {
-    src: '/images/product-screenshots/placeholder-volunteers.svg',
-    alt: 'Global Volunteer Management',
-    title: 'Worldwide Ministry Teams',
-    description: 'Coordinate volunteers across multiple locations and time zones'
+    src: '/images/product-screenshots/real-volunteer-system.svg',
+    alt: 'Global AI Volunteer Management',
+    title: 'Worldwide Ministry Teams with AI',
+    description: 'Intelligent volunteer coordination across multiple locations and time zones'
   },
   {
-    src: '/images/product-screenshots/placeholder-sermons.svg',
-    alt: 'Multi-Language Preaching',
-    title: 'Global Sermon Planning',
-    description: 'Sermon tools with multi-language support and cultural adaptation'
+    src: '/images/product-screenshots/real-sermons-management.svg',
+    alt: 'Multi-Language Sermon Planning',
+    title: 'Global Sermon Planning with AI',
+    description: 'AI-powered sermon tools with multi-language support and cultural adaptation'
   },
   {
-    src: '/images/product-screenshots/placeholder-insights.svg',
+    src: '/images/product-screenshots/real-pastoral-insights.svg',
     alt: 'Global Church Analytics',
-    title: 'International Insights',
-    description: 'Cross-cultural analytics and worldwide ministry effectiveness metrics'
+    title: 'International Ministry Insights',
+    description: 'Cross-cultural analytics and worldwide ministry effectiveness with AI intelligence'
   }
 ];
 

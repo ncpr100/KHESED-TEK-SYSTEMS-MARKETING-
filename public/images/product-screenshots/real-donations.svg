@@ -1,0 +1,105 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0f0f23"/>
+  
+  <!-- Header -->
+  <rect width="800" height="60" fill="#1a1a40"/>
+  <rect x="20" y="15" width="40" height="30" rx="8" fill="#6366f1"/>
+  <text x="40" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">K</text>
+  <text x="80" y="35" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Khesed-tek</text>
+  <text x="200" y="28" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Church Management Systems</text>
+  
+  <!-- User info -->
+  <circle cx="720" cy="30" r="15" fill="#3b82f6"/>
+  <text x="720" y="35" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">MG</text>
+  <text x="650" y="25" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12">María González</text>
+  <text x="650" y="40" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Administrador de Iglesia</text>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="60" width="200" height="390" fill="#1e1e3f"/>
+  
+  <!-- Sidebar items -->
+  <circle cx="35" cy="97" r="8" fill="#64748b"/>
+  <text x="55" y="102" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Panel de Control</text>
+  
+  <circle cx="35" cy="137" r="8" fill="#64748b"/>
+  <text x="55" y="142" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Miembros</text>
+  
+  <circle cx="35" cy="177" r="8" fill="#64748b"/>
+  <text x="55" y="182" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Voluntarios</text>
+  
+  <rect x="20" y="200" width="160" height="35" rx="4" fill="#10b981" fill-opacity="0.2"/>
+  <circle cx="35" cy="217" r="8" fill="#10b981"/>
+  <text x="55" y="222" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12">Dones Espirituales</text>
+  
+  <circle cx="35" cy="257" r="8" fill="#64748b"/>
+  <text x="55" y="262" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">Seguimiento</text>
+  
+  <!-- Main content -->
+  <rect x="200" y="60" width="600" height="390" fill="#0f0f23"/>
+  
+  <!-- Page title -->
+  <text x="220" y="100" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Donaciones</text>
+  <text x="220" y="125" fill="#64748b" font-family="Arial, sans-serif" font-size="14">Gestión integral de donaciones y ofrendas con procesamiento seguro</text>
+  
+  <!-- Action buttons -->
+  <rect x="640" y="80" width="120" height="30" rx="15" fill="#10b981"/>
+  <text x="700" y="100" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">+ Nueva Donación</text>
+  
+  <!-- Stats cards -->
+  <rect x="220" y="150" width="170" height="80" rx="8" fill="#1e1e3f"/>
+  <text x="240" y="175" fill="#10b981" font-family="Arial, sans-serif" font-size="14">Total Este Mes</text>
+  <text x="240" y="200" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="28" font-weight="bold">$18,247</text>
+  <text x="240" y="220" fill="#10b981" font-family="Arial, sans-serif" font-size="12">+12% vs mes anterior</text>
+  
+  <rect x="410" y="150" width="170" height="80" rx="8" fill="#1e1e3f"/>
+  <text x="430" y="175" fill="#3b82f6" font-family="Arial, sans-serif" font-size="14">Donantes Únicos</text>
+  <text x="430" y="200" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="28" font-weight="bold">89</text>
+  <text x="430" y="220" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12">7 nuevos donantes</text>
+  
+  <rect x="600" y="150" width="170" height="80" rx="8" fill="#1e1e3f"/>
+  <text x="620" y="175" fill="#f59e0b" font-family="Arial, sans-serif" font-size="14">Promedio Donación</text>
+  <text x="620" y="200" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="28" font-weight="bold">$205</text>
+  <text x="620" y="220" fill="#f59e0b" font-family="Arial, sans-serif" font-size="12">Rango: $20-$2,500</text>
+  
+  <!-- Payment methods -->
+  <text x="220" y="270" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Métodos de Pago Disponibles</text>
+  
+  <rect x="220" y="280" width="120" height="60" rx="8" fill="#1e1e3f" stroke="#10b981" stroke-width="2"/>
+  <text x="280" y="300" text-anchor="middle" fill="#10b981" font-family="Arial, sans-serif" font-size="12" font-weight="bold">💳 Tarjeta</text>
+  <text x="280" y="320" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Visa, Mastercard</text>
+  <text x="280" y="332" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">American Express</text>
+  
+  <rect x="360" y="280" width="120" height="60" rx="8" fill="#1e1e3f" stroke="#3b82f6" stroke-width="2"/>
+  <text x="420" y="300" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">📱 PSE</text>
+  <text x="420" y="320" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Banco en línea</text>
+  <text x="420" y="332" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Inmediato</text>
+  
+  <rect x="500" y="280" width="120" height="60" rx="8" fill="#1e1e3f" stroke="#f59e0b" stroke-width="2"/>
+  <text x="560" y="300" text-anchor="middle" fill="#f59e0b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">📧 Nequi</text>
+  <text x="560" y="320" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Pago móvil</text>
+  <text x="560" y="332" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Colombia</text>
+  
+  <rect x="640" y="280" width="120" height="60" rx="8" fill="#1e1e3f" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="700" y="300" text-anchor="middle" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">🏦 Efectivo</text>
+  <text x="700" y="320" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Puntos de pago</text>
+  <text x="700" y="332" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Baloto, Éxito</text>
+  
+  <!-- Recent donations -->
+  <text x="220" y="375" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Donaciones Recientes</text>
+  
+  <rect x="220" y="385" width="550" height="25" fill="#1e1e3f"/>
+  <text x="240" y="400" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">DONANTE</text>
+  <text x="400" y="400" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">MONTO</text>
+  <text x="500" y="400" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">MÉTODO</text>
+  <text x="620" y="400" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">FECHA</text>
+  <text x="720" y="400" fill="#94a3b8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">ESTADO</text>
+  
+  <rect x="220" y="410" width="550" height="25" fill="#0f0f23" stroke="#374151" stroke-width="0.5"/>
+  <text x="240" y="425" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="11">María González</text>
+  <text x="400" y="425" fill="#10b981" font-family="Arial, sans-serif" font-size="11" font-weight="bold">$500.000</text>
+  <text x="500" y="425" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">💳 Tarjeta</text>
+  <text x="620" y="425" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">04/11/2025</text>
+  <rect x="720" y="415" width="40" height="15" rx="7" fill="#10b981" fill-opacity="0.2"/>
+  <text x="740" y="425" text-anchor="middle" fill="#10b981" font-family="Arial, sans-serif" font-size="8">Exitoso</text>
+</svg>
