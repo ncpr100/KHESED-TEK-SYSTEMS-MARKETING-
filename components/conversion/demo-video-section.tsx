@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { DemoVideo, VideoModalProps, DemoVideoSectionProps } from '@/types/demo-video';
 import { trackCTAClick } from '@/lib/analytics';
 import { PRODUCTION_DEMO_VIDEOS, getVideosByMarket, getMainDemoVideo } from '@/lib/demo-videos';
+import ImageCarousel from '@/components/ui/image-carousel';
+import { getScreenshotsByMarket, PLACEHOLDER_SCREENSHOTS } from '@/lib/product-screenshots';
 
 // Use production video configuration
 const DEMO_VIDEOS = PRODUCTION_DEMO_VIDEOS;
@@ -112,12 +114,24 @@ export default function DemoVideoSection({
 }: DemoVideoSectionProps) {
   const [selectedVideo, setSelectedVideo] = useState<DemoVideo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<'video' | 'images'>('video');
+  const [videoError, setVideoError] = useState(false);
 
   // Filter videos by market and language using utility function
   const filteredVideos = getVideosByMarket(market, language);
 
   // Use smart main video selection or provided primary video
   const mainVideo = primaryVideo || getMainDemoVideo(market, language) || filteredVideos[0];
+
+  // Get product screenshots for the current market
+  const screenshots = getScreenshotsByMarket(market);
+
+  // Auto-switch to images if video fails to load
+  useEffect(() => {
+    if (videoError) {
+      setViewMode('images');
+    }
+  }, [videoError]);
 
   if (!mainVideo) {
     // Fallback content if no videos available
@@ -164,9 +178,35 @@ export default function DemoVideoSection({
         <div className="text-center mb-12">
           <h2 className="text-3xl font-semibold mb-4">{t.title}</h2>
           <p className="text-[var(--muted)] text-lg mb-6">{t.subtitle}</p>
+          
+          {/* View Mode Toggle */}
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={() => setViewMode('video')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                viewMode === 'video'
+                  ? 'bg-[var(--brand)] text-black'
+                  : 'bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--text)] border border-[var(--border)] hover:border-[var(--brand)]'
+              }`}
+            >
+              📹 Video Demo
+            </button>
+            <button
+              onClick={() => setViewMode('images')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                viewMode === 'images'
+                  ? 'bg-[var(--brand)] text-black'
+                  : 'bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--text)] border border-[var(--border)] hover:border-[var(--brand)]'
+              }`}
+            >
+              🖼️ Screenshots
+            </button>
+          </div>
         </div>
 
-        {/* Main Video */}
+        {/* Main Content Area */}
+        {viewMode === 'video' ? (
+          /* Main Video */
         <div className="relative mb-8">
           <div className="relative group cursor-pointer" onClick={() => handleVideoPlay(mainVideo)}>
             {/* Video Thumbnail */}
@@ -228,12 +268,50 @@ export default function DemoVideoSection({
                 className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
                 onClick={() => trackCTAClick('demo_video', 'request_live_demo')}
               >
-                <span>�</span>
+                <span>📧</span>
                 {t.scheduleLive}
               </a>
             </div>
           </div>
         </div>
+        ) : (
+          /* Image Carousel */
+          <div className="relative mb-8">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-semibold mb-2">Product Screenshots</h3>
+              <p className="text-[var(--muted)]">Explore our interface through these product images</p>
+            </div>
+            
+            <ImageCarousel 
+              images={screenshots}
+              autoPlay={true}
+              showDots={true}
+              showArrows={true}
+              autoPlayInterval={4000}
+              className="max-w-4xl mx-auto"
+            />
+            
+            {/* Action Buttons for Carousel */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
+                onClick={() => trackCTAClick('demo_screenshots', 'request_demo')}
+              >
+                <span>📧</span>
+                Request Live Demo
+              </a>
+              
+              <button
+                onClick={() => setViewMode('video')}
+                className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
+              >
+                <span>📹</span>
+                Switch to Video
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Video Playlist */}
         {showPlaylist && filteredVideos.length > 1 && (

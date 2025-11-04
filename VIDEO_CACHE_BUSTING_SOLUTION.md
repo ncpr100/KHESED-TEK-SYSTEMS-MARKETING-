@@ -22,8 +22,8 @@ function addCacheBust(url: string): string {
 
 // Environment variables for video URLs with cache-busting
 const VIDEO_URLS = {
-  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo'),
-  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo'),
+  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
+  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
   // ... other videos
 };
 ```
@@ -51,11 +51,11 @@ function buildVideoUrl(baseUrl: string, params: Record<string, string | number>)
 **File**: `.env.local` (and Railway Dashboard)
 ```bash
 # Video Configuration with Cache Busting
-NEXT_PUBLIC_LATAM_DEMO_VIDEO=https://www.youtube.com/embed/qk-Baf42lBo
-NEXT_PUBLIC_USA_DEMO_VIDEO=https://www.youtube.com/embed/qk-Baf42lBo
-NEXT_PUBLIC_LATAM_QUICK_TOUR=https://www.youtube.com/embed/qk-Baf42lBo
-NEXT_PUBLIC_USA_QUICK_TOUR=https://www.youtube.com/embed/qk-Baf42lBo
-NEXT_PUBLIC_GLOBAL_DEMO=https://www.youtube.com/embed/qk-Baf42lBo
+NEXT_PUBLIC_LATAM_DEMO_VIDEO=https://www.youtube.com/embed/1fW2zDQnUV0
+NEXT_PUBLIC_USA_DEMO_VIDEO=https://www.youtube.com/embed/1fW2zDQnUV0
+NEXT_PUBLIC_LATAM_QUICK_TOUR=https://www.youtube.com/embed/1fW2zDQnUV0
+NEXT_PUBLIC_USA_QUICK_TOUR=https://www.youtube.com/embed/1fW2zDQnUV0
+NEXT_PUBLIC_GLOBAL_DEMO=https://www.youtube.com/embed/1fW2zDQnUV0
 NEXT_PUBLIC_VIDEO_CACHE_BUST=20251201-1
 ```
 
@@ -86,13 +86,13 @@ Final:    https://www.youtube.com/embed/NEW_VIDEO_ID?cb=20251201-2&autoplay=1&re
 ==========================================
 1️⃣  Environment Variables:
    CACHE_BUST: 20251201-1
-   DEMO_VIDEO: https://www.youtube.com/embed/qk-Baf42lBo
+   DEMO_VIDEO: https://www.youtube.com/embed/1fW2zDQnUV0
 
 2️⃣  Step 1 - Add Cache Bust:
-   Result: https://www.youtube.com/embed/qk-Baf42lBo?cb=20251201-1
+   Result: https://www.youtube.com/embed/1fW2zDQnUV0?cb=20251201-1
 
 3️⃣  Step 2 - Add YouTube Params:
-   Result: https://www.youtube.com/embed/qk-Baf42lBo?cb=20251201-1&autoplay=1&rel=0&modestbranding=1
+   Result: https://www.youtube.com/embed/1fW2zDQnUV0?cb=20251201-1&autoplay=1&rel=0&modestbranding=1
 
 ✅ Test Result: PASS ✅
 ```
