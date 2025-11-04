@@ -15,15 +15,27 @@ export default function Header() {
   const isContactPage = pathname === '/contact';
   const isHomePage = pathname === '/';
   
-  // Get base path for navigation links
-  const basePath = isLatamMarket ? '/latam' : isUSAMarket ? '/usa' : isGlobalMarket ? '/global' : '';
+  // HOMEPAGE PATTERN REPLICATION:
+  // The homepage redirects users to market pages (/latam, /usa, /global)
+  // So we should follow the same pattern - redirect to market pages as navigation hubs
   
-  // UNIVERSAL TAB NAVIGATION STRATEGY:
-  // ALL pages have #features and #about sections, so we can use fragments on current page
-  // This enables seamless navigation between tabs without page redirects
+  // Determine the correct market page to use as navigation hub
+  const getMarketPath = () => {
+    if (isLatamMarket) return '/latam';
+    if (isUSAMarket) return '/usa'; 
+    if (isGlobalMarket) return '/global';
+    
+    // For contact page or homepage, use the user's detected market
+    const marketPath = market ? `/${market.toLowerCase()}` : '/latam';
+    return marketPath;
+  };
   
-  const featuresHref = `${pathname}#features`;
-  const aboutHref = `${pathname}#about`;
+  const marketPath = getMarketPath();
+  
+  // HOME PAGE NAVIGATION PATTERN:
+  // Always navigate to market-specific pages with fragments (like homepage does)
+  const featuresHref = `${marketPath}#features`;
+  const aboutHref = `${marketPath}#about`;
   const contactHref = '/contact';
   
   // Use global market context for language, not path-based
