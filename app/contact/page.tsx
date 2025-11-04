@@ -487,6 +487,87 @@ export default function ContactPage() {
           </form>
         </div>
       </div>
+
+      {/* Features Section */}
+      <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
+        {[
+          { 
+            pill: language === 'en' ? 'Performance' : 'Rendimiento', 
+            title: language === 'en' ? 'Fast and efficient' : 'Rápido y eficiente', 
+            desc: language === 'en' 
+              ? 'Optimized architecture for minimal load times and high availability.' 
+              : 'Arquitectura optimizada para tiempos de carga mínimos y alta disponibilidad.' 
+          },
+          { 
+            pill: language === 'en' ? 'Security' : 'Seguridad', 
+            title: language === 'en' ? 'Advanced protection' : 'Protección avanzada', 
+            desc: language === 'en' 
+              ? 'Encryption and best practices to safeguard your community data.' 
+              : 'Cifrado y mejores prácticas para resguardar los datos de tu comunidad.' 
+          },
+          { 
+            pill: language === 'en' ? 'Design' : 'Diseño', 
+            title: language === 'en' ? 'Elegant in black' : 'Elegancia en negro', 
+            desc: language === 'en' 
+              ? 'Dark, clean and accessible interface that highlights your identity.' 
+              : 'Interfaz oscura, limpia y accesible que resalta tu identidad.' 
+          },
+        ].map((f) => (
+          <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>
+            <span
+              className="text-xs uppercase tracking-wide px-2 py-1 rounded-full border inline-block"
+              style={{ background: '#1f1f23', borderColor: 'var(--border)', color: 'var(--muted)' }}
+            >
+              {f.pill}
+            </span>
+            <h3 className="text-xl font-semibold mt-3 mb-1">{f.title}</h3>
+            <p style={{ color: 'var(--muted)' }}>{f.desc}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
+        <h2 className="text-3xl font-semibold mb-6">
+          {language === 'en' ? 'About KHESED-TEK SYSTEMS' : 'Sobre KHESED-TEK SYSTEMS'}
+        </h2>
+        <div style={{ color: 'var(--muted)' }} className="text-lg space-y-4">
+          {language === 'en' ? (
+            <>
+              <p>
+                KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. 
+                Based in Barranquilla, Atlántico, we empower churches and faith-based organizations through custom artificial 
+                intelligence and integration solutions that address their unique operational challenges.
+              </p>
+              <p>
+                We understand that your mission is spiritual, but your operations are practical. Our goal is to optimize your 
+                administrative tasks, improve resource allocation, and enhance productivity. By handling the complexities 
+                of technology, we free your team to focus on what matters most: serving your congregation and strengthening your community.
+              </p>
+              <p className="font-medium text-[var(--brand)]">
+                Let us build the technological foundation that supports and amplifies your impact.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. 
+                Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
+                soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.
+              </p>
+              <p>
+                Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus 
+                tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades 
+                de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.
+              </p>
+              <p className="font-medium text-[var(--brand)]">
+                Permítanos construir la base tecnológica que respalda y amplifica su impacto.
+              </p>
+            </>
+          )}
+        </div>
+      </section>
+
       <Footer />
     </>
   );

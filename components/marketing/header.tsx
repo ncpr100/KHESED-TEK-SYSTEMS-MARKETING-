@@ -17,9 +17,9 @@ export default function Header() {
   // Get base path for navigation links
   const basePath = isLatamMarket ? '/latam' : isUSAMarket ? '/usa' : isGlobalMarket ? '/global' : '';
   
-  // Fix fragment navigation: if on contact page, go to homepage sections
-  const featuresHref = isContactPage ? '/#features' : `${basePath}#features`;
-  const aboutHref = isContactPage ? '/#about' : `${basePath}#about`;
+  // Fix fragment navigation: if on contact page, use contact page fragments
+  const featuresHref = isContactPage ? '/contact#features' : `${basePath}#features`;
+  const aboutHref = isContactPage ? '/contact#about' : `${basePath}#about`;
   
   // Use global market context for language, not path-based
   const featuresText = language === 'es' ? 'Características' : 'Features';
