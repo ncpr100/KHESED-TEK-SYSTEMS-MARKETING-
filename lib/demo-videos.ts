@@ -29,6 +29,7 @@ function addCacheBust(url: string): string {
 }
 
 // Environment variables for video URLs (fallback to safe defaults)
+// CRITICAL: Forcing cache bust for Railway deployment - Updated 2025-11-04
 const VIDEO_URLS = {
   LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
   USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
@@ -39,14 +40,16 @@ const VIDEO_URLS = {
 
 // Debug logging for environment variables (client-side only)
 if (typeof window !== 'undefined') {
-  console.log('🌍 Environment Variables Debug:', {
+  console.log('🌍 Environment Variables Debug - Updated 2025-11-04:', {
+    NODE_ENV: process.env.NODE_ENV,
     LATAM_DEMO: process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO,
     USA_DEMO: process.env.NEXT_PUBLIC_USA_DEMO_VIDEO,
     LATAM_TOUR: process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR,
     USA_TOUR: process.env.NEXT_PUBLIC_USA_QUICK_TOUR,
     GLOBAL_DEMO: process.env.NEXT_PUBLIC_GLOBAL_DEMO,
     CACHE_BUST: process.env.NEXT_PUBLIC_VIDEO_CACHE_BUST,
-    finalURLs: VIDEO_URLS
+    finalURLs: VIDEO_URLS,
+    buildTime: new Date().toISOString()
   });
 }
 
