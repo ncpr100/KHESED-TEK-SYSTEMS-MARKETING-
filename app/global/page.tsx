@@ -175,7 +175,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'Automatización avanzada con triggers culturales. TouchPoint cuesta $20K+; nosotros lo incluimos estándar.'
                 : 'Advanced automation with cultural triggers. TouchPoint costs $20K+; we include it standard.',
-              icon: '⚡',
+              icon: '○',
               advantage: language === 'es'
                 ? 'vs TouchPoint: 70% menos costo con características superiores'
                 : 'vs TouchPoint: 70% less cost with superior features'
@@ -186,7 +186,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'GDPR, LGPD, SOX automático por región. Aplos solo contabilidad; nosotros cumplimiento completo.'
                 : 'GDPR, LGPD, SOX automatic by region. Aplos only accounting; we provide complete compliance.',
-              icon: '♡',
+              icon: '○',
               advantage: language === 'es'
                 ? 'vs Aplos: Cumplimiento completo vs solo contabilidad'
                 : 'vs Aplos: Complete compliance vs accounting only'
@@ -216,7 +216,7 @@ export default function GlobalMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ⚡ {f.advantage}
+              ○ {f.advantage}
             </div>
           </div>
         ))}
@@ -331,7 +331,7 @@ export default function GlobalMarketPage() {
                   ○ {testimonial.location} • � {testimonial.members} • � {testimonial.languages}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)]">
-                  ⚡ {testimonial.result}
+                  ○ {testimonial.result}
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
@@ -504,10 +504,10 @@ export default function GlobalMarketPage() {
               <div className="text-3xl mb-3">{region.flag}</div>
               <h3 className="font-semibold mb-2">{region.region}</h3>
               <div className="space-y-1 text-sm text-[var(--muted)]">
-                <div>🕐 {region.timezone}</div>
-                <div>� {region.languages}</div>
-                <div>☎ {region.hours}</div>
-                <div>📧 {region.contact}</div>
+                <div>○ {region.timezone}</div>
+                <div>○ {region.languages}</div>
+                <div>○ {region.hours}</div>
+                <div>○ {region.contact}</div>
               </div>
             </div>
           ))}
@@ -597,14 +597,14 @@ export default function GlobalMarketPage() {
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4">
-              🌐 {language === 'es' ? 'Equipo Global' : 'Global Team'}
+              ○ {language === 'es' ? 'Equipo Global' : 'Global Team'}
             </h3>
             <div className="space-y-2 text-sm">
-              <div>📧 contact@khesed-tek-systems.org</div>
-              <div>☎ {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
-              <div>🌐 {language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</div>
-              <div>⏰ {language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</div>
-              <div>� {language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</div>
+              <div>○ contact@khesed-tek-systems.org</div>
+              <div>○ {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
+              <div>○ {language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</div>
+              <div>○ {language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</div>
+              <div>○ {language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</div>
             </div>
           </div>
           <div className="card p-6 text-left">

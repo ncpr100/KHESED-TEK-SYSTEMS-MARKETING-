@@ -165,7 +165,7 @@ export default function DemoVideoSection({
               {/* Placeholder thumbnail with gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center">
                 <div className="text-center text-white">
-                  <div className="text-6xl mb-4">🎥</div>
+                  <div className="text-6xl mb-4">○</div>
                   <h3 className="text-2xl font-semibold mb-2">{mainVideo.title}</h3>
                   <p className="text-gray-300 max-w-md mx-auto">{mainVideo.description}</p>
                 </div>
@@ -241,7 +241,7 @@ export default function DemoVideoSection({
                     {/* Thumbnail placeholder */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-white text-center">
-                        <div className="text-3xl mb-2">🎬</div>
+                        <div className="text-3xl mb-2">○</div>
                         <div className="text-sm font-medium px-2">{video.title}</div>
                       </div>
                     </div>
@@ -273,7 +273,7 @@ export default function DemoVideoSection({
         <div className="mt-16 text-center">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-3">
-              <div className="text-3xl">⚡</div>
+              <div className="text-3xl">○</div>
               <h4 className="font-semibold">{t.benefits.quick.title}</h4>
               <p className="text-[var(--muted)] text-sm">{t.benefits.quick.description}</p>
             </div>
@@ -285,7 +285,7 @@ export default function DemoVideoSection({
             </div>
             
             <div className="space-y-3">
-              <div className="text-3xl">✅</div>
+              <div className="text-3xl">○</div>
               <h4 className="font-semibold">{t.benefits.noCommitment.title}</h4>
               <p className="text-[var(--muted)] text-sm">{t.benefits.noCommitment.description}</p>
             </div>

@@ -159,7 +159,7 @@ export default function LatamMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ⚡ {f.advantage}
+              ○ {f.advantage}
             </div>
           </div>
         ))}

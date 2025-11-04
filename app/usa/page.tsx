@@ -457,13 +457,13 @@ export default function USAMarketPage() {
         
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">☎ USA Sales Team</h3>
+            <h3 className="font-semibold mb-4">○ USA Sales Team</h3>
             <div className="space-y-2 text-sm">
-              <div>📧 contact@khesed-tek-systems.org</div>
-              <div>☎ +1 (555) 123-4567</div>
-              <div>▣ Miami, FL (Expansion Office)</div>
-              <div>🕐 Monday-Friday 9AM-6PM EST</div>
-              <div>🌐 Nationwide support coverage</div>
+              <div>○ contact@khesed-tek-systems.org</div>
+              <div>○ +1 (555) 123-4567</div>
+              <div>○ Miami, FL (Expansion Office)</div>
+              <div>○ Monday-Friday 9AM-6PM EST</div>
+              <div>○ Nationwide support coverage</div>
             </div>
           </div>
           <div className="card p-6 text-left">

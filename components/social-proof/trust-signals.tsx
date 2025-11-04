@@ -7,7 +7,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-latam',
     type: 'security',
-    icon: '♡',
+    icon: '○',
     title: 'SSL Seguro',
     description: 'Encriptación de datos de nivel bancario',
     value: '256-bit',
@@ -16,7 +16,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-usa',
     type: 'security',
-    icon: '♡',
+    icon: '○',
     title: 'SSL Secure',
     description: 'Bank-level data encryption',
     value: '256-bit',
@@ -25,7 +25,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'gdpr-compliance-latam',
     type: 'compliance',
-    icon: '♡',
+    icon: '○',
     title: 'Cumplimiento GDPR',
     description: 'Cumplimiento total de protección de datos',
     market: 'LATAM'
@@ -33,7 +33,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'gdpr-compliance-global',
     type: 'compliance',
-    icon: '♡',
+    icon: '○',
     title: 'GDPR Compliant',
     description: 'Full data protection compliance',
     market: 'GLOBAL'
@@ -41,7 +41,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'iso-certification',
     type: 'certification',
-    icon: '📋',
+    icon: '○',
     title: 'ISO 27001',
     description: 'Certificación de seguridad internacional',
     verificationUrl: '#',
@@ -50,7 +50,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'soc2-compliance',
     type: 'compliance',
-    icon: '✅',
+    icon: '○',
     title: 'SOC 2 Type II',
     description: 'Auditoría de seguridad independiente',
     market: 'USA'
@@ -58,7 +58,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'uptime-guarantee-latam',
     type: 'uptime',
-    icon: '⚡',
+    icon: '○',
     title: 'Disponibilidad',
     description: 'Disponibilidad garantizada',
     value: '99.9%',
@@ -67,7 +67,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'uptime-guarantee-usa',
     type: 'uptime',
-    icon: '⚡',
+    icon: '○',
     title: 'Uptime',
     description: 'Guaranteed availability',
     value: '99.9%',
@@ -76,7 +76,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'uptime-guarantee-global',
     type: 'uptime',
-    icon: '⚡',
+    icon: '○',
     title: 'Uptime',
     description: 'Guaranteed worldwide availability',
     value: '99.9%',
@@ -85,7 +85,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count-latam',
     type: 'clients',
-    icon: '田',
+    icon: '○',
     title: 'Iglesias',
     description: 'Confían en nuestra plataforma',
     value: '200+',
@@ -94,7 +94,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count-usa',
     type: 'clients',
-    icon: '田',
+    icon: '○',
     title: 'Churches',
     description: 'Trust our platform',
     value: '200+',
@@ -103,7 +103,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count-global',
     type: 'clients',
-    icon: '田',
+    icon: '○',
     title: 'Organizations',
     description: 'Trust our platform worldwide',
     value: '200+',
@@ -112,7 +112,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage-latam',
     type: 'certification',
-    icon: '☎',
+    icon: '○',
     title: 'Soporte',
     description: 'Disponible cuando lo necesitas',
     value: '24/7',
@@ -121,7 +121,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage-usa',
     type: 'certification',
-    icon: '☎',
+    icon: '○',
     title: 'Support',
     description: 'Available when you need it',
     value: '24/7',
@@ -130,7 +130,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage-global',
     type: 'certification',
-    icon: '☎',
+    icon: '○',
     title: 'Support',
     description: 'Available worldwide',
     value: '24/7',
@@ -267,12 +267,12 @@ export default function TrustSignalsSection({
           <div className="text-sm text-[var(--muted)] leading-relaxed">
             {market === 'LATAM' ? (
               <>
-                🔐 <strong>Compromiso de Seguridad:</strong> Todos los datos están encriptados en tránsito y en reposo. 
+                ○ <strong>Compromiso de Seguridad:</strong> Todos los datos están encriptados en tránsito y en reposo. 
                 Realizamos auditorías de seguridad regulares y cumplimos con las regulaciones internacionales de protección de datos.
               </>
             ) : (
               <>
-                🔐 <strong>Security Commitment:</strong> All data is encrypted in transit and at rest. 
+                ○ <strong>Security Commitment:</strong> All data is encrypted in transit and at rest. 
                 We conduct regular security audits and comply with international data protection regulations.
               </>
             )}
@@ -292,10 +292,10 @@ export function TrustBadges({
   className?: string;
 }) {
   const badges = [
-    { icon: '♡', text: 'SSL Seguro' },
+    { icon: '○', text: 'SSL Seguro' },
     { icon: '○', text: 'Cumplimiento GDPR' },
-    { icon: '⚡', text: '99.9% Uptime' },
-    { icon: '☎', text: '24/7 Soporte' }
+    { icon: '○', text: '99.9% Uptime' },
+    { icon: '○', text: '24/7 Soporte' }
   ];
 
   return (
