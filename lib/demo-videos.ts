@@ -3,13 +3,22 @@
 
 import { DemoVideo } from '@/types/demo-video';
 
+// Cache-busting system for video URL updates
+function addCacheBust(url: string): string {
+  const cacheBust = process.env.NEXT_PUBLIC_VIDEO_CACHE_BUST;
+  if (!cacheBust) return url;
+  
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}cb=${cacheBust}`;
+}
+
 // Environment variables for video URLs (fallback to safe defaults)
 const VIDEO_URLS = {
-  LATAM_MAIN_DEMO: process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo',
-  USA_MAIN_DEMO: process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo',
-  LATAM_QUICK_TOUR: process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo',
-  USA_QUICK_TOUR: process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo',
-  GLOBAL_OVERVIEW: process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/qk-Baf42lBo'
+  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo'),
+  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/qk-Baf42lBo'),
+  LATAM_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo'),
+  USA_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/qk-Baf42lBo'),
+  GLOBAL_OVERVIEW: addCacheBust(process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/qk-Baf42lBo')
 };
 
 // Production-ready demo video configuration

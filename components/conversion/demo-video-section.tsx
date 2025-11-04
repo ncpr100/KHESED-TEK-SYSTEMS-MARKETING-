@@ -8,6 +8,15 @@ import { PRODUCTION_DEMO_VIDEOS, getVideosByMarket, getMainDemoVideo } from '@/l
 // Use production video configuration
 const DEMO_VIDEOS = PRODUCTION_DEMO_VIDEOS;
 
+// Helper function to properly combine URL parameters
+function buildVideoUrl(baseUrl: string, params: Record<string, string | number>): string {
+  const url = new URL(baseUrl);
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.set(key, String(value));
+  });
+  return url.toString();
+}
+
 // Video Modal Component
 function VideoModal({ video, isOpen, onClose, onPlay, onComplete }: VideoModalProps) {
   useEffect(() => {
@@ -51,7 +60,7 @@ function VideoModal({ video, isOpen, onClose, onPlay, onComplete }: VideoModalPr
           <div className="aspect-video">
             {video.type === 'youtube' && (
               <iframe
-                src={`${video.videoUrl}?autoplay=1&rel=0&modestbranding=1`}
+                src={buildVideoUrl(video.videoUrl, { autoplay: 1, rel: 0, modestbranding: 1 })}
                 title={video.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -60,7 +69,7 @@ function VideoModal({ video, isOpen, onClose, onPlay, onComplete }: VideoModalPr
             )}
             {video.type === 'vimeo' && (
               <iframe
-                src={`${video.videoUrl}?autoplay=1&title=0&byline=0&portrait=0`}
+                src={buildVideoUrl(video.videoUrl, { autoplay: 1, title: 0, byline: 0, portrait: 0 })}
                 title={video.title}
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
