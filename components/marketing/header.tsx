@@ -2,19 +2,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useGlobalMarket } from '@/lib/global-market';
 
 export default function Header() {
   const pathname = usePathname();
+  const { language, market } = useGlobalMarket();
   
-  // Determine market context and language
+  // Determine market context from pathname for routing
   const isLatamMarket = pathname.includes('/latam');
   const isUSAMarket = pathname.includes('/usa');
   const isGlobalMarket = pathname.includes('/global');
-  const language = isLatamMarket ? 'es' : 'en';
   
   // Get base path for navigation links
   const basePath = isLatamMarket ? '/latam' : isUSAMarket ? '/usa' : isGlobalMarket ? '/global' : '';
   
+  // Use global market context for language, not path-based
   const featuresText = language === 'es' ? 'Características' : 'Features';
   const aboutText = language === 'es' ? 'Nosotros' : 'About';
   const contactText = language === 'es' ? 'Contacto' : 'Contact';
@@ -32,11 +34,24 @@ export default function Header() {
           />
           <span className="font-semibold">KHESED-TEK SYSTEMS</span>
         </Link>
-        <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
-          <Link href={`${basePath}#features`}>{featuresText}</Link>
-          <Link href={`${basePath}#about`}>{aboutText}</Link>
-          <Link href="/contact">{contactText}</Link>
-        </nav>
+        
+        <div className="flex items-center gap-6">
+          <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
+            <Link href={`${basePath}#features`}>{featuresText}</Link>
+            <Link href={`${basePath}#about`}>{aboutText}</Link>
+            <Link href="/contact">{contactText}</Link>
+          </nav>
+          
+          {/* Add back navigation for contact page */}
+          {pathname === '/contact' && (
+            <Link 
+              href="/" 
+              className="text-[var(--muted)] hover:text-[var(--text)] text-sm sm:hidden"
+            >
+              {language === 'es' ? '← Inicio' : '← Home'}
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
