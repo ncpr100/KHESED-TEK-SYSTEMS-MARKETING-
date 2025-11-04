@@ -13,13 +13,18 @@ export default function Header() {
   const isUSAMarket = pathname.includes('/usa');
   const isGlobalMarket = pathname.includes('/global');
   const isContactPage = pathname === '/contact';
+  const isHomePage = pathname === '/';
   
   // Get base path for navigation links
   const basePath = isLatamMarket ? '/latam' : isUSAMarket ? '/usa' : isGlobalMarket ? '/global' : '';
   
-  // Fix fragment navigation: if on contact page, use contact page fragments
-  const featuresHref = isContactPage ? '/contact#features' : `${basePath}#features`;
-  const aboutHref = isContactPage ? '/contact#about' : `${basePath}#about`;
+  // UNIVERSAL TAB NAVIGATION STRATEGY:
+  // ALL pages have #features and #about sections, so we can use fragments on current page
+  // This enables seamless navigation between tabs without page redirects
+  
+  const featuresHref = `${pathname}#features`;
+  const aboutHref = `${pathname}#about`;
+  const contactHref = '/contact';
   
   // Use global market context for language, not path-based
   const featuresText = language === 'es' ? 'Características' : 'Features';
@@ -44,7 +49,7 @@ export default function Header() {
           <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
             <Link href={featuresHref}>{featuresText}</Link>
             <Link href={aboutHref}>{aboutText}</Link>
-            <Link href="/contact">{contactText}</Link>
+            <Link href={contactHref}>{contactText}</Link>
           </nav>
           
           {/* Add back navigation for contact page */}
