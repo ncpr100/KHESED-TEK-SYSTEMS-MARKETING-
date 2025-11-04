@@ -9,9 +9,9 @@ export default function Header() {
   const { language, market } = useGlobalMarket();
   
   // Determine market context from pathname for routing
-  const isLatamMarket = pathname.includes('/latam');
-  const isUSAMarket = pathname.includes('/usa');
-  const isGlobalMarket = pathname.includes('/global');
+  const isLatamMarket = pathname?.includes('/latam') || false;
+  const isUSAMarket = pathname?.includes('/usa') || false;
+  const isGlobalMarket = pathname?.includes('/global') || false;
   const isContactPage = pathname === '/contact';
   const isHomePage = pathname === '/';
   
