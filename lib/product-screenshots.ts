@@ -10,6 +10,12 @@ export interface ProductScreenshots {
 // LATAM Market Screenshots (Spanish) - REAL APPLICATION SCREENSHOTS
 const LATAM_SCREENSHOTS: CarouselImage[] = [
   {
+    src: '/images/product-screenshots/login-signup.png',
+    alt: 'Sistema de Acceso KHESED-TEK',
+    title: '',
+    description: 'Acceso seguro al sistema de gestión integral de iglesias'
+  },
+  {
     src: '/images/product-screenshots/dashboard.png',
     alt: 'Panel Principal KHESED-TEK',
     title: '',
@@ -44,17 +50,17 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
     alt: 'Insights Pastorales Real',
     title: '',
     description: 'Analytics pastorales con insights inteligentes para crecimiento'
-  },
-  {
-    src: '/images/product-screenshots/login-signup.png',
-    alt: 'Sistema de Acceso KHESED-TEK',
-    title: '',
-    description: 'Acceso seguro al sistema de gestión integral de iglesias'
   }
 ];
 
 // USA Market Screenshots (English) - REAL APPLICATION SCREENSHOTS
 const USA_SCREENSHOTS: CarouselImage[] = [
+  {
+    src: '/images/product-screenshots/login-signup.png',
+    alt: 'KHESED-TEK Login System',
+    title: '',
+    description: 'Secure access to comprehensive church management platform'
+  },
   {
     src: '/images/product-screenshots/dashboard.png',
     alt: 'KHESED-TEK Real Dashboard',
@@ -90,17 +96,17 @@ const USA_SCREENSHOTS: CarouselImage[] = [
     alt: 'Pastoral Analytics Dashboard',
     title: '',
     description: 'AI-powered analytics for donations, membership growth, and ministry effectiveness metrics'
-  },
-  {
-    src: '/images/product-screenshots/login-signup.png',
-    alt: 'KHESED-TEK Login System',
-    title: '',
-    description: 'Secure access to comprehensive church management platform'
   }
 ];
 
 // Global Market Screenshots (Multi-language) - REAL APPLICATION SCREENSHOTS
 const GLOBAL_SCREENSHOTS: CarouselImage[] = [
+  {
+    src: '/images/product-screenshots/login-signup.png',
+    alt: 'Sistema de Acesso KHESED-TEK',
+    title: '',
+    description: 'Acesso seguro ao sistema de gestão abrangente de igrejas'
+  },
   {
     src: '/images/product-screenshots/dashboard.png',
     alt: 'KHESED-TEK Global Dashboard',
@@ -136,12 +142,6 @@ const GLOBAL_SCREENSHOTS: CarouselImage[] = [
     alt: 'Global Church Analytics',
     title: '',
     description: 'Cross-cultural analytics and worldwide ministry effectiveness with AI intelligence'
-  },
-  {
-    src: '/images/product-screenshots/login-signup.png',
-    alt: 'Sistema de Acesso KHESED-TEK',
-    title: '',
-    description: 'Acesso seguro ao sistema de gestão abrangente de igrejas'
   }
 ];
 
