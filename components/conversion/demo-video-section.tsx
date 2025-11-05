@@ -153,9 +153,9 @@ export default function DemoVideoSection({
         'pt': 'Capturas do Produto'
       },
       'videoDemo': {
-        'es': '📹 Video Demo',
-        'en': '📹 Video Demo',
-        'pt': '📹 Vídeo Demo'
+        'es': '🎬 Historia del Fundador',
+        'en': '🎬 Founder\'s Story',
+        'pt': '🎬 História do Fundador'
       }
     };
     return texts[key]?.[language as keyof typeof texts[typeof key]] || texts[key]?.['en'] || key;
@@ -263,16 +263,7 @@ export default function DemoVideoSection({
                 {mainVideo.duration}
               </div>
 
-              {/* Feature Highlights */}
-              {mainVideo.features && (
-                <div className="absolute top-4 left-4 space-y-2">
-                  {mainVideo.features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className="bg-black/80 text-white px-3 py-1 rounded-full text-xs">
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-              )}
+              {/* Feature Highlights - REMOVED: Features now shown in carousel screenshots */}
             </div>
 
             {/* Hover Effects */}

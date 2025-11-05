@@ -58,27 +58,27 @@ if (typeof window !== 'undefined') {
 export const PRODUCTION_DEMO_VIDEOS: DemoVideo[] = [
   {
     id: 'khesed-tek-demo-latam',
-    title: 'KHESED-TEK: Demostración Completa',
-    description: 'Descubra cómo nuestro sistema transforma la gestión de su iglesia en solo 5 minutos. Vea funciones clave como gestión de miembros, donaciones en línea, y reportes avanzados.',
+    title: 'La Historia Detrás de KHESED-TEK',
+    description: 'Conozca la historia personal del fundador y nuestra misión de transformar la gestión de iglesias a través de la tecnología.',
     thumbnailUrl: '/images/demo-thumbnail-latam.jpg',
     videoUrl: VIDEO_URLS.LATAM_MAIN_DEMO,
     duration: '5:30',
     type: 'youtube',
     market: 'LATAM',
     language: 'es',
-    features: ['Gestión de miembros', 'Donaciones en línea', 'Eventos y calendario', 'Reportes avanzados', 'Comunicación automática']
+    features: [] // Removed: Features now shown in carousel screenshots
   },
   {
     id: 'khesed-tek-demo-usa',
-    title: 'KHESED-TEK: Complete Platform Demo',
-    description: 'See how our comprehensive church management system transforms ministry operations in just 5 minutes. Experience member management, donation processing, and advanced analytics.',
+    title: 'The Story Behind KHESED-TEK',
+    description: 'Meet the founder and learn about our mission to transform church management through innovative technology solutions.',
     thumbnailUrl: '/images/demo-thumbnail-usa.jpg',
     videoUrl: VIDEO_URLS.USA_MAIN_DEMO,
     duration: '5:30',
     type: 'youtube',
     market: 'USA',
     language: 'en',
-    features: ['Member management', 'Online giving', 'Event planning', 'Advanced reporting', 'Communication tools']
+    features: [] // Removed: Features now shown in carousel screenshots
   },
   {
     id: 'quick-start-latam',
@@ -106,15 +106,15 @@ export const PRODUCTION_DEMO_VIDEOS: DemoVideo[] = [
   },
   {
     id: 'global-overview',
-    title: 'KHESED-TEK Global Platform',
-    description: 'Comprehensive overview of our international church management platform with multi-language support.',
+    title: 'A História por Trás da KHESED-TEK',
+    description: 'Conheça o fundador e nossa missão de transformar a gestão de igrejas através de soluções tecnológicas inovadoras.',
     thumbnailUrl: '/images/global-demo.jpg',
     videoUrl: VIDEO_URLS.GLOBAL_OVERVIEW,
     duration: '7:45',
     type: 'youtube',
     market: 'GLOBAL',
     language: 'en',
-    features: ['Multi-language support', 'Global compliance', 'Advanced integrations', 'Enterprise features']
+    features: [] // Removed: Features now shown in carousel screenshots
   }
 ];
 
