@@ -183,7 +183,7 @@ export default function DemoVideoSection({
             }
           </p>
           <a
-            href="/contact"
+            href="/schedule"
             className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
           >
             {language === 'es' ? 'Agendar videollamada personal con el fundador' : 'Schedule personal video call with founder'}
@@ -315,16 +315,14 @@ export default function DemoVideoSection({
             
             {/* Action Buttons for Carousel */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
-                onClick={() => trackCTAClick('demo_screenshots', 'request_demo')}
-              >
-                <span>📧</span>
-                {language === 'es' ? 'Agendar Videollamada' : 'Schedule Video Call'}
-              </a>
-              
-              <button
+            <a
+              href="/schedule"
+              className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
+              onClick={() => trackCTAClick('demo_screenshots', 'request_demo')}
+            >
+              <span>�</span>
+              {language === 'es' ? 'Agendar Videollamada' : 'Schedule Video Call'}
+            </a>              <button
                 onClick={() => setViewMode('video')}
                 className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
               >

@@ -42,6 +42,7 @@ export default function Header() {
   const featuresText = language === 'es' ? 'Características' : 'Features';
   const aboutText = language === 'es' ? 'Nosotros' : 'About';
   const contactText = language === 'es' ? 'Contacto' : 'Contact';
+  const scheduleText = language === 'es' ? 'Agendar' : 'Schedule';
 
   return (
     <header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-[var(--border)]">
@@ -61,6 +62,9 @@ export default function Header() {
           <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
             <Link href={featuresHref}>{featuresText}</Link>
             <Link href={aboutHref}>{aboutText}</Link>
+            <Link href="/schedule" className="text-[var(--brand)] hover:text-[var(--brand2)] font-medium">
+              {scheduleText}
+            </Link>
             <Link href={contactHref}>{contactText}</Link>
             {/* Admin Access - Development Only */}
             {process.env.NODE_ENV === 'development' && (

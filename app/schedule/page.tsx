@@ -1,0 +1,172 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Agendar Videollamada Personal | KHESED-TEK SYSTEMS',
+  description: 'Agenda una videollamada personal con el fundador de KHESED-TEK para conocer cómo nuestra solución puede transformar la gestión de su iglesia.',
+  keywords: 'agendar, videollamada, reunión, demo personalizada, KHESED-TEK, gestión iglesias',
+  openGraph: {
+    title: 'Agendar Videollamada Personal | KHESED-TEK',
+    description: 'Hable directamente con el fundador sobre las necesidades específicas de su iglesia',
+    type: 'website',
+  }
+};
+
+export default function SchedulePage() {
+  return (
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      {/* Hero Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-6 gradient-text">
+            Agendar Videollamada Personal
+          </h1>
+          <p className="text-xl text-[var(--muted)] mb-4">
+            Hable directamente con el fundador de KHESED-TEK
+          </p>
+          <p className="text-[var(--muted)] max-w-2xl mx-auto mb-12">
+            Conozca la historia detrás de nuestra solución y descubra cómo podemos transformar 
+            la gestión de su iglesia. Una conversación genuina, sin presión comercial.
+          </p>
+        </div>
+      </section>
+
+      {/* Calendar Section */}
+      <section className="py-8 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="card p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Calendar Info */}
+              <div className="space-y-6">
+                <h2 className="text-2xl font-semibold mb-4">
+                  ¿Qué incluye la videollamada?
+                </h2>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-[var(--brand)] text-xl">🎬</span>
+                    <div>
+                      <h3 className="font-semibold">Historia Personal</h3>
+                      <p className="text-[var(--muted)] text-sm">
+                        Conozca el por qué detrás de KHESED-TEK y nuestra misión
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <span className="text-[var(--brand)] text-xl">🏛️</span>
+                    <div>
+                      <h3 className="font-semibold">Análisis de Necesidades</h3>
+                      <p className="text-[var(--muted)] text-sm">
+                        Evaluamos las necesidades específicas de su iglesia
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <span className="text-[var(--brand)] text-xl">💡</span>
+                    <div>
+                      <h3 className="font-semibold">Demo Personalizada</h3>
+                      <p className="text-[var(--muted)] text-sm">
+                        Vea cómo KHESED-TEK se adapta a su congregación
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <span className="text-[var(--brand)] text-xl">🤝</span>
+                    <div>
+                      <h3 className="font-semibold">Próximos Pasos</h3>
+                      <p className="text-[var(--muted)] text-sm">
+                        Definimos juntos el plan de implementación
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Meeting Details */}
+                <div className="border-t border-[var(--border)] pt-6 mt-6">
+                  <h3 className="font-semibold mb-3">Detalles de la Reunión</h3>
+                  <div className="space-y-2 text-sm text-[var(--muted)]">
+                    <div className="flex items-center gap-2">
+                      <span>⏱️</span>
+                      <span>Duración: 30-45 minutos</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>🌍</span>
+                      <span>Timezone: Colombia (COT)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>💻</span>
+                      <span>Platform: Google Meet / Zoom</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>🗣️</span>
+                      <span>Idioma: Español / English</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Google Calendar Embed */}
+              <div className="space-y-4">
+                <h2 className="text-2xl font-semibold">
+                  Seleccione Fecha y Hora
+                </h2>
+                
+                {/* Calendar Embed Container */}
+                <div className="relative bg-white rounded-lg overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2FER0jem7csrMqmNHs5AfEOQc5N8Y8TYgWqOOGLePgxqYQyGX7GFWLBJxYl-RIJnVK8zNTShvH?gv=true"
+                    style={{ border: 0 }}
+                    width="100%"
+                    height="600"
+                    frameBorder="0"
+                    scrolling="no"
+                    title="Agendar Videollamada KHESED-TEK"
+                  ></iframe>
+                </div>
+                
+                <p className="text-xs text-[var(--muted)] text-center">
+                  Al agendar, recibirá un enlace de videollamada y recordatorios automáticos
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Alternative */}
+      <section className="py-16 px-6 border-t border-[var(--border)]">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl font-semibold mb-4">
+            ¿Prefiere Coordinar por WhatsApp?
+          </h2>
+          <p className="text-[var(--muted)] mb-6">
+            Si prefiere coordinar la reunión de manera más personal, 
+            puede contactarnos directamente por WhatsApp.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://wa.me/573021234410?text=Hola,%20me%20gustaría%20agendar%20una%20videollamada%20para%20conocer%20KHESED-TEK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+            >
+              <span>📱</span>
+              WhatsApp Directo
+            </a>
+            
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
+            >
+              <span>📧</span>
+              Formulario de Contacto
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
