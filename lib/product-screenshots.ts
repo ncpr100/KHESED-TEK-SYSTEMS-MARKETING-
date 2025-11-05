@@ -12,38 +12,44 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
   {
     src: '/images/product-screenshots/dashboard.png',
     alt: 'Panel Principal KHESED-TEK',
-    title: 'Dashboard Real',
-    description: 'Captura real del panel de control con métricas de la iglesia'
+    title: '',
+    description: 'Panel de control con métricas avanzadas de la iglesia'
   },
   {
     src: '/images/product-screenshots/members.png', 
     alt: 'Gestión de Miembros Real',
-    title: 'Sistema de Miembros',
-    description: 'Interfaz real de gestión de miembros y base de datos congregacional'
+    title: '',
+    description: 'Base de datos completa de miembros y seguimiento congregacional'
   },
   {
     src: '/images/product-screenshots/donations.png',
     alt: 'Sistema de Donaciones Real',
-    title: 'Donaciones en Vivo',
-    description: 'Captura real del sistema de procesamiento de donaciones y ofrendas'
+    title: '',
+    description: 'Procesamiento seguro de donaciones y ofrendas en línea'
   },
   {
     src: '/images/product-screenshots/volunteers.png',
     alt: 'Gestión de Voluntarios Real',
-    title: 'Coordinación de Voluntarios',
-    description: 'Sistema real de gestión y coordinación de equipos de servicio'
+    title: '',
+    description: 'Coordinación eficiente de equipos ministeriales y voluntarios'
   },
   {
     src: '/images/product-screenshots/sermons.png',
     alt: 'Asistente de Sermones Real',
-    title: 'Planificador de Sermones',
-    description: 'Herramientas reales para preparación y organización de predicaciones'
+    title: '',
+    description: 'Herramientas avanzadas para preparación de predicaciones'
   },
   {
     src: '/images/product-screenshots/insights.png',
     alt: 'Insights Pastorales Real',
-    title: 'Análisis Pastoral',
-    description: 'Dashboard real con insights inteligentes para crecimiento congregacional'
+    title: '',
+    description: 'Analytics pastorales con insights inteligentes para crecimiento'
+  },
+  {
+    src: '/images/product-screenshots/placeholder-login-signup.svg',
+    alt: 'Sistema de Acceso KHESED-TEK',
+    title: '',
+    description: 'Acceso seguro al sistema de gestión integral de iglesias'
   }
 ];
 
@@ -52,38 +58,44 @@ const USA_SCREENSHOTS: CarouselImage[] = [
   {
     src: '/images/product-screenshots/dashboard.png',
     alt: 'KHESED-TEK Real Dashboard',
-    title: 'Live Dashboard',
+    title: '',
     description: 'Real church management dashboard with comprehensive metrics and insights'
   },
   {
     src: '/images/product-screenshots/members.png',
     alt: 'Real Member Management System',
-    title: 'Member Management',
+    title: '',
     description: 'Live member database with complete CRM functionality and tracking'
   },
   {
     src: '/images/product-screenshots/donations.png',
     alt: 'Online Giving Platform',
-    title: 'Digital Giving Platform',
+    title: '',
     description: 'Secure multi-channel donation processing with real-time financial tracking'
   },
   {
     src: '/images/product-screenshots/volunteers.png',
     alt: 'AI-Powered Volunteer Management',
-    title: 'Intelligent Volunteer Coordination',
+    title: '',
     description: 'Automated recruitment pipeline and volunteer management with artificial intelligence'
   },
   {
     src: '/images/product-screenshots/sermons.png',
     alt: 'KHESED-TEK Sermon Management',
-    title: 'AI Sermon Assistant',
+    title: '',
     description: 'Advanced sermon preparation and preaching calendar with AI-powered tools'
   },
   {
     src: '/images/product-screenshots/insights.png',
     alt: 'Pastoral Analytics Dashboard',
-    title: 'Advanced Pastoral Insights',
+    title: '',
     description: 'AI-powered analytics for donations, membership growth, and ministry effectiveness metrics'
+  },
+  {
+    src: '/images/product-screenshots/placeholder-login-signup.svg',
+    alt: 'KHESED-TEK Access System',
+    title: '',
+    description: 'Secure access to comprehensive church management platform'
   }
 ];
 
@@ -92,38 +104,44 @@ const GLOBAL_SCREENSHOTS: CarouselImage[] = [
   {
     src: '/images/product-screenshots/dashboard.png',
     alt: 'KHESED-TEK Global Dashboard',
-    title: 'Multi-Language Dashboard',
+    title: '',
     description: 'Global church management with pastoral insights and multi-timezone support'
   },
   {
     src: '/images/product-screenshots/donations.png',
     alt: 'Multi-Currency Support',
-    title: 'International Giving',
+    title: '',
     description: 'Support for multiple currencies and payment methods worldwide with secure processing'
   },
   {
     src: '/images/product-screenshots/members.png',
     alt: 'Global Compliance',
-    title: 'International Compliance',
+    title: '',
     description: 'GDPR, data privacy, and regional compliance features with member management'
   },
   {
     src: '/images/product-screenshots/volunteers.png',
     alt: 'Global AI Volunteer Management',
-    title: 'Worldwide Ministry Teams with AI',
+    title: '',
     description: 'Intelligent volunteer coordination across multiple locations and time zones'
   },
   {
     src: '/images/product-screenshots/sermons.png',
     alt: 'Multi-Language Sermon Planning',
-    title: 'Global Sermon Planning with AI',
+    title: '',
     description: 'AI-powered sermon tools with multi-language support and cultural adaptation'
   },
   {
     src: '/images/product-screenshots/insights.png',
     alt: 'Global Church Analytics',
-    title: 'International Ministry Insights',
+    title: '',
     description: 'Cross-cultural analytics and worldwide ministry effectiveness with AI intelligence'
+  },
+  {
+    src: '/images/product-screenshots/placeholder-login-signup.svg',
+    alt: 'Global Access System',
+    title: '',
+    description: 'Secure multi-language access to international church management platform'
   }
 ];
 

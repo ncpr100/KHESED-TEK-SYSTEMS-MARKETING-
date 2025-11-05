@@ -139,6 +139,28 @@ export default function DemoVideoSection({
   // Get product screenshots for the current market
   const screenshots = getScreenshotsByMarket(market);
 
+  // Get localized text based on market and language
+  const getLocalizedText = (key: 'screenshots' | 'productScreenshots' | 'videoDemo') => {
+    const texts = {
+      'screenshots': {
+        'es': '🖼️ Capturas',
+        'en': '🖼️ Screenshots', 
+        'pt': '🖼️ Capturas'
+      },
+      'productScreenshots': {
+        'es': 'Capturas del Producto',
+        'en': 'Product Screenshots',
+        'pt': 'Capturas do Produto'
+      },
+      'videoDemo': {
+        'es': '📹 Video Demo',
+        'en': '📹 Video Demo',
+        'pt': '📹 Vídeo Demo'
+      }
+    };
+    return texts[key]?.[language as keyof typeof texts[typeof key]] || texts[key]?.['en'] || key;
+  };
+
   // Auto-switch to images if video fails to load
   useEffect(() => {
     if (videoError) {
@@ -202,7 +224,7 @@ export default function DemoVideoSection({
                   : 'bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--text)] border border-[var(--border)] hover:border-[var(--brand)]'
               }`}
             >
-              📹 Video Demo
+              {getLocalizedText('videoDemo')}
             </button>
             <button
               onClick={() => setViewMode('images')}
@@ -212,7 +234,7 @@ export default function DemoVideoSection({
                   : 'bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--text)] border border-[var(--border)] hover:border-[var(--brand)]'
               }`}
             >
-              🖼️ Screenshots
+              {getLocalizedText('screenshots')}
             </button>
           </div>
         </div>
@@ -291,7 +313,7 @@ export default function DemoVideoSection({
           /* Image Carousel */
           <div className="relative mb-8">
             <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold mb-2">Product Screenshots</h3>
+              <h3 className="text-xl font-semibold mb-2">{getLocalizedText('productScreenshots')}</h3>
               <p className="text-[var(--muted)]">Explore our interface through these product images</p>
             </div>
             

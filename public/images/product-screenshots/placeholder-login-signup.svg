@@ -1,0 +1,43 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#17171a"/>
+  
+  <!-- Header -->
+  <rect width="800" height="60" fill="#232329"/>
+  <rect x="20" y="15" width="120" height="30" rx="4" fill="#6ee7ff"/>
+  <text x="80" y="35" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="14" font-weight="bold">KHESED-TEK</text>
+  
+  <!-- Login/Signup Form Container -->
+  <rect x="250" y="100" width="300" height="250" rx="12" fill="#232329" stroke="#374151" stroke-width="1"/>
+  
+  <!-- Form Header -->
+  <text x="400" y="130" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="20" font-weight="bold">Acceso al Sistema</text>
+  <text x="400" y="150" text-anchor="middle" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="12">Gestión Integral de Iglesias</text>
+  
+  <!-- Login Form -->
+  <rect x="270" y="170" width="260" height="30" rx="6" fill="#17171a" stroke="#6ee7ff" stroke-width="1"/>
+  <text x="280" y="190" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="12">📧 Email / Usuario</text>
+  
+  <rect x="270" y="210" width="260" height="30" rx="6" fill="#17171a" stroke="#374151" stroke-width="1"/>
+  <text x="280" y="230" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="12">🔒 Contraseña</text>
+  
+  <!-- Login Button -->
+  <rect x="270" y="250" width="260" height="35" rx="6" fill="#6ee7ff"/>
+  <text x="400" y="272" text-anchor="middle" fill="#0e0e10" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Iniciar Sesión</text>
+  
+  <!-- Signup Link -->
+  <text x="400" y="305" text-anchor="middle" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="11">¿No tienes cuenta? Crear cuenta</text>
+  
+  <!-- Features Icons -->
+  <circle cx="150" cy="225" r="30" fill="#6ee7ff" fill-opacity="0.1" stroke="#6ee7ff" stroke-width="2"/>
+  <text x="150" y="235" text-anchor="middle" fill="#6ee7ff" font-family="Arial, sans-serif" font-size="24">👥</text>
+  <text x="150" y="255" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="10">Miembros</text>
+  
+  <circle cx="650" cy="225" r="30" fill="#8b5cf6" fill-opacity="0.1" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="650" y="235" text-anchor="middle" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="24">📊</text>
+  <text x="650" y="255" text-anchor="middle" fill="#e7e7ea" font-family="Arial, sans-serif" font-size="10">Reportes</text>
+  
+  <!-- Security Badge -->
+  <rect x="350" y="320" width="100" height="20" rx="10" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="400" y="332" text-anchor="middle" fill="#4ade80" font-family="Arial, sans-serif" font-size="9">🔐 Seguro SSL</text>
+</svg>
