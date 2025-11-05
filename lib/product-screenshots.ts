@@ -46,7 +46,7 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
     description: 'Analytics pastorales con insights inteligentes para crecimiento'
   },
   {
-    src: '/images/product-screenshots/placeholder-login-signup.svg',
+    src: '/images/product-screenshots/login-signup.png',
     alt: 'Sistema de Acceso KHESED-TEK',
     title: '',
     description: 'Acceso seguro al sistema de gestión integral de iglesias'
@@ -92,8 +92,8 @@ const USA_SCREENSHOTS: CarouselImage[] = [
     description: 'AI-powered analytics for donations, membership growth, and ministry effectiveness metrics'
   },
   {
-    src: '/images/product-screenshots/placeholder-login-signup.svg',
-    alt: 'KHESED-TEK Access System',
+    src: '/images/product-screenshots/login-signup.png',
+    alt: 'KHESED-TEK Login System',
     title: '',
     description: 'Secure access to comprehensive church management platform'
   }
@@ -138,10 +138,10 @@ const GLOBAL_SCREENSHOTS: CarouselImage[] = [
     description: 'Cross-cultural analytics and worldwide ministry effectiveness with AI intelligence'
   },
   {
-    src: '/images/product-screenshots/placeholder-login-signup.svg',
-    alt: 'Global Access System',
+    src: '/images/product-screenshots/login-signup.png',
+    alt: 'Sistema de Acesso KHESED-TEK',
     title: '',
-    description: 'Secure multi-language access to international church management platform'
+    description: 'Acesso seguro ao sistema de gestão abrangente de igrejas'
   }
 ];
 
