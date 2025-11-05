@@ -178,15 +178,15 @@ export default function DemoVideoSection({
           </h2>
           <p className="text-[var(--muted)] mb-8">
             {language === 'es' 
-              ? 'Estamos preparando una demostración impresionante para usted.'
-              : 'We are preparing an amazing demonstration for you.'
+              ? 'Estamos preparando el video del fundador para usted.'
+              : 'We are preparing the founder\'s video for you.'
             }
           </p>
           <a
             href="/contact"
             className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
           >
-            {language === 'es' ? 'Solicitar demo personalizada' : 'Request personalized demo'}
+            {language === 'es' ? 'Agendar videollamada personal con el fundador' : 'Schedule personal video call with founder'}
           </a>
         </div>
       </section>
@@ -248,11 +248,7 @@ export default function DemoVideoSection({
             <div className="relative aspect-video bg-gradient-to-br from-[var(--brand)]/20 to-[var(--brand2)]/20 rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[var(--brand)] transition-all duration-300">
               {/* Placeholder thumbnail with gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="text-6xl mb-4">○</div>
-                  <h3 className="text-2xl font-semibold mb-2">{mainVideo.title}</h3>
-                  <p className="text-gray-300 max-w-md mx-auto">{mainVideo.description}</p>
-                </div>
+                {/* Clean video area - no text overlay */}
               </div>
 
               {/* Play Button Overlay */}
@@ -334,7 +330,7 @@ export default function DemoVideoSection({
                 onClick={() => trackCTAClick('demo_screenshots', 'request_demo')}
               >
                 <span>📧</span>
-                Request Live Demo
+                {language === 'es' ? 'Agendar Videollamada' : 'Schedule Video Call'}
               </a>
               
               <button
@@ -391,28 +387,7 @@ export default function DemoVideoSection({
           </div>
         )}
 
-        {/* Benefits Section */}
-        <div className="mt-16 text-center">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-3">
-              <div className="text-3xl">○</div>
-              <h4 className="font-semibold">{t.benefits.quick.title}</h4>
-              <p className="text-[var(--muted)] text-sm">{t.benefits.quick.description}</p>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="text-3xl">○</div>
-              <h4 className="font-semibold">{t.benefits.personalized.title}</h4>
-              <p className="text-[var(--muted)] text-sm">{t.benefits.personalized.description}</p>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="text-3xl">○</div>
-              <h4 className="font-semibold">{t.benefits.noCommitment.title}</h4>
-              <p className="text-[var(--muted)] text-sm">{t.benefits.noCommitment.description}</p>
-            </div>
-          </div>
-        </div>
+        {/* Benefits Section - REMOVED: Obsolete due to new carousel screenshots */}
       </div>
 
       {/* Video Modal */}
@@ -433,45 +408,45 @@ export default function DemoVideoSection({
 function getTranslations(language: 'es' | 'en') {
   if (language === 'es') {
     return {
-      title: 'Vea KHESED-TEK en Acción',
-      subtitle: 'Descubra cómo transformamos la gestión de su iglesia en minutos',
-      watchDemo: 'Ver Demostración',
-      scheduleLive: 'Agendar Demo en Vivo',
-      moreVideos: 'Más Videos Demostrativos',
+      title: 'La Historia Detrás de KHESED-TEK',
+      subtitle: 'Nuestra Misión: Transformar la Gestión de Iglesias',
+      watchDemo: 'Ver Historia del Fundador',
+      scheduleLive: 'Agendar Videollamada Personal',
+      moreVideos: 'Más Videos',
       benefits: {
         quick: {
-          title: 'Demo de 5 Minutos',
-          description: 'Vea todas las funciones principales en una demostración rápida y completa.'
+          title: 'Historia Personal',
+          description: 'Conozca la historia personal del fundador y por qué creó esta solución.'
         },
         personalized: {
-          title: 'Personalizada para su Iglesia',
-          description: 'Cada demo se adapta al tamaño y necesidades específicas de su congregación.'
+          title: 'Videollamada Personal',
+          description: 'Hable directamente con el fundador sobre las necesidades de su iglesia.'
         },
         noCommitment: {
-          title: 'Sin Compromiso',
-          description: 'Explore libremente todas las funciones antes de tomar cualquier decisión.'
+          title: 'Conversación Sin Presión',
+          description: 'Una charla genuina sobre cómo podemos servir a su congregación.'
         }
       }
     };
   } else {
     return {
-      title: 'See KHESED-TEK in Action',
-      subtitle: 'Discover how we transform your church management in minutes',
-      watchDemo: 'Watch Demo',
-      scheduleLive: 'Schedule Live Demo',
-      moreVideos: 'More Demo Videos',
+      title: 'The Story Behind KHESED-TEK',
+      subtitle: 'Our Mission: Transforming Church Management',
+      watchDemo: 'Watch Founder\'s Story',
+      scheduleLive: 'Schedule Personal Video Call',
+      moreVideos: 'More Videos',
       benefits: {
         quick: {
-          title: '5-Minute Demo',
-          description: 'See all key features in a quick and comprehensive demonstration.'
+          title: 'Personal Story',
+          description: 'Learn the founder\'s personal journey and why this solution was created.'
         },
         personalized: {
-          title: 'Customized for Your Church',
-          description: 'Each demo adapts to your congregation\'s specific size and needs.'
+          title: 'Personal Video Call',
+          description: 'Speak directly with the founder about your church\'s specific needs.'
         },
         noCommitment: {
-          title: 'No Commitment',
-          description: 'Freely explore all features before making any decision.'
+          title: 'No-Pressure Conversation',
+          description: 'A genuine conversation about how we can serve your congregation.'
         }
       }
     };
