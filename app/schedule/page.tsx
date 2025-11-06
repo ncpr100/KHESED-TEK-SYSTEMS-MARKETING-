@@ -123,7 +123,7 @@ export default function SchedulePage() {
                     </p>
                     
                     <a
-                      href="https://calendar.app.google/g9RAUNXxSW6ii6476"
+                      href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true&mode=AGENDA&theme=dark"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition"
