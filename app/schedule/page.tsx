@@ -116,7 +116,7 @@ export default function SchedulePage() {
                 {/* Professional Calendar Interface */}
                 <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
                   <div className="text-center space-y-4">
-                    <div className="text-4xl">📅</div>
+                    <div className="text-4xl text-[var(--brand)]">📅</div>
                     <h3 className="text-lg font-semibold">Reserva Directa</h3>
                     <p className="text-[var(--muted)] text-sm">
                       Acceso directo al calendario personal • Sin intermediarios
@@ -133,15 +133,15 @@ export default function SchedulePage() {
                     
                     <div className="grid grid-cols-3 gap-3 text-xs">
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-green-400 mb-1">✅</div>
+                        <div className="text-[var(--brand)] mb-1">✅</div>
                         <div>Confirmación<br/>Automática</div>
                       </div>
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-blue-400 mb-1">📧</div>
+                        <div className="text-[var(--brand)] mb-1">📧</div>
                         <div>Email<br/>Recordatorios</div>
                       </div>
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">�</div>
+                        <div className="text-[var(--brand)] mb-1">📱</div>
                         <div>Google Meet<br/>Incluido</div>
                       </div>
                     </div>
@@ -152,16 +152,16 @@ export default function SchedulePage() {
                 <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4 mt-4">
                   <h4 className="font-semibold mb-3 text-center text-[var(--brand)]">📍 Información de Disponibilidad</h4>
                   <div className="text-center text-[var(--muted)] text-sm space-y-1">
-                    <div>🕐 <strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</div>
-                    <div>⏱️ <strong>Duración:</strong> 30-45 minutos</div>
-                    <div>🗣️ <strong>Idiomas:</strong> Español • English</div>
-                    <div>⚡ <strong>Confirmación:</strong> Menos de 5 minutos</div>
+                    <div><span className="text-[var(--brand)]">🕐</span> <strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</div>
+                    <div><span className="text-[var(--brand)]">⏱️</span> <strong>Duración:</strong> 30-45 minutos</div>
+                    <div><span className="text-[var(--brand)]">🗣️</span> <strong>Idiomas:</strong> Español • English</div>
+                    <div><span className="text-[var(--brand)]">⚡</span> <strong>Confirmación:</strong> Menos de 5 minutos</div>
                   </div>
                 </div>
                 
                 {/* Alternative Access Method */}
                 <p className="text-xs text-[var(--muted)] text-center">
-                  ✅ Reserva directa sin intermediarios • 📧 Recordatorios automáticos • 💻 Enlace Google Meet incluido
+                  <span className="text-[var(--brand)]">✅</span> Reserva directa sin intermediarios • <span className="text-[var(--brand)]">📧</span> Recordatorios automáticos • <span className="text-[var(--brand)]">💻</span> Enlace Google Meet incluido
                 </p>
               </div>
             </div>
