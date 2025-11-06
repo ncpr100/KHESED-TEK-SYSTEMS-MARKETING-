@@ -107,40 +107,49 @@ export default function SchedulePage() {
                 </div>
               </div>
 
-              {/* Google Calendar Embed */}
+              {/* Google Calendar Direct Booking */}
               <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">
                   Seleccione Fecha y Hora
                 </h2>
                 
-                {/* Calendar Embed Container */}
-                <div className="relative bg-white rounded-lg overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://calendar.app.google/g9RAUNXxSW6ii6476"
-                    style={{ border: 0 }}
-                    width="100%"
-                    height="600"
-                    frameBorder="0"
-                    scrolling="no"
-                    title="Agendar Videollamada KHESED-TEK"
-                  ></iframe>
+                {/* Direct Calendar Booking - No Intermediary Popup */}
+                <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
+                  <div className="text-center space-y-4">
+                    <div className="text-6xl mb-4">📅</div>
+                    <h3 className="text-xl font-semibold">Reserva Directa Disponible</h3>
+                    <p className="text-[var(--muted)] mb-6">
+                      Haga clic para acceder directamente al calendario de reservas.<br/>
+                      <span className="text-sm">Sin pasos adicionales • Confirmación inmediata</span>
+                    </p>
+                    
+                    {/* Primary Direct Booking CTA */}
+                    <a
+                      href="https://calendar.app.google/g9RAUNXxSW6ii6476"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 gradient-btn text-black font-semibold px-8 py-4 rounded-lg hover:scale-105 transition text-lg"
+                    >
+                      <span className="text-xl">🎯</span>
+                      RESERVAR AHORA
+                    </a>
+                    
+                    <div className="text-xs text-[var(--muted)] mt-4">
+                      ✅ Confirmación automática por email<br/>
+                      ✅ Recordatorios antes de la reunión<br/>
+                      ✅ Enlace de Google Meet incluido
+                    </div>
+                  </div>
                 </div>
                 
-                <p className="text-xs text-[var(--muted)] text-center mb-4">
-                  Al agendar, recibirá un enlace de videollamada y recordatorios automáticos
-                </p>
-                
-                {/* Direct Booking Button Alternative */}
-                <div className="text-center">
-                  <a
-                    href="https://calendar.app.google/g9RAUNXxSW6ii6476"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
-                  >
-                    <span>📅</span>
-                    Abrir Calendario en Nueva Ventana
-                  </a>
+                {/* Time Zone & Availability Info */}
+                <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4">
+                  <h4 className="font-semibold mb-2 text-[var(--brand)]">🌍 Información de Disponibilidad</h4>
+                  <div className="text-sm text-[var(--muted)] space-y-1">
+                    <div>⏰ <strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 6:00 PM (COT)</div>
+                    <div>🌎 <strong>Zona Horaria:</strong> Colombia (UTC-5)</div>
+                    <div>⚡ <strong>Respuesta:</strong> Confirmación en menos de 5 minutos</div>
+                  </div>
                 </div>
               </div>
             </div>
