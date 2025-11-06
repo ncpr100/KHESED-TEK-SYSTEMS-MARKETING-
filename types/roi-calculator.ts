@@ -1,7 +1,7 @@
 // ROI Calculator Types and Interfaces
 
 export interface ROIInput {
-  churchSize: 'small' | 'medium' | 'large' | 'mega';
+  churchSize: 'small' | 'medium' | 'large';
   currentSoftwareCost: number;
   adminHoursPerWeek: number;
   volunteerHours: number;
@@ -33,7 +33,7 @@ export interface ROICalculation {
 }
 
 export interface ChurchProfile {
-  size: 'small' | 'medium' | 'large' | 'mega';
+  size: 'small' | 'medium' | 'large';
   memberCount: number;
   typicalBudget: number;
   adminComplexity: number;

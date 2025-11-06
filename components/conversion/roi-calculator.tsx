@@ -8,31 +8,24 @@ import { trackCTAClick } from '@/lib/analytics';
 const CHURCH_PROFILES: Record<string, ChurchProfile> = {
   small: {
     size: 'small',
-    memberCount: 150,
-    typicalBudget: 5000,
-    adminComplexity: 3,
-    averageHourlyValue: 15 // USD/hour for admin work
+    memberCount: 200,
+    typicalBudget: 8000,
+    adminComplexity: 4,
+    averageHourlyValue: 15
   },
   medium: {
     size: 'medium',
-    memberCount: 500,
+    memberCount: 1000,
     typicalBudget: 15000,
     adminComplexity: 6,
     averageHourlyValue: 20
   },
   large: {
     size: 'large',
-    memberCount: 1200,
+    memberCount: 9999, // Unlimited - using high number for calculations
     typicalBudget: 35000,
     adminComplexity: 8,
     averageHourlyValue: 25
-  },
-  mega: {
-    size: 'mega',
-    memberCount: 3000,
-    typicalBudget: 75000,
-    adminComplexity: 10,
-    averageHourlyValue: 30
   }
 };
 
@@ -40,8 +33,7 @@ const CHURCH_PROFILES: Record<string, ChurchProfile> = {
 const PRICING_TIERS = {
   small: { monthly: 149.99, setup: 0, training: 0 },
   medium: { monthly: 299.99, setup: 0, training: 0 },
-  large: { monthly: 'custom', setup: 0, training: 0 }, // Custom pricing for large churches
-  mega: { monthly: 999.99, setup: 0, training: 0 }
+  large: { monthly: 'custom', setup: 0, training: 0 } // Custom pricing for large churches
 };
 
 export default function ROICalculator({
@@ -114,8 +106,7 @@ export default function ROICalculator({
     
     // Competitive advantage: Most church software charges $500-2000 for setup + training
     const competitorImplementationCost = inputs.churchSize === 'small' ? 800 : 
-                                       inputs.churchSize === 'medium' ? 1200 :
-                                       inputs.churchSize === 'large' ? 2000 : 3000;
+                                       inputs.churchSize === 'medium' ? 1200 : 2000;
     const implementationSavings = competitorImplementationCost; // We charge $0, competitors charge this
     
     const adminEfficiency = inputs.adminHoursPerWeek * 0.15; // Realistic 15% time savings
@@ -219,7 +210,7 @@ export default function ROICalculator({
         {/* Church Size Selection */}
         <div>
           <label className="block text-sm font-medium mb-3">{t.churchSize}</label>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             {Object.entries(CHURCH_PROFILES).map(([size, profile]) => (
               <button
                 key={size}
@@ -614,8 +605,7 @@ function getTranslations(language: 'es' | 'en') {
       sizes: {
         small: 'Pequeña',
         medium: 'Mediana', 
-        large: 'Grande',
-        mega: 'Mega'
+        large: 'Grande'
       },
       goals: {
         maintain: 'Mantener',
@@ -658,8 +648,7 @@ function getTranslations(language: 'es' | 'en') {
       sizes: {
         small: 'Small',
         medium: 'Medium',
-        large: 'Large', 
-        mega: 'Mega'
+        large: 'Large'
       },
       goals: {
         maintain: 'Maintain',
