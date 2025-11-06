@@ -231,8 +231,17 @@ export default function TrustSignalsSection({
               </div>
 
               {/* Title */}
-              <div className={`font-semibold text-sm mb-1 ${signal.title === 'Cumplimiento GDPR' || signal.title === 'GDPR Compliant' ? 'text-[var(--brand)]' : ''}`}>
-                {signal.title}
+              <div className="font-semibold text-sm mb-1">
+                {signal.title === 'Cumplimiento GDPR' ? (
+                  <>
+                    <span className="text-white">Cumplimiento</span>
+                    <span className="text-[var(--brand)]"> GDPR</span>
+                  </>
+                ) : signal.title === 'GDPR Compliant' ? (
+                  <span className="text-[var(--brand)]">GDPR Compliant</span>
+                ) : (
+                  signal.title
+                )}
                 {signal.value && (
                   <span className="ml-2 text-[var(--brand)] font-bold">
                     {signal.value}
