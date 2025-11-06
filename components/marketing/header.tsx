@@ -60,12 +60,10 @@ export default function Header() {
         
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
-            <Link href={featuresHref}>{featuresText}</Link>
-            <Link href={aboutHref}>{aboutText}</Link>
-            <Link href="/schedule" className="text-[var(--brand)] hover:text-[var(--brand2)] font-medium">
-              {scheduleText}
-            </Link>
-            <Link href={contactHref}>{contactText}</Link>
+            <Link href={featuresHref} className="hover:text-[var(--text)] transition">{featuresText}</Link>
+            <Link href={aboutHref} className="hover:text-[var(--text)] transition">{aboutText}</Link>
+            <Link href="/schedule" className="hover:text-[var(--text)] transition">{scheduleText}</Link>
+            <Link href={contactHref} className="hover:text-[var(--text)] transition">{contactText}</Link>
             {/* Admin Access - Development Only */}
             {process.env.NODE_ENV === 'development' && (
               <Link 

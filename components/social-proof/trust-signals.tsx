@@ -293,7 +293,7 @@ export function TrustBadges({
 }) {
   const badges = [
     { icon: '○', text: 'SSL Seguro' },
-    { icon: '○', text: 'Cumplimiento GDPR' },
+    { icon: '○', text: 'Cumplimiento GDPR', highlight: true },
     { icon: '○', text: '99.9% Uptime' },
     { icon: '○', text: '24/7 Soporte' }
   ];
@@ -306,7 +306,7 @@ export function TrustBadges({
           className="flex items-center gap-2 px-3 py-1 bg-[var(--surface)] border border-[var(--border)] rounded-full text-xs text-[var(--muted)] hover:border-[var(--brand)] transition"
         >
           <span>{badge.icon}</span>
-          <span>{badge.text}</span>
+          <span className={badge.highlight ? 'text-[var(--brand)] font-medium' : ''}>{badge.text}</span>
         </div>
       ))}
     </div>

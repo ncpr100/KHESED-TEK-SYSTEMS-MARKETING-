@@ -40,7 +40,7 @@ const CHURCH_PROFILES: Record<string, ChurchProfile> = {
 const PRICING_TIERS = {
   small: { monthly: 149.99, setup: 0, training: 0 },
   medium: { monthly: 299.99, setup: 0, training: 0 },
-  large: { monthly: 599.99, setup: 0, training: 0 },
+  large: { monthly: 'custom', setup: 0, training: 0 }, // Custom pricing for large churches
   mega: { monthly: 999.99, setup: 0, training: 0 }
 };
 
@@ -68,8 +68,49 @@ export default function ROICalculator({
     const profile = CHURCH_PROFILES[inputs.churchSize];
     const pricing = PRICING_TIERS[inputs.churchSize];
     
+    // Handle custom pricing case for large churches
+    if (pricing.monthly === 'custom') {
+      // For custom pricing, show a message to contact sales
+      const customResult: ROICalculation = {
+        inputs,
+        savings: {
+          softwareCost: 0,
+          timeValue: 0,
+          efficiencyGains: 0,
+          total: 0
+        },
+        investment: {
+          monthlySubscription: 0,
+          implementationCost: 0,
+          trainingCost: 0,
+          total: 0
+        },
+        roi: {
+          monthly: 0,
+          yearly: 0,
+          paybackPeriod: 0,
+          netValue: 0
+        },
+        insights: [
+          language === 'es' 
+            ? 'Para iglesias grandes, ofrecemos soluciones completamente personalizadas'
+            : 'For large churches, we offer fully customized solutions',
+          language === 'es'
+            ? 'Implementación y capacitación completamente gratuitas'
+            : 'Completely free implementation and training',
+          language === 'es'
+            ? 'Precios adaptados a sus necesidades específicas'
+            : 'Pricing tailored to your specific needs'
+        ]
+      };
+      setCalculation(customResult);
+      onCalculationChange?.(customResult);
+      return;
+    }
+    
     // Calculate savings with realistic percentages
-    const softwareCostSavings = inputs.currentSoftwareCost - pricing.monthly; // Can be negative
+    const monthlySubscriptionCost = pricing.monthly as number;
+    const softwareCostSavings = inputs.currentSoftwareCost - monthlySubscriptionCost; // Can be negative
     
     // Competitive advantage: Most church software charges $500-2000 for setup + training
     const competitorImplementationCost = inputs.churchSize === 'small' ? 800 : 
@@ -89,14 +130,14 @@ export default function ROICalculator({
     const netMonthlySavings = totalMonthlySavings + softwareCostSavings; // Include software cost difference (can be negative)
     
     // Calculate investment - KHESED-TEK advantage: $0 setup and training costs!
-    const monthlyInvestment = pricing.monthly;
-    const totalInvestment = pricing.monthly; // Only first month, no setup costs!
+    const monthlyInvestment = monthlySubscriptionCost;
+    const totalInvestment = monthlySubscriptionCost; // Only first month, no setup costs!
     
     // Realistic ROI calculations based on NET cash flow + implementation savings advantage
     const monthlyNetCashFlow = netMonthlySavings; // Net benefit after all costs
     const yearlyNetCashFlow = monthlyNetCashFlow * 12;
     const firstYearSavings = yearlyNetCashFlow + implementationSavings; // Add one-time implementation savings
-    const totalFirstYearCost = pricing.monthly * 12; // Only subscription cost, no setup!
+    const totalFirstYearCost = monthlySubscriptionCost * 12; // Only subscription cost, no setup!
     
     // ROI = (Net Benefit - Total Investment) / Total Investment * 100
     const yearlyROI = firstYearSavings > 0 ? ((firstYearSavings - totalFirstYearCost) / totalFirstYearCost) * 100 : -100;
@@ -124,7 +165,7 @@ export default function ROICalculator({
         total: netMonthlySavings + (implementationSavings / 12) // Net total including amortized implementation advantage
       },
       investment: {
-        monthlySubscription: pricing.monthly,
+        monthlySubscription: monthlySubscriptionCost,
         implementationCost: pricing.setup, // $0 - our competitive advantage!
         trainingCost: pricing.training, // $0 - our competitive advantage!
         total: totalInvestment
@@ -296,6 +337,53 @@ export default function ROICalculator({
         {/* Results */}
         {showResults && calculation && (
           <div className="space-y-6 pt-6 border-t border-[var(--border)]">
+            {/* Special handling for large churches with custom pricing */}
+            {inputs.churchSize === 'large' ? (
+              <div className="text-center p-8 bg-gradient-to-r from-[var(--brand)]/10 to-[var(--brand2)]/10 rounded-lg border border-[var(--border)]">
+                <h4 className="text-xl font-semibold mb-4">
+                  {language === 'es' ? 'Soluciones Personalizadas para Iglesias Grandes' : 'Custom Solutions for Large Churches'}
+                </h4>
+                <p className="text-[var(--muted)] mb-6">
+                  {language === 'es' 
+                    ? 'Para iglesias grandes con necesidades específicas, ofrecemos soluciones completamente personalizadas con precios adaptados a su organización.'
+                    : 'For large churches with specific needs, we offer fully customized solutions with pricing tailored to your organization.'
+                  }
+                </p>
+                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                  <div className="p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
+                    <h5 className="font-medium mb-2 text-[var(--brand)]">
+                      {language === 'es' ? 'Incluido Siempre' : 'Always Included'}
+                    </h5>
+                    <ul className="text-sm space-y-1 text-left">
+                      <li>○ {language === 'es' ? 'Implementación GRATIS' : 'FREE Implementation'}</li>
+                      <li>○ {language === 'es' ? 'Capacitación completa' : 'Complete Training'}</li>
+                      <li>○ {language === 'es' ? 'Soporte dedicado' : 'Dedicated Support'}</li>
+                      <li>○ {language === 'es' ? 'API personalizada' : 'Custom API'}</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
+                    <h5 className="font-medium mb-2 text-[var(--brand)]">
+                      {language === 'es' ? 'Características Avanzadas' : 'Advanced Features'}
+                    </h5>
+                    <ul className="text-sm space-y-1 text-left">
+                      <li>○ {language === 'es' ? 'Multi-campus' : 'Multi-campus'}</li>
+                      <li>○ {language === 'es' ? 'Integración completa' : 'Full Integration'}</li>
+                      <li>○ {language === 'es' ? 'Cumplimiento GDPR' : 'GDPR Compliance'}</li>
+                      <li>○ {language === 'es' ? 'SLA garantizado' : 'Guaranteed SLA'}</li>
+                    </ul>
+                  </div>
+                </div>
+                <a
+                  href="/contact?plan=large"
+                  className="inline-flex items-center gradient-btn text-black font-semibold px-8 py-3 rounded-lg hover:scale-105 transition"
+                  onClick={() => trackCTAClick('roi_calculator', 'request_custom_quote')}
+                >
+                  {language === 'es' ? 'Solicitar Cotización Personalizada' : 'Request Custom Quote'}
+                </a>
+              </div>
+            ) : (
+              <>
+                {/* Standard ROI Summary for small/medium churches */}
             {/* ROI Summary */}
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
@@ -358,7 +446,12 @@ export default function ROICalculator({
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>{t.monthlySubscription}</span>
-                      <span className="font-medium">{formatCurrency(calculation.investment.monthlySubscription)}/mes</span>
+                      <span className="font-medium">
+                        {calculation.investment.monthlySubscription === 0 ? 
+                          (language === 'es' ? 'Contactar para precio' : 'Contact for pricing') : 
+                          `${formatCurrency(calculation.investment.monthlySubscription)}/mes`
+                        }
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t.implementation}</span>
@@ -370,7 +463,12 @@ export default function ROICalculator({
                     </div>
                     <div className="border-t border-[var(--border)] pt-2 flex justify-between font-semibold">
                       <span>Total inicial</span>
-                      <span className="text-[var(--brand)]">{formatCurrency(calculation.investment.monthlySubscription)} (solo 1er mes)</span>
+                      <span className="text-[var(--brand)]">
+                        {calculation.investment.monthlySubscription === 0 ? 
+                          (language === 'es' ? 'Contactar para precio' : 'Contact for pricing') : 
+                          `${formatCurrency(calculation.investment.monthlySubscription)} (solo 1er mes)`
+                        }
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -402,6 +500,8 @@ export default function ROICalculator({
                 {t.ctaButton}
               </a>
             </div>
+              </>
+            )}
           </div>
         )}
       </div>

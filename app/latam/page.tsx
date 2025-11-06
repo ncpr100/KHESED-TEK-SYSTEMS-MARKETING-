@@ -282,8 +282,8 @@ export default function LatamMarketPage() {
             {
               id: "large",
               name: "Iglesia Grande",
-              price: "$599.99 USD", 
-              period: "/mes",
+              price: "Personalizado", 
+              period: "",
               members: "Miembros ilimitados",
               features: ["Todo lo anterior", "Multi-campus", "API personalizada", "Soporte prioritario"],
               ctaText: "Solicitar demo",
@@ -304,7 +304,7 @@ export default function LatamMarketPage() {
           plans={[
             { id: "small", name: "Iglesia Pequeña", price: "$149.99", period: "/mes", members: "200", features: [] },
             { id: "medium", name: "Iglesia Mediana", price: "$299.99", period: "/mes", members: "1,000", features: [], popular: true },
-            { id: "large", name: "Iglesia Grande", price: "$599.99", period: "/mes", members: "Ilimitado", features: [] }
+            { id: "large", name: "Iglesia Grande", price: "Personalizado", period: "", members: "Ilimitado", features: [] }
           ]}
           language="es"
           className="mt-16"

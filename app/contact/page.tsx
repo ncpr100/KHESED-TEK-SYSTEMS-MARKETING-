@@ -287,7 +287,7 @@ export default function ContactPage() {
                     id="whatsapp" 
                     name="whatsapp" 
                     type="tel" 
-                    placeholder="+57 302 123 4410" 
+                    placeholder={language === 'es' ? '+57 XXX XXX XXXX' : '+57 XXX XXX XXXX'} 
                     onFocus={() => handleFormInteraction('whatsapp')}
                     className="w-full rounded-xl bg-transparent border border-[var(--border)] px-3 py-2 text-[var(--text)] focus:border-[var(--brand)] focus:outline-none transition" 
                   />

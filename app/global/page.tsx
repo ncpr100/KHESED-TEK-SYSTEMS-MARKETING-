@@ -392,8 +392,8 @@ export default function GlobalMarketPage() {
             {
               id: "large",
               name: language === 'es' ? 'Iglesia Grande' : 'Large Church',
-              price: "$599.99 USD", 
-              period: language === 'es' ? '/mes' : '/month',
+              price: language === 'es' ? 'Personalizado' : 'Custom', 
+              period: '',
               members: language === 'es' ? 'Miembros ilimitados' : 'Unlimited members',
               features: language === 'es'
                 ? ["Todo lo anterior", "API personalizada", "Cumplimiento GDPR", "Soporte 24/7"]
@@ -416,7 +416,7 @@ export default function GlobalMarketPage() {
           plans={[
             { id: "small", name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "200", features: [] },
             { id: "medium", name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "1,000", features: [], popular: true },
-            { id: "large", name: language === 'es' ? 'Iglesia Grande' : 'Large Church', price: "$599.99", period: language === 'es' ? '/mes' : '/month', members: "Unlimited", features: [] }
+            { id: "large", name: language === 'es' ? 'Iglesia Grande' : 'Large Church', price: language === 'es' ? 'Personalizado' : 'Custom', period: '', members: "Unlimited", features: [] }
           ]}
           language={language}
           className="mt-16"

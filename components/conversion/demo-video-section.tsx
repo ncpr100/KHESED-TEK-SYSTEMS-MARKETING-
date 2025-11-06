@@ -301,7 +301,12 @@ export default function DemoVideoSection({
           <div className="relative mb-8">
             <div className="text-center mb-6">
               <h3 className="text-xl font-semibold mb-2">{getLocalizedText('productScreenshots')}</h3>
-              <p className="text-[var(--muted)]">Explore our interface through these product images</p>
+              <p className="text-[var(--muted)]">
+                {language === 'es' 
+                  ? 'Explore nuestra interfaz a través de estas capturas reales del producto'
+                  : 'Explore our interface through these product images'
+                }
+              </p>
             </div>
             
             <ImageCarousel 

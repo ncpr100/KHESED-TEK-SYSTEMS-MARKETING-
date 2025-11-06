@@ -287,8 +287,8 @@ export default function USAMarketPage() {
             {
               id: "large",
               name: "Large Church",
-              price: "$599.99", 
-              period: "/month",
+              price: "Custom", 
+              period: "",
               members: "Unlimited members",
               features: ["Enterprise features", "Dedicated support", "Custom integrations", "SLA guarantees"],
               ctaText: "Contact Sales",
@@ -309,7 +309,7 @@ export default function USAMarketPage() {
           plans={[
             { id: "small", name: "Small Church", price: "$149.99", period: "/month", members: "200", features: [] },
             { id: "medium", name: "Medium Church", price: "$299.99", period: "/month", members: "1,000", features: [], popular: true },
-            { id: "large", name: "Large Church", price: "$599.99", period: "/month", members: "Unlimited", features: [] }
+            { id: "large", name: "Large Church", price: "Custom", period: "", members: "Unlimited", features: [] }
           ]}
           language="en"
           className="mt-16"
