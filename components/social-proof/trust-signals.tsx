@@ -231,7 +231,7 @@ export default function TrustSignalsSection({
               </div>
 
               {/* Title */}
-              <div className="font-semibold text-sm mb-1">
+              <div className={`font-semibold text-sm mb-1 ${signal.title === 'Cumplimiento GDPR' || signal.title === 'GDPR Compliant' ? 'text-[var(--brand)]' : ''}`}>
                 {signal.title}
                 {signal.value && (
                   <span className="ml-2 text-[var(--brand)] font-bold">
