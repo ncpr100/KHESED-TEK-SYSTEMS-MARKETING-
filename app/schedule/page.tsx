@@ -116,7 +116,7 @@ export default function SchedulePage() {
                 {/* Calendar Embed Container */}
                 <div className="relative bg-white rounded-lg overflow-hidden shadow-lg">
                   <iframe
-                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2FER0jem7csrMqmNHs5AfEOQc5N8Y8TYgWqOOGLePgxqYQyGX7GFWLBJxYl-RIJnVK8zNTShvH?gv=true"
+                    src="https://calendar.app.google/g9RAUNXxSW6ii6476"
                     style={{ border: 0 }}
                     width="100%"
                     height="600"
@@ -126,9 +126,22 @@ export default function SchedulePage() {
                   ></iframe>
                 </div>
                 
-                <p className="text-xs text-[var(--muted)] text-center">
+                <p className="text-xs text-[var(--muted)] text-center mb-4">
                   Al agendar, recibirá un enlace de videollamada y recordatorios automáticos
                 </p>
+                
+                {/* Direct Booking Button Alternative */}
+                <div className="text-center">
+                  <a
+                    href="https://calendar.app.google/g9RAUNXxSW6ii6476"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition"
+                  >
+                    <span>📅</span>
+                    Abrir Calendario en Nueva Ventana
+                  </a>
+                </div>
               </div>
             </div>
           </div>
