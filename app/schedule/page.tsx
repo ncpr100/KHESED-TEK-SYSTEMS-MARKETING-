@@ -107,50 +107,62 @@ export default function SchedulePage() {
                 </div>
               </div>
 
-              {/* Google Calendar Direct Booking */}
+              {/* Google Calendar Embed - Clean Public View */}
               <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">
                   Seleccione Fecha y Hora
                 </h2>
                 
-                {/* Direct Calendar Booking - No Intermediary Popup */}
+                {/* Professional Calendar Interface */}
                 <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
                   <div className="text-center space-y-4">
-                    <div className="text-6xl mb-4">📅</div>
-                    <h3 className="text-xl font-semibold">Reserva Directa Disponible</h3>
-                    <p className="text-[var(--muted)] mb-6">
-                      Haga clic para acceder directamente al calendario de reservas.<br/>
-                      <span className="text-sm">Sin pasos adicionales • Confirmación inmediata</span>
+                    <div className="text-4xl">📅</div>
+                    <h3 className="text-lg font-semibold">Reserva Directa</h3>
+                    <p className="text-[var(--muted)] text-sm">
+                      Acceso directo al calendario personal • Sin intermediarios
                     </p>
                     
-                    {/* Primary Direct Booking CTA */}
                     <a
                       href="https://calendar.app.google/g9RAUNXxSW6ii6476"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 gradient-btn text-black font-semibold px-8 py-4 rounded-lg hover:scale-105 transition text-lg"
+                      className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition"
                     >
-                      <span className="text-xl">🎯</span>
-                      RESERVAR AHORA
+                      🎯 ABRIR CALENDARIO DE RESERVAS
                     </a>
                     
-                    <div className="text-xs text-[var(--muted)] mt-4">
-                      ✅ Confirmación automática por email<br/>
-                      ✅ Recordatorios antes de la reunión<br/>
-                      ✅ Enlace de Google Meet incluido
+                    <div className="grid grid-cols-3 gap-3 text-xs">
+                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
+                        <div className="text-green-400 mb-1">✅</div>
+                        <div>Confirmación<br/>Automática</div>
+                      </div>
+                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
+                        <div className="text-blue-400 mb-1">📧</div>
+                        <div>Email<br/>Recordatorios</div>
+                      </div>
+                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
+                        <div className="text-[var(--brand)] mb-1">�</div>
+                        <div>Google Meet<br/>Incluido</div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Time Zone & Availability Info */}
-                <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4">
-                  <h4 className="font-semibold mb-2 text-[var(--brand)]">🌍 Información de Disponibilidad</h4>
-                  <div className="text-sm text-[var(--muted)] space-y-1">
-                    <div>⏰ <strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 6:00 PM (COT)</div>
-                    <div>🌎 <strong>Zona Horaria:</strong> Colombia (UTC-5)</div>
-                    <div>⚡ <strong>Respuesta:</strong> Confirmación en menos de 5 minutos</div>
+                {/* Availability Information */}
+                <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4 mt-4">
+                  <h4 className="font-semibold mb-3 text-center text-[var(--brand)]">📍 Información de Disponibilidad</h4>
+                  <div className="text-center text-[var(--muted)] text-sm space-y-1">
+                    <div>🕐 <strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</div>
+                    <div>⏱️ <strong>Duración:</strong> 30-45 minutos</div>
+                    <div>🗣️ <strong>Idiomas:</strong> Español • English</div>
+                    <div>⚡ <strong>Confirmación:</strong> Menos de 5 minutos</div>
                   </div>
                 </div>
+                
+                {/* Alternative Access Method */}
+                <p className="text-xs text-[var(--muted)] text-center">
+                  ✅ Reserva directa sin intermediarios • 📧 Recordatorios automáticos • 💻 Enlace Google Meet incluido
+                </p>
               </div>
             </div>
           </div>

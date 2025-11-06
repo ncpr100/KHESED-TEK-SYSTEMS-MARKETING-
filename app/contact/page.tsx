@@ -66,7 +66,7 @@ export default function ContactPage() {
           whatsapp: '+57 302 123 4410',
           location: 'Barranquilla, Atlántico, Colombia',
           timezone: 'COT (UTC-5)',
-          supportHours: '8 AM - 6 PM COT'
+          supportHours: '9 AM - 6 PM COT'
         };
     }
   };
