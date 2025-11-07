@@ -140,7 +140,7 @@ export default function LatamMarketPage() {
             },
             { 
               pill: 'Predictivo', 
-              title: 'Análisis de Engagement', 
+              title: 'Análisis de Participación', 
               desc: 'IA predice deserción de miembros y sugiere intervenciones. Planning Center solo tiene reportes básicos.',
               icon: '▢',
               advantage: 'vs Planning Center: Predicción avanzada única'

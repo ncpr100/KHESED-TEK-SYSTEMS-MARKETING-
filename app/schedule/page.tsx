@@ -2,6 +2,8 @@
 
 import type { Metadata } from 'next';
 import { useEffect } from 'react';
+import Header from '@/components/marketing/header';
+import Footer from '@/components/marketing/footer';
 
 // Note: Metadata export moved to layout or parent component due to 'use client'
 declare global {
@@ -53,6 +55,8 @@ export default function SchedulePage() {
   }, []);
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <Header />
+      
       {/* Hero Section */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
@@ -250,6 +254,8 @@ export default function SchedulePage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
