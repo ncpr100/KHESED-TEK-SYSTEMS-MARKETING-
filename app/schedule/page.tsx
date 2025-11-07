@@ -1,58 +1,10 @@
 'use client';
 
 import type { Metadata } from 'next';
-import { useEffect } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 
-// Note: Metadata export moved to layout or parent component due to 'use client'
-declare global {
-  interface Window {
-    calendar: {
-      schedulingButton: {
-        load: (config: {
-          url: string;
-          color: string;
-          label: string;
-          target: HTMLElement | null;
-        }) => void;
-      };
-    };
-  }
-}
-
 export default function SchedulePage() {
-  useEffect(() => {
-    // Load Google Calendar CSS
-    const link = document.createElement('link');
-    link.href = 'https://calendar.google.com/calendar/scheduling-button-script.css';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-
-    // Load Google Calendar JavaScript
-    const script = document.createElement('script');
-    script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
-    script.async = true;
-    script.onload = () => {
-      // Initialize the calendar widget
-      const target = document.getElementById('google-calendar-widget');
-      if (window.calendar && target) {
-        window.calendar.schedulingButton.load({
-          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true',
-          color: '#6ee7ff', // Brand color
-          label: 'Programar una cita',
-          target,
-        });
-      }
-    };
-    document.body.appendChild(script);
-
-    // Cleanup function
-    return () => {
-      document.head.removeChild(link);
-      document.body.removeChild(script);
-    };
-  }, []);
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <Header />
@@ -156,7 +108,7 @@ export default function SchedulePage() {
                   Seleccione Fecha y Hora
                 </h2>
                 
-                {/* Google Calendar Embedded Widget - Official */}
+                {/* Universal Calendar Interface */}
                 <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
                   <div className="text-center space-y-4">
                     <div className="text-4xl text-[var(--brand)]">📅</div>
@@ -165,24 +117,15 @@ export default function SchedulePage() {
                       Selecciona tu horario preferido y comencemos
                     </p>
                     
-                    {/* Google Calendar Embedded Widget */}
-                    <div id="google-calendar-widget" className="w-full min-h-[200px] flex items-center justify-center">
-                      <div className="text-[var(--muted)] text-sm">
-                        Preparando calendario...
-                      </div>
-                    </div>
-                    
-                    {/* Alternative Access */}
-                    <div className="mt-4">
-                      <a
-                        href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[var(--brand)] text-sm hover:underline"
-                      >
-                        Ver horarios disponibles →
-                      </a>
-                    </div>
+                    {/* Direct Calendar Access Button */}
+                    <a
+                      href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition text-center"
+                    >
+                      📅 Programar una cita
+                    </a>
                     
                     <div className="grid grid-cols-3 gap-3 text-xs">
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
