@@ -30,8 +30,62 @@ export default function SchedulePage() {
         <div className="max-w-4xl mx-auto">
           <div className="card p-8">
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Calendar Info */}
-              <div className="space-y-6">
+              {/* Calendar Section - Mobile First */}
+              <div className="space-y-4 md:order-2">
+                <h2 className="text-2xl font-semibold">
+                  Seleccione Fecha y Hora
+                </h2>
+                
+                {/* Universal Calendar Interface */}
+                <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
+                  <div className="text-center space-y-4">
+                    <div className="text-4xl text-[var(--brand)]">📅</div>
+                    <h3 className="text-lg font-semibold">Agendar Ahora</h3>
+                    <p className="text-[var(--muted)] text-sm">
+                      Selecciona tu horario preferido y comencemos
+                    </p>
+                    
+                    {/* Direct Calendar Access Button */}
+                    <a
+                      href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition text-center"
+                    >
+                      📅 Programar una cita
+                    </a>
+                    
+                    <div className="grid grid-cols-3 gap-3 text-xs">
+                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
+                        <div className="text-[var(--brand)] mb-1">✅</div>
+                        <div>Confirmación<br/>Automática</div>
+                      </div>
+                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
+                        <div className="text-[var(--brand)] mb-1">📧</div>
+                        <div>Email<br/>Recordatorios</div>
+                      </div>
+                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
+                        <div className="text-[var(--brand)] mb-1">📱</div>
+                        <div>Google Meet<br/>Incluido</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Availability Information */}
+                <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4 mt-4">
+                  <h4 className="font-semibold mb-3 text-center text-[var(--brand)]">📍 Información de Disponibilidad</h4>
+                  <div className="text-center text-[var(--muted)] text-sm space-y-1">
+                    <div><span className="text-[var(--brand)]">🕐</span> <strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</div>
+                    <div><span className="text-[var(--brand)]">⏱️</span> <strong>Duración:</strong> 30-45 minutos</div>
+                    <div><span className="text-[var(--brand)]">🗣️</span> <strong>Idiomas:</strong> Español • English</div>
+                    <div><span className="text-[var(--brand)]">⚡</span> <strong>Confirmación:</strong> Menos de 5 minutos</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Meeting Details - Desktop Second, Mobile Second */}
+              <div className="space-y-6 md:order-1">
                 <h2 className="text-2xl font-semibold mb-4">
                   ¿Qué incluye la videollamada?
                 </h2>
@@ -100,65 +154,6 @@ export default function SchedulePage() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Google Calendar Embed - Clean Public View */}
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold">
-                  Seleccione Fecha y Hora
-                </h2>
-                
-                {/* Universal Calendar Interface */}
-                <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
-                  <div className="text-center space-y-4">
-                    <div className="text-4xl text-[var(--brand)]">📅</div>
-                    <h3 className="text-lg font-semibold">Agendar Ahora</h3>
-                    <p className="text-[var(--muted)] text-sm">
-                      Selecciona tu horario preferido y comencemos
-                    </p>
-                    
-                    {/* Direct Calendar Access Button */}
-                    <a
-                      href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition text-center"
-                    >
-                      📅 Programar una cita
-                    </a>
-                    
-                    <div className="grid grid-cols-3 gap-3 text-xs">
-                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">✅</div>
-                        <div>Confirmación<br/>Automática</div>
-                      </div>
-                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">📧</div>
-                        <div>Email<br/>Recordatorios</div>
-                      </div>
-                      <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">📱</div>
-                        <div>Google Meet<br/>Incluido</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Availability Information */}
-                <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4 mt-4">
-                  <h4 className="font-semibold mb-3 text-center text-[var(--brand)]">📍 Información de Disponibilidad</h4>
-                  <div className="text-center text-[var(--muted)] text-sm space-y-1">
-                    <div><span className="text-[var(--brand)]">🕐</span> <strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</div>
-                    <div><span className="text-[var(--brand)]">⏱️</span> <strong>Duración:</strong> 30-45 minutos</div>
-                    <div><span className="text-[var(--brand)]">🗣️</span> <strong>Idiomas:</strong> Español • English</div>
-                    <div><span className="text-[var(--brand)]">⚡</span> <strong>Confirmación:</strong> Menos de 5 minutos</div>
-                  </div>
-                </div>
-                
-                {/* Alternative Access Method */}
-                <p className="text-xs text-[var(--muted)] text-center">
-                  <span className="text-[var(--brand)]">✅</span> Reserva directa sin intermediarios • <span className="text-[var(--brand)]">📧</span> Recordatorios automáticos • <span className="text-[var(--brand)]">💻</span> Enlace Google Meet incluido
-                </p>
               </div>
             </div>
           </div>
