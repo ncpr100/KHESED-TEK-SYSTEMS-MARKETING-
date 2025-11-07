@@ -160,19 +160,19 @@ export default function SchedulePage() {
                 <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
                   <div className="text-center space-y-4">
                     <div className="text-4xl text-[var(--brand)]">📅</div>
-                    <h3 className="text-lg font-semibold">Reserva Directa</h3>
+                    <h3 className="text-lg font-semibold">Agendar Ahora</h3>
                     <p className="text-[var(--muted)] text-sm">
-                      Widget oficial de Google Calendar • Experiencia integrada
+                      Selecciona tu horario preferido y comencemos
                     </p>
                     
                     {/* Google Calendar Embedded Widget */}
                     <div id="google-calendar-widget" className="w-full min-h-[200px] flex items-center justify-center">
                       <div className="text-[var(--muted)] text-sm">
-                        Cargando calendario de reservas...
+                        Preparando calendario...
                       </div>
                     </div>
                     
-                    {/* Fallback Link */}
+                    {/* Alternative Access */}
                     <div className="mt-4">
                       <a
                         href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
@@ -180,7 +180,7 @@ export default function SchedulePage() {
                         rel="noopener noreferrer"
                         className="text-[var(--brand)] text-sm hover:underline"
                       >
-                        Abrir en nueva ventana →
+                        Ver horarios disponibles →
                       </a>
                     </div>
                     
