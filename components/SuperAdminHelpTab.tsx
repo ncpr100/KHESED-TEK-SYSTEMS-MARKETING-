@@ -3,6 +3,60 @@
 import React, { useState, useEffect } from 'react';
 import { MaintenanceTab, EmergencyTab } from './AdminTabs';
 
+// Icon component for outline icons
+const OutlineIcon = ({ name, className = "w-5 h-5" }: { name: string; className?: string }) => {
+  const icons: Record<string, JSX.Element> = {
+    'bar-chart': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <line x1="12" y1="20" x2="12" y2="10"></line>
+        <line x1="18" y1="20" x2="18" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="16"></line>
+      </svg>
+    ),
+    'activity': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+      </svg>
+    ),
+    'settings': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+    ),
+    'server': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <rect x="2" y="3" width="20" height="4" rx="1" ry="1"></rect>
+        <rect x="2" y="9" width="20" height="4" rx="1" ry="1"></rect>
+        <rect x="2" y="15" width="20" height="4" rx="1" ry="1"></rect>
+        <line x1="6" y1="5" x2="6.01" y2="5"></line>
+        <line x1="6" y1="11" x2="6.01" y2="11"></line>
+        <line x1="6" y1="17" x2="6.01" y2="17"></line>
+      </svg>
+    ),
+    'trending-up': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <polyline points="23,6 13.5,15.5 8.5,10.5 1,18"></polyline>
+        <polyline points="17,6 23,6 23,12"></polyline>
+      </svg>
+    ),
+    'tool': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+      </svg>
+    ),
+    'alert-triangle': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+        <path d="M12 9v4"></path>
+        <path d="m12 17 .01 0"></path>
+      </svg>
+    )
+  };
+
+  return icons[name] || null;
+};
+
 interface HealthStatus {
   timestamp: string;
   status: string;
@@ -98,13 +152,13 @@ export default function SuperAdminHelpTab() {
   const [error, setError] = useState<string | null>(null);
 
   const tabs = [
-    { id: 'dashboard', label: '📊 Dashboard', icon: '📊' },
-    { id: 'health', label: '🏥 System Health', icon: '🏥' },
-    { id: 'troubleshooting', label: '🔧 Troubleshooting', icon: '🔧' },
-    { id: 'api', label: '📡 API Reference', icon: '📡' },
-    { id: 'monitoring', label: '📈 Monitoring', icon: '📈' },
-    { id: 'maintenance', label: '⚙️ Maintenance', icon: '⚙️' },
-    { id: 'emergency', label: '🚨 Emergency', icon: '🚨' }
+    { id: 'dashboard', label: 'Dashboard', icon: 'bar-chart' },
+    { id: 'health', label: 'System Health', icon: 'activity' },
+    { id: 'troubleshooting', label: 'Troubleshooting', icon: 'settings' },
+    { id: 'api', label: 'API Reference', icon: 'server' },
+    { id: 'monitoring', label: 'Monitoring', icon: 'trending-up' },
+    { id: 'maintenance', label: 'Maintenance', icon: 'tool' },
+    { id: 'emergency', label: 'Emergency', icon: 'alert-triangle' }
   ];
 
   const fetchData = async (action: string) => {
@@ -167,8 +221,9 @@ export default function SuperAdminHelpTab() {
       <div className="bg-white dark:bg-gray-800 shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-6">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-              🔧 Super Admin Help Center
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+              <OutlineIcon name="settings" className="w-8 h-8 text-[var(--brand)]" />
+              Super Admin Help Center
             </h1>
             <p className="mt-2 text-gray-600 dark:text-gray-300">
               Comprehensive system administration, troubleshooting, and monitoring tools
@@ -185,13 +240,15 @@ export default function SuperAdminHelpTab() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center ${
                   activeTab === tab.id
                     ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200'
                 }`}
               >
-                <span className="mr-2">{tab.icon}</span>
+                <span className="mr-2">
+                  <OutlineIcon name={tab.icon} className="w-4 h-4" />
+                </span>
                 {tab.label}
               </button>
             ))}

@@ -199,7 +199,12 @@ export default function ContactPage() {
           {submitted && (
             <div className="mb-6 p-6 rounded-xl bg-green-900/20 border border-green-700 text-green-200">
               <div className="flex items-start gap-3 mb-4">
-                <span className="text-xl">✓</span>
+                {/* Outline Check Icon */}
+                <div className="text-green-200 w-6 h-6 mt-0.5">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20,6 9,17 4,12"></polyline>
+                  </svg>
+                </div>
                 <div><strong>¡Gracias!</strong> Hemos recibido tu solicitud. Te contactaremos pronto.</div>
               </div>
               
@@ -213,7 +218,13 @@ export default function ContactPage() {
                     href="/schedule"
                     className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded-lg transition text-sm"
                   >
-                    <span>📅</span>
+                    {/* Outline Calendar Icon */}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
                     Agendar Videollamada Personal
                   </a>
                   <a
@@ -222,7 +233,10 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border border-green-600 hover:bg-green-600/10 text-green-200 font-semibold px-4 py-2 rounded-lg transition text-sm"
                   >
-                    <span>📱</span>
+                    {/* Outline Phone Icon */}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
                     WhatsApp Directo
                   </a>
                 </div>
@@ -232,7 +246,14 @@ export default function ContactPage() {
 
           {error && (
             <div className="mb-4 p-4 rounded-xl bg-red-900/20 border border-red-700 text-red-200 flex items-start gap-3">
-              <span className="text-xl">⚠</span>
+              {/* Outline Alert Triangle Icon */}
+              <div className="text-red-200 w-6 h-6 mt-0.5 flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                  <path d="M12 9v4"></path>
+                  <path d="m12 17 .01 0"></path>
+                </svg>
+              </div>
               <div>{error}</div>
             </div>
           )}

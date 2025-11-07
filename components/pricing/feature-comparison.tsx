@@ -2,7 +2,57 @@
 'use client';
 
 import { useState } from 'react';
-import { PricingPlan } from '@/types/pricing';
+import type { PricingPlan } from '@/types/pricing';
+
+// Icon component for outline icons
+const OutlineIcon = ({ name, className = "w-4 h-4" }: { name: string; className?: string }) => {
+  const icons: Record<string, JSX.Element> = {
+    'zap': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+      </svg>
+    ),
+    'message-circle': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
+      </svg>
+    ),
+    'headphones': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+      </svg>
+    ),
+    'rocket': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+      </svg>
+    ),
+    'bar-chart': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <line x1="12" y1="20" x2="12" y2="10"></line>
+        <line x1="18" y1="20" x2="18" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="16"></line>
+      </svg>
+    ),
+    'video': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+      </svg>
+    ),
+    'shield': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </svg>
+    )
+  };
+
+  return icons[name] || null;
+};
 
 interface FeatureComparison {
   feature: string;
@@ -113,13 +163,13 @@ const FEATURE_COMPARISONS: FeatureComparison[] = [
 ];
 
 const CATEGORIES = {
-  core: { name: 'Funciones Básicas', icon: '⚡' },
-  communication: { name: 'Comunicación', icon: '💬' },
-  support: { name: 'Soporte', icon: '🎧' },
-  advanced: { name: 'Funciones Avanzadas', icon: '🚀' },
-  analytics: { name: 'Reportes y Analytics', icon: '📊' },
-  media: { name: 'Multimedia', icon: '🎥' },
-  security: { name: 'Seguridad', icon: '🔒' }
+  core: { name: 'Funciones Básicas', icon: 'zap' },
+  communication: { name: 'Comunicación', icon: 'message-circle' },
+  support: { name: 'Soporte', icon: 'headphones' },
+  advanced: { name: 'Funciones Avanzadas', icon: 'rocket' },
+  analytics: { name: 'Reportes y Analytics', icon: 'bar-chart' },
+  media: { name: 'Multimedia', icon: 'video' },
+  security: { name: 'Seguridad', icon: 'shield' }
 };
 
 export default function FeatureComparisonTable({ 
@@ -162,13 +212,22 @@ export default function FeatureComparisonTable({
       <div className="flex flex-wrap gap-2 mb-6 justify-center">
         <button
           onClick={() => setShowAllFeatures(!showAllFeatures)}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
             showAllFeatures 
               ? 'bg-[var(--brand)] text-black' 
               : 'border border-[var(--border)] hover:border-[var(--brand)]'
           }`}
         >
-          📋 Todas las funciones
+          {/* Outline List Icon */}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          Todas las funciones
         </button>
         
         {Object.entries(CATEGORIES).map(([key, category]) => (
@@ -178,13 +237,14 @@ export default function FeatureComparisonTable({
               setExpandedCategory(key);
               setShowAllFeatures(false);
             }}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
               expandedCategory === key && !showAllFeatures
                 ? 'bg-[var(--brand)] text-black' 
                 : 'border border-[var(--border)] hover:border-[var(--brand)]'
             }`}
           >
-            {category.icon} {category.name}
+            <OutlineIcon name={category.icon} className="w-4 h-4" />
+            {category.name}
           </button>
         ))}
       </div>

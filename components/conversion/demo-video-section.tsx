@@ -143,9 +143,9 @@ export default function DemoVideoSection({
   const getLocalizedText = (key: 'screenshots' | 'productScreenshots' | 'videoDemo') => {
     const texts = {
       'screenshots': {
-        'es': '🖼️ Capturas',
-        'en': '🖼️ Screenshots', 
-        'pt': '🖼️ Capturas'
+        'es': 'Capturas',
+        'en': 'Screenshots', 
+        'pt': 'Capturas'
       },
       'productScreenshots': {
         'es': 'Capturas del Producto',
@@ -153,9 +153,9 @@ export default function DemoVideoSection({
         'pt': 'Capturas do Produto'
       },
       'videoDemo': {
-        'es': '🎬 Historia del Fundador',
-        'en': '🎬 Founder\'s Story',
-        'pt': '🎬 História do Fundador'
+        'es': 'Historia del Fundador',
+        'en': 'Founder\'s Story',
+        'pt': 'História do Fundador'
       }
     };
     return texts[key]?.[language as keyof typeof texts[typeof key]] || texts[key]?.['en'] || key;
@@ -290,7 +290,10 @@ export default function DemoVideoSection({
                 className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
                 onClick={() => trackCTAClick('demo_video', 'request_live_demo')}
               >
-                <span>📧</span>
+                {/* Outline Send Icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                  <path d="m4 4 7.07 17 2.51-7.39L21 11.07z"></path>
+                </svg>
                 {t.scheduleLive}
               </a>
             </div>

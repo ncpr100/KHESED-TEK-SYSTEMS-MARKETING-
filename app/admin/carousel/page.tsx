@@ -30,7 +30,7 @@ export default function AdminCarouselPage() {
       const result = await response.json();
       
       if (response.ok) {
-        setUploadStatus(`✅ Image uploaded: ${result.filename}`);
+        setUploadStatus(`✓ Image uploaded: ${result.filename}`);
         setNewImage({ ...newImage, filename: result.filename });
       } else {
         setUploadStatus(`❌ Error: ${result.error}`);
@@ -54,7 +54,14 @@ export default function AdminCarouselPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 gradient-text">🔧 Super Admin - Carousel Manager</h1>
+        <h1 className="text-3xl font-bold mb-8 gradient-text flex items-center gap-2">
+          {/* Outline Settings Icon */}
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Super Admin - Carousel Manager
+        </h1>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Upload Section */}
@@ -140,7 +147,18 @@ export default function AdminCarouselPage() {
         {/* Generated Code */}
         {generateConfigCode() && (
           <div className="mt-8 card p-6">
-            <h2 className="text-xl font-semibold mb-4">📋 Generated Configuration Code</h2>
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              {/* Outline List Icon */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              Generated Configuration Code
+            </h2>
             <p className="text-[var(--muted)] mb-4">
               Copy this code and add it to <code>/lib/product-screenshots.ts</code> in the appropriate market array:
             </p>

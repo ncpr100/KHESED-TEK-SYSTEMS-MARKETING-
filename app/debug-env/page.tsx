@@ -44,7 +44,14 @@ export default function DebugEnvPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">🔧 Environment Variables Debug</h1>
+        <h1 className="text-3xl font-bold mb-8 flex items-center gap-2">
+          {/* Outline Settings Icon */}
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Environment Variables Debug
+        </h1>
         
         <div className="grid md:grid-cols-2 gap-8">
           {/* Client-side Environment */}
@@ -69,7 +76,14 @@ export default function DebugEnvPage() {
         </div>
 
         <div className="mt-8 card p-6">
-          <h2 className="text-xl font-semibold mb-4">🎬 Video URL Test</h2>
+          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            {/* Outline Video Icon */}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+            Video URL Test
+          </h2>
           <div className="space-y-4">
             <div>
               <h3 className="font-medium">LATAM Demo Video:</h3>
