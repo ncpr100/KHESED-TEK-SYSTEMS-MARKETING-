@@ -39,7 +39,15 @@ export default function SchedulePage() {
                 {/* Universal Calendar Interface */}
                 <div className="relative bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg border border-[var(--border)] p-6">
                   <div className="text-center space-y-4">
-                    <div className="text-4xl text-[var(--brand)]">📅</div>
+                    {/* Outline Calendar Icon */}
+                    <div className="text-[var(--brand)] mx-auto w-12 h-12 flex items-center justify-center">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                    </div>
                     <h3 className="text-lg font-semibold">Agendar Ahora</h3>
                     <p className="text-[var(--muted)] text-sm">
                       Selecciona tu horario preferido y comencemos
@@ -50,22 +58,44 @@ export default function SchedulePage() {
                       href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition text-center"
+                      className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition text-center flex items-center justify-center gap-2"
                     >
-                      📅 Programar una cita
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                      Programar una cita
                     </a>
                     
                     <div className="grid grid-cols-3 gap-3 text-xs">
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">✅</div>
+                        {/* Outline Check Icon */}
+                        <div className="text-[var(--brand)] mb-1 w-5 h-5 mx-auto">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                          </svg>
+                        </div>
                         <div>Confirmación<br/>Automática</div>
                       </div>
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">📧</div>
+                        {/* Outline Mail Icon */}
+                        <div className="text-[var(--brand)] mb-1 w-5 h-5 mx-auto">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m4 4 7.07 17 2.51-7.39L21 11.07z"></path>
+                          </svg>
+                        </div>
                         <div>Email<br/>Recordatorios</div>
                       </div>
                       <div className="bg-[var(--bg)] rounded-lg p-3 border border-[var(--border)]">
-                        <div className="text-[var(--brand)] mb-1">📱</div>
+                        {/* Outline Video Icon */}
+                        <div className="text-[var(--brand)] mb-1 w-5 h-5 mx-auto">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                          </svg>
+                        </div>
                         <div>Google Meet<br/>Incluido</div>
                       </div>
                     </div>
@@ -74,12 +104,50 @@ export default function SchedulePage() {
                 
                 {/* Availability Information */}
                 <div className="bg-[var(--bg)] rounded-lg border border-[var(--border)] p-4 mt-4">
-                  <h4 className="font-semibold mb-3 text-center text-[var(--brand)]">📍 Información de Disponibilidad</h4>
+                  <h4 className="font-semibold mb-3 text-center text-[var(--brand)] flex items-center justify-center gap-2">
+                    {/* Outline Map Pin Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Información de Disponibilidad
+                  </h4>
                   <div className="text-center text-[var(--muted)] text-sm space-y-1">
-                    <div><span className="text-[var(--brand)]">🕐</span> <strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</div>
-                    <div><span className="text-[var(--brand)]">⏱️</span> <strong>Duración:</strong> 30-45 minutos</div>
-                    <div><span className="text-[var(--brand)]">🗣️</span> <strong>Idiomas:</strong> Español • English</div>
-                    <div><span className="text-[var(--brand)]">⚡</span> <strong>Confirmación:</strong> Menos de 5 minutos</div>
+                    <div className="flex items-center justify-center gap-2">
+                      {/* Outline Clock Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12,6 12,12 16,14"></polyline>
+                      </svg>
+                      <span><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM (COT)</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      {/* Outline Timer Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12,6 12,12 15,15"></polyline>
+                      </svg>
+                      <span><strong>Duración:</strong> 30-45 minutos</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      {/* Outline Languages Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <path d="m5 8 6 6"></path>
+                        <path d="m4 14 6-6 2-3"></path>
+                        <path d="M2 5h12"></path>
+                        <path d="M7 2h1"></path>
+                        <path d="m22 22-5-10-5 10"></path>
+                        <path d="M14 18h6"></path>
+                      </svg>
+                      <span><strong>Idiomas:</strong> Español • English</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      {/* Outline Zap Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                      </svg>
+                      <span><strong>Confirmación:</strong> Menos de 5 minutos</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -92,7 +160,14 @@ export default function SchedulePage() {
                 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <span className="text-[var(--brand)] text-xl">🎬</span>
+                    {/* Outline Film Icon */}
+                    <div className="text-[var(--brand)] text-xl mt-1 w-6 h-6">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
+                    </div>
                     <div>
                       <h3 className="font-semibold">Historia Personal</h3>
                       <p className="text-[var(--muted)] text-sm">
@@ -102,7 +177,19 @@ export default function SchedulePage() {
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <span className="text-[var(--brand)] text-xl">🏛️</span>
+                    {/* Outline Building Icon */}
+                    <div className="text-[var(--brand)] text-xl mt-1 w-6 h-6">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="m3 21 18 0"></path>
+                        <path d="m5 21 0-16"></path>
+                        <path d="m19 21 0-16"></path>
+                        <path d="m9 21 0-16"></path>
+                        <path d="M5 5l14 0"></path>
+                        <path d="M5 9l14 0"></path>
+                        <path d="M5 13l14 0"></path>
+                        <path d="M5 17l14 0"></path>
+                      </svg>
+                    </div>
                     <div>
                       <h3 className="font-semibold">Análisis de Necesidades</h3>
                       <p className="text-[var(--muted)] text-sm">
@@ -112,7 +199,14 @@ export default function SchedulePage() {
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <span className="text-[var(--brand)] text-xl">💡</span>
+                    {/* Outline Lightbulb Icon */}
+                    <div className="text-[var(--brand)] text-xl mt-1 w-6 h-6">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                        <path d="M9 18h6"></path>
+                        <path d="M10 22h4"></path>
+                      </svg>
+                    </div>
                     <div>
                       <h3 className="font-semibold">Demo Personalizada</h3>
                       <p className="text-[var(--muted)] text-sm">
@@ -122,7 +216,14 @@ export default function SchedulePage() {
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <span className="text-[var(--brand)] text-xl">🤝</span>
+                    {/* Outline Handshake Icon */}
+                    <div className="text-[var(--brand)] text-xl mt-1 w-6 h-6">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"></path>
+                        <path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"></path>
+                        <path d="m2 13 6 6 3-3"></path>
+                      </svg>
+                    </div>
                     <div>
                       <h3 className="font-semibold">Próximos Pasos</h3>
                       <p className="text-[var(--muted)] text-sm">
@@ -137,19 +238,41 @@ export default function SchedulePage() {
                   <h3 className="font-semibold mb-3">Detalles de la Reunión</h3>
                   <div className="space-y-2 text-sm text-[var(--muted)]">
                     <div className="flex items-center gap-2">
-                      <span>⏱️</span>
+                      {/* Outline Timer Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12,6 12,12 15,15"></polyline>
+                      </svg>
                       <span>Duración: 30-45 minutos</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span>🌍</span>
+                      {/* Outline Globe Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                      </svg>
                       <span>Timezone: Colombia (COT)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span>💻</span>
+                      {/* Outline Monitor Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                       <span>Platform: Google Meet / Zoom</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span>🗣️</span>
+                      {/* Outline Languages Icon */}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
+                        <path d="m5 8 6 6"></path>
+                        <path d="m4 14 6-6 2-3"></path>
+                        <path d="M2 5h12"></path>
+                        <path d="M7 2h1"></path>
+                        <path d="m22 22-5-10-5 10"></path>
+                        <path d="M14 18h6"></path>
+                      </svg>
                       <span>Idioma: Español / English</span>
                     </div>
                   </div>
@@ -176,17 +299,23 @@ export default function SchedulePage() {
               href="https://wa.me/573021234410?text=Hola,%20me%20gustaría%20agendar%20una%20videollamada%20para%20conocer%20KHESED-TEK"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+              className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition"
             >
-              <span>📱</span>
+              {/* Outline Phone Icon */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
               WhatsApp Directo
             </a>
             
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
+              className="inline-flex items-center justify-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
             >
-              <span>📧</span>
+              {/* Outline Mail Icon */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m4 4 7.07 17 2.51-7.39L21 11.07z"></path>
+              </svg>
               Formulario de Contacto
             </a>
           </div>
