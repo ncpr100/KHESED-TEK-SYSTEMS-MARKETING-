@@ -1,13 +1,14 @@
 'use client';
 
 import { TrustSignal, TrustSignalsProps } from '@/types/testimonials';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 // Trust signals data
 const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-latam',
     type: 'security',
-    icon: '○',
+    icon: 'shield',
     title: 'SSL Seguro',
     description: 'Encriptación de datos de nivel bancario',
     value: '256-bit',
@@ -16,7 +17,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-usa',
     type: 'security',
-    icon: '○',
+    icon: 'shield',
     title: 'SSL Secure',
     description: 'Bank-level data encryption',
     value: '256-bit',
@@ -25,7 +26,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'gdpr-compliance-latam',
     type: 'compliance',
-    icon: '○',
+    icon: 'shield',
     title: 'Cumplimiento GDPR',
     description: 'Cumplimiento total de protección de datos',
     market: 'LATAM'
@@ -33,7 +34,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'gdpr-compliance-global',
     type: 'compliance',
-    icon: '○',
+    icon: 'shield',
     title: 'GDPR Compliant',
     description: 'Full data protection compliance',
     market: 'GLOBAL'
@@ -41,7 +42,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'iso-certification',
     type: 'certification',
-    icon: '○',
+    icon: 'diamond',
     title: 'ISO 27001',
     description: 'Certificación de seguridad internacional',
     verificationUrl: '#',
@@ -50,7 +51,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'soc2-compliance',
     type: 'compliance',
-    icon: '○',
+    icon: 'diamond',
     title: 'SOC 2 Type II',
     description: 'Auditoría de seguridad independiente',
     market: 'USA'
@@ -58,7 +59,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'uptime-guarantee-latam',
     type: 'uptime',
-    icon: '○',
+    icon: 'circle',
     title: 'Disponibilidad',
     description: 'Disponibilidad garantizada',
     value: '99.9%',
@@ -67,7 +68,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'uptime-guarantee-usa',
     type: 'uptime',
-    icon: '○',
+    icon: 'circle',
     title: 'Uptime',
     description: 'Guaranteed availability',
     value: '99.9%',
@@ -76,7 +77,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'uptime-guarantee-global',
     type: 'uptime',
-    icon: '○',
+    icon: 'circle',
     title: 'Uptime',
     description: 'Guaranteed worldwide availability',
     value: '99.9%',
@@ -85,7 +86,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count-latam',
     type: 'clients',
-    icon: '○',
+    icon: 'users',
     title: 'Iglesias',
     description: 'Confían en nuestra plataforma',
     value: '200+',
@@ -94,7 +95,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count-usa',
     type: 'clients',
-    icon: '○',
+    icon: 'users',
     title: 'Churches',
     description: 'Trust our platform',
     value: '200+',
@@ -226,8 +227,8 @@ export default function TrustSignalsSection({
               }}
             >
               {/* Icon */}
-              <div className="text-2xl mb-2">
-                {signal.icon}
+              <div className="text-2xl mb-2 text-[var(--brand)]">
+                <OutlineIcon name={signal.icon} className="w-8 h-8 mx-auto" />
               </div>
 
               {/* Title */}

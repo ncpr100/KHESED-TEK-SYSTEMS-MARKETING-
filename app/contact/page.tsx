@@ -555,7 +555,7 @@ export default function ContactPage() {
           },
           { 
             pill: language === 'en' ? 'Design' : 'Diseño', 
-            title: language === 'en' ? 'Elegant in black' : 'Elegancia en negro', 
+            title: language === 'en' ? 'Elegance and precision' : 'Elegancia y precisión', 
             desc: language === 'en' 
               ? 'Sophisticated professional quality that elevates your church\'s digital presence and reflects ministry excellence.' 
               : 'Calidad profesional sofisticada que eleva la presencia digital de tu iglesia y refleja la excelencia ministerial.' 

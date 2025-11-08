@@ -41,8 +41,9 @@ export default function USAMarketPage() {
         }}
       >
         <div className="max-w-4xl mx-auto">
-          <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4">
-            ▣ USA Market - Enterprise Church Solutions
+          <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4 flex items-center justify-center gap-2">
+            <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+            <span>USA Market - Enterprise Church Solutions</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {valuePropText}
@@ -417,7 +418,12 @@ export default function USAMarketPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {[
             {
-              category: "▣ Multi-Campus Operations",
+              category: (
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <span>Multi-Campus Operations</span>
+                </div>
+              ),
               features: [
                 "Centralized management across all locations",
                 "Location-specific reporting and analytics", 
@@ -435,7 +441,12 @@ export default function USAMarketPage() {
               ]
             },
             {
-              category: "▢ Advanced Analytics",
+              category: (
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <span>Advanced Analytics</span>
+                </div>
+              ),
               features: [
                 "Executive dashboard with KPIs",
                 "Predictive attendance modeling",
@@ -526,17 +537,38 @@ export default function USAMarketPage() {
         
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">○ USA Sales Team</h3>
+            <h3 className="font-semibold mb-4 flex items-center">
+              <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+              <span>USA Sales Team</span>
+            </h3>
             <div className="space-y-2 text-sm">
-              <div>○ contact@khesed-tek-systems.org</div>
-              <div>○ +1 (555) 123-4567</div>
-              <div>○ Miami, FL (Expansion Office)</div>
-              <div>○ Monday-Friday 9AM-6PM EST</div>
-              <div>○ Nationwide support coverage</div>
+              <div className="flex items-center">
+                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>contact@khesed-tek-systems.org</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>Miami, FL (Expansion Office)</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>Monday-Friday 9AM-6PM EST</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>Nationwide support coverage</span>
+              </div>
             </div>
           </div>
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">◆ Enterprise Demo</h3>
+            <h3 className="font-semibold mb-4 flex items-center">
+              <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400 mr-2" />
+              <span>Enterprise Demo</span>
+            </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div>✓ Customized platform demonstration</div>
               <div>✓ Technical requirements assessment</div>

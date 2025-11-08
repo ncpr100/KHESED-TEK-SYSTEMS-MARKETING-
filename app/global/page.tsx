@@ -223,7 +223,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'Automatización avanzada con triggers culturales. TouchPoint cuesta $20K+; nosotros lo incluimos estándar.'
                 : 'Advanced automation with cultural triggers. TouchPoint costs $20K+; we include it standard.',
-              icon: '○',
+              icon: 'circle',
               advantage: language === 'es'
                 ? 'vs TouchPoint: 70% menos costo con características superiores'
                 : 'vs TouchPoint: 70% less cost with superior features'
@@ -234,7 +234,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'GDPR, LGPD, SOX automático por región. Aplos solo contabilidad; nosotros cumplimiento completo.'
                 : 'GDPR, LGPD, SOX automatic by region. Aplos only accounting; we provide complete compliance.',
-              icon: '○',
+              icon: 'circle',
               advantage: language === 'es'
                 ? 'vs Aplos: Cumplimiento completo vs solo contabilidad'
                 : 'vs Aplos: Complete compliance vs accounting only'
@@ -253,7 +253,7 @@ export default function GlobalMarketPage() {
         ].map((f) => (
           <div className="card p-6 hover:-translate-y-1 transition group" key={f.title}>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-2xl">{f.icon}</span>
+              <OutlineIcon name={f.icon} className="w-6 h-6 text-[var(--brand)]" />
               <span
                 className="text-xs uppercase tracking-wide px-2 py-1 rounded-full border inline-block"
                 style={{ background: '#1f1f23', borderColor: 'var(--border)', color: 'var(--muted)' }}
@@ -263,8 +263,9 @@ export default function GlobalMarketPage() {
             </div>
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
-            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ○ {f.advantage}
+            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition flex items-center">
+              <OutlineIcon name="dot" className="w-3 h-3 text-cyan-400 mr-1" />
+              <span>{f.advantage}</span>
             </div>
           </div>
         ))}

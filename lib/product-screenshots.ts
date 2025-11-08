@@ -47,9 +47,9 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
   },
   {
     src: '/images/product-screenshots/insights.png',
-    alt: 'Insights Pastorales Real',
+    alt: 'Perspectivas Pastorales Real',
     title: '',
-    description: 'Analytics pastorales con insights inteligentes para crecimiento'
+    description: 'Analíticas pastorales con perspectivas inteligentes para crecimiento'
   }
 ];
 
