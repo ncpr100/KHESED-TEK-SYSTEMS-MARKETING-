@@ -13,6 +13,7 @@ import TestimonialsSection from '@/components/social-proof/testimonials-section'
 import TrustSignalsSection, { TrustBadges } from '@/components/social-proof/trust-signals';
 import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 export default function LatamMarketPage() {
   const { market, language } = useGlobalMarket();
@@ -67,11 +68,11 @@ export default function LatamMarketPage() {
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
               onClick={() => trackCTAClick('latam_whatsapp', 'WhatsApp directo')}
             >
-              ▣ WhatsApp directo
+              <OutlineIcon name="square" className="w-4 h-4 text-[var(--brand)]" /> WhatsApp directo
             </a>
           </div>
-          <div className="text-sm text-[var(--muted)]">
-            ● Soporte en horario colombiano (COT) • ◆ Atención en español • ▣ Especialistas en iglesias
+          <div className="text-sm text-[var(--muted)] flex items-center gap-1">
+            <OutlineIcon name="circle" className="w-4 h-4 text-[var(--brand)]" /> Soporte en horario colombiano (COT) • <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--brand)]" /> Atención en español • <OutlineIcon name="square" className="w-4 h-4 text-[var(--brand)]" /> Especialistas en iglesias
           </div>
         </div>
       </section>
@@ -97,7 +98,8 @@ export default function LatamMarketPage() {
             Capacidades culturalmente adaptadas que ningún competidor internacional ofrece
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
-            ◆ Superando a Planning Center, Breeze y ChurchTrac en el mercado latino
+            <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+            <span>Superando a Planning Center, Breeze y ChurchTrac en el mercado latino</span>
           </div>
         </div>
 
@@ -107,48 +109,48 @@ export default function LatamMarketPage() {
               pill: 'Exclusivo', 
               title: 'WhatsApp Business Nativo', 
               desc: 'Primer ChMS con WhatsApp Business completamente integrado. Planning Center, Breeze y otros no tienen esta funcionalidad esencial para Latinoamérica.',
-              icon: '◆',
+              icon: 'diamond',
               advantage: 'vs Todos: Único con WhatsApp Business nativo'
             },
             { 
               pill: 'Cultural', 
               title: 'Métodos de Pago Colombianos', 
               desc: 'Nequi, PSE, transferencias bancarias locales incluidas. Competidores internacionales solo ofrecen Stripe/PayPal.',
-              icon: '◉',
+              icon: 'circle',
               advantage: 'vs Internacionales: Pagos locales 100% integrados'
             },
             { 
               pill: 'IA Avanzada', 
               title: 'Emparejamiento Inteligente', 
               desc: 'IA empareja voluntarios con ministerios basado en dones espirituales. ChurchTrac y Breeze solo tienen programación básica.',
-              icon: '⚙',
+              icon: 'square',
               advantage: 'vs ChurchTrac/Breeze: IA única para voluntarios'
             },
             { 
               pill: 'Automatización', 
               title: 'Motor de Oración Automatizado', 
               desc: 'Sistema único de seguimiento pastoral con IA para análisis emocional. Ningún competidor tiene automatización pastoral.',
-              icon: '◗',
+              icon: 'circle',
               advantage: 'vs Todos: Automatización pastoral exclusiva'
             },
             { 
               pill: 'Cultural', 
               title: 'Adaptación Cultural IA', 
               desc: 'Sistema que adapta automáticamente la interfaz al contexto cultural latino. Competidores usan traducciones básicas.',
-              icon: '◉',
+              icon: 'circle',
               advantage: 'vs Todos: Adaptación cultural inteligente'
             },
             { 
               pill: 'Predictivo', 
               title: 'Análisis de Participación', 
               desc: 'IA predice deserción de miembros y sugiere intervenciones. Planning Center solo tiene reportes básicos.',
-              icon: '▢',
+              icon: 'square',
               advantage: 'vs Planning Center: Predicción avanzada única'
             },
         ].map((f) => (
           <div className="card p-6 hover:-translate-y-1 transition group" key={f.title}>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-2xl">{f.icon}</span>
+              <OutlineIcon name={f.icon} className="w-6 h-6 text-[var(--brand)]" />
               <span
                 className="text-xs uppercase tracking-wide px-2 py-1 rounded-full border inline-block"
                 style={{ background: '#1f1f23', borderColor: 'var(--border)', color: 'var(--muted)' }}
@@ -158,8 +160,8 @@ export default function LatamMarketPage() {
             </div>
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
-            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ○ {f.advantage}
+            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
+              <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" /> {f.advantage}
             </div>
           </div>
         ))}
@@ -168,7 +170,9 @@ export default function LatamMarketPage() {
         {/* Competitive Advantage Callout */}
         <div className="card p-6 bg-gradient-to-r from-[var(--brand)]/5 to-[var(--brand2)]/5 border-[var(--brand)]/20">
           <div className="text-center">
-            <h3 className="text-xl font-semibold mb-4">◆ Por Qué las Iglesias Eligen KHESED-TEK Sobre Competidores</h3>
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-center gap-2">
+              <OutlineIcon name="diamond" className="w-5 h-5 text-[var(--brand)]" /> Por Qué las Iglesias Eligen KHESED-TEK Sobre Competidores
+            </h3>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div>
                 <strong className="text-[var(--brand)]">vs Planning Center (Inglés):</strong>
@@ -226,11 +230,11 @@ export default function LatamMarketPage() {
             <div key={idx} className="card p-6">
               <div className="mb-4">
                 <h4 className="font-semibold text-lg">{testimonial.church}</h4>
-                <div className="text-sm text-[var(--muted)] mb-2">
-                  ▪ {testimonial.location} • ◉ {testimonial.members}
+                <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-1">
+                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.location} • <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.members}
                 </div>
-                <div className="text-sm font-medium text-[var(--brand)]">
-                  ▢ {testimonial.result}
+                <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-1">
+                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.result}
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
@@ -310,8 +314,12 @@ export default function LatamMarketPage() {
           className="mt-16"
         />
 
-        <div className="text-sm text-[var(--muted)] text-center mt-8">
-          ◆ Acepta PSE, Bancolombia, Efecty y transferencias • ● Soporte telefónico incluido
+        <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
+          <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+          <span>Acepta PSE, Bancolombia, Efecty y transferencias</span>
+          <span className="mx-2">•</span>
+          <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+          <span>Soporte telefónico incluido</span>
         </div>
       </section>
 
@@ -384,14 +392,29 @@ export default function LatamMarketPage() {
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4">▣ Contacto directo</h3>
             <div className="space-y-2 text-sm">
-              <div>✉ contacto@khesed-tek-systems.org</div>
-              <div>▣ +57 302 123 4410 (WhatsApp)</div>
-              <div>◗ Barranquilla, Atlántico, Colombia</div>
-              <div>● Lunes a Viernes 9AM - 6PM (COT)</div>
+              <div className="flex items-center">
+                <span className="mr-2">✉</span>
+                <span>contacto@khesed-tek-systems.org</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="square" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>+57 302 123 4410 (WhatsApp)</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>Barranquilla, Atlántico, Colombia</span>
+              </div>
+              <div className="flex items-center">
+                <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400 mr-2" />
+                <span>Lunes a Viernes 9AM - 6PM (COT)</span>
+              </div>
             </div>
           </div>
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">◆ Demo personalizada</h3>
+            <h3 className="font-semibold mb-4 flex items-center">
+              <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400 mr-2" />
+              <span>Demo personalizada</span>
+            </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div>✓ Demostración adaptada a tu iglesia</div>
               <div>✓ Análisis de necesidades sin costo</div>

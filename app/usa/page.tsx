@@ -12,6 +12,7 @@ import TestimonialsSection from '@/components/social-proof/testimonials-section'
 import TrustSignalsSection from '@/components/social-proof/trust-signals';
 import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 export default function USAMarketPage() {
   const { market, language } = useGlobalMarket();
@@ -66,8 +67,15 @@ export default function USAMarketPage() {
               ☎ Call Sales Team
             </a>
           </div>
-          <div className="text-sm text-[var(--muted)]">
-            ◆ EST/PST Business Hours • ● English Support • ▣ Enterprise-Ready
+          <div className="text-sm text-[var(--muted)] flex items-center justify-center gap-2">
+            <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+            <span>EST/PST Business Hours</span>
+            <span className="mx-1">•</span>
+            <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+            <span>English Support</span>
+            <span className="mx-1">•</span>
+            <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+            <span>Enterprise-Ready</span>
           </div>
         </div>
       </section>
@@ -93,7 +101,8 @@ export default function USAMarketPage() {
             Advanced capabilities that set KHESED-TEK apart from Planning Center, Breeze, and other competitors
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
-            ◆ Outperforming ChurchTrac, Aplos, and TouchPoint in key areas
+            <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+            <span>Outperforming ChurchTrac, Aplos, and TouchPoint in key areas</span>
           </div>
         </div>
 
@@ -103,48 +112,48 @@ export default function USAMarketPage() {
               pill: 'AI-Powered', 
               title: 'Smart Volunteer Matching', 
               desc: 'AI automatically matches volunteers with ministries based on spiritual gifts assessment. Planning Center offers basic scheduling; we provide intelligent recommendations.',
-              icon: '⚙',
+              icon: 'square',
               advantage: 'vs Planning Center: 75% more efficient volunteer placement'
             },
             { 
               pill: 'Enterprise', 
               title: 'Multi-Campus Intelligence', 
               desc: 'Advanced analytics across multiple locations with predictive insights. TouchPoint charges $20K+/year; we include it standard.',
-              icon: '▣',
+              icon: 'square',
               advantage: 'vs TouchPoint: 60% cost savings with superior analytics'
             },
             { 
               pill: 'Automation', 
               title: 'Comprehensive Workflow Engine', 
               desc: 'Complete automation system with custom triggers and AI responses. Breeze offers none; ChurchTrac has limited automation.',
-              icon: '●',
+              icon: 'circle',
               advantage: 'vs Breeze/ChurchTrac: Unique advanced automation'
             },
             { 
               pill: 'Integration', 
               title: 'Unified Social Media Manager', 
               desc: 'Native Facebook, Instagram, YouTube, TikTok management with AI scheduling. Competitors require separate tools.',
-              icon: '�',
+              icon: 'diamond',
               advantage: 'vs All: First ChMS with complete social integration'
             },
             { 
               pill: 'Intelligence', 
               title: 'Predictive Engagement Analytics', 
               desc: 'AI predicts member disengagement and suggests interventions. No competitor offers predictive member retention.',
-              icon: '▢',
+              icon: 'square',
               advantage: 'vs All: Unique predictive member analytics'
             },
             { 
               pill: 'Security', 
               title: 'SOX & Enterprise Compliance', 
               desc: 'Built-in SOX compliance, GDPR ready, enterprise security. Aplos focuses only on accounting compliance.',
-              icon: '◆',
+              icon: 'diamond',
               advantage: 'vs Aplos: Complete compliance beyond accounting'
             },
         ].map((f) => (
           <div className="card p-6 hover:-translate-y-1 transition group" key={f.title}>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-2xl">{f.icon}</span>
+              <OutlineIcon name={f.icon} className="w-6 h-6 text-[var(--brand)]" />
               <span
                 className="text-xs uppercase tracking-wide px-2 py-1 rounded-full border inline-block"
                 style={{ background: '#1f1f23', borderColor: 'var(--border)', color: 'var(--muted)' }}
@@ -213,7 +222,18 @@ export default function USAMarketPage() {
               result: "40% increase in digital engagement",
               quote: "KHESED-TEK's platform scaled with our rapid growth perfectly.",
               pastor: "Pastor John Wilson",
-              stats: "◆ 40% engagement • ◉ $2M+ managed • ● 99.9% uptime"
+              stats: (
+                <div className="flex items-center justify-center gap-2 text-sm">
+                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+                  <span>40% engagement</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <span>$2M+ managed</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <span>99.9% uptime</span>
+                </div>
+              )
             },
             {
               church: "New Life Ministry",
@@ -223,7 +243,18 @@ export default function USAMarketPage() {
               result: "60% improvement in operational efficiency",
               quote: "The multi-campus features transformed our church operations.",
               pastor: "Pastor Sarah Johnson",
-              stats: "▢ 60% efficiency • ◆ 95% member satisfaction • ● 50+ integrations"
+              stats: (
+                <div className="flex items-center justify-center gap-2 text-sm">
+                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <span>60% efficiency</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+                  <span>95% member satisfaction</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <span>50+ integrations</span>
+                </div>
+              )
             },
             {
               church: "Faith Center International",
@@ -233,7 +264,18 @@ export default function USAMarketPage() {
               result: "80% reduction in administrative overhead", 
               quote: "Enterprise-grade reliability with ministry-focused features.",
               pastor: "Pastor David Martinez",
-              stats: "● 80% admin reduction • ◉ 12 campus sync • ▢ Mobile-first"
+              stats: (
+                <div className="flex items-center justify-center gap-2 text-sm">
+                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <span>80% admin reduction</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <span>12 campus sync</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <span>Mobile-first</span>
+                </div>
+              )
             }
           ].map((testimonial, idx) => (
             <div key={idx} className="card p-6">
