@@ -163,8 +163,9 @@ export default function USAMarketPage() {
             </div>
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
-            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition">
-              ◆ {f.advantage}
+            <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition flex items-center">
+              <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400 mr-1" />
+              <span>{f.advantage}</span>
             </div>
           </div>
         ))}
@@ -281,11 +282,19 @@ export default function USAMarketPage() {
             <div key={idx} className="card p-6">
               <div className="mb-4">
                 <h4 className="font-semibold text-lg">{testimonial.church}</h4>
-                <div className="text-sm text-[var(--muted)] mb-2">
-                  ◗ {testimonial.location} • ◉ {testimonial.members} • ▣ {testimonial.campuses}
+                <div className="text-sm text-[var(--muted)] mb-2 flex items-center justify-center gap-2">
+                  <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
+                  <span>{testimonial.location}</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <span>{testimonial.members}</span>
+                  <span className="mx-1">•</span>
+                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <span>{testimonial.campuses}</span>
                 </div>
-                <div className="text-sm font-medium text-[var(--brand)]">
-                  ▢ {testimonial.result}
+                <div className="text-sm font-medium text-[var(--brand)] flex items-center justify-center gap-2">
+                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <span>{testimonial.result}</span>
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
@@ -368,8 +377,15 @@ export default function USAMarketPage() {
           className="mt-16"
         />
 
-        <div className="text-sm text-[var(--muted)] text-center mt-8">
-          ◉ Stripe, ACH, Wire Transfer accepted • ◗ Dedicated account manager included • ◆ SOX compliant
+        <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
+          <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+          <span>Stripe, ACH, Wire Transfer accepted</span>
+          <span className="mx-2">•</span>
+          <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
+          <span>Dedicated account manager included</span>
+          <span className="mx-2">•</span>
+          <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+          <span>SOX compliant</span>
         </div>
       </section>
 

@@ -127,7 +127,7 @@ export default function DemoVideoSection({
 }: DemoVideoSectionProps) {
   const [selectedVideo, setSelectedVideo] = useState<DemoVideo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<'video' | 'images'>('video');
+  const [viewMode, setViewMode] = useState<'video' | 'images'>('images'); // Default to Capturas since no founder video exists yet
   const [videoError, setVideoError] = useState(false);
 
   // Filter videos by market and language using utility function
@@ -335,7 +335,7 @@ export default function DemoVideoSection({
                 className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] px-6 py-3 rounded-lg transition font-medium"
               >
                 <span>📹</span>
-                Switch to Video
+                {language === 'es' ? 'Ver Historia del Fundador' : 'Switch to Video'}
               </button>
             </div>
           </div>

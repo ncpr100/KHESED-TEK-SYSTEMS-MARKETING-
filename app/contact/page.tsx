@@ -557,8 +557,8 @@ export default function ContactPage() {
             pill: language === 'en' ? 'Design' : 'Diseño', 
             title: language === 'en' ? 'Elegant in black' : 'Elegancia en negro', 
             desc: language === 'en' 
-              ? 'Dark, clean and accessible interface that highlights your identity.' 
-              : 'Interfaz oscura, limpia y accesible que resalta tu identidad.' 
+              ? 'Sophisticated professional quality that elevates your church\'s digital presence and reflects ministry excellence.' 
+              : 'Calidad profesional sofisticada que eleva la presencia digital de tu iglesia y refleja la excelencia ministerial.' 
           },
         ].map((f) => (
           <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>

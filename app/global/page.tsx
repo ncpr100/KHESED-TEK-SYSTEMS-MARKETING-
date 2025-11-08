@@ -12,6 +12,7 @@ import DemoVideoSection from '@/components/conversion/demo-video-section';
 import TrustSignals from '@/components/social-proof/trust-signals';
 import ROICalculator from '@/components/conversion/roi-calculator';
 import TestimonialsSection from '@/components/social-proof/testimonials-section';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 export default function GlobalMarketPage() {
   const { market, language } = useGlobalMarket();

@@ -42,8 +42,9 @@ export default function LatamMarketPage() {
         }}
       >
         <div className="max-w-4xl mx-auto">
-          <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4">
-            ▣ Mercado LATAM - Especialistas en Colombia
+          <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4 flex items-center justify-center gap-2">
+            <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+            <span>Mercado LATAM - Especialistas en Colombia</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {heroText}
@@ -390,7 +391,10 @@ export default function LatamMarketPage() {
         
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">▣ Contacto directo</h3>
+            <h3 className="font-semibold mb-4 flex items-center">
+              <OutlineIcon name="square" className="w-4 h-4 text-cyan-400 mr-2" />
+              <span>Contacto directo</span>
+            </h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center">
                 <span className="mr-2">✉</span>
