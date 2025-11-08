@@ -301,8 +301,11 @@ export default function FeatureComparisonTable({
                       )}
                     </div>
                     {feature.category && (
-                      <div className="text-xs bg-[var(--surface)] px-2 py-1 rounded">
-                        {CATEGORIES[feature.category as keyof typeof CATEGORIES]?.icon}
+                      <div className="text-xs bg-[var(--surface)] px-2 py-1 rounded flex items-center justify-center">
+                        <OutlineIcon 
+                          name={CATEGORIES[feature.category as keyof typeof CATEGORIES]?.icon} 
+                          className="w-4 h-4 text-[var(--brand)]"
+                        />
                       </div>
                     )}
                   </div>
