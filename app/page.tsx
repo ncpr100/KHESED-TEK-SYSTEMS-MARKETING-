@@ -97,7 +97,7 @@ export default function HomePage() {
         <div style={{ color: 'var(--muted)' }} className="text-lg space-y-4">
           <p>
             KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. 
-            Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
+            Con sede en Barranquilla Atlántico, Colombia; empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
             soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.
           </p>
           <p>

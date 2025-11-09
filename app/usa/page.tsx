@@ -455,7 +455,12 @@ export default function USAMarketPage() {
               ]
             },
             {
-              category: "◆ Security & Compliance",
+              category: (
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+                  <span>Security & Compliance</span>
+                </div>
+              ),
               features: [
                 "SOX compliance for financial reporting",
                 "GDPR & data protection compliance",

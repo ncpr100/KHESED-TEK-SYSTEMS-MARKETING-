@@ -8,7 +8,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-latam',
     type: 'security',
-    icon: 'shield',
+    icon: 'zap',
     title: 'SSL Seguro',
     description: 'Encriptación de datos de nivel bancario',
     value: '256-bit',
@@ -17,7 +17,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'ssl-security-usa',
     type: 'security',
-    icon: 'shield',
+    icon: 'zap',
     title: 'SSL Secure',
     description: 'Bank-level data encryption',
     value: '256-bit',
@@ -113,7 +113,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage-latam',
     type: 'certification',
-    icon: '○',
+    icon: 'headphones',
     title: 'Soporte',
     description: 'Disponible cuando lo necesitas',
     value: '24/7',
@@ -122,7 +122,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage-usa',
     type: 'certification',
-    icon: '○',
+    icon: 'headphones',
     title: 'Support',
     description: 'Available when you need it',
     value: '24/7',
@@ -302,10 +302,10 @@ export function TrustBadges({
   className?: string;
 }) {
   const badges = [
-    { icon: '○', text: 'SSL Seguro' },
-    { icon: '○', text: 'Cumplimiento GDPR', highlight: true },
-    { icon: '○', text: '99.9% Uptime' },
-    { icon: '○', text: '24/7 Soporte' }
+    { icon: 'zap', text: 'SSL Seguro' },
+    { icon: 'shield', text: 'Cumplimiento GDPR', highlight: true },
+    { icon: 'circle', text: '99.9% Uptime' },
+    { icon: 'headphones', text: '24/7 Soporte' }
   ];
 
   return (
@@ -315,7 +315,7 @@ export function TrustBadges({
           key={index}
           className="flex items-center gap-2 px-3 py-1 bg-[var(--surface)] border border-[var(--border)] rounded-full text-xs text-[var(--muted)] hover:border-[var(--brand)] transition"
         >
-          <span>{badge.icon}</span>
+          <OutlineIcon name={badge.icon} className="w-3 h-3 text-cyan-400" />
           <span className={badge.highlight ? 'text-[var(--brand)] font-medium' : ''}>{badge.text}</span>
         </div>
       ))}
