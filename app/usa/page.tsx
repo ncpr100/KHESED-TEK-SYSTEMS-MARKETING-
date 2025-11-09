@@ -71,10 +71,10 @@ export default function USAMarketPage() {
           <div className="text-sm text-[var(--muted)] flex items-center justify-center gap-2">
             <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
             <span>EST/PST Business Hours</span>
-            <span className="mx-1">•</span>
+            <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
             <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
             <span>English Support</span>
-            <span className="mx-1">•</span>
+            <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
             <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
             <span>Enterprise-Ready</span>
           </div>
@@ -228,10 +228,10 @@ export default function USAMarketPage() {
                 <div className="flex items-center justify-center gap-2 text-sm">
                   <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
                   <span>40% engagement</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
                   <span>$2M+ managed</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
                   <span>99.9% uptime</span>
                 </div>
@@ -249,10 +249,10 @@ export default function USAMarketPage() {
                 <div className="flex items-center justify-center gap-2 text-sm">
                   <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
                   <span>60% efficiency</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
                   <span>95% member satisfaction</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
                   <span>50+ integrations</span>
                 </div>
@@ -270,10 +270,10 @@ export default function USAMarketPage() {
                 <div className="flex items-center justify-center gap-2 text-sm">
                   <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
                   <span>80% admin reduction</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
                   <span>12 campus sync</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
                   <span>Mobile-first</span>
                 </div>
@@ -286,10 +286,10 @@ export default function USAMarketPage() {
                 <div className="text-sm text-[var(--muted)] mb-2 flex items-center justify-center gap-2">
                   <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.location}</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.members}</span>
-                  <span className="mx-1">•</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.campuses}</span>
                 </div>
@@ -381,10 +381,10 @@ export default function USAMarketPage() {
         <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
           <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
           <span>Stripe, ACH, Wire Transfer accepted</span>
-          <span className="mx-2">•</span>
+          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
           <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
           <span>Dedicated account manager included</span>
-          <span className="mx-2">•</span>
+          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
           <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
           <span>SOX compliant</span>
         </div>
@@ -474,7 +474,7 @@ export default function USAMarketPage() {
               <ul className="space-y-2">
                 {section.features.map((feature, fidx) => (
                   <li key={fidx} className="flex items-start gap-2 text-sm">
-                    <span className="text-green-400 mt-1">✓</span>
+                    <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400 mt-1" />
                     <span style={{ color: 'var(--muted)' }}>{feature}</span>
                   </li>
                 ))}
@@ -575,11 +575,26 @@ export default function USAMarketPage() {
               <span>Enterprise Demo</span>
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
-              <div>✓ Customized platform demonstration</div>
-              <div>✓ Technical requirements assessment</div>
-              <div>✓ Integration planning session</div>
-              <div>✓ ROI analysis and pricing</div>
-              <div>✓ Implementation timeline</div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Customized platform demonstration
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Technical requirements assessment
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Integration planning session
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                ROI analysis and pricing
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Implementation timeline
+              </div>
             </div>
           </div>
         </div>

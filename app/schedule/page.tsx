@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 export default function SchedulePage() {
   return (
@@ -139,7 +140,7 @@ export default function SchedulePage() {
                         <path d="m22 22-5-10-5 10"></path>
                         <path d="M14 18h6"></path>
                       </svg>
-                      <span><strong>Idiomas:</strong> Español • English</span>
+                      <span><strong>Idiomas:</strong> Español <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" /> English</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       {/* Outline Zap Icon */}

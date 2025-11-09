@@ -73,7 +73,7 @@ export default function LatamMarketPage() {
             </a>
           </div>
           <div className="text-sm text-[var(--muted)] flex items-center gap-1">
-            <OutlineIcon name="circle" className="w-4 h-4 text-[var(--brand)]" /> Soporte en horario colombiano (COT) • <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--brand)]" /> Atención en español • <OutlineIcon name="square" className="w-4 h-4 text-[var(--brand)]" /> Especialistas en iglesias
+            <OutlineIcon name="circle" className="w-4 h-4 text-[var(--brand)]" /> Soporte en horario colombiano (COT) <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--brand)]" /> Atención en español <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="square" className="w-4 h-4 text-[var(--brand)]" /> Especialistas en iglesias
           </div>
         </div>
       </section>
@@ -232,7 +232,7 @@ export default function LatamMarketPage() {
               <div className="mb-4">
                 <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-1">
-                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.location} • <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.members}
+                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.location} <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.members}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-1">
                   <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.result}
@@ -318,7 +318,7 @@ export default function LatamMarketPage() {
         <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
           <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
           <span>Acepta PSE, Bancolombia, Efecty y transferencias</span>
-          <span className="mx-2">•</span>
+          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
           <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
           <span>Soporte telefónico incluido</span>
         </div>
@@ -420,10 +420,22 @@ export default function LatamMarketPage() {
               <span>Demo personalizada</span>
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
-              <div>✓ Demostración adaptada a tu iglesia</div>
-              <div>✓ Análisis de necesidades sin costo</div>
-              <div>✓ Plan de implementación personalizado</div>
-              <div>✓ Acompañamiento en tu zona horaria</div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Demostración adaptada a tu iglesia
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Análisis de necesidades sin costo
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Plan de implementación personalizado
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                Acompañamiento en tu zona horaria
+              </div>
             </div>
           </div>
         </div>

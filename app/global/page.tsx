@@ -385,11 +385,19 @@ export default function GlobalMarketPage() {
                   <span className="text-2xl">{testimonial.flag}</span>
                   <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 </div>
-                <div className="text-sm text-[var(--muted)] mb-2">
-                  ○ {testimonial.location} • � {testimonial.members} • � {testimonial.languages}
+                <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-2">
+                  <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                  <span>{testimonial.location}</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
+                  <OutlineIcon name="users" className="w-3 h-3 text-cyan-400" />
+                  <span>{testimonial.members}</span>
+                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
+                  <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                  <span>{testimonial.languages}</span>
                 </div>
-                <div className="text-sm font-medium text-[var(--brand)]">
-                  ○ {testimonial.result}
+                <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-2">
+                  <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" />
+                  <span>{testimonial.result}</span>
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
@@ -480,11 +488,24 @@ export default function GlobalMarketPage() {
           className="mt-16"
         />
 
-        <div className="text-sm text-[var(--muted)] text-center mt-8">
-          💳 {language === 'es' 
-            ? 'Stripe, Wise, transferencias bancarias • 田 Cumplimiento GDPR/LGPD • ♡ Certificaciones ISO'
-            : 'Stripe, Wise, bank transfers • 田 GDPR/LGPD compliant • ♡ ISO certified'
-          }
+        <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
+          <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+          <span>{language === 'es' 
+            ? 'Stripe, Wise, transferencias bancarias'
+            : 'Stripe, Wise, bank transfers'
+          }</span>
+          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
+          <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400" />
+          <span>{language === 'es' 
+            ? 'Cumplimiento GDPR/LGPD'
+            : 'GDPR/LGPD compliant'
+          }</span>
+          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
+          <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+          <span>{language === 'es' 
+            ? 'Certificaciones ISO'
+            : 'ISO certified'
+          }</span>
         </div>
       </section>
 
@@ -562,10 +583,22 @@ export default function GlobalMarketPage() {
               <div className="text-3xl mb-3">{region.flag}</div>
               <h3 className="font-semibold mb-2">{region.region}</h3>
               <div className="space-y-1 text-sm text-[var(--muted)]">
-                <div>○ {region.timezone}</div>
-                <div>○ {region.languages}</div>
-                <div>○ {region.hours}</div>
-                <div>○ {region.contact}</div>
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                  <span>{region.timezone}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                  <span>{region.languages}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400" />
+                  <span>{region.hours}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <OutlineIcon name="square" className="w-3 h-3 text-cyan-400" />
+                  <span>{region.contact}</span>
+                </div>
               </div>
             </div>
           ))}
@@ -654,27 +687,59 @@ export default function GlobalMarketPage() {
         
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">
-              ○ {language === 'es' ? 'Equipo Global' : 'Global Team'}
+            <h3 className="font-semibold mb-4 flex items-center gap-2">
+              <OutlineIcon name="users" className="w-5 h-5 text-[var(--brand)]" />
+              <span>{language === 'es' ? 'Equipo Global' : 'Global Team'}</span>
             </h3>
             <div className="space-y-2 text-sm">
-              <div>○ contact@khesed-tek-systems.org</div>
-              <div>○ {language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</div>
-              <div>○ {language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</div>
-              <div>○ {language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</div>
-              <div>○ {language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <span>contact@khesed-tek-systems.org</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="square" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="zap" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</span>
+              </div>
             </div>
           </div>
           <div className="card p-6 text-left">
-            <h3 className="font-semibold mb-4">
-              ○ {language === 'es' ? 'Demo Internacional' : 'International Demo'}
+            <h3 className="font-semibold mb-4 flex items-center gap-2">
+              <OutlineIcon name="shield" className="w-5 h-5 text-[var(--brand)]" />
+              <span>{language === 'es' ? 'Demo Internacional' : 'International Demo'}</span>
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
-              <div>✓ {language === 'es' ? 'Demostración en tu idioma' : 'Demo in your language'}</div>
-              <div>✓ {language === 'es' ? 'Análisis de cumplimiento local' : 'Local compliance analysis'}</div>
-              <div>✓ {language === 'es' ? 'Integración con sistemas locales' : 'Local systems integration'}</div>
-              <div>✓ {language === 'es' ? 'Plan de migración personalizado' : 'Customized migration plan'}</div>
-              <div>✓ {language === 'es' ? 'Soporte en tu zona horaria' : 'Support in your timezone'}</div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Demostración en tu idioma' : 'Demo in your language'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Análisis de cumplimiento local' : 'Local compliance analysis'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Integración con sistemas locales' : 'Local systems integration'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Plan de migración personalizado' : 'Customized migration plan'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <span>{language === 'es' ? 'Soporte en tu zona horaria' : 'Support in your timezone'}</span>
+              </div>
             </div>
           </div>
         </div>
