@@ -110,42 +110,42 @@ export default function LatamMarketPage() {
               pill: 'Exclusivo', 
               title: 'WhatsApp Business Nativo', 
               desc: 'Primer ChMS con WhatsApp Business completamente integrado. Planning Center, Breeze y otros no tienen esta funcionalidad esencial para Latinoamérica.',
-              icon: 'diamond',
+              icon: 'marker',
               advantage: 'vs Todos: Único con WhatsApp Business nativo'
             },
             { 
               pill: 'Cultural', 
               title: 'Métodos de Pago Colombianos', 
               desc: 'Nequi, PSE, transferencias bancarias locales incluidas. Competidores internacionales solo ofrecen Stripe/PayPal.',
-              icon: 'circle',
+              icon: 'diamond',
               advantage: 'vs Internacionales: Pagos locales 100% integrados'
             },
             { 
               pill: 'IA Avanzada', 
               title: 'Emparejamiento Inteligente', 
               desc: 'IA empareja voluntarios con ministerios basado en dones espirituales. ChurchTrac y Breeze solo tienen programación básica.',
-              icon: 'square',
+              icon: 'users',
               advantage: 'vs ChurchTrac/Breeze: IA única para voluntarios'
             },
             { 
               pill: 'Automatización', 
               title: 'Motor de Oración Automatizado', 
               desc: 'Sistema único de seguimiento pastoral con IA para análisis emocional. Ningún competidor tiene automatización pastoral.',
-              icon: 'circle',
+              icon: 'zap',
               advantage: 'vs Todos: Automatización pastoral exclusiva'
             },
             { 
               pill: 'Cultural', 
               title: 'Adaptación Cultural IA', 
               desc: 'Sistema que adapta automáticamente la interfaz al contexto cultural latino. Competidores usan traducciones básicas.',
-              icon: 'circle',
+              icon: 'shield',
               advantage: 'vs Todos: Adaptación cultural inteligente'
             },
             { 
               pill: 'Predictivo', 
               title: 'Análisis de Participación', 
               desc: 'IA predice deserción de miembros y sugiere intervenciones. Planning Center solo tiene reportes básicos.',
-              icon: 'square',
+              icon: 'circle',
               advantage: 'vs Planning Center: Predicción avanzada única'
             },
         ].map((f) => (

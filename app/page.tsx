@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
+import OutlineIcon from '@/components/ui/outline-icon';
 import { trackCTAClick } from '@/lib/analytics';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
@@ -75,17 +76,20 @@ export default function HomePage() {
 
       <section id="features" className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 py-12">
         {[
-          { pill: 'Rendimiento', title: 'Rápido y eficiente', desc: 'Arquitectura optimizada para tiempos de carga mínimos y alta disponibilidad.' },
-          { pill: 'Seguridad', title: 'Protección avanzada', desc: 'Cifrado y mejores prácticas para resguardar los datos de tu comunidad.' },
-          { pill: 'Diseño', title: 'Elegancia en negro', desc: 'Interfaz oscura, limpia y accesible que resalta tu identidad.' },
+          { pill: 'Rendimiento', title: 'Rápido y eficiente', desc: 'Arquitectura optimizada para tiempos de carga mínimos y alta disponibilidad.', icon: 'zap' },
+          { pill: 'Seguridad', title: 'Protección avanzada', desc: 'Cifrado y mejores prácticas para resguardar los datos de tu comunidad.', icon: 'shield' },
+          { pill: 'Diseño', title: 'Elegancia en negro', desc: 'Interfaz oscura, limpia y accesible que resalta tu identidad.', icon: 'palette' },
         ].map((f) => (
           <div className="card p-6 hover:-translate-y-1 transition" key={f.title}>
-            <span
-              className="text-xs uppercase tracking-wide px-2 py-1 rounded-full border inline-block"
-              style={{ background: '#1f1f23', borderColor: 'var(--border)', color: 'var(--muted)' }}
-            >
-              {f.pill}
-            </span>
+            <div className="flex items-center gap-3 mb-3">
+              <OutlineIcon name={f.icon} className="w-6 h-6 text-[var(--brand)]" />
+              <span
+                className="text-xs uppercase tracking-wide px-2 py-1 rounded-full border inline-block"
+                style={{ background: '#1f1f23', borderColor: 'var(--border)', color: 'var(--muted)' }}
+              >
+                {f.pill}
+              </span>
+            </div>
             <h3 className="text-xl font-semibold mt-3 mb-1">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }}>{f.desc}</p>
           </div>

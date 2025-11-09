@@ -113,21 +113,21 @@ export default function USAMarketPage() {
               pill: 'AI-Powered', 
               title: 'Smart Volunteer Matching', 
               desc: 'AI automatically matches volunteers with ministries based on spiritual gifts assessment. Planning Center offers basic scheduling; we provide intelligent recommendations.',
-              icon: 'square',
+              icon: 'users',
               advantage: 'vs Planning Center: 75% more efficient volunteer placement'
             },
             { 
               pill: 'Enterprise', 
               title: 'Multi-Campus Intelligence', 
               desc: 'Advanced analytics across multiple locations with predictive insights. TouchPoint charges $20K+/year; we include it standard.',
-              icon: 'square',
+              icon: 'marker',
               advantage: 'vs TouchPoint: 60% cost savings with superior analytics'
             },
             { 
               pill: 'Automation', 
               title: 'Comprehensive Workflow Engine', 
               desc: 'Complete automation system with custom triggers and AI responses. Breeze offers none; ChurchTrac has limited automation.',
-              icon: 'circle',
+              icon: 'zap',
               advantage: 'vs Breeze/ChurchTrac: Unique advanced automation'
             },
             { 
@@ -141,14 +141,14 @@ export default function USAMarketPage() {
               pill: 'Intelligence', 
               title: 'Predictive Engagement Analytics', 
               desc: 'AI predicts member disengagement and suggests interventions. No competitor offers predictive member retention.',
-              icon: 'square',
+              icon: 'circle',
               advantage: 'vs All: Unique predictive member analytics'
             },
             { 
               pill: 'Security', 
               title: 'SOX & Enterprise Compliance', 
               desc: 'Built-in SOX compliance, GDPR ready, enterprise security. Aplos focuses only on accounting compliance.',
-              icon: 'diamond',
+              icon: 'shield',
               advantage: 'vs Aplos: Complete compliance beyond accounting'
             },
         ].map((f) => (
