@@ -543,35 +543,35 @@ export default function USAMarketPage() {
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4 flex items-center">
-              <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+              <OutlineIcon name="users" className="w-4 h-4 text-cyan-400 mr-2" />
               <span>USA Sales Team</span>
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center">
-                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400 mr-2" />
                 <span>contact@khesed-tek-systems.org</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400 mr-2" />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400 mr-2" />
                 <span>Miami, FL (Expansion Office)</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400 mr-2" />
                 <span>Monday-Friday 9AM-6PM EST</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="dot" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="globe" className="w-4 h-4 text-cyan-400 mr-2" />
                 <span>Nationwide support coverage</span>
               </div>
             </div>
           </div>
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4 flex items-center">
-              <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400 mr-2" />
+              <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400 mr-2" />
               <span>Enterprise Demo</span>
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">

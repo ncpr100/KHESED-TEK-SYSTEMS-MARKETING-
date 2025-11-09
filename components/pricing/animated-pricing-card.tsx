@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { PricingPlan } from '@/types/pricing';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 interface AnimatedPricingCardProps {
   plan: PricingPlan;
@@ -112,12 +113,13 @@ export default function AnimatedPricingCard({
                 transitionDelay: `${fidx * 30}ms`
               }}
             >
-              <span className={`
-                text-green-400 transition-all duration-300
-                ${isHovered ? 'scale-125 rotate-12' : ''}
-              `}>
-                ✓
-              </span>
+              <OutlineIcon 
+                name="circle"
+                className={`
+                  w-4 h-4 text-green-400 transition-all duration-300
+                  ${isHovered ? 'scale-125 rotate-12' : ''}
+                `}
+              />
               <span className={`
                 transition-colors duration-300
                 ${isHovered ? 'text-[var(--text)]' : ''}

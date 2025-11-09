@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ROIInput, ROICalculation, ChurchProfile, ROICalculatorProps } from '@/types/roi-calculator';
 import { trackCTAClick } from '@/lib/analytics';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 // Church size profiles with realistic data
 const CHURCH_PROFILES: Record<string, ChurchProfile> = {
@@ -346,10 +347,22 @@ export default function ROICalculator({
                       {language === 'es' ? 'Incluido Siempre' : 'Always Included'}
                     </h5>
                     <ul className="text-sm space-y-1 text-left">
-                      <li>○ {language === 'es' ? 'Implementación GRATIS' : 'FREE Implementation'}</li>
-                      <li>○ {language === 'es' ? 'Capacitación completa' : 'Complete Training'}</li>
-                      <li>○ {language === 'es' ? 'Soporte dedicado' : 'Dedicated Support'}</li>
-                      <li>○ {language === 'es' ? 'API personalizada' : 'Custom API'}</li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'Implementación GRATIS' : 'FREE Implementation'}</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="zap" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'Capacitación completa' : 'Complete Training'}</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="headphones" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'Soporte dedicado' : 'Dedicated Support'}</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'API personalizada' : 'Custom API'}</span>
+                      </li>
                     </ul>
                   </div>
                   <div className="p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
@@ -357,10 +370,22 @@ export default function ROICalculator({
                       {language === 'es' ? 'Características Avanzadas' : 'Advanced Features'}
                     </h5>
                     <ul className="text-sm space-y-1 text-left">
-                      <li>○ {language === 'es' ? 'Multi-campus' : 'Multi-campus'}</li>
-                      <li>○ {language === 'es' ? 'Integración completa' : 'Full Integration'}</li>
-                      <li>○ {language === 'es' ? 'Cumplimiento GDPR' : 'GDPR Compliance'}</li>
-                      <li>○ {language === 'es' ? 'SLA garantizado' : 'Guaranteed SLA'}</li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'Multi-campus' : 'Multi-campus'}</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="square" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'Integración completa' : 'Full Integration'}</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="shield" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'Cumplimiento GDPR' : 'GDPR Compliance'}</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <OutlineIcon name="users" className="w-3 h-3 text-cyan-400" />
+                        <span>{language === 'es' ? 'SLA garantizado' : 'Guaranteed SLA'}</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -472,7 +497,7 @@ export default function ROICalculator({
               <ul className="space-y-2 text-sm">
                 {calculation.insights.map((insight, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <span className="text-[var(--brand)] mt-1">○</span>
+                    <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)] mt-1 flex-shrink-0" />
                     <span>{insight}</span>
                   </li>
                 ))}
@@ -595,7 +620,7 @@ function getTranslations(language: 'es' | 'en') {
       implementation: 'Implementación',
       training: 'Capacitación',
       oneTime: '(única vez)',
-      keyInsights: '○ Puntos clave',
+      keyInsights: 'Puntos clave',
       ctaTitle: '¿Listo para transformar su iglesia?',
       ctaDescription: 'Solicite una demostración personalizada y vea estos resultados en acción.',
       ctaButton: 'Solicitar demostración →',
@@ -638,7 +663,7 @@ function getTranslations(language: 'es' | 'en') {
       implementation: 'Implementation',
       training: 'Training',
       oneTime: '(one-time)',
-      keyInsights: '○ Key insights',
+      keyInsights: 'Key insights',
       ctaTitle: 'Ready to transform your church?',
       ctaDescription: 'Request a personalized demo and see these results in action.',
       ctaButton: 'Request demo →',

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Testimonial, TestimonialProps } from '@/types/testimonials';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 // Sample testimonials data (in production, fetch from CMS or API)
 const SAMPLE_TESTIMONIALS: Testimonial[] = [
@@ -187,8 +188,9 @@ export default function TestimonialsSection({
                   {currentTestimonial.organization}
                 </div>
                 {currentTestimonial.location && (
-                  <div className="text-sm text-[var(--muted)]">
-                    ○ {currentTestimonial.location}
+                  <div className="text-sm text-[var(--muted)] flex items-center gap-2">
+                    <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                    <span>{currentTestimonial.location}</span>
                   </div>
                 )}
               </div>

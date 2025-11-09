@@ -104,7 +104,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'client-count-global',
     type: 'clients',
-    icon: '○',
+    icon: 'users',
     title: 'Organizations',
     description: 'Trust our platform worldwide',
     value: '200+',
@@ -131,7 +131,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
   {
     id: 'support-coverage-global',
     type: 'certification',
-    icon: '○',
+    icon: 'headphones',
     title: 'Support',
     description: 'Available worldwide',
     value: '24/7',

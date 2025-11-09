@@ -6,6 +6,7 @@ import { trackCTAClick } from '@/lib/analytics';
 import { PRODUCTION_DEMO_VIDEOS, getVideosByMarket, getMainDemoVideo } from '@/lib/demo-videos';
 import ImageCarousel from '@/components/ui/image-carousel';
 import { getScreenshotsByMarket, PLACEHOLDER_SCREENSHOTS } from '@/lib/product-screenshots';
+import OutlineIcon from '@/components/ui/outline-icon';
 
 // Use production video configuration
 const DEMO_VIDEOS = PRODUCTION_DEMO_VIDEOS;
@@ -356,7 +357,7 @@ export default function DemoVideoSection({
                     {/* Thumbnail placeholder */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-white text-center">
-                        <div className="text-3xl mb-2">○</div>
+                        <OutlineIcon name="circle" className="w-8 h-8 text-white mb-2 mx-auto" />
                         <div className="text-sm font-medium px-2">{video.title}</div>
                       </div>
                     </div>
