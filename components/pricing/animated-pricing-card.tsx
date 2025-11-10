@@ -39,7 +39,7 @@ export default function AnimatedPricingCard({
       className={`
         pricing-card group relative overflow-hidden
         transition-all duration-300 ease-out
-        ${plan.popular ? 'scale-105 border-[var(--brand)] shadow-lg' : 'hover:scale-105'}
+        ${plan.popular ? 'scale-105 border-[var(--brand)] shadow-lg mt-8' : 'hover:scale-105'}
         ${isHovered ? 'shadow-2xl -translate-y-2' : 'shadow-lg'}
         card p-6 cursor-pointer
         ${className}
@@ -53,7 +53,7 @@ export default function AnimatedPricingCard({
     >
       {/* Popular Badge */}
       {plan.popular && (
-        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
           <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand2)] text-black text-sm font-bold px-6 py-2 rounded-full shadow-xl border-2 border-white">
             MÁS POPULAR
           </div>
