@@ -386,7 +386,7 @@ export default function GlobalMarketPage() {
                   <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 </div>
                 <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-2">
-                  <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="globe" className="w-3 h-3 text-cyan-400" />
                   <span>{testimonial.location}</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="users" className="w-3 h-3 text-cyan-400" />
@@ -396,7 +396,7 @@ export default function GlobalMarketPage() {
                   <span>{testimonial.languages}</span>
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-2">
-                  <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" />
+                  <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--brand)]" />
                   <span>{testimonial.result}</span>
                 </div>
               </div>

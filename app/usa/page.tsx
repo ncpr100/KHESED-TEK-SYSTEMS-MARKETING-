@@ -287,14 +287,14 @@ export default function USAMarketPage() {
                   <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.location}</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="users" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.members}</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
                   <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.campuses}</span>
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)] flex items-center justify-center gap-2">
-                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
                   <span>{testimonial.result}</span>
                 </div>
               </div>

@@ -232,10 +232,10 @@ export default function LatamMarketPage() {
               <div className="mb-4">
                 <h4 className="font-semibold text-lg">{testimonial.church}</h4>
                 <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-1">
-                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.location} <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.members}
+                  <OutlineIcon name="globe" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.location} <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="users" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.members}
                 </div>
                 <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-1">
-                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.result}
+                  <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.result}
                 </div>
               </div>
               <blockquote className="italic text-[var(--muted)] mb-4">
