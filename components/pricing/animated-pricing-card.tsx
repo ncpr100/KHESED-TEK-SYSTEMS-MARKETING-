@@ -53,8 +53,8 @@ export default function AnimatedPricingCard({
     >
       {/* Popular Badge */}
       {plan.popular && (
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand2)] text-black text-xs font-bold px-4 py-1 rounded-full shadow-lg animate-pulse">
+        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand2)] text-black text-sm font-bold px-6 py-2 rounded-full shadow-xl border-2 border-white">
             MÁS POPULAR
           </div>
         </div>

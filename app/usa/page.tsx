@@ -318,8 +318,8 @@ export default function USAMarketPage() {
           <p className="text-[var(--muted)] mb-4">
             Transparent pricing with no hidden fees. Annual discounts available.
           </p>
-          <div className="text-2xl font-bold gradient-text mb-4">
-            $149.99 USD
+          <div className="text-lg text-[var(--muted)] mb-4">
+            Fixed pricing by church size - No additional module fees
           </div>
         </div>
         

@@ -255,8 +255,8 @@ export default function LatamMarketPage() {
           <p className="text-[var(--muted)] mb-4">
             Precios justos con métodos de pago locales y soporte en español
           </p>
-          <div className="text-2xl font-bold gradient-text mb-4">
-            $149.99 USD
+          <div className="text-lg text-[var(--muted)] mb-4">
+            Precio fijo por tamaño de iglesia - Sin cargos adicionales por módulos
           </div>
         </div>
         

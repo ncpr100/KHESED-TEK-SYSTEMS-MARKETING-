@@ -404,8 +404,11 @@ export default function GlobalMarketPage() {
               : 'Fair pricing in your local currency with regional payment methods'
             }
           </p>
-          <div className="text-2xl font-bold gradient-text mb-4">
-            $149.99 USD
+          <div className="text-lg text-[var(--muted)] mb-4">
+            {language === 'es'
+              ? 'Precio fijo por tamaño de iglesia - Sin cargos adicionales por módulos'
+              : 'Fixed pricing by church size - No additional module fees'
+            }
           </div>
         </div>
         
