@@ -42,7 +42,7 @@ export default function USAMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4 flex items-center justify-center gap-2">
-            <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="globe" className="w-4 h-4 text-cyan-400" />
             <span>USA Market - Enterprise Church Solutions</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
@@ -65,17 +65,17 @@ export default function USAMarketPage() {
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
               onClick={() => trackCTAClick('usa_phone', 'Call Sales Team')}
             >
-              ☎ Call Sales Team
+              <OutlineIcon name="phone" className="w-4 h-4 text-[var(--brand)]" /> Call Sales Team
             </a>
           </div>
           <div className="text-sm text-[var(--muted)] flex items-center justify-center gap-2">
-            <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400" />
             <span>EST/PST Business Hours</span>
             <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-            <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400" />
             <span>English Support</span>
             <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-            <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400" />
             <span>Enterprise-Ready</span>
           </div>
         </div>

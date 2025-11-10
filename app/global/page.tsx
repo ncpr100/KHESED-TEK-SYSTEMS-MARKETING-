@@ -42,7 +42,8 @@ export default function GlobalMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4">
-            田 Global Market - Worldwide Ministry Solutions
+            <OutlineIcon name="globe" className="w-4 h-4 text-[var(--brand)] inline mr-2" />
+            Global Market - Worldwide Ministry Solutions
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {heroText}
@@ -68,40 +69,21 @@ export default function GlobalMarketPage() {
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
               onClick={() => trackCTAClick('global_calendar', language === 'es' ? 'Agendar demo' : 'Schedule demo')}
             >
-              {/* Outline Calendar Icon */}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
+              <OutlineIcon name="calendar" className="w-5 h-5 text-[var(--brand)]" />
               {language === 'es' ? 'Agendar demo' : 'Schedule demo'}
             </a>
           </div>
           <div className="text-sm text-[var(--muted)] flex items-center justify-center gap-4 flex-wrap">
             <span className="flex items-center gap-1">
-              {/* Outline Headphones Icon */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
-                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-              </svg>
+              <OutlineIcon name="headphones" className="w-4 h-4 text-[var(--brand)]" />
               24/7 Global Support
             </span>
             <span className="flex items-center gap-1">
-              {/* Outline Globe Icon */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
+              <OutlineIcon name="globe" className="w-4 h-4 text-[var(--brand)]" />
               Multi-language
             </span>
             <span className="flex items-center gap-1">
-              {/* Outline Clock Icon */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--brand)]">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12,6 12,12 16,14"></polyline>
-              </svg>
+              <OutlineIcon name="clock" className="w-4 h-4 text-[var(--brand)]" />
               All Timezones
             </span>
             <span className="flex items-center gap-1">
