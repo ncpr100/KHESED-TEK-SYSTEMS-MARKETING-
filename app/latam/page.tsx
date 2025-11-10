@@ -5,7 +5,6 @@ import Footer from '@/components/marketing/footer';
 import { trackCTAClick, trackServiceView } from '@/lib/analytics';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
 import FeatureComparisonTable from '@/components/pricing/feature-comparison';
-import LocalizedPriceDisplay from '@/components/pricing/currency-localization';
 import { PricingPlan } from '@/types/pricing';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
@@ -256,8 +255,8 @@ export default function LatamMarketPage() {
           <p className="text-[var(--muted)] mb-4">
             Precios justos con métodos de pago locales y soporte en español
           </p>
-          <div className="text-sm text-[var(--muted)]">
-            <LocalizedPriceDisplay basePrice={149.99} showEstimates={true} />
+          <div className="text-2xl font-bold gradient-text mb-4">
+            $149.99 USD
           </div>
         </div>
         

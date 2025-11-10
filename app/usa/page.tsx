@@ -6,7 +6,6 @@ import { useABTest, getVariantContent, trackABTestConversion, USA_VALUE_PROP_TES
 import { useGlobalMarket } from '@/lib/global-market';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
 import FeatureComparisonTable from '@/components/pricing/feature-comparison';
-import LocalizedPriceDisplay from '@/components/pricing/currency-localization';
 import { PricingPlan } from '@/types/pricing';
 import TestimonialsSection from '@/components/social-proof/testimonials-section';
 import TrustSignalsSection from '@/components/social-proof/trust-signals';
@@ -319,8 +318,8 @@ export default function USAMarketPage() {
           <p className="text-[var(--muted)] mb-4">
             Transparent pricing with no hidden fees. Annual discounts available.
           </p>
-          <div className="text-sm text-[var(--muted)]">
-            <LocalizedPriceDisplay basePrice={149.99} showEstimates={true} />
+          <div className="text-2xl font-bold gradient-text mb-4">
+            $149.99 USD
           </div>
         </div>
         

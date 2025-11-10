@@ -6,7 +6,6 @@ import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST
 import { useGlobalMarket } from '@/lib/global-market';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
 import FeatureComparisonTable from '@/components/pricing/feature-comparison';
-import LocalizedPriceDisplay from '@/components/pricing/currency-localization';
 import { PricingPlan } from '@/types/pricing';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
 import TrustSignals from '@/components/social-proof/trust-signals';
@@ -405,8 +404,8 @@ export default function GlobalMarketPage() {
               : 'Fair pricing in your local currency with regional payment methods'
             }
           </p>
-          <div className="text-sm text-[var(--muted)]">
-            <LocalizedPriceDisplay basePrice={149.99} showEstimates={true} />
+          <div className="text-2xl font-bold gradient-text mb-4">
+            $149.99 USD
           </div>
         </div>
         
