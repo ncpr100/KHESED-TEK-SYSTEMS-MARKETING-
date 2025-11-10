@@ -94,6 +94,11 @@ const OutlineIcon = ({ name, className = "w-4 h-4" }: OutlineIconProps) => {
         <circle cx="12" cy="12" r="10"></circle>
         <polyline points="12,6 12,12 16,14"></polyline>
       </svg>
+    ),
+    'check': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <polyline points="20,6 9,17 4,12"></polyline>
+      </svg>
     )
   };
 

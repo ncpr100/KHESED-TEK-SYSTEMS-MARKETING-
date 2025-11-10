@@ -114,7 +114,7 @@ export default function AnimatedPricingCard({
               }}
             >
               <OutlineIcon 
-                name="circle"
+                name="check"
                 className={`
                   w-4 h-4 text-green-400 transition-all duration-300
                   ${isHovered ? 'scale-125 rotate-12' : ''}

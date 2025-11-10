@@ -474,7 +474,7 @@ export default function USAMarketPage() {
               <ul className="space-y-2">
                 {section.features.map((feature, fidx) => (
                   <li key={fidx} className="flex items-start gap-2 text-sm">
-                    <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400 mt-1" />
+                    <OutlineIcon name="check" className="w-3 h-3 text-cyan-400 mt-1" />
                     <span style={{ color: 'var(--muted)' }}>{feature}</span>
                   </li>
                 ))}
@@ -576,23 +576,23 @@ export default function USAMarketPage() {
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Customized platform demonstration
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Technical requirements assessment
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Integration planning session
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 ROI analysis and pricing
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Implementation timeline
               </div>
             </div>

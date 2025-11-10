@@ -721,23 +721,23 @@ export default function GlobalMarketPage() {
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 <span>{language === 'es' ? 'Demostración en tu idioma' : 'Demo in your language'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 <span>{language === 'es' ? 'Análisis de cumplimiento local' : 'Local compliance analysis'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 <span>{language === 'es' ? 'Integración con sistemas locales' : 'Local systems integration'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 <span>{language === 'es' ? 'Plan de migración personalizado' : 'Customized migration plan'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 <span>{language === 'es' ? 'Soporte en tu zona horaria' : 'Support in your timezone'}</span>
               </div>
             </div>

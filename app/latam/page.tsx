@@ -421,19 +421,19 @@ export default function LatamMarketPage() {
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Demostración adaptada a tu iglesia
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Análisis de necesidades sin costo
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Plan de implementación personalizado
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                 Acompañamiento en tu zona horaria
               </div>
             </div>

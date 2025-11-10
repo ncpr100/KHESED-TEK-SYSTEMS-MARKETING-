@@ -188,7 +188,7 @@ export default function FeatureComparisonTable({
   const renderFeatureValue = (value: boolean | string | number) => {
     if (typeof value === 'boolean') {
       return value ? (
-        <OutlineIcon name="circle" className="w-4 h-4 text-green-400" />
+        <OutlineIcon name="check" className="w-4 h-4 text-green-400" />
       ) : (
         <span className="text-red-400 text-lg">✗</span>
       );

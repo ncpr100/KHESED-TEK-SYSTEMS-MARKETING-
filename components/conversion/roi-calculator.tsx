@@ -348,7 +348,7 @@ export default function ROICalculator({
                     </h5>
                     <ul className="text-sm space-y-1 text-left">
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
                         <span>{language === 'es' ? 'Implementación GRATIS' : 'FREE Implementation'}</span>
                       </li>
                       <li className="flex items-center gap-2">
@@ -497,7 +497,7 @@ export default function ROICalculator({
               <ul className="space-y-2 text-sm">
                 {calculation.insights.map((insight, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <OutlineIcon name="circle" className="w-3 h-3 text-[var(--brand)] mt-1 flex-shrink-0" />
+                    <OutlineIcon name="check" className="w-3 h-3 text-[var(--brand)] mt-1 flex-shrink-0" />
                     <span>{insight}</span>
                   </li>
                 ))}
