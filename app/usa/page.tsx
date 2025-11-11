@@ -228,10 +228,10 @@ export default function USAMarketPage() {
                   <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
                   <span>40% engagement</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="dollar-sign" className="w-4 h-4 text-cyan-400" />
                   <span>$2M+ managed</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="monitor" className="w-4 h-4 text-cyan-400" />
                   <span>99.9% uptime</span>
                 </div>
               )
@@ -267,13 +267,13 @@ export default function USAMarketPage() {
               pastor: "Pastor David Martinez",
               stats: (
                 <div className="flex items-center justify-center gap-2 text-sm">
-                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400" />
                   <span>80% admin reduction</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="buildings" className="w-4 h-4 text-cyan-400" />
                   <span>12 campus sync</span>
                   <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400" />
                   <span>Mobile-first</span>
                 </div>
               )
@@ -378,10 +378,10 @@ export default function USAMarketPage() {
         />
 
         <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
-          <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="credit-card" className="w-4 h-4 text-cyan-400" />
           <span>Stripe, ACH, Wire Transfer accepted</span>
           <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
-          <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="user" className="w-4 h-4 text-cyan-400" />
           <span>Dedicated account manager included</span>
           <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
           <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />

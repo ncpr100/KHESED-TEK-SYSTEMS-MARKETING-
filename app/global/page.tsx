@@ -485,7 +485,7 @@ export default function GlobalMarketPage() {
             : 'GDPR/LGPD compliant'
           }</span>
           <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-          <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="award" className="w-4 h-4 text-cyan-400" />
           <span>{language === 'es' 
             ? 'Certificaciones ISO'
             : 'ISO certified'
@@ -568,11 +568,11 @@ export default function GlobalMarketPage() {
               <h3 className="font-semibold mb-2">{region.region}</h3>
               <div className="space-y-1 text-sm text-[var(--muted)]">
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="clock" className="w-3 h-3 text-cyan-400" />
                   <span>{region.timezone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="globe" className="w-3 h-3 text-cyan-400" />
                   <span>{region.languages}</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -677,11 +677,11 @@ export default function GlobalMarketPage() {
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="circle" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="mail" className="w-3 h-3 text-cyan-400" />
                 <span>contact@khesed-tek-systems.org</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="phone" className="w-3 h-3 text-cyan-400" />
                 <span>{language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</span>
               </div>
               <div className="flex items-center gap-2">
