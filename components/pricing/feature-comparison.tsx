@@ -193,6 +193,9 @@ export default function FeatureComparisonTable({
         <span className="text-red-400 text-lg">✗</span>
       );
     }
+    if (value === undefined || value === null) {
+      return <span className="text-red-400 text-lg">✗</span>;
+    }
     return <span className="text-sm text-[var(--text)]">{value}</span>;
   };
 
@@ -313,7 +316,7 @@ export default function FeatureComparisonTable({
                 
                 {planIds.map((planId) => (
                   <td key={planId} className="text-center p-4">
-                    {renderFeatureValue(feature.plans[planId] || false)}
+                    {renderFeatureValue(feature.plans[planId as keyof typeof feature.plans] || false)}
                   </td>
                 ))}
               </tr>
