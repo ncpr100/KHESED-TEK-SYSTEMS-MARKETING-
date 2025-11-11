@@ -318,7 +318,7 @@ export default function LatamMarketPage() {
           <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
           <span>Acepta PSE, Bancolombia, Efecty y transferencias</span>
           <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
-          <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400" />
           <span>Soporte telefónico incluido</span>
         </div>
       </section>
