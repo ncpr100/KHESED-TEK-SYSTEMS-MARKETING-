@@ -51,14 +51,6 @@ export default function AnimatedPricingCard({
         transformOrigin: 'center bottom'
       }}
     >
-      {/* Popular Badge */}
-      {plan.popular && (
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand2)] text-black text-sm font-bold px-6 py-2 rounded-full shadow-xl border-2 border-white whitespace-nowrap">
-            MÁS POPULAR
-          </div>
-        </div>
-      )}
 
       {/* Hover Gradient Overlay */}
       <div className={`
@@ -136,11 +128,11 @@ export default function AnimatedPricingCard({
           onClick={handleGetStarted}
           disabled={isLoading}
           className={`
-            w-full font-semibold px-6 py-3 rounded-xl transition-all duration-300
+            w-full font-bold px-6 py-4 transition-all duration-300
             transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed
             ${plan.popular 
-              ? 'gradient-btn text-black hover:shadow-xl' 
-              : 'border border-[var(--border)] hover:border-[var(--brand)] hover:bg-[var(--brand)]/10'
+              ? 'gradient-btn text-black hover:shadow-2xl rounded-full text-lg shadow-xl ring-2 ring-white/20 hover:ring-white/40' 
+              : 'border border-[var(--border)] hover:border-[var(--brand)] hover:bg-[var(--brand)]/10 rounded-xl font-semibold'
             }
             ${isHovered ? 'shadow-lg translate-y-[-2px]' : ''}
             ${isLoading ? 'animate-pulse' : ''}
@@ -154,6 +146,9 @@ export default function AnimatedPricingCard({
               </>
             ) : (
               <>
+                {plan.popular && (
+                  <span className="text-lg mr-2">⭐</span>
+                )}
                 {plan.ctaText || 'Comenzar ahora'}
                 <span className={`
                   transition-transform duration-300
