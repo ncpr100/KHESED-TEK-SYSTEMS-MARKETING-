@@ -147,7 +147,7 @@ export default function AnimatedPricingCard({
             ) : (
               <>
                 {plan.popular && (
-                  <span className="text-lg mr-2">⭐</span>
+                  <OutlineIcon name="crown" className="w-4 h-4 text-white mr-2" />
                 )}
                 {plan.ctaText || 'Comenzar ahora'}
                 <span className={`
