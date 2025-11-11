@@ -186,15 +186,26 @@ export default function FeatureComparisonTable({
     : FEATURE_COMPARISONS.filter(f => f.category === expandedCategory);
 
   const renderFeatureValue = (value: boolean | string | number) => {
+    // Debug: Log what we're getting
+    console.log('Feature value:', value, typeof value);
+    
     if (typeof value === 'boolean') {
       return value ? (
-        <OutlineIcon name="check" className="w-4 h-4 text-green-400" />
+        <div className="flex items-center justify-center">
+          <OutlineIcon name="check" className="w-4 h-4 text-green-400" />
+        </div>
       ) : (
-        <span className="text-red-400 text-lg">✗</span>
+        <div className="flex items-center justify-center">
+          <span className="text-red-400 text-lg">✗</span>
+        </div>
       );
     }
     if (value === undefined || value === null) {
-      return <span className="text-red-400 text-lg">✗</span>;
+      return (
+        <div className="flex items-center justify-center">
+          <span className="text-red-400 text-lg">✗</span>
+        </div>
+      );
     }
     return <span className="text-sm text-[var(--text)]">{value}</span>;
   };

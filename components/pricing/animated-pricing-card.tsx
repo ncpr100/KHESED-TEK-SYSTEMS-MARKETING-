@@ -37,9 +37,9 @@ export default function AnimatedPricingCard({
   return (
     <div 
       className={`
-        pricing-card group relative overflow-hidden
+        pricing-card group relative overflow-hidden h-full flex flex-col
         transition-all duration-300 ease-out
-        ${plan.popular ? 'scale-105 border-[var(--brand)] shadow-lg mt-8' : 'hover:scale-105'}
+        ${plan.popular ? 'scale-105 border-[var(--brand)] shadow-lg' : 'hover:scale-105'}
         ${isHovered ? 'shadow-2xl -translate-y-2' : 'shadow-lg'}
         card p-6 cursor-pointer
         ${className}
@@ -53,8 +53,8 @@ export default function AnimatedPricingCard({
     >
       {/* Popular Badge */}
       {plan.popular && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand2)] text-black text-sm font-bold px-6 py-2 rounded-full shadow-xl border-2 border-white">
+        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand2)] text-black text-sm font-bold px-6 py-2 rounded-full shadow-xl border-2 border-white whitespace-nowrap">
             MÁS POPULAR
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function AnimatedPricingCard({
       `} />
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
         <div className="text-center mb-6">
           <h3 className={`
@@ -131,6 +131,7 @@ export default function AnimatedPricingCard({
         </ul>
 
         {/* CTA Button */}
+        <div className="mt-auto">
         <button
           onClick={handleGetStarted}
           disabled={isLoading}
@@ -164,6 +165,7 @@ export default function AnimatedPricingCard({
             )}
           </span>
         </button>
+        </div>
       </div>
 
       {/* Animated Border */}
