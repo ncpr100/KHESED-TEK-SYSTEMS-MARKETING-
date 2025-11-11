@@ -260,7 +260,7 @@ export default function LatamMarketPage() {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-12 pt-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-12 pt-4">
           {[
             {
               id: "small",

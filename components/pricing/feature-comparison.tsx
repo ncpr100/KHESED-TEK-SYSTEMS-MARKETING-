@@ -186,13 +186,10 @@ export default function FeatureComparisonTable({
     : FEATURE_COMPARISONS.filter(f => f.category === expandedCategory);
 
   const renderFeatureValue = (value: boolean | string | number) => {
-    // Debug: Log what we're getting
-    console.log('Feature value:', value, typeof value);
-    
     if (typeof value === 'boolean') {
       return value ? (
         <div className="flex items-center justify-center">
-          <OutlineIcon name="check" className="w-4 h-4 text-green-400" />
+          <span className="text-green-400 text-lg font-bold">✓</span>
         </div>
       ) : (
         <div className="flex items-center justify-center">
