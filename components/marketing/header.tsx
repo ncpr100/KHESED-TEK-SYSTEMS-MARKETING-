@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
-  const { language, market } = useGlobalMarket();
+  const { language, market, geoData } = useGlobalMarket();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Determine market context from pathname for routing
@@ -16,6 +16,12 @@ export default function Header() {
   const isGlobalMarket = pathname?.includes('/global') || false;
   const isContactPage = pathname === '/contact';
   const isHomePage = pathname === '/';
+  
+  // Force Spanish for LATAM countries (especially Colombia)
+  // Override language detection for Colombian and LATAM users
+  const detectedCountry = geoData?.country || 'CO'; // Default to Colombia
+  const isLatamCountry = ['CO', 'MX', 'AR', 'CL', 'PE', 'EC', 'VE', 'BO', 'PY', 'UY', 'CR', 'PA', 'GT', 'HN', 'NI', 'SV'].includes(detectedCountry);
+  const effectiveLanguage = isLatamCountry ? 'es' : (language || 'en');
   
   // HOMEPAGE PATTERN REPLICATION:
   // The homepage redirects users to market pages (/latam, /usa, /global)
@@ -40,11 +46,11 @@ export default function Header() {
   const aboutHref = `${marketPath}#about`;
   const contactHref = '/contact';
   
-  // Use global market context for language, not path-based
-  const featuresText = language === 'es' ? 'Características' : 'Features';
-  const aboutText = language === 'es' ? 'Nosotros' : 'About';
-  const contactText = language === 'es' ? 'Contacto' : 'Contact';
-  const scheduleText = language === 'es' ? 'Agendar' : 'Schedule';
+  // Use effective language (forced Spanish for LATAM) instead of global market context
+  const featuresText = effectiveLanguage === 'es' ? 'Funciones' : 'Features';
+  const aboutText = effectiveLanguage === 'es' ? 'Nosotros' : 'About';
+  const contactText = effectiveLanguage === 'es' ? 'Contacto' : 'Contact';
+  const scheduleText = effectiveLanguage === 'es' ? 'Agendar' : 'Schedule';
 
   return (
     <header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-[var(--border)]">
