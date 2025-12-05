@@ -59,7 +59,7 @@ export const PRODUCTION_DEMO_VIDEOS: DemoVideo[] = [
   {
     id: 'khesed-tek-demo-latam',
     title: 'La Historia Detrás de KHESED-TEK',
-    description: 'Conozca la historia personal del fundador y nuestra misión de transformar la gestión de iglesias a través de la tecnología.',
+    description: 'Conozca la historia personal del fundador y nuestra misión de usar la tecnología como expresión práctica del Khesed de Dios para servir a Su Iglesia.',
     thumbnailUrl: '/images/demo-thumbnail-latam.jpg',
     videoUrl: VIDEO_URLS.LATAM_MAIN_DEMO,
     duration: '5:30',

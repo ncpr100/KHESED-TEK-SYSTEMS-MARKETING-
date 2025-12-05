@@ -407,7 +407,7 @@ function getTranslations(language: 'es' | 'en') {
   if (language === 'es') {
     return {
       title: 'La Historia Detrás de KHESED-TEK',
-      subtitle: 'Nuestra Misión: Transformar la Gestión de Iglesias',
+      subtitle: 'Nuestra Misión: Usar la tecnología, como una expresión práctica del \'Khesed\' de Dios para servir a Su Iglesia.',
       watchDemo: 'Ver Historia del Fundador',
       scheduleLive: 'Agendar Videollamada Personal',
       moreVideos: 'Más Videos',
