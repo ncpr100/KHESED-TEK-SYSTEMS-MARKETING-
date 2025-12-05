@@ -11,7 +11,7 @@ export interface ProductScreenshots {
 const LATAM_SCREENSHOTS: CarouselImage[] = [
   {
     src: '/images/product-screenshots/latam-1764975123998-Screenshot-2025-12-05-163131.png',
-    alt: 'Sistema de Acceso KHESED-TEK',
+    alt: 'Página de Acceso KHESED-TEK',
     title: '',
     description: 'Acceso seguro al sistema de gestión integral de iglesias'
   },
@@ -23,37 +23,37 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
   },
   {
     src: '/images/product-screenshots/latam-1764975149040-Screenshot-2025-12-05-163333.png', 
-    alt: 'Gestión de Miembros Real',
+    alt: 'Gestión de Miembros',
     title: '',
     description: 'Base de datos completa de miembros y seguimiento congregacional'
   },
   {
     src: '/images/product-screenshots/latam-1764975157059-Screenshot-2025-12-05-164534.png',
-    alt: 'Sistema de Donaciones Real',
-    title: '',
-    description: 'Procesamiento seguro de donaciones y ofrendas en línea'
-  },
-  {
-    src: '/images/product-screenshots/latam-1764975357909-Screenshot-2025-12-05-163131.png',
-    alt: 'Gestión de Voluntarios Real',
+    alt: 'Gestión de Voluntarios',
     title: '',
     description: 'Coordinación eficiente de equipos ministeriales y voluntarios'
   },
   {
     src: '/images/product-screenshots/latam-1764975481233-Screenshot-2025-12-05-165734.png',
-    alt: 'Asistente de Sermones Real',
+    alt: 'Sistema de Donaciones',
+    title: '',
+    description: 'Procesamiento seguro de donaciones y ofrendas en línea'
+  },
+  {
+    src: '/images/product-screenshots/latam-1764976058099-Screenshot-2025-12-05-164750.png',
+    alt: 'Asistente de Sermones',
     title: '',
     description: 'Herramientas avanzadas para preparación de predicaciones'
   },
   {
-    src: '/images/product-screenshots/latam-1764975788915-Screenshot-2025-12-05-163232.png',
-    alt: 'Perspectivas Pastorales Real',
+    src: '/images/product-screenshots/latam-1764976261309-Screenshot-2025-12-05-164639.png',
+    alt: 'Perspectivas Pastorales',
     title: '',
     description: 'Analíticas pastorales con perspectivas inteligentes para crecimiento'
   },
   {
-    src: '/images/product-screenshots/latam-1764975867363-Screenshot-2025-12-05-163333.png',
-    alt: 'Centro de Analíticas KHESED-TEK',
+    src: '/images/product-screenshots/latam-1764976324066-Screenshot-2025-12-05-164720.png',
+    alt: 'Control de Analíticas',
     title: '',
     description: 'Centro completo de analíticas y reportes avanzados para toma de decisiones'
   }
