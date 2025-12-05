@@ -10,7 +10,7 @@ export interface ProductScreenshots {
 // LATAM Market Screenshots (Spanish) - REAL APPLICATION SCREENSHOTS
 const LATAM_SCREENSHOTS: CarouselImage[] = [
   {
-    src: '/images/product-screenshots/latam-1764975123998-Screenshot-2025-12-05-163131.png',
+    src: '/images/product-screenshots/latam-1764975481233-Screenshot-2025-12-05-165734.png',
     alt: 'Página de Acceso KHESED-TEK',
     title: '',
     description: 'Acceso seguro al sistema de gestión integral de iglesias'
@@ -34,7 +34,7 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
     description: 'Coordinación eficiente de equipos ministeriales y voluntarios'
   },
   {
-    src: '/images/product-screenshots/latam-1764975481233-Screenshot-2025-12-05-165734.png',
+    src: '/images/product-screenshots/latam-1764975123998-Screenshot-2025-12-05-163131.png',
     alt: 'Sistema de Donaciones',
     title: '',
     description: 'Procesamiento seguro de donaciones y ofrendas en línea'

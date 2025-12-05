@@ -318,7 +318,7 @@ export default function DemoVideoSection({
               autoPlay={true}
               showDots={true}
               showArrows={true}
-              autoPlayInterval={4000}
+              autoPlayInterval={7000}
               className="max-w-4xl mx-auto"
             />
             
