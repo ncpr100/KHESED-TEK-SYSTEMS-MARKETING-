@@ -419,10 +419,10 @@ export default function GlobalMarketPage() {
               name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church',
               price: "$149.99 USD",
               period: language === 'es' ? '/mes' : '/month',
-              members: language === 'es' ? 'Hasta 200 miembros' : 'Up to 200 members',
+              members: language === 'es' ? 'Hasta 500 miembros' : 'Up to 500 members',
               features: language === 'es' 
-                ? ["Gestión básica de miembros", "Soporte multiidioma", "Pagos locales", "Migración asistida"]
-                : ["Basic member management", "Multi-language support", "Local payments", "Assisted migration"],
+                ? ["Gestión básica de miembros", "Hasta 5 licencias", "Soporte multiidioma", "Pagos locales", "Migración asistida"]
+                : ["Basic member management", "Up to 5 user licenses", "Multi-language support", "Local payments", "Assisted migration"],
               ctaText: language === 'es' ? 'Solicitar demo' : 'Request demo',
               ctaUrl: "/contact?plan=small"
             },
@@ -431,10 +431,10 @@ export default function GlobalMarketPage() {
               name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', 
               price: "$299.99 USD",
               period: language === 'es' ? '/mes' : '/month',
-              members: language === 'es' ? 'Hasta 1,000 miembros' : 'Up to 1,000 members',
+              members: language === 'es' ? 'Hasta 2,000 miembros' : 'Up to 2,000 members',
               features: language === 'es'
-                ? ["Todo lo anterior", "Multi-campus", "Reportes avanzados", "Soporte prioritario"]
-                : ["Everything above", "Multi-campus", "Advanced reporting", "Priority support"],
+                ? ["Todo lo anterior", "Hasta 10 licencias", "Reportes avanzados", "Soporte prioritario"]
+                : ["Everything above", "Up to 10 user licenses", "Advanced reporting", "Priority support"],
               popular: true,
               ctaText: language === 'es' ? 'Más popular' : 'Most Popular',
               ctaUrl: "/contact?plan=medium"
@@ -446,8 +446,8 @@ export default function GlobalMarketPage() {
               period: '',
               members: language === 'es' ? 'Miembros ilimitados' : 'Unlimited members',
               features: language === 'es'
-                ? ["Todo lo anterior", "API personalizada", "Cumplimiento GDPR", "Soporte 24/7"]
-                : ["Everything above", "Custom API", "GDPR compliance", "24/7 support"],
+                ? ["Todo lo anterior", "Licencias ilimitadas", "Multi-campus", "API personalizada", "Cumplimiento GDPR", "Soporte 24/7"]
+                : ["Everything above", "Unlimited licenses", "Multi-campus support", "Custom API", "GDPR compliance", "24/7 support"],
               ctaText: language === 'es' ? 'Contactar ventas' : 'Contact Sales',
               ctaUrl: "/contact?plan=large"
             }
@@ -464,8 +464,8 @@ export default function GlobalMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "200", features: [] },
-            { id: "medium", name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "1,000", features: [], popular: true },
+            { id: "small", name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "500", features: [] },
+            { id: "medium", name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "2,000", features: [], popular: true },
             { id: "large", name: language === 'es' ? 'Iglesia Grande' : 'Large Church', price: language === 'es' ? 'Personalizado' : 'Custom', period: '', members: "Unlimited", features: [] }
           ]}
           language={language}

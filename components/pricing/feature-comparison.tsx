@@ -85,9 +85,19 @@ const FEATURE_COMPARISONS: FeatureComparison[] = [
     feature: 'Límite de miembros',
     category: 'core',
     plans: {
-      small: '200',
-      medium: '1,000', 
+      small: '500',
+      medium: '2,000', 
       large: 'Ilimitado'
+    }
+  },
+  {
+    feature: 'Licencias de usuario',
+    description: 'Número de usuarios administrativos permitidos',
+    category: 'core',
+    plans: {
+      small: 'Hasta 5',
+      medium: 'Hasta 10',
+      large: 'Ilimitadas'
     }
   },
   {
@@ -116,7 +126,7 @@ const FEATURE_COMPARISONS: FeatureComparison[] = [
     category: 'advanced',
     plans: {
       small: false,
-      medium: true,
+      medium: false,
       large: true
     }
   },

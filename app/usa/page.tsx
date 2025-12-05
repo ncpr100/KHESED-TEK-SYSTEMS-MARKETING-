@@ -330,8 +330,8 @@ export default function USAMarketPage() {
               name: "Small Church",
               price: "$149.99",
               period: "/month",
-              members: "Up to 200 members",
-              features: ["Core church management", "Basic integrations", "Email support", "Training included"],
+              members: "Up to 500 members",
+              features: ["Core church management", "Up to 5 user licenses", "Basic integrations", "Email support", "Training included"],
               ctaText: "Start Free Trial",
               ctaUrl: "/contact?plan=small"
             },
@@ -340,8 +340,8 @@ export default function USAMarketPage() {
               name: "Medium Church", 
               price: "$299.99",
               period: "/month",
-              members: "Up to 1,000 members",
-              features: ["Multi-campus support", "Advanced integrations", "Phone + email support", "Custom training"],
+              members: "Up to 2,000 members",
+              features: ["Up to 10 user licenses", "Advanced integrations", "Phone + email support", "Custom training"],
               popular: true,
               ctaText: "Most Popular",
               ctaUrl: "/contact?plan=medium"
@@ -352,7 +352,7 @@ export default function USAMarketPage() {
               price: "Custom", 
               period: "",
               members: "Unlimited members",
-              features: ["Enterprise features", "Dedicated support", "Custom integrations", "SLA guarantees"],
+              features: ["Unlimited licenses", "Multi-campus support", "Enterprise features", "Dedicated support", "Custom integrations", "SLA guarantees"],
               ctaText: "Contact Sales",
               ctaUrl: "/contact?plan=large"
             }
@@ -369,8 +369,8 @@ export default function USAMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: "Small Church", price: "$149.99", period: "/month", members: "200", features: [] },
-            { id: "medium", name: "Medium Church", price: "$299.99", period: "/month", members: "1,000", features: [], popular: true },
+            { id: "small", name: "Small Church", price: "$149.99", period: "/month", members: "500", features: [] },
+            { id: "medium", name: "Medium Church", price: "$299.99", period: "/month", members: "2,000", features: [], popular: true },
             { id: "large", name: "Large Church", price: "Custom", period: "", members: "Unlimited", features: [] }
           ]}
           language="en"

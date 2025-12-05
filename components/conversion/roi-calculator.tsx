@@ -9,14 +9,14 @@ import OutlineIcon from '@/components/ui/outline-icon';
 const CHURCH_PROFILES: Record<string, ChurchProfile> = {
   small: {
     size: 'small',
-    memberCount: 200,
+    memberCount: 500,
     typicalBudget: 8000,
     adminComplexity: 4,
     averageHourlyValue: 15
   },
   medium: {
     size: 'medium',
-    memberCount: 1000,
+    memberCount: 2000,
     typicalBudget: 15000,
     adminComplexity: 6,
     averageHourlyValue: 20

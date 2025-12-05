@@ -21,7 +21,7 @@ npm install
 2. Create `.env.local` and add your Resend API key:
 ```env
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxx
-CONTACT_EMAIL=soporte@khesed-tek.com
+CONTACT_EMAIL=soporte@khesed-tek-systems.org
 ```
 
 3. Add your logo to `public/khesed-tek-logo.png`
@@ -35,15 +35,16 @@ npm run dev
 
 ## Deployment
 
-Deploy to Vercel:
+Deploy to Railway:
 ```bash
-vercel
+npm run build
+git push origin main
 ```
 
-Remember to add environment variables in your Vercel dashboard.
+Remember to add environment variables in your Railway dashboard.
 
 ## Contact
 
-- Email: soporte@khesed-tek.com
-- WhatsApp: +57 302 123 4410
+- Email: soporte@khesed-tek-systems.org
+- WhatsApp: +57 301 795 6893
 - Location: Barranquilla, Atlántico, Colombia

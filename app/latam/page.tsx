@@ -267,8 +267,8 @@ export default function LatamMarketPage() {
               name: "Iglesia Pequeña",
               price: "$149.99 USD",
               period: "/mes",
-              members: "Hasta 200 miembros",
-              features: ["Gestión básica de miembros", "WhatsApp integrado", "Soporte en español", "Pagos PSE"],
+              members: "Hasta 500 miembros",
+              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos PSE"],
               ctaText: "Comenzar gratis",
               ctaUrl: "/contact?plan=small"
             },
@@ -277,8 +277,8 @@ export default function LatamMarketPage() {
               name: "Iglesia Mediana", 
               price: "$299.99 USD",
               period: "/mes",
-              members: "Hasta 1,000 miembros",
-              features: ["Todo lo anterior", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo"],
+              members: "Hasta 2,000 miembros",
+              features: ["Todo lo anterior", "Hasta 10 licencias", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo"],
               popular: true,
               ctaText: "Más popular",
               ctaUrl: "/contact?plan=medium"
@@ -289,7 +289,7 @@ export default function LatamMarketPage() {
               price: "Personalizado", 
               period: "",
               members: "Miembros ilimitados",
-              features: ["Todo lo anterior", "Multi-campus", "API personalizada", "Soporte prioritario"],
+              features: ["Todo lo anterior", "Licencias ilimitadas", "Multi-campus", "API personalizada", "Soporte prioritario"],
               ctaText: "Solicitar demo",
               ctaUrl: "/contact?plan=large"
             }
@@ -306,8 +306,8 @@ export default function LatamMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: "Iglesia Pequeña", price: "$149.99", period: "/mes", members: "200", features: [] },
-            { id: "medium", name: "Iglesia Mediana", price: "$299.99", period: "/mes", members: "1,000", features: [], popular: true },
+            { id: "small", name: "Iglesia Pequeña", price: "$149.99", period: "/mes", members: "500", features: [] },
+            { id: "medium", name: "Iglesia Mediana", price: "$299.99", period: "/mes", members: "2,000", features: [], popular: true },
             { id: "large", name: "Iglesia Grande", price: "Personalizado", period: "", members: "Ilimitado", features: [] }
           ]}
           language="es"
