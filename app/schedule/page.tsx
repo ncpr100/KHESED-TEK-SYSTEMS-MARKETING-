@@ -56,7 +56,7 @@ export default function SchedulePage() {
                     
                     {/* Direct Calendar Access Button */}
                     <a
-                      href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2TjLq6iSHtShs9pUTLbHpoXfiYW4AqVB-RKl-y7Dy7trEKil4eDtG3SIuM7P6q6eLrAtmB8PPc?gv=true"
+                      href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1OEGXIFOW46nXQylomQG-AgJdrMy9IUq7N_0kEx72dn75JZsQP0OsPuuYTrmfEhi8Cs2RTXWV9?gv=true"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full gradient-btn text-black font-semibold py-4 px-6 rounded-lg hover:scale-105 transition text-center flex items-center justify-center gap-2"
