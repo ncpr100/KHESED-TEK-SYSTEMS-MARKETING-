@@ -17,7 +17,7 @@
 ```bash
 # Copy your image to:
 /public/images/product-screenshots/
-```
+```YOU HAVE IT WRONG AGAIN. 
 
 #### **Step 2: Add Configuration**
 Edit `/lib/product-screenshots.ts`:
