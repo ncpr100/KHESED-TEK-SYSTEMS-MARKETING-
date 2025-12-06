@@ -41,9 +41,9 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
   },
   {
     src: '/images/product-screenshots/latam-1764976058099-Screenshot-2025-12-05-164750.png',
-    alt: 'Asistente de Sermones',
+    alt: 'Sistema de Donaciones',
     title: '',
-    description: 'Herramientas avanzadas para preparación de predicaciones'
+    description: 'Procesamiento seguro de donaciones y ofrendas en línea'
   },
   {
     src: '/images/product-screenshots/latam-1764976261309-Screenshot-2025-12-05-164639.png',
