@@ -17,27 +17,27 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
   },
   {
     src: '/images/product-screenshots/latam-1764975123998-Screenshot-2025-12-05-163131.png',
-    alt: 'Sistema de Donaciones',
-    title: '',
-    description: 'Procesamiento seguro de donaciones y ofrendas en línea'
-  },
-  {
-    src: '/images/product-screenshots/latam-1764975132708-Screenshot-2025-12-05-163232.png',
     alt: 'Panel Principal KHESED-TEK',
     title: '',
     description: 'Panel de control con métricas avanzadas de la iglesia'
   },
   {
-    src: '/images/product-screenshots/latam-1764975149040-Screenshot-2025-12-05-163333.png', 
-    alt: 'Gestión de Miembros',
+    src: '/images/product-screenshots/latam-1764975132708-Screenshot-2025-12-05-163232.png',
+    alt: 'Gestión de Miembros CRM',
     title: '',
     description: 'Base de datos completa de miembros y seguimiento congregacional'
   },
   {
-    src: '/images/product-screenshots/latam-1764975157059-Screenshot-2025-12-05-164534.png',
-    alt: 'Gestión de Voluntarios',
+    src: '/images/product-screenshots/latam-1764975149040-Screenshot-2025-12-05-163333.png', 
+    alt: 'Sistema de Voluntarios Inteligente',
     title: '',
     description: 'Coordinación eficiente de equipos ministeriales y voluntarios'
+  },
+  {
+    src: '/images/product-screenshots/latam-1764975157059-Screenshot-2025-12-05-164534.png',
+    alt: 'Gestión de Sermones',
+    title: '',
+    description: 'Herramientas avanzadas para preparación de predicaciones'
   },
   {
     src: '/images/product-screenshots/latam-1764976058099-Screenshot-2025-12-05-164750.png',
