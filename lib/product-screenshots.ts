@@ -46,12 +46,6 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
     description: 'Herramientas avanzadas para preparación de predicaciones'
   },
   {
-    src: '/images/product-screenshots/latam-1764976058099-Screenshot-2025-12-05-164750.png',
-    alt: 'Asistente de Sermones',
-    title: '',
-    description: 'Herramientas avanzadas para preparación de predicaciones'
-  },
-  {
     src: '/images/product-screenshots/latam-1764976261309-Screenshot-2025-12-05-164639.png',
     alt: 'Perspectivas Pastorales',
     title: '',
