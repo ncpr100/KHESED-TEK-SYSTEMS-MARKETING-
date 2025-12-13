@@ -29,13 +29,13 @@ function addCacheBust(url: string): string {
 }
 
 // Environment variables for video URLs (fallback to safe defaults)
-// CRITICAL: Forcing cache bust for Railway deployment - Updated 2025-11-04
+// CRITICAL: Forcing cache bust for Railway deployment - Updated 2025-12-13
 const VIDEO_URLS = {
-  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
-  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
+  LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/d4rKaIUTCQQ'),
+  USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/d4rKaIUTCQQ'),
   LATAM_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_LATAM_QUICK_TOUR || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
   USA_QUICK_TOUR: addCacheBust(process.env.NEXT_PUBLIC_USA_QUICK_TOUR || 'https://www.youtube.com/embed/1fW2zDQnUV0'),
-  GLOBAL_OVERVIEW: addCacheBust(process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/1fW2zDQnUV0')
+  GLOBAL_OVERVIEW: addCacheBust(process.env.NEXT_PUBLIC_GLOBAL_DEMO || 'https://www.youtube.com/embed/d4rKaIUTCQQ')
 };
 
 // Debug logging for environment variables (client-side only)
