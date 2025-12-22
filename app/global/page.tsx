@@ -539,7 +539,8 @@ export default function GlobalMarketPage() {
       <section className="max-w-4xl mx-auto px-6 py-12">
         <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
           <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
-            🚀 <span>{language === 'es' ? 'Programa Beta - Lanzamiento Global' : 'Beta Program - Global Launch'}</span>
+            <OutlineIcon name="rocket" className="w-4 h-4" />
+            <span>{language === 'es' ? 'Programa Beta - Lanzamiento Global' : 'Beta Program - Global Launch'}</span>
           </div>
           <h2 className="text-2xl font-semibold mb-4">
             {language === 'es' ? 'Únete a Nuestro Programa Beta Global' : 'Join Our Global Beta Program'}

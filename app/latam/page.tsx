@@ -200,7 +200,8 @@ export default function LatamMarketPage() {
       <section className="max-w-4xl mx-auto px-6 py-12">
         <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
           <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
-            🚀 <span>Programa Beta - Lanzamiento Especial</span>
+            <OutlineIcon name="rocket" className="w-4 h-4" />
+            <span>Programa Beta - Lanzamiento Especial</span>
           </div>
           <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
           <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
@@ -389,7 +390,8 @@ export default function LatamMarketPage() {
       <section className="max-w-4xl mx-auto px-6 py-12">
         <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
           <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
-            🚀 <span>Programa Beta - Lanzamiento Especial</span>
+            <OutlineIcon name="rocket" className="w-4 h-4" />
+            <span>Programa Beta - Lanzamiento Especial</span>
           </div>
           <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
           <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
