@@ -239,8 +239,9 @@ export default function SystemFeaturesSection({
 
               {/* Key Benefit */}
               <div className="p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)] max-w-xl mx-auto">
-                <div className="text-sm font-medium text-[var(--text)]">
-                  💡 <strong>{isEnglish ? 'Key benefit:' : 'Beneficio clave:'}</strong> {currentFeature.benefit}
+                <div className="text-sm font-medium text-[var(--text)] flex items-center gap-2">
+                  <OutlineIcon name="lightbulb" className="w-4 h-4 text-[var(--brand)]" />
+                  <strong>{isEnglish ? 'Key benefit:' : 'Beneficio clave:'}</strong> {currentFeature.benefit}
                 </div>
               </div>
             </div>
@@ -285,12 +286,16 @@ export default function SystemFeaturesSection({
               <div className="text-center mt-4">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="text-sm text-[var(--muted)] hover:text-[var(--brand)] transition"
+                  className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--brand)] transition"
                 >
-                  {isPlaying 
-                    ? (isEnglish ? '⏸ Pause' : '⏸ Pausar')
-                    : (isEnglish ? '▶ Play' : '▶ Reproducir')
-                  }
+                  <OutlineIcon 
+                    name={isPlaying ? "pause" : "play"} 
+                    className="w-4 h-4"
+                  />
+                  <span>{isPlaying 
+                    ? (isEnglish ? 'Pause' : 'Pausar')
+                    : (isEnglish ? 'Play' : 'Reproducir')
+                  }</span>
                 </button>
               </div>
             </>
