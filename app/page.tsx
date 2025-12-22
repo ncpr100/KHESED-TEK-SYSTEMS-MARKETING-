@@ -109,6 +109,9 @@ export default function HomePage() {
             y la asignación de recursos para que su equipo recupere el activo más valioso: tiempo para pastorear y fortalecer a la comunidad, 
             mientras nosotros gestionamos la complejidad tecnológica.
           </p>
+          <p className="font-medium text-[var(--brand)]">
+            Permítanos construir la infraestructura digital que respalda y amplifica su impacto eterno.
+          </p>
         </div>
       </section>
 

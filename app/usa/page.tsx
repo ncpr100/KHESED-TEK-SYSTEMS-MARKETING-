@@ -497,6 +497,9 @@ export default function USAMarketPage() {
             and resource allocation so your team can recover the most valuable asset: time to shepherd and strengthen the community, 
             while we manage the technological complexity.
           </p>
+          <p className="font-medium text-[var(--brand)]">
+            Let us build the digital infrastructure that supports and amplifies your eternal impact.
+          </p>
         </div>
         <div className="grid sm:grid-cols-3 gap-6 text-center">
           <div>
