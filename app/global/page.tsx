@@ -10,7 +10,7 @@ import { PricingPlan } from '@/types/pricing';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
 import TrustSignals from '@/components/social-proof/trust-signals';
 import ROICalculator from '@/components/conversion/roi-calculator';
-import TestimonialsSection from '@/components/social-proof/testimonials-section';
+import SystemFeaturesSection from '@/components/social-proof/system-features-section';
 import OutlineIcon from '@/components/ui/outline-icon';
 
 export default function GlobalMarketPage() {
@@ -667,7 +667,7 @@ export default function GlobalMarketPage() {
             }
           </p>
         </div>
-        <TestimonialsSection 
+        <SystemFeaturesSection 
           autoRotate={true}
           showMetrics={true}
           variant="carousel"

@@ -7,7 +7,7 @@ import { useGlobalMarket } from '@/lib/global-market';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
 import FeatureComparisonTable from '@/components/pricing/feature-comparison';
 import { PricingPlan } from '@/types/pricing';
-import TestimonialsSection from '@/components/social-proof/testimonials-section';
+import SystemFeaturesSection from '@/components/social-proof/system-features-section';
 import TrustSignalsSection from '@/components/social-proof/trust-signals';
 import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
@@ -549,7 +549,7 @@ export default function USAMarketPage() {
             Be among the first 25 churches to experience enterprise-grade ministry management
           </p>
         </div>
-        <TestimonialsSection 
+        <SystemFeaturesSection 
           variant="carousel"
           autoRotate={true}
           showMetrics={true}

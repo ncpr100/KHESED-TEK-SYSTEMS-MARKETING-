@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { TestimonialProps } from '@/types/testimonials';
 import OutlineIcon from '@/components/ui/outline-icon';
 
 // System Features Data - Real capabilities of KHESED-TEK-CMS
@@ -12,7 +11,6 @@ interface SystemFeature {
   benefit: string;
   icon: string;
   metrics?: string;
-  market: 'LATAM' | 'USA' | 'GLOBAL';
   language: 'es' | 'en';
 }
 
@@ -25,7 +23,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Seguimiento pastoral 24/7 automatizado con notificaciones instantáneas",
     icon: 'heart',
     metrics: "Notificaciones en tiempo real",
-    market: 'LATAM',
     language: 'es'
   },
   {
@@ -33,9 +30,8 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     title: "Centro de Analíticas Predictiva",
     description: "Inteligencia Artificial que avisa cuando algún miembro se aleja, permitiendo a las personas encargadas actuar a tiempo antes de perder ovejas.",
     benefit: "Prevención proactiva de deserción ministerial",
-    icon: 'chart',
+    icon: 'trending-up',
     metrics: "Alertas tempranas de IA",
-    market: 'LATAM',
     language: 'es'
   },
   {
@@ -45,7 +41,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Comunicación pastoral directa en la plataforma favorita de Colombia",
     icon: 'message-circle',
     metrics: "Primera integración completa en LATAM",
-    market: 'LATAM',
     language: 'es'
   },
   {
@@ -55,7 +50,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Optimización de recursos ministeriales según dones espirituales",
     icon: 'users',
     metrics: "Matching basado en dones espirituales",
-    market: 'LATAM',
     language: 'es'
   },
   {
@@ -64,8 +58,7 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     description: "Libere a su equipo de cientos de horas anuales en tareas administrativas. Sistema automatizado 24/7 para enfocarse en amar personas y hacer discípulos.",
     benefit: "90%+ reducción en tiempo administrativo comprobado",
     icon: 'zap',
-    metrics: "Ahorro del 90% en producción",
-    market: 'LATAM',
+    metrics: "Ahorro del 90% en administración",
     language: 'es'
   },
   {
@@ -75,7 +68,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Protección total de información sensible de la iglesia",
     icon: 'shield',
     metrics: "Encriptación completa garantizada",
-    market: 'LATAM',
     language: 'es'
   },
   // English Features (USA/Global Markets)
@@ -86,7 +78,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "24/7 automated pastoral follow-up with instant notifications",
     icon: 'heart',
     metrics: "Real-time notifications",
-    market: 'USA',
     language: 'en'
   },
   {
@@ -94,9 +85,8 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     title: "Predictive Analytics Center",
     description: "Artificial Intelligence that alerts when members are drifting away, allowing responsible staff to act in time before losing sheep.",
     benefit: "Proactive prevention of ministerial attrition",
-    icon: 'chart',
+    icon: 'trending-up',
     metrics: "AI early warning alerts",
-    market: 'USA',
     language: 'en'
   },
   {
@@ -106,7 +96,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Direct pastoral communication on Colombia's favorite platform",
     icon: 'message-circle',
     metrics: "First complete integration in LATAM",
-    market: 'USA',
     language: 'en'
   },
   {
@@ -116,7 +105,6 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Ministry resource optimization based on spiritual gifts",
     icon: 'users',
     metrics: "Spiritual gifts-based matching",
-    market: 'USA',
     language: 'en'
   },
   {
@@ -125,8 +113,7 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     description: "Free your team from hundreds of annual hours in administrative tasks. 24/7 automated system to focus on loving people and making disciples.",
     benefit: "90%+ proven reduction in administrative time",
     icon: 'zap',
-    metrics: "90% production time savings",
-    market: 'USA',
+    metrics: "90% administration time savings",
     language: 'en'
   },
   {
@@ -136,13 +123,11 @@ const SYSTEM_FEATURES: SystemFeature[] = [
     benefit: "Complete protection of sensitive church information",
     icon: 'shield',
     metrics: "Complete encryption guaranteed",
-    market: 'USA',
     language: 'en'
   }
 ];
 
 export interface SystemFeatureProps {
-  features?: SystemFeature[];
   autoRotate?: boolean;
   rotationInterval?: number;
   showMetrics?: boolean;
@@ -151,7 +136,6 @@ export interface SystemFeatureProps {
 }
 
 export default function SystemFeaturesSection({
-  features,
   autoRotate = true,
   rotationInterval = 6000,
   showMetrics = true,
@@ -159,6 +143,7 @@ export default function SystemFeaturesSection({
   className = ""
 }: SystemFeatureProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(autoRotate);
   
   // Detect language from URL
   const isEnglish = typeof window !== 'undefined' && (
@@ -167,7 +152,7 @@ export default function SystemFeaturesSection({
   );
   
   // Filter features based on language
-  const languageFeatures = features || SYSTEM_FEATURES.filter(feature => 
+  const languageFeatures = SYSTEM_FEATURES.filter(feature => 
     feature.language === (isEnglish ? 'en' : 'es')
   );
   
@@ -175,14 +160,14 @@ export default function SystemFeaturesSection({
 
   // Auto-rotation effect
   useEffect(() => {
-    if (!autoRotate || languageFeatures.length <= 1) return;
+    if (!isPlaying || languageFeatures.length <= 1) return;
     
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % languageFeatures.length);
     }, rotationInterval);
 
     return () => clearInterval(timer);
-  }, [autoRotate, rotationInterval, languageFeatures.length]);
+  }, [isPlaying, rotationInterval, languageFeatures.length]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -218,181 +203,12 @@ export default function SystemFeaturesSection({
             }
           </p>
         </div>
-  },
-  {
-    id: 'feature-donations-en',
-    title: "Secure Online Donations",
-    description: "Integration with Stripe, ACH transfers and local payment methods for tithes, offerings and special projects.",
-    benefit: "Increase contributions with digital donations",
-    icon: 'dollar-sign',
-    metrics: "Enterprise payment security",
-    market: 'USA',
-    language: 'en'
-  },
-  {
-    id: 'feature-communication-en',
-    title: "Multi-Channel Communication",
-    description: "Integrated messaging, mass emails, SMS and push notifications to keep the congregation connected.",
-    benefit: "Reach all members where they are",
-    icon: 'message-circle',
-    metrics: "15+ integration channels",
-    market: 'USA',
-    language: 'en'
-  },
-  {
-    id: 'feature-reports-en',
-    title: "Smart Reporting",
-    description: "Dashboards with growth, attendance, donation and engagement metrics for data-driven decisions.",
-    benefit: "Complete visibility of your ministry health",
-    icon: 'chart',
-    metrics: "15+ report types available",
-    market: 'USA',
-    language: 'en'
-  }
-];
-
-export default function TestimonialsSection({ 
-  autoRotate = true,
-  rotationInterval = 6000,
-  showMetrics = true,
-  showPhotos = false,
-  variant = 'carousel',
-  className = ""
-}: TestimonialProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(autoRotate);
-
-  // Filter features by market context (default to LATAM for Spanish)
-  const features = SYSTEM_FEATURES.filter(feature => {
-    // Simple language detection - you could improve this with props
-    const preferredLang = typeof window !== 'undefined' && window.location.pathname.includes('/usa') ? 'en' : 'es';
-    return feature.language === preferredLang;
-  });
-
-  // Auto-rotation logic
-  useEffect(() => {
-    if (!isPlaying || features.length <= 1) return;
-
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % features.length);
-    }, rotationInterval);
-
-    return () => clearInterval(timer);
-  }, [isPlaying, features.length, rotationInterval]);
-
-  const nextFeature = () => {
-    setCurrentIndex((prev) => (prev + 1) % features.length);
-  };
-
-  const prevFeature = () => {
-    setCurrentIndex((prev) => (prev - 1 + features.length) % features.length);
-  };
-
-  const goToFeature = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  if (features.length === 0) return null;
-
-  const currentFeature = features[currentIndex];
-
-  return (
-    <section className={`py-16 ${className}`}>
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4">
-            {currentFeature.language === 'es' 
-              ? 'Características Principales' 
-              : 'Key Features'
-            }
-          </h2>
-          <p className="text-[var(--muted)] text-lg">
-            {currentFeature.language === 'es'
-              ? 'Funcionalidades diseñadas para potenciar su ministerio'
-              : 'Features designed to empower your ministry'
-            }
-          </p>
-        </div>
 
         {/* Feature Carousel */}
         <div className="relative">
           <div className="card p-8 lg:p-12 text-center relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 pointer-events-none" />
-            
-            {/* Feature Icon */}
-            <div className="relative mb-6">
-              <div className="w-16 h-16 mx-auto bg-[var(--brand)]/10 rounded-full flex items-center justify-center mb-4">
-                <OutlineIcon name={currentFeature.icon} className="w-8 h-8 text-[var(--brand)]" />
-              </div>
-            </div>
-
-            {/* Feature Content */}
-            <div className="relative z-10">
-              <h3 className="text-2xl font-semibold mb-4 gradient-text">
-                {currentFeature.title}
-              </h3>
-              
-              <p className="text-lg text-[var(--muted)] mb-6 max-w-2xl mx-auto leading-relaxed">
-                {currentFeature.description}
-              </p>
-
-              {showMetrics && currentFeature.metrics && (
-                <div className="mb-6">
-                  <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium">
-                    <OutlineIcon name="zap" className="w-4 h-4" />
-                    <span>{currentFeature.metrics}</span>
-                  </div>
-                </div>
-              )}
-
-              <div className="p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)] max-w-xl mx-auto">
-                <div className="text-sm font-medium text-[var(--text)]">
-                  💡 <strong>{currentFeature.language === 'es' ? 'Beneficio:' : 'Benefit:'}</strong> {currentFeature.benefit}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Arrows */}
-          {features.length > 1 && (
-            <>
-              <button
-                onClick={prevFeature}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center hover:border-[var(--brand)] transition-colors"
-                aria-label="Previous feature"
-              >
-                <OutlineIcon name="arrow-left" className="w-5 h-5 text-[var(--text)]" />
-              </button>
-              <button
-                onClick={nextFeature}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center hover:border-[var(--brand)] transition-colors"
-                aria-label="Next feature"
-              >
-                <OutlineIcon name="arrow-right" className="w-5 h-5 text-[var(--text)]" />
-              </button>
-            </>
-          )}
-
-          {/* Dots Indicators */}
-          {features.length > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-6">
-              {features.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToFeature(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentIndex 
-                      ? 'bg-[var(--brand)]' 
-                      : 'bg-[var(--muted)] hover:bg-[var(--brand)]/50'
-                  }`}
-                  aria-label={`Go to feature ${index + 1}`}
-                />
-              ))}
-            </div>
-          )}
-        </div>
             
             {/* Feature Icon */}
             <div className="relative mb-6">
@@ -403,62 +219,58 @@ export default function TestimonialsSection({
 
             {/* Feature Content */}
             <div className="relative z-10">
-              <h3 className="text-2xl lg:text-3xl font-semibold mb-4 text-[var(--text)]">
+              <h3 className="text-2xl lg:text-3xl font-semibold mb-4 gradient-text">
                 {currentFeature.title}
               </h3>
               
-              <p className="text-lg lg:text-xl leading-relaxed mb-6 text-[var(--muted)] max-w-3xl mx-auto">
+              <p className="text-lg leading-relaxed mb-6 text-[var(--muted)] max-w-2xl mx-auto">
                 {currentFeature.description}
               </p>
 
               {/* Feature Metrics */}
               {showMetrics && currentFeature.metrics && (
-                <div className="mb-6 p-4 bg-[var(--surface)] rounded-xl border border-[var(--border)]">
-                  <div className="text-xl font-bold text-[var(--brand)] mb-1">
-                    {currentFeature.metrics}
-                  </div>
-                  <div className="text-sm text-[var(--muted)]">
-                    {currentFeature.language === 'es' ? 'Capacidad técnica' : 'Technical capacity'}
+                <div className="mb-6">
+                  <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium">
+                    <OutlineIcon name="zap" className="w-4 h-4" />
+                    <span>{currentFeature.metrics}</span>
                   </div>
                 </div>
               )}
 
               {/* Key Benefit */}
-              <div className="p-4 bg-gradient-to-r from-[var(--brand)]/10 to-[var(--brand2)]/10 rounded-xl">
-                <div className="text-lg font-medium text-[var(--text)]">
-                  💡 <strong>{currentFeature.language === 'es' ? 'Beneficio clave:' : 'Key benefit:'}</strong> {currentFeature.benefit}
+              <div className="p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)] max-w-xl mx-auto">
+                <div className="text-sm font-medium text-[var(--text)]">
+                  💡 <strong>{isEnglish ? 'Key benefit:' : 'Beneficio clave:'}</strong> {currentFeature.benefit}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Navigation Controls */}
-          {features.length > 1 && (
+          {languageFeatures.length > 1 && (
             <>
               {/* Previous/Next Buttons */}
-              <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none">
-                <button
-                  onClick={prevFeature}
-                  className="w-12 h-12 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--brand)] transition flex items-center justify-center text-[var(--text)] hover:text-[var(--brand)] pointer-events-auto"
-                  aria-label="Previous feature"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={nextFeature}
-                  className="w-12 h-12 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--brand)] transition flex items-center justify-center text-[var(--text)] hover:text-[var(--brand)] pointer-events-auto"
-                  aria-label="Next feature"
-                >
-                  →
-                </button>
-              </div>
+              <button
+                onClick={goToPrevious}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--brand)] transition flex items-center justify-center text-[var(--text)] hover:text-[var(--brand)]"
+                aria-label="Previous feature"
+              >
+                <OutlineIcon name="chevron-left" className="w-5 h-5" />
+              </button>
+              <button
+                onClick={goToNext}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--brand)] transition flex items-center justify-center text-[var(--text)] hover:text-[var(--brand)]"
+                aria-label="Next feature"
+              >
+                <OutlineIcon name="chevron-right" className="w-5 h-5" />
+              </button>
 
               {/* Dot Indicators */}
               <div className="flex justify-center gap-2 mt-8">
-                {features.map((_, index) => (
+                {languageFeatures.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => goToFeature(index)}
+                    onClick={() => goToSlide(index)}
                     className={`w-3 h-3 rounded-full transition ${
                       index === currentIndex
                         ? 'bg-[var(--brand)]'
@@ -476,8 +288,8 @@ export default function TestimonialsSection({
                   className="text-sm text-[var(--muted)] hover:text-[var(--brand)] transition"
                 >
                   {isPlaying 
-                    ? (currentFeature.language === 'es' ? '⏸ Pausar' : '⏸ Pause')
-                    : (currentFeature.language === 'es' ? '▶ Reproducir' : '▶ Play')
+                    ? (isEnglish ? '⏸ Pause' : '⏸ Pausar')
+                    : (isEnglish ? '▶ Play' : '▶ Reproducir')
                   }
                 </button>
               </div>
@@ -490,25 +302,25 @@ export default function TestimonialsSection({
           <div className="text-center p-6 card">
             <div className="text-3xl font-bold gradient-text mb-2">10K+</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentFeature.language === 'es' ? 'Miembros soportados' : 'Members supported'}
+              {isEnglish ? 'Members supported' : 'Miembros soportados'}
             </div>
           </div>
           <div className="text-center p-6 card">
             <div className="text-3xl font-bold gradient-text mb-2">40+</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentFeature.language === 'es' ? 'Años en ministerios' : 'Years in ministry'}
+              {isEnglish ? 'Years in ministry' : 'Años en ministerios'}
             </div>
           </div>
           <div className="text-center p-6 card">
             <div className="text-3xl font-bold gradient-text mb-2">99.9%</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentFeature.language === 'es' ? 'Uptime garantizado' : 'Uptime guarantee'}
+              {isEnglish ? 'Uptime guarantee' : 'Uptime garantizado'}
             </div>
           </div>
           <div className="text-center p-6 card">
             <div className="text-3xl font-bold gradient-text mb-2">15+</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentFeature.language === 'es' ? 'Integraciones' : 'Integrations'}
+              {isEnglish ? 'Integrations' : 'Integraciones'}
             </div>
           </div>
         </div>

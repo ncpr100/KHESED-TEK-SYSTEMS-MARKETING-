@@ -8,7 +8,7 @@ import FeatureComparisonTable from '@/components/pricing/feature-comparison';
 import { PricingPlan } from '@/types/pricing';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
-import TestimonialsSection from '@/components/social-proof/testimonials-section';
+import SystemFeaturesSection from '@/components/social-proof/system-features-section';
 import TrustSignalsSection, { TrustBadges } from '@/components/social-proof/trust-signals';
 import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
@@ -456,8 +456,8 @@ export default function LatamMarketPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <TestimonialsSection 
+      {/* System Features Section */}
+      <SystemFeaturesSection 
         autoRotate={true}
         showMetrics={true}
         variant="carousel"
