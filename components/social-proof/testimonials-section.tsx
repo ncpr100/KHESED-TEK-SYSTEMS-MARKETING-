@@ -248,23 +248,29 @@ export default function TestimonialsSection({
         </div>
 
         {/* Trust Statistics */}
-        <div className="grid sm:grid-cols-3 gap-6 mt-12">
+        <div className="grid sm:grid-cols-4 gap-4 mt-12">
           <div className="text-center p-6 card">
-            <div className="text-3xl font-bold gradient-text mb-2">200+</div>
+            <div className="text-3xl font-bold gradient-text mb-2">10K+</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentTestimonial.language === 'es' ? 'Iglesias confían en nosotros' : 'Churches trust us'}
+              {currentTestimonial.language === 'es' ? 'Miembros soportados' : 'Members supported'}
+            </div>
+          </div>
+          <div className="text-center p-6 card">
+            <div className="text-3xl font-bold gradient-text mb-2">40+</div>
+            <div className="text-sm text-[var(--muted)]">
+              {currentTestimonial.language === 'es' ? 'Años en ministerios' : 'Years in ministry'}
             </div>
           </div>
           <div className="text-center p-6 card">
             <div className="text-3xl font-bold gradient-text mb-2">99.9%</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentTestimonial.language === 'es' ? 'Tiempo de actividad' : 'Uptime guarantee'}
+              {currentTestimonial.language === 'es' ? 'Uptime garantizado' : 'Uptime guarantee'}
             </div>
           </div>
           <div className="text-center p-6 card">
-            <div className="text-3xl font-bold gradient-text mb-2">24/7</div>
+            <div className="text-3xl font-bold gradient-text mb-2">15+</div>
             <div className="text-sm text-[var(--muted)]">
-              {currentTestimonial.language === 'es' ? 'Soporte técnico' : 'Technical support'}
+              {currentTestimonial.language === 'es' ? 'Integraciones' : 'Integrations'}
             </div>
           </div>
         </div>

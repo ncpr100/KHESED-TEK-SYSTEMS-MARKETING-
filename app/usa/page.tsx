@@ -48,16 +48,21 @@ export default function USAMarketPage() {
             {valuePropText}
           </h1>
           <p className="max-w-3xl mx-auto text-lg mb-6" style={{ color: 'var(--muted)' }}>
-            Transform your ministry with enterprise-grade technology designed for growing American churches. 
-            Seamless integrations, scalable architecture, and 24/7 support.
+            At KHESED-TEK SYSTEMS, cutting-edge technology meets divine purpose. 
+            Our flagship solution, KHESED-TEK-CMS, is born from a profound conviction: software is not 
+            the end, but the strategic means to enhance the fulfillment of The Great Commission.
+          </p>
+          <p className="max-w-3xl mx-auto text-base mb-6 italic" style={{ color: 'var(--muted)' }}>
+            Our mission is to equip your church with Ministerial Intelligence, facilitating the biblical 
+            mandate of Proverbs 27:23: "Be diligent to know the state of your flocks, and attend to your herds."
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a
-              href="/contact"
+              href="/contact?program=beta"
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition"
               onClick={handleCTAClick}
             >
-              {ctaText}
+              Join Beta Program →
             </a>
             <a
               href="tel:+15551234567"
@@ -405,6 +410,38 @@ export default function USAMarketPage() {
         />
       </section>
 
+      {/* Beta Program Launch */}
+      <section className="max-w-4xl mx-auto px-6 py-12">
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
+          <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            🚀 <span>Beta Program - Limited Launch</span>
+          </div>
+          <h2 className="text-2xl font-semibold mb-4">Join Our Enterprise Beta Program</h2>
+          <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
+            Be among the first churches to experience KHESED-TEK-CMS. 
+            Get full access and help us perfect the platform designed specifically for American ministry leadership.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6 mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 days</div>
+              <div className="text-sm text-[var(--muted)]">Completely free access</div>
+            </div>
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
+              <div className="text-sm text-[var(--muted)]">First year discount<br/>(First 25 churches)</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              Apply to Beta Program →
+            </a>
+            <a href="tel:+15551234567" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition">
+              Call: +1 (555) 123-4567
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Enterprise Features Showcase */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
@@ -501,18 +538,22 @@ export default function USAMarketPage() {
             Let us build the digital infrastructure that supports and amplifies your eternal impact.
           </p>
         </div>
-        <div className="grid sm:grid-cols-3 gap-6 text-center">
+        <div className="grid sm:grid-cols-4 gap-4 text-center">
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
-            <div className="text-sm text-[var(--muted)]">Churches served internationally</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">10,000+</div>
+            <div className="text-sm text-[var(--muted)]">Members supported</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">5+</div>
-            <div className="text-sm text-[var(--muted)]">Years of church technology expertise</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">40+</div>
+            <div className="text-sm text-[var(--muted)]">Years serving in ministry</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">24/7</div>
-            <div className="text-sm text-[var(--muted)]">Global support coverage</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">99.9%</div>
+            <div className="text-sm text-[var(--muted)]">Uptime guarantee</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">15+</div>
+            <div className="text-sm text-[var(--muted)]">Available integrations</div>
           </div>
         </div>
       </section>
@@ -520,9 +561,9 @@ export default function USAMarketPage() {
       {/* Client Testimonials */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4">Trusted by Churches Nationwide</h2>
+          <h2 className="text-3xl font-semibold mb-4">Join Our Beta Program</h2>
           <p className="text-[var(--muted)] text-lg">
-            Join hundreds of churches already transforming their ministries
+            Be among the first 25 churches to experience enterprise-grade ministry management
           </p>
         </div>
         <TestimonialsSection 

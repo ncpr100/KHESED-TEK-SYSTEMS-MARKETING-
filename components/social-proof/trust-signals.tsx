@@ -84,30 +84,30 @@ const TRUST_SIGNALS: TrustSignal[] = [
     market: 'GLOBAL'
   },
   {
-    id: 'client-count-latam',
+    id: 'capacity-latam',
     type: 'clients',
     icon: 'users',
-    title: 'Iglesias',
-    description: 'Confían en nuestra plataforma',
-    value: '200+',
+    title: 'Capacidad',
+    description: 'Hasta 10,000+ miembros soportados',
+    value: '10K+',
     market: 'LATAM'
   },
   {
-    id: 'client-count-usa',
+    id: 'capacity-usa',
     type: 'clients',
     icon: 'users',
-    title: 'Churches',
-    description: 'Trust our platform',
-    value: '200+',
+    title: 'Capacity',
+    description: 'Up to 10,000+ members supported',
+    value: '10K+',
     market: 'USA'
   },
   {
-    id: 'client-count-global',
+    id: 'capacity-global',
     type: 'clients',
     icon: 'users',
-    title: 'Organizations',
-    description: 'Trust our platform worldwide',
-    value: '200+',
+    title: 'Capacity',
+    description: 'Up to 10,000+ members supported worldwide',
+    value: '10K+',
     market: 'GLOBAL'
   },
   {
@@ -135,6 +135,60 @@ const TRUST_SIGNALS: TrustSignal[] = [
     title: 'Support',
     description: 'Available worldwide',
     value: '24/7',
+    market: 'GLOBAL'
+  },
+  {
+    id: 'experience-latam',
+    type: 'certification',
+    icon: 'award',
+    title: 'Experiencia',
+    description: 'Años sirviendo en ministerios',
+    value: '40+',
+    market: 'LATAM'
+  },
+  {
+    id: 'experience-usa',
+    type: 'certification',
+    icon: 'award',
+    title: 'Experience',
+    description: 'Years serving in ministry',
+    value: '40+',
+    market: 'USA'
+  },
+  {
+    id: 'experience-global',
+    type: 'certification',
+    icon: 'award',
+    title: 'Experience',
+    description: 'Years serving in ministry worldwide',
+    value: '40+',
+    market: 'GLOBAL'
+  },
+  {
+    id: 'integrations-latam',
+    type: 'certification',
+    icon: 'settings',
+    title: 'Integraciones',
+    description: 'Conecta con tus herramientas favoritas',
+    value: '15+',
+    market: 'LATAM'
+  },
+  {
+    id: 'integrations-usa',
+    type: 'certification',
+    icon: 'settings',
+    title: 'Integrations',
+    description: 'Connect with your favorite tools',
+    value: '15+',
+    market: 'USA'
+  },
+  {
+    id: 'integrations-global',
+    type: 'certification',
+    icon: 'settings',
+    title: 'Integrations',
+    description: 'Connect with your favorite tools worldwide',
+    value: '15+',
     market: 'GLOBAL'
   }
 ];

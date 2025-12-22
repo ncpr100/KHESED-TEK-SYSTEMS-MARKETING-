@@ -49,17 +49,23 @@ export default function GlobalMarketPage() {
           </h1>
           <p className="max-w-3xl mx-auto text-lg mb-6" style={{ color: 'var(--muted)' }}>
             {language === 'es' 
-              ? 'Conectamos ministerios alrededor del mundo con tecnología confiable y soporte 24/7 en múltiples idiomas.'
-              : 'Connecting ministries worldwide with reliable technology and 24/7 support in multiple languages.'
+              ? 'En KHESED-TEK SYSTEMS, convergen la vanguardia tecnológica y el propósito divino. Nuestra solución insignia, KHESED-TEK-CMS, nace de una convicción profunda: el software no es el fin, sino el medio estratégico para potenciar el cumplimiento de La Gran Comisión.'
+              : 'At KHESED-TEK SYSTEMS, cutting-edge technology meets divine purpose. Our flagship solution, KHESED-TEK-CMS, is born from a profound conviction: software is not the end, but the strategic means to enhance the fulfillment of The Great Commission.'
+            }
+          </p>
+          <p className="max-w-3xl mx-auto text-base mb-6 italic" style={{ color: 'var(--muted)' }}>
+            {language === 'es'
+              ? 'Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".'
+              : 'Our mission is to equip your church with Ministerial Intelligence, facilitating the biblical mandate of Proverbs 27:23: "Be diligent to know the state of your flocks, and attend to your herds."'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a
-              href="/contact"
+              href="/contact?program=beta"
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition"
               onClick={handleCTAClick}
             >
-              {ctaText}
+              {language === 'es' ? 'Únete al Programa Beta →' : 'Join Beta Program →'}
             </a>
             <a
               href="https://calendly.com/khesed-tek/global-demo"
@@ -514,6 +520,50 @@ export default function GlobalMarketPage() {
         />
       </section>
 
+      {/* Global Beta Program Launch */}
+      <section className="max-w-4xl mx-auto px-6 py-12">
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
+          <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            🚀 <span>{language === 'es' ? 'Programa Beta - Lanzamiento Global' : 'Beta Program - Global Launch'}</span>
+          </div>
+          <h2 className="text-2xl font-semibold mb-4">
+            {language === 'es' ? 'Únete a Nuestro Programa Beta Global' : 'Join Our Global Beta Program'}
+          </h2>
+          <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
+            {language === 'es' 
+              ? 'Sé parte de las primeras iglesias mundialmente en experimentar KHESED-TEK-CMS. Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada para ministerios globales.'
+              : 'Be among the first churches worldwide to experience KHESED-TEK-CMS. Get full access and help us perfect the platform designed for global ministries.'
+            }
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6 mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">
+                {language === 'es' ? '30 días' : '30 days'}
+              </div>
+              <div className="text-sm text-[var(--muted)]">
+                {language === 'es' ? 'Acceso completamente gratis' : 'Completely free access'}
+              </div>
+            </div>
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
+              <div className="text-sm text-[var(--muted)]">
+                {language === 'es' ? 'Descuento primer año' : 'First year discount'}<br/>
+                {language === 'es' ? '(Primeras 25 iglesias)' : '(First 25 churches)'}
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              {language === 'es' ? 'Aplicar al Programa Beta →' : 'Apply to Beta Program →'}
+            </a>
+            <a href="https://calendly.com/khesed-tek/global-demo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition">
+              <OutlineIcon name="calendar" className="w-5 h-5 text-[var(--brand)]" />
+              {language === 'es' ? 'Agendar Demo' : 'Schedule Demo'}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Regional Support Centers */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
@@ -635,23 +685,29 @@ export default function GlobalMarketPage() {
             }
           </p>
         </div>
-        <div className="grid sm:grid-cols-3 gap-6 text-center">
+        <div className="grid sm:grid-cols-4 gap-4 text-center">
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">10,000+</div>
             <div className="text-sm text-[var(--muted)]">
-              {language === 'es' ? 'Iglesias atendidas globalmente' : 'Churches served globally'}
+              {language === 'es' ? 'Miembros soportados' : 'Members supported'}
+            </div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">40+</div>
+            <div className="text-sm text-[var(--muted)]">
+              {language === 'es' ? 'Años sirviendo en ministerios' : 'Years serving in ministry'}
+            </div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">99.9%</div>
+            <div className="text-sm text-[var(--muted)]">
+              {language === 'es' ? 'Uptime garantizado' : 'Uptime guarantee'}
             </div>
           </div>
           <div>
             <div className="text-2xl font-bold text-[var(--brand)] mb-2">15+</div>
             <div className="text-sm text-[var(--muted)]">
-              {language === 'es' ? 'Países con presencia' : 'Countries with presence'}
-            </div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">24/7</div>
-            <div className="text-sm text-[var(--muted)]">
-              {language === 'es' ? 'Soporte global' : 'Global support'}
+              {language === 'es' ? 'Integraciones disponibles' : 'Available integrations'}
             </div>
           </div>
         </div>

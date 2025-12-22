@@ -49,9 +49,14 @@ export default function LatamMarketPage() {
             {heroText}
           </h1>
           <p className="max-w-3xl mx-auto text-lg mb-6" style={{ color: 'var(--muted)' }}>
-            KHESED-TEK SYSTEMS presenta KHESED-TEK-CMS: nuestro sistema de gestión integral 
-            diseñado específicamente para iglesias colombianas. Más de 50 congregaciones en 
-            Barranquilla ya confían en nuestra solución.
+            En KHESED-TEK SYSTEMS, convergen la vanguardia tecnológica y el propósito divino. 
+            Nuestra solución insignia, KHESED-TEK-CMS, nace de una convicción profunda: el software 
+            no es el fin, sino el medio estratégico para potenciar el cumplimiento de La Gran Comisión.
+          </p>
+          <p className="max-w-3xl mx-auto text-base mb-6 italic" style={{ color: 'var(--muted)' }}>
+            Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato 
+            bíblico de Proverbios 27:23: "Sé diligente en conocer el estado de tus ovejas, y mira con 
+            cuidado por tus rebaños".
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a
@@ -187,6 +192,38 @@ export default function LatamMarketPage() {
                 <p className="text-[var(--muted)]">ChMS completo vs solo contabilidad</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programa Beta Launch */}
+      <section className="max-w-4xl mx-auto px-6 py-12">
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
+          <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            🚀 <span>Programa Beta - Lanzamiento Especial</span>
+          </div>
+          <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
+          <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
+            Sé parte de las primeras iglesias en experimentar KHESED-TEK-CMS. 
+            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias colombianas.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6 mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 días</div>
+              <div className="text-sm text-[var(--muted)]">Acceso completamente gratis</div>
+            </div>
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
+              <div className="text-sm text-[var(--muted)]">Descuento primer año<br/>(Primeras 25 iglesias)</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              Aplicar al Programa Beta →
+            </a>
+            <a href="https://wa.me/573021234410" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition">
+              WhatsApp: +57 302 123 4410
+            </a>
           </div>
         </div>
       </section>
@@ -339,6 +376,38 @@ export default function LatamMarketPage() {
         />
       </section>
 
+      {/* Programa Beta Launch */}
+      <section className="max-w-4xl mx-auto px-6 py-12">
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
+          <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            🚀 <span>Programa Beta - Lanzamiento Especial</span>
+          </div>
+          <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
+          <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
+            Sé parte de las primeras iglesias en experimentar KHESED-TEK-CMS. 
+            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias colombianas.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6 mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 días</div>
+              <div className="text-sm text-[var(--muted)]">Acceso completamente gratis</div>
+            </div>
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
+              <div className="text-sm text-[var(--muted)]">Descuento primer año<br/>(Primeras 25 iglesias)</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              Aplicar al Programa Beta →
+            </a>
+            <a href="https://wa.me/573021234410" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition">
+              WhatsApp: +57 302 123 4410
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* About Section - Nosotros */}
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
         <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
@@ -357,18 +426,22 @@ export default function LatamMarketPage() {
             Permítanos construir la infraestructura digital que respalda y amplifica su impacto eterno.
           </p>
         </div>
-        <div className="grid sm:grid-cols-3 gap-6 text-center">
+        <div className="grid sm:grid-cols-4 gap-4 text-center">
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">50+</div>
-            <div className="text-sm text-[var(--muted)]">Iglesias atendidas en Colombia</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">10,000+</div>
+            <div className="text-sm text-[var(--muted)]">Miembros soportados</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">5+</div>
-            <div className="text-sm text-[var(--muted)]">Años especializados en iglesias</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">40+</div>
+            <div className="text-sm text-[var(--muted)]">Años sirviendo en ministerios</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-[var(--brand)] mb-2">24/7</div>
-            <div className="text-sm text-[var(--muted)]">Soporte en español</div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">99.9%</div>
+            <div className="text-sm text-[var(--muted)]">Uptime garantizado</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-[var(--brand)] mb-2">15+</div>
+            <div className="text-sm text-[var(--muted)]">Integraciones disponibles</div>
           </div>
         </div>
       </section>

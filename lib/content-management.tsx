@@ -235,29 +235,33 @@ export const CONTENT_LIBRARY = {
   market_messaging: {
     latam: {
       value_proposition: {
-        es: 'La plataforma favorita de las iglesias colombianas',
-        en: 'The preferred platform for Colombian churches'
+        es: 'Inteligencia Ministerial para iglesias colombianas',
+        en: 'Ministerial Intelligence for Colombian churches'
       },
       social_proof: {
-        es: 'Más de 50 iglesias en Colombia ya confían en nosotros',
-        en: 'Over 50 churches in Colombia already trust us'
+        es: 'Respaldado por 40+ años sirviendo en ministerios',
+        en: 'Backed by 40+ years serving in ministry'
       },
       local_support: {
-        es: 'Soporte local en Barranquilla con atención en español',
-        en: 'Local support in Barranquilla with Spanish service'
+        es: 'Desarrollado en Barranquilla con soporte local en español',
+        en: 'Developed in Barranquilla with local Spanish support'
+      },
+      beta_program: {
+        es: 'Únete al programa beta - 30 días gratis, 50% descuento primeras 25 iglesias',
+        en: 'Join beta program - 30 days free, 50% discount first 25 churches'
       }
     },
     usa: {
       value_proposition: {
-        es: 'Soluciones empresariales para mega-iglesias americanas',
-        en: 'Enterprise solutions for American mega-churches'
+        es: 'Tecnología empresarial para ministerios americanos',
+        en: 'Enterprise technology for American ministries'
       },
       social_proof: {
-        es: 'Confiado por iglesias líderes en Estados Unidos',
-        en: 'Trusted by leading churches across the United States'
+        es: 'Sistema diseñado para soportar hasta 10,000+ miembros',
+        en: 'System designed to support up to 10,000+ members'
       },
       enterprise_focus: {
-        es: 'Arquitectura escalable para operaciones complejas',
+        es: 'Arquitectura escalable probada con 99.9% uptime',
         en: 'Scalable architecture for complex operations'
       }
     },
