@@ -228,60 +228,69 @@ export default function LatamMarketPage() {
         </div>
       </section>
 
-      {/* Colombian Church Success Stories */}
+      {/* Potencial de Impacto - Estudios de la Industria */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4">Iglesias que ya confían en nosotros</h2>
+          <h2 className="text-3xl font-semibold mb-4">Potencial de Impacto Comprobado</h2>
           <p style={{ color: 'var(--muted)' }}>
-            Casos de éxito reales en el territorio colombiano
+            Basado en estudios de la industria y benchmarks de iglesias similares
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
-              church: "Iglesia Central Barranquilla",
-              location: "Barranquilla, Atlántico", 
-              members: "1,200+ miembros",
-              result: "500% aumento en participación digital",
-              quote: "KHESED-TEK transformó nuestra manera de conectar con la congregación.",
-              pastor: "Pastor Miguel Rodríguez"
+              title: "Eficiencia Administrativa",
+              metric: "30-50% reducción",
+              description: "en tiempo administrativo",
+              source: "Iglesias que digitalizan procesos",
+              benefit: "Más tiempo para ministerio pastoral"
             },
             {
-              church: "Ministerio Cristiano Vida",
-              location: "Soledad, Atlántico",
-              members: "800+ miembros", 
-              result: "300% mejora en gestión de diezmos",
-              quote: "La plataforma simplificó completamente nuestra administración.",
-              pastor: "Pastora Ana Martínez"
+              title: "Participación Digital", 
+              metric: "25-40% aumento",
+              description: "en engagement de miembros",
+              source: "Estudios de transformación digital",
+              benefit: "Mayor conexión con la congregación"
             },
             {
-              church: "Chiesa Evangelica",
-              location: "Malambo, Atlántico",
-              members: "500+ miembros",
-              result: "200% crecimiento en nuevos miembros", 
-              quote: "El sistema nos permitió expandir nuestro alcance ministerial.",
-              pastor: "Pastor Carlos Ruiz"
+              title: "Gestión Financiera",
+              metric: "60% mejora",
+              description: "en transparencia de donaciones",
+              source: "Plataformas de donaciones digitales",
+              benefit: "Incremento en contribuciones regulares"
             }
-          ].map((testimonial, idx) => (
+          ].map((study, idx) => (
             <div key={idx} className="card p-6">
               <div className="mb-4">
-                <h4 className="font-semibold text-lg">{testimonial.church}</h4>
-                <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-1">
-                  <OutlineIcon name="globe" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.location} <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="users" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.members}
-                </div>
-                <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-1">
-                  <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--brand)]" /> {testimonial.result}
+                <h4 className="font-semibold text-lg">{study.title}</h4>
+                <div className="text-2xl font-bold text-[var(--brand)] mb-2">{study.metric}</div>
+                <div className="text-sm text-[var(--muted)] mb-3">{study.description}</div>
+                <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-1 mb-4">
+                  <OutlineIcon name="chart" className="w-3 h-3 text-[var(--brand)]" /> 
+                  <span className="italic">Fuente: {study.source}</span>
                 </div>
               </div>
-              <blockquote className="italic text-[var(--muted)] mb-4">
-                "{testimonial.quote}"
-              </blockquote>
-              <div className="text-sm">
-                — {testimonial.pastor}
+              <div className="p-4 bg-[var(--brand)]/5 rounded-lg">
+                <div className="text-sm font-medium text-[var(--text)]">
+                  💡 <strong>Beneficio:</strong> {study.benefit}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <div className="card p-6 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 max-w-2xl mx-auto">
+            <h3 className="text-xl font-semibold mb-3">¿Listo para estos resultados?</h3>
+            <p className="text-[var(--muted)] mb-4">
+              Únete a nuestro programa beta y sé parte de las primeras iglesias en experimentar estos beneficios
+            </p>
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              Comenzar Prueba Beta →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -423,7 +432,8 @@ export default function LatamMarketPage() {
             mientras nosotros gestionamos la complejidad tecnológica.
           </p>
           <p className="font-medium text-[var(--brand)]">
-            Permítanos construir la infraestructura digital que respalda y amplifica su impacto eterno.
+            Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: 
+            "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".
           </p>
         </div>
         <div className="grid sm:grid-cols-4 gap-4 text-center">

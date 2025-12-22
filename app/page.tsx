@@ -100,6 +100,11 @@ export default function HomePage() {
         <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
         <div style={{ color: 'var(--muted)' }} className="text-lg space-y-4">
           <p>
+            En KHESED-TEK SYSTEMS, convergen la vanguardia tecnológica y el propósito divino. 
+            Nuestra solución insignia, KHESED-TEK-CMS, nace de una convicción profunda: el software no es el fin, 
+            sino el medio estratégico para potenciar el cumplimiento de La Gran Comisión.
+          </p>
+          <p>
             Somos una firma innovadora de software y automatización con sede en Barranquilla, dedicada exclusivamente a servir al Reino. 
             Empoderamos a organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de Inteligencia Artificial 
             e integración de procesos, resolviendo sus desafíos operativos más complejos.
@@ -110,7 +115,8 @@ export default function HomePage() {
             mientras nosotros gestionamos la complejidad tecnológica.
           </p>
           <p className="font-medium text-[var(--brand)]">
-            Permítanos construir la infraestructura digital que respalda y amplifica su impacto eterno.
+            Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: 
+            "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".
           </p>
         </div>
       </section>

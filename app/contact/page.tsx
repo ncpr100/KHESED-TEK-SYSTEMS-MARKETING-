@@ -583,33 +583,45 @@ export default function ContactPage() {
           {language === 'en' ? (
             <>
               <p>
-                KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. 
-                Based in Barranquilla, Atlántico, we empower churches and faith-based organizations through custom artificial 
-                intelligence and integration solutions that address their unique operational challenges.
+                At KHESED-TEK SYSTEMS, cutting-edge technology meets divine purpose. 
+                Our flagship solution, KHESED-TEK-CMS, is born from a profound conviction: software is not the end, 
+                but the strategic means to enhance the fulfillment of The Great Commission.
               </p>
               <p>
-                We understand that your mission is spiritual, but your operations are practical. Our goal is to optimize your 
-                administrative tasks, improve resource allocation, and enhance productivity. By handling the complexities 
-                of technology, we free your team to focus on what matters most: serving your congregation and strengthening your community.
+                We are an innovative software and automation firm based in Barranquilla, dedicated exclusively to serving the Kingdom. 
+                We empower faith-based organizations through the design of personalized Artificial Intelligence solutions 
+                and process integration, solving their most complex operational challenges.
+              </p>
+              <p>
+                We understand that while your mission is spiritual, execution is practical. We optimize your administrative tasks 
+                and resource allocation so your team can recover the most valuable asset: time to shepherd and strengthen the community, 
+                while we manage the technological complexity.
               </p>
               <p className="font-medium text-[var(--brand)]">
-                Let us build the technological foundation that supports and amplifies your impact.
+                Our mission is to equip your church with Ministerial Intelligence, facilitating the biblical mandate of Proverbs 27:23: 
+                "Be diligent to know the state of your flocks, and attend to your herds."
               </p>
             </>
           ) : (
             <>
               <p>
-                KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. 
-                Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
-                soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.
+                En KHESED-TEK SYSTEMS, convergen la vanguardia tecnológica y el propósito divino. 
+                Nuestra solución insignia, KHESED-TEK-CMS, nace de una convicción profunda: el software no es el fin, 
+                sino el medio estratégico para potenciar el cumplimiento de La Gran Comisión.
               </p>
               <p>
-                Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus 
-                tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades 
-                de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.
+                Somos una firma innovadora de software y automatización con sede en Barranquilla, dedicada exclusivamente a servir al Reino. 
+                Empoderamos a organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de Inteligencia Artificial 
+                e integración de procesos, resolviendo sus desafíos operativos más complejos.
+              </p>
+              <p>
+                Entendemos que, si bien su misión es espiritual, la ejecución es práctica. Optimizamos sus tareas administrativas 
+                y la asignación de recursos para que su equipo recupere el activo más valioso: tiempo para pastorear y fortalecer a la comunidad, 
+                mientras nosotros gestionamos la complejidad tecnológica.
               </p>
               <p className="font-medium text-[var(--brand)]">
-                Permítanos construir la base tecnológica que respalda y amplifica su impacto.
+                Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: 
+                "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".
               </p>
             </>
           )}

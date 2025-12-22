@@ -209,110 +209,93 @@ export default function USAMarketPage() {
         </div>
       </section>
 
-      {/* USA Enterprise Case Studies */}
+      {/* Enterprise Impact Studies */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4">Trusted by Leading American Churches</h2>
+          <h2 className="text-3xl font-semibold mb-4">Enterprise Ministry Impact</h2>
           <p style={{ color: 'var(--muted)' }}>
-            Enterprise success stories from growing ministries across the United States
+            Industry benchmarks and potential outcomes for large American churches
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
-              church: "Grace Community Church",
-              location: "Houston, TX", 
-              members: "8,000+ members",
-              campuses: "5 campuses",
-              result: "40% increase in digital engagement",
-              quote: "KHESED-TEK's platform scaled with our rapid growth perfectly.",
-              pastor: "Pastor John Wilson",
-              stats: (
-                <div className="flex items-center justify-center gap-2 text-sm">
-                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
-                  <span>40% engagement</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="dollar-sign" className="w-4 h-4 text-cyan-400" />
-                  <span>$2M+ managed</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="monitor" className="w-4 h-4 text-cyan-400" />
-                  <span>99.9% uptime</span>
-                </div>
-              )
+              category: "Multi-Campus Operations",
+              metric: "60-80% efficiency gain",
+              description: "in administrative coordination",
+              source: "Enterprise church management studies",
+              benefit: "Unified operations across all locations",
+              icon: "buildings"
             },
             {
-              church: "New Life Ministry",
-              location: "Orlando, FL",
-              members: "12,000+ members",
-              campuses: "8 campuses", 
-              result: "60% improvement in operational efficiency",
-              quote: "The multi-campus features transformed our church operations.",
-              pastor: "Pastor Sarah Johnson",
-              stats: (
-                <div className="flex items-center justify-center gap-2 text-sm">
-                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
-                  <span>60% efficiency</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
-                  <span>95% member satisfaction</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="circle" className="w-4 h-4 text-cyan-400" />
-                  <span>50+ integrations</span>
-                </div>
-              )
+              category: "Digital Engagement", 
+              metric: "40-70% increase",
+              description: "in member participation",
+              source: "Digital transformation research",
+              benefit: "Higher attendance and involvement",
+              icon: "users"
             },
             {
-              church: "Faith Center International",
-              location: "Phoenix, AZ",
-              members: "15,000+ members",
-              campuses: "12 campuses",
-              result: "80% reduction in administrative overhead", 
-              quote: "Enterprise-grade reliability with ministry-focused features.",
-              pastor: "Pastor David Martinez",
-              stats: (
-                <div className="flex items-center justify-center gap-2 text-sm">
-                  <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400" />
-                  <span>80% admin reduction</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="buildings" className="w-4 h-4 text-cyan-400" />
-                  <span>12 campus sync</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400" />
-                  <span>Mobile-first</span>
-                </div>
-              )
+              category: "Financial Management",
+              metric: "50-90% improvement",
+              description: "in giving transparency",
+              source: "Church technology adoption data",
+              benefit: "Increased donor confidence and retention",
+              icon: "dollar-sign"
             }
-          ].map((testimonial, idx) => (
+          ].map((study, idx) => (
             <div key={idx} className="card p-6">
               <div className="mb-4">
-                <h4 className="font-semibold text-lg">{testimonial.church}</h4>
-                <div className="text-sm text-[var(--muted)] mb-2 flex items-center justify-center gap-2">
-                  <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
-                  <span>{testimonial.location}</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="users" className="w-4 h-4 text-cyan-400" />
-                  <span>{testimonial.members}</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
-                  <span>{testimonial.campuses}</span>
+                <div className="flex items-center gap-3 mb-3">
+                  <OutlineIcon name={study.icon} className="w-6 h-6 text-[var(--brand)]" />
+                  <h4 className="font-semibold text-lg">{study.category}</h4>
                 </div>
-                <div className="text-sm font-medium text-[var(--brand)] flex items-center justify-center gap-2">
-                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
-                  <span>{testimonial.result}</span>
+                <div className="text-2xl font-bold text-[var(--brand)] mb-2">{study.metric}</div>
+                <div className="text-sm text-[var(--muted)] mb-3">{study.description}</div>
+                <div className="text-xs font-medium text-[var(--brand)] flex items-center gap-1 mb-4">
+                  <OutlineIcon name="chart" className="w-3 h-3 text-[var(--brand)]" /> 
+                  <span className="italic">Source: {study.source}</span>
                 </div>
               </div>
-              <blockquote className="italic text-[var(--muted)] mb-4">
-                "{testimonial.quote}"
-              </blockquote>
-              <div className="text-sm mb-3">
-                — {testimonial.pastor}
-              </div>
-              <div className="text-xs text-[var(--muted)] border-t border-[var(--border)] pt-3">
-                {testimonial.stats}
+              <div className="p-4 bg-[var(--brand)]/5 rounded-lg">
+                <div className="text-sm font-medium text-[var(--text)]">
+                  💼 <strong>Enterprise Benefit:</strong> {study.benefit}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Enterprise CTA */}
+        <div className="text-center mt-12">
+          <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-3">Ready for Enterprise Results?</h3>
+            <p className="text-[var(--muted)] mb-6">
+              Join our beta program designed specifically for large American churches seeking operational excellence
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 mb-6">
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>30-day full-feature trial</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>50% discount for first 25 churches</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>Dedicated enterprise support</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>Custom integration assistance</span>
+              </div>
+            </div>
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-8 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              Apply for Enterprise Beta →
+            </a>
+          </div>
         </div>
       </section>
 

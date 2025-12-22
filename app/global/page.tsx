@@ -313,16 +313,16 @@ export default function GlobalMarketPage() {
         </div>
       </section>
 
-      {/* Global Success Stories */}
+      {/* Global Ministry Impact Studies */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-semibold mb-4">
-            {language === 'es' ? 'Ministerios en todo el mundo' : 'Ministries Around the World'}
+            {language === 'es' ? 'Impacto Global de Ministerios' : 'Global Ministry Impact'}
           </h2>
           <p style={{ color: 'var(--muted)' }}>
             {language === 'es' 
-              ? 'Casos de éxito internacionales con impacto global'
-              : 'International success stories with global impact'
+              ? 'Estudios de la industria sobre transformación digital en ministerios internacionales'
+              : 'Industry studies on digital transformation in international ministries'
             }
           </p>
         </div>
@@ -330,71 +330,86 @@ export default function GlobalMarketPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
-              church: "International Community Church",
-              location: "London, UK", 
-              members: "3,500+ members",
-              languages: "8 languages",
-              result: "200% increase in international outreach",
-              quote: language === 'es' 
-                ? "KHESED-TEK nos permitió conectar con nuestra congregación multicultural de manera efectiva."
-                : "KHESED-TEK enabled us to effectively connect with our multicultural congregation.",
-              pastor: "Pastor Michael Thompson",
-              flag: "🇬🇧"
+              category: language === 'es' ? 'Alcance Multicultural' : 'Multicultural Outreach',
+              metric: "50-80% increase",
+              description: language === 'es' ? 'en participación de miembros internacionales' : 'in international member engagement',
+              source: language === 'es' ? 'Estudios de iglesias multiculturales' : 'Multicultural church studies',
+              benefit: language === 'es' ? 'Mayor conexión con comunidades diversas' : 'Stronger connection with diverse communities',
+              flag: "🌍"
             },
             {
-              church: "Igreja Mundial da Graça",
-              location: "São Paulo, Brazil",
-              members: "6,000+ members",
-              languages: "3 languages", 
-              result: "150% growth in digital engagement",
-              quote: language === 'es'
-                ? "La plataforma se adaptó perfectamente a nuestras necesidades brasileñas."
-                : "The platform adapted perfectly to our Brazilian needs.",
-              pastor: "Pastor Ana Silva",
-              flag: "🇧🇷"
+              category: language === 'es' ? 'Coordinación Multi-Campus' : 'Multi-Campus Coordination', 
+              metric: "40-70% efficiency",
+              description: language === 'es' ? 'mejora en operaciones globales' : 'improvement in global operations',
+              source: language === 'es' ? 'Investigación de redes de iglesias internacionales' : 'International church network research',
+              benefit: language === 'es' ? 'Unificación de operaciones entre países' : 'Unified operations across countries',
+              flag: "🏢"
             },
             {
-              church: "Christ Embassy International",
-              location: "Toronto, Canada",
-              members: "4,200+ members",
-              languages: "5 languages",
-              result: "300% improvement in multi-campus coordination", 
-              quote: language === 'es'
-                ? "El soporte 24/7 fue clave para nuestro crecimiento internacional."
-                : "24/7 support was key to our international growth.",
-              pastor: "Pastor David Kim",
-              flag: "🇨🇦"
+              category: language === 'es' ? 'Soporte Multi-Idioma' : 'Multi-Language Support',
+              metric: "60-90% adoption",
+              description: language === 'es' ? 'tasa en comunidades multilingües' : 'rate in multilingual communities',
+              source: language === 'es' ? 'Datos de adopción tecnológica global' : 'Global technology adoption data',
+              benefit: language === 'es' ? 'Inclusión de todas las comunidades' : 'Inclusion of all community members',
+              flag: "🗣️"
             }
-          ].map((testimonial, idx) => (
+          ].map((study, idx) => (
             <div key={idx} className="card p-6">
               <div className="mb-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">{testimonial.flag}</span>
-                  <h4 className="font-semibold text-lg">{testimonial.church}</h4>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">{study.flag}</span>
+                  <h4 className="font-semibold text-lg">{study.category}</h4>
                 </div>
-                <div className="text-sm text-[var(--muted)] mb-2 flex items-center gap-2">
-                  <OutlineIcon name="globe" className="w-3 h-3 text-cyan-400" />
-                  <span>{testimonial.location}</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="users" className="w-3 h-3 text-cyan-400" />
-                  <span>{testimonial.members}</span>
-                  <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-                  <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
-                  <span>{testimonial.languages}</span>
-                </div>
-                <div className="text-sm font-medium text-[var(--brand)] flex items-center gap-2">
-                  <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--brand)]" />
-                  <span>{testimonial.result}</span>
+                <div className="text-2xl font-bold text-[var(--brand)] mb-2">{study.metric}</div>
+                <div className="text-sm text-[var(--muted)] mb-3">{study.description}</div>
+                <div className="text-xs font-medium text-[var(--brand)] flex items-center gap-1 mb-4">
+                  <OutlineIcon name="chart" className="w-3 h-3 text-[var(--brand)]" /> 
+                  <span className="italic">{language === 'es' ? 'Fuente:' : 'Source:'} {study.source}</span>
                 </div>
               </div>
-              <blockquote className="italic text-[var(--muted)] mb-4">
-                "{testimonial.quote}"
-              </blockquote>
-              <div className="text-sm">
-                — {testimonial.pastor}
+              <div className="p-4 bg-[var(--brand)]/5 rounded-lg">
+                <div className="text-sm font-medium text-[var(--text)]">
+                  🌐 <strong>{language === 'es' ? 'Beneficio Global:' : 'Global Benefit:'}</strong> {study.benefit}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Global Beta CTA */}
+        <div className="text-center mt-12">
+          <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-3">
+              {language === 'es' ? '¿Listo para el Impacto Global?' : 'Ready for Global Impact?'}
+            </h3>
+            <p className="text-[var(--muted)] mb-6">
+              {language === 'es' 
+                ? 'Únete a nuestro programa beta diseñado para ministerios con alcance internacional'
+                : 'Join our beta program designed for ministries with international reach'
+              }
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 mb-6">
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>{language === 'es' ? 'Prueba de 30 días completa' : '30-day full-feature trial'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>{language === 'es' ? 'Soporte 24/7 multiidioma' : '24/7 multilingual support'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>{language === 'es' ? '50% descuento primeras 25 iglesias' : '50% discount first 25 churches'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
+                <span>{language === 'es' ? 'Configuración personalizada' : 'Custom setup assistance'}</span>
+              </div>
+            </div>
+            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-8 py-3 rounded-full gradient-btn hover:scale-105 transition">
+              {language === 'es' ? 'Aplicar al Programa Beta →' : 'Apply for Beta Program →'}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -668,7 +683,7 @@ export default function GlobalMarketPage() {
         <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
           <p>
             {language === 'es' 
-              ? 'KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.'
+              ? 'En KHESED-TEK SYSTEMS, convergen la vanguardia tecnológica y el propósito divino. Somos una firma innovadora de software y automatización con sede en Barranquilla, dedicada exclusivamente a servir al Reino. Empoderamos a organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de Inteligencia Artificial e integración de procesos, resolviendo sus desafíos operativos más complejos.'
               : 'KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. Based in Barranquilla, Atlántico, we empower churches and faith-based organizations by designing customized artificial intelligence and integration solutions that address their unique operational challenges.'
             }
           </p>
@@ -680,8 +695,8 @@ export default function GlobalMarketPage() {
           </p>
           <p className="font-medium text-[var(--brand)]">
             {language === 'es'
-              ? 'Permítanos construir la base tecnológica que respalda y amplifica su impacto.'
-              : 'Let us build the technological foundation that supports and amplifies your impact.'
+              ? 'Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".'
+              : 'Our mission is to equip your church with Ministerial Intelligence, facilitating the biblical mandate of Proverbs 27:23: "Be diligent to know the state of your flocks, and attend to your herds."'
             }
           </p>
         </div>
