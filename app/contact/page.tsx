@@ -337,13 +337,13 @@ export default function ContactPage() {
                       {language === 'en' ? 'Select size' : 'Selecciona el tamaño'}
                     </option>
                     <option value="small">
-                      {language === 'en' ? 'Small (50-200 members)' : 'Pequeña (50-200 miembros)'}
+                      {language === 'en' ? 'Small (Up to 500 members)' : 'Pequeña (Hasta 500 miembros)'}
                     </option>
                     <option value="medium">
-                      {language === 'en' ? 'Medium (200-1000 members)' : 'Mediana (200-1000 miembros)'}
+                      {language === 'en' ? 'Medium (Up to 2000 members)' : 'Mediana (Hasta 2000 miembros)'}
                     </option>
                     <option value="large">
-                      {language === 'en' ? 'Large (1000+ members)' : 'Grande (1000+ miembros)'}
+                      {language === 'en' ? 'Large (Unlimited members)' : 'Grande (Miembros ilimitados)'}
                     </option>
                     <option value="network">
                       {language === 'en' ? 'Multi-campus/Network' : 'Multi-campus/Red de iglesias'}
