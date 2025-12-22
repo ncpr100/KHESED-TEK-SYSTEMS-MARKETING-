@@ -261,7 +261,7 @@ export default function USAMarketPage() {
               <div className="p-4 bg-[var(--brand)]/5 rounded-lg">
                 <div className="text-sm font-medium text-[var(--text)] flex items-center gap-2">
                   <OutlineIcon name="briefcase" className="w-4 h-4 text-[var(--brand)]" />
-                  <strong>Enterprise Benefit:</strong> {study.benefit}
+                  <strong className="text-[var(--brand)]">Enterprise Benefit:</strong> {study.benefit}
                 </div>
               </div>
             </div>

@@ -241,7 +241,7 @@ export default function SystemFeaturesSection({
               <div className="p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)] max-w-xl mx-auto">
                 <div className="text-sm font-medium text-[var(--text)] flex items-center gap-2">
                   <OutlineIcon name="lightbulb" className="w-4 h-4 text-[var(--brand)]" />
-                  <strong>{isEnglish ? 'Key benefit:' : 'Beneficio clave:'}</strong> {currentFeature.benefit}
+                  <strong className="text-[var(--brand)]">{isEnglish ? 'Key benefit:' : 'Beneficio clave:'}</strong> {currentFeature.benefit}
                 </div>
               </div>
             </div>

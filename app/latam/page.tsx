@@ -275,7 +275,7 @@ export default function LatamMarketPage() {
               <div className="p-4 bg-[var(--brand)]/5 rounded-lg">
                 <div className="text-sm font-medium text-[var(--text)] flex items-center gap-2">
                   <OutlineIcon name="lightbulb" className="w-4 h-4 text-[var(--brand)]" />
-                  <strong>Beneficio:</strong> {study.benefit}
+                  <strong className="text-[var(--brand)]">Beneficio:</strong> {study.benefit}
                 </div>
               </div>
             </div>
