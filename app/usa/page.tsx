@@ -488,17 +488,14 @@ export default function USAMarketPage() {
         <h2 className="text-3xl font-semibold mb-6">About KHESED-TEK SYSTEMS</h2>
         <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
           <p>
-            KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. 
-            Based in Barranquilla, Atlántico, we empower churches and faith-based organizations by designing customized 
-            artificial intelligence and integration solutions that address their unique operational challenges.
+            We are an innovative software and automation firm based in Barranquilla, dedicated exclusively to serving the Kingdom. 
+            We empower faith-based organizations through the design of personalized Artificial Intelligence solutions 
+            and process integration, solving their most complex operational challenges.
           </p>
           <p>
-            We understand that your mission is spiritual, but your operations are practical. Our goal is to streamline 
-            your administrative tasks, optimize resource allocation, and enhance productivity. By handling the complexities 
-            of technology, we free your team to focus on what matters most: serving your congregation and strengthening your community.
-          </p>
-          <p className="font-medium text-[var(--brand)]">
-            Let us build the technological foundation that supports and amplifies your impact.
+            We understand that while your mission is spiritual, execution is practical. We optimize your administrative tasks 
+            and resource allocation so your team can recover the most valuable asset: time to shepherd and strengthen the community, 
+            while we manage the technological complexity.
           </p>
         </div>
         <div className="grid sm:grid-cols-3 gap-6 text-center">

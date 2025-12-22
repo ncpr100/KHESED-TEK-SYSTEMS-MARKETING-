@@ -344,17 +344,14 @@ export default function LatamMarketPage() {
         <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
         <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
           <p>
-            KHESED-TEK SYSTEMS es una empresa innovadora de software y automatización dedicada a servir a la comunidad cristiana. 
-            Con sede en Barranquilla, Atlántico, empoderamos a iglesias y organizaciones basadas en la fe mediante el diseño de 
-            soluciones personalizadas de inteligencia artificial e integración que abordan sus desafíos operacionales únicos.
+            Somos una firma innovadora de software y automatización con sede en Barranquilla, dedicada exclusivamente a servir al Reino. 
+            Empoderamos a organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de Inteligencia Artificial 
+            e integración de procesos, resolviendo sus desafíos operativos más complejos.
           </p>
           <p>
-            Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus 
-            tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades 
-            de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.
-          </p>
-          <p className="font-medium text-[var(--brand)]">
-            Permítanos construir la base tecnológica que respalda y amplifica su impacto.
+            Entendemos que, si bien su misión es espiritual, la ejecución es práctica. Optimizamos sus tareas administrativas 
+            y la asignación de recursos para que su equipo recupere el activo más valioso: tiempo para pastorear y fortalecer a la comunidad, 
+            mientras nosotros gestionamos la complejidad tecnológica.
           </p>
         </div>
         <div className="grid sm:grid-cols-3 gap-6 text-center">
