@@ -27,10 +27,10 @@ interface GlobalMarketProviderProps {
   initialLanguage?: 'es' | 'en';
 }
 
-export function GlobalMarketProvider({ children, initialLanguage }: GlobalMarketProviderProps) {
+export function GlobalMarketProvider({ children, initialLanguage = 'es' }: GlobalMarketProviderProps) {
   const [geoData, setGeoData] = useState<UserGeoData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState<'es' | 'en'>(initialLanguage || 'es');
+  const [language, setLanguage] = useState<'es' | 'en'>(initialLanguage);
 
   useEffect(() => {
     const initializeGeoData = async () => {
@@ -38,23 +38,25 @@ export function GlobalMarketProvider({ children, initialLanguage }: GlobalMarket
         const detectedGeoData = await detectUserMarket();
         setGeoData(detectedGeoData);
         
-        // Set language based on market if not explicitly set
-        if (!initialLanguage) {
-          setLanguage(detectedGeoData.language);
-        }
+        // Force Spanish for LATAM countries (similar to header logic)
+        const LATAM_COUNTRIES = ['CO', 'MX', 'AR', 'CL', 'PE', 'EC', 'VE', 'BO', 'PY', 'UY', 'CR', 'PA', 'GT', 'HN', 'NI', 'SV'];
+        const isLATAM = LATAM_COUNTRIES.includes(detectedGeoData.country);
+        const effectiveLanguage = isLATAM ? 'es' : (initialLanguage || detectedGeoData.language);
+        
+        setLanguage(effectiveLanguage);
         
         // Store geo data for analytics
         localStorage.setItem('user_geo_data', JSON.stringify(detectedGeoData));
         
       } catch (error) {
         console.warn('Failed to detect user market:', error);
-        // Fallback to default values
+        // Fallback to LATAM defaults (Colombian company serving primarily LATAM market)
         const fallbackGeoData: UserGeoData = {
-          country: 'US',
-          region: 'USA',
-          market: 'USA',
-          language: 'en',
-          timezone: 'America/New_York'
+          country: 'CO',
+          region: 'Atlantico',
+          market: 'LATAM',
+          language: 'es',
+          timezone: 'America/Bogota'
         };
         setGeoData(fallbackGeoData);
         setLanguage(fallbackGeoData.language);
