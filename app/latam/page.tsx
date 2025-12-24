@@ -43,7 +43,7 @@ export default function LatamMarketPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4 flex items-center justify-center gap-2">
             <OutlineIcon name="globe" className="w-4 h-4 text-cyan-400" />
-            <span>Mercado LATAM - Especialistas en Colombia</span>
+            <span>Mercado LATAM - Especialistas en mercado hispano</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
             {heroText}
@@ -77,7 +77,7 @@ export default function LatamMarketPage() {
             </a>
           </div>
           <div className="text-sm text-[var(--muted)] flex items-center gap-1">
-            <OutlineIcon name="clock" className="w-4 h-4 text-[var(--brand)]" /> Soporte en horario colombiano (COT) <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="mail" className="w-4 h-4 text-[var(--brand)]" /> Atención en español <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="users" className="w-4 h-4 text-[var(--brand)]" /> Especialistas en iglesias
+            <OutlineIcon name="clock" className="w-4 h-4 text-[var(--brand)]" /> Soporte en horario LATAM <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="mail" className="w-4 h-4 text-[var(--brand)]" /> Atención en español <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="users" className="w-4 h-4 text-[var(--brand)]" /> Especialistas en iglesias
           </div>
         </div>
       </section>
@@ -119,7 +119,7 @@ export default function LatamMarketPage() {
             },
             { 
               pill: 'Cultural', 
-              title: 'Métodos de Pago Colombianos', 
+              title: 'Métodos de Pago LATAM', 
               desc: 'Nequi, PSE, transferencias bancarias locales incluidas. Competidores internacionales solo ofrecen Stripe/PayPal.',
               icon: 'diamond',
               advantage: 'vs Internacionales: Pagos locales 100% integrados'
@@ -206,16 +206,12 @@ export default function LatamMarketPage() {
           <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
           <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
             Sé parte de las primeras iglesias en experimentar KHESED-TEK-CMS. 
-            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias colombianas.
+            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias hispanas.
           </p>
-          <div className="grid sm:grid-cols-2 gap-6 mb-8">
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+          <div className="flex justify-center mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] max-w-sm">
               <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 días</div>
               <div className="text-sm text-[var(--muted)]">Acceso completamente gratis</div>
-            </div>
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
-              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
-              <div className="text-sm text-[var(--muted)]">Descuento primer año<br/>(Primeras 25 iglesias)</div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -299,7 +295,7 @@ export default function LatamMarketPage() {
       {/* LATAM Pricing Section */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4">Planes adaptados al mercado colombiano</h2>
+          <h2 className="text-3xl font-semibold mb-4">Planes adaptados al mercado hispano</h2>
           <p className="text-[var(--muted)] mb-4">
             Precios justos con métodos de pago locales y soporte en español
           </p>
@@ -397,16 +393,12 @@ export default function LatamMarketPage() {
           <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
           <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
             Sé parte de las primeras iglesias en experimentar KHESED-TEK-CMS. 
-            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias colombianas.
+            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias hispanas.
           </p>
-          <div className="grid sm:grid-cols-2 gap-6 mb-8">
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+          <div className="flex justify-center mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] max-w-sm">
               <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 días</div>
               <div className="text-sm text-[var(--muted)]">Acceso completamente gratis</div>
-            </div>
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
-              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
-              <div className="text-sm text-[var(--muted)]">Descuento primer año<br/>(Primeras 25 iglesias)</div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

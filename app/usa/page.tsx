@@ -214,7 +214,7 @@ export default function USAMarketPage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-semibold mb-4">Enterprise Ministry Impact</h2>
           <p style={{ color: 'var(--muted)' }}>
-            Industry benchmarks and potential outcomes for large American churches
+            Industry benchmarks and potential outcomes for large Hispanic churches
           </p>
         </div>
         
@@ -273,16 +273,12 @@ export default function USAMarketPage() {
           <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 max-w-3xl mx-auto">
             <h3 className="text-2xl font-semibold mb-3">Ready for Enterprise Results?</h3>
             <p className="text-[var(--muted)] mb-6">
-              Join our beta program designed specifically for large American churches seeking operational excellence
+              Join our beta program designed specifically for large Hispanic churches seeking operational excellence
             </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-6">
               <div className="flex items-center gap-2 text-sm">
                 <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
                 <span>30-day full-feature trial</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
-                <span>50% discount for first 25 churches</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
@@ -303,7 +299,7 @@ export default function USAMarketPage() {
       {/* USA Enterprise Pricing */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4">Enterprise Pricing for American Churches</h2>
+          <h2 className="text-3xl font-semibold mb-4">Enterprise Pricing for Hispanic Churches</h2>
           <p className="text-[var(--muted)] mb-4">
             Transparent pricing with no hidden fees. Annual discounts available.
           </p>
@@ -404,16 +400,12 @@ export default function USAMarketPage() {
           <h2 className="text-2xl font-semibold mb-4">Join Our Enterprise Beta Program</h2>
           <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
             Be among the first churches to experience KHESED-TEK-CMS. 
-            Get full access and help us perfect the platform designed specifically for American ministry leadership.
+            Get full access and help us perfect the platform designed specifically for Hispanic ministry leadership.
           </p>
-          <div className="grid sm:grid-cols-2 gap-6 mb-8">
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+          <div className="flex justify-center mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] max-w-sm">
               <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 days</div>
               <div className="text-sm text-[var(--muted)]">Completely free access</div>
-            </div>
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
-              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
-              <div className="text-sm text-[var(--muted)]">First year discount<br/>(First 25 churches)</div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

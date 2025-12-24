@@ -400,10 +400,6 @@ export default function GlobalMarketPage() {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
-                <span>{language === 'es' ? '50% descuento primeras 25 iglesias' : '50% discount first 25 churches'}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <OutlineIcon name="check" className="w-4 h-4 text-green-500" />
                 <span>{language === 'es' ? 'Configuración personalizada' : 'Custom setup assistance'}</span>
               </div>
             </div>
@@ -552,20 +548,13 @@ export default function GlobalMarketPage() {
               : 'Be among the first churches worldwide to experience KHESED-TEK-CMS. Get full access and help us perfect the platform designed for global ministries.'
             }
           </p>
-          <div className="grid sm:grid-cols-2 gap-6 mb-8">
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
+          <div className="flex justify-center mb-8">
+            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] max-w-sm">
               <div className="text-3xl font-bold text-[var(--brand)] mb-2">
                 {language === 'es' ? '30 días' : '30 days'}
               </div>
               <div className="text-sm text-[var(--muted)]">
                 {language === 'es' ? 'Acceso completamente gratis' : 'Completely free access'}
-              </div>
-            </div>
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)]">
-              <div className="text-3xl font-bold text-[var(--brand)] mb-2">50%</div>
-              <div className="text-sm text-[var(--muted)]">
-                {language === 'es' ? 'Descuento primer año' : 'First year discount'}<br/>
-                {language === 'es' ? '(Primeras 25 iglesias)' : '(First 25 churches)'}
               </div>
             </div>
           </div>
