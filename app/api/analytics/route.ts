@@ -4,13 +4,23 @@ export async function POST(req: Request) {
   try {
     const analyticsData = await req.json();
     
+    // Handle both direct metrics and nested metric objects from global performance monitor
+    const metric = analyticsData.type === 'performance' && analyticsData.metric 
+      ? analyticsData.metric 
+      : analyticsData;
+    
+    // Ensure we have valid metric data
+    if (!metric || typeof metric !== 'object') {
+      return NextResponse.json({ error: 'Invalid metric data' }, { status: 400 });
+    }
+    
     // Safe timestamp handling with multiple fallbacks
     let validTimestamp: Date;
     
     try {
-      if (analyticsData.timestamp) {
+      if (metric.timestamp) {
         // Try to parse the timestamp
-        const parsedDate = new Date(analyticsData.timestamp);
+        const parsedDate = new Date(metric.timestamp);
         
         // Check if the parsed date is valid
         if (!isNaN(parsedDate.getTime())) {
@@ -33,10 +43,12 @@ export async function POST(req: Request) {
     
     // Log performance metrics (in production, send to your analytics service)
     console.log('Performance Metric:', {
-      name: analyticsData.name,
-      value: analyticsData.value,
-      url: analyticsData.url,
+      name: metric.name,
+      value: metric.value,
+      url: metric.url,
       timestamp: isoTimestamp,
+      market: metric.market,
+      country: metric.country,
     });
 
     // Here you would typically send to your analytics service:
