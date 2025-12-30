@@ -510,7 +510,7 @@ export default function USAMarketPage() {
             </p>
             <p className="leading-relaxed">
               Faithful to this calling, we transform our work into a tangible offering: 
-              <span className="font-semibold text-[var(--brand)]"> 33% of all subscription profits</span> 
+              <span className="font-semibold text-[var(--brand)]">33% of all subscription profits</span>{' '}
               are directly allocated to fund the community works of Khesed Mission.
             </p>
             <p className="leading-relaxed">

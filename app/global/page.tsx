@@ -669,25 +669,64 @@ export default function GlobalMarketPage() {
       {/* About Section */}
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
         <h2 className="text-3xl font-semibold mb-6">
-          {language === 'es' ? 'Sobre KHESED-TEK SYSTEMS' : 'About KHESED-TEK SYSTEMS'}
+          {language === 'es' ? 'Nuestra Misión' : 'Our Mission'}
         </h2>
-        <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
+        
+        {/* Core Mission Statement */}
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 mb-12">
+          <div style={{ color: 'var(--muted)' }} className="text-lg mb-6 space-y-4">
+            <p className="font-medium text-[var(--text)] leading-relaxed">
+              {language === 'es'
+                ? 'Nuestra misión es desplegar la tecnología como una expresión práctica del Khesed de Dios (Su amor de pacto y misericordia) para servir a Su Iglesia.'
+                : 'Our mission is to deploy technology as a practical expression of God\'s Khesed (His covenant love and mercy) to serve His Church.'
+              }
+            </p>
+            <p className="leading-relaxed">
+              {language === 'es'
+                ? <>Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: <span className="font-semibold text-[var(--brand)]">el 33% de todas las ganancias de nuestras suscripciones</span>{' '} se asignan directamente para financiar las obras comunitarias de Misión Khesed.</>
+                : <>Faithful to this calling, we transform our work into a tangible offering: <span className="font-semibold text-[var(--brand)]">33% of all subscription profits</span>{' '} are directly allocated to fund the community works of Khesed Mission.</>
+              }
+            </p>
+            <p className="leading-relaxed">
+              {language === 'es'
+                ? 'Este compromiso asegura que cada solución tecnológica que creamos se convierta en un acto de amor práctico y generacional.'
+                : 'This commitment ensures that every technological solution we create becomes an act of practical and generational love.'
+              }
+            </p>
+            <p className="font-medium text-[var(--brand)] italic leading-relaxed">
+              {language === 'es'
+                ? 'Porque creemos que servir a la Iglesia es también servir al mundo al cual Ella es enviada.'
+                : 'Because we believe that serving the Church is also serving the world to which She is sent.'
+              }
+            </p>
+          </div>
+          
+          {/* Biblical Foundation */}
+          <div className="border-t border-[var(--border)] pt-6 mt-6">
+            <p className="text-sm font-medium text-[var(--brand)] mb-2">
+              {language === 'es' ? 'Fundamento Bíblico' : 'Biblical Foundation'}
+            </p>
+            <p className="text-sm italic text-[var(--muted)]">
+              {language === 'es'
+                ? '"Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños" — Proverbios 27:23'
+                : '"Be diligent to know the state of your flocks, and attend to your herds" — Proverbs 27:23'
+              }
+            </p>
+          </div>
+        </div>
+        
+        {/* Supporting Context */}
+        <div style={{ color: 'var(--muted)' }} className="text-base mb-8 space-y-4">
           <p>
             {language === 'es' 
-              ? 'En KHESED-TEK SYSTEMS, convergen la vanguardia tecnológica y el propósito divino. Somos una firma innovadora de software y automatización con sede en Barranquilla, dedicada exclusivamente a servir al Reino. Empoderamos a organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de Inteligencia Artificial e integración de procesos, resolviendo sus desafíos operativos más complejos.'
-              : 'KHESED-TEK SYSTEMS is an innovative software and automation company dedicated to serving the Christian community. Based in Barranquilla, Atlántico, we empower churches and faith-based organizations by designing customized artificial intelligence and integration solutions that address their unique operational challenges.'
+              ? 'Somos una firma innovadora de software con sede en Barranquilla, dedicada exclusivamente a servir al Reino. Empoderamos a organizaciones basadas en la fe mediante soluciones de Inteligencia Artificial e integración de procesos, resolviendo sus desafíos operativos más complejos.'
+              : 'We are an innovative software firm based in Barranquilla, dedicated exclusively to serving the Kingdom. We empower faith-based organizations through Artificial Intelligence solutions and process integration, solving their most complex operational challenges.'
             }
           </p>
           <p>
             {language === 'es'
-              ? 'Entendemos que su misión es espiritual, pero sus operaciones son prácticas. Nuestro objetivo es optimizar sus tareas administrativas, mejorar la asignación de recursos y potenciar la productividad. Al manejar las complejidades de la tecnología, liberamos a su equipo para enfocarse en lo que más importa: servir a su congregación y fortalecer su comunidad.'
-              : 'We understand that your mission is spiritual, but your operations are practical. Our goal is to streamline your administrative tasks, optimize resource allocation, and enhance productivity. By handling the complexities of technology, we free your team to focus on what matters most: serving your congregation and strengthening your community.'
-            }
-          </p>
-          <p className="font-medium text-[var(--brand)]">
-            {language === 'es'
-              ? 'Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".'
-              : 'Our mission is to equip your church with Ministerial Intelligence, facilitating the biblical mandate of Proverbs 27:23: "Be diligent to know the state of your flocks, and attend to your herds."'
+              ? 'Optimizamos sus tareas administrativas para que su equipo recupere el activo más valioso: tiempo para pastorear y fortalecer a la comunidad, mientras nosotros gestionamos la complejidad tecnológica.'
+              : 'We optimize administrative tasks so your team can recover the most valuable asset: time to shepherd and strengthen the community, while we manage the technological complexity.'
             }
           </p>
         </div>
