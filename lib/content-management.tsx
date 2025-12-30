@@ -27,6 +27,50 @@ export interface ContentVariant {
 
 // Global content library
 export const CONTENT_LIBRARY = {
+  // Mission Statement
+  mission_statement: {
+    core_mission: {
+      id: 'core_mission',
+      title: {
+        es: 'Nuestra Misión',
+        en: 'Our Mission'
+      },
+      description: {
+        es: 'Nuestra misión es desplegar la tecnología como una expresión práctica del Khesed de Dios (Su amor de pacto y misericordia) para servir a Su Iglesia. Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: el 33% de todas las ganancias de nuestras suscripciones se asignan directamente para financiar las obras comunitarias de Misión Khesed.',
+        en: 'Our mission is to deploy technology as a practical expression of God\'s Khesed (His covenant love and mercy) to serve His Church. Faithful to this calling, we transform our work into a tangible offering: 33% of all subscription profits are directly allocated to fund the community works of Khesed Mission.'
+      },
+      cta: {
+        es: 'Conocer más sobre nuestra misión →',
+        en: 'Learn more about our mission →'
+      },
+      metadata: {
+        targetMarket: ['LATAM', 'USA', 'GLOBAL'],
+        priority: 1,
+        context: 'Core mission and kingdom purpose'
+      }
+    },
+    khesed_commitment: {
+      id: 'khesed_commitment',
+      title: {
+        es: 'Compromiso Khesed',
+        en: 'Khesed Commitment'
+      },
+      description: {
+        es: 'Este compromiso asegura que cada solución tecnológica que creamos se convierta en un acto de amor práctico y generacional. Porque creemos que servir a la Iglesia es también servir al mundo al cual Ella es enviada.',
+        en: 'This commitment ensures that every technological solution we create becomes an act of practical and generational love. Because we believe that serving the Church is also serving the world to which She is sent.'
+      },
+      cta: {
+        es: 'Ver nuestro impacto →',
+        en: 'See our impact →'
+      },
+      metadata: {
+        targetMarket: ['LATAM', 'USA', 'GLOBAL'],
+        priority: 2,
+        context: 'Kingdom impact and generational love'
+      }
+    }
+  },
+
   // Hero Headlines
   hero_headlines: {
     innovation_focus: {

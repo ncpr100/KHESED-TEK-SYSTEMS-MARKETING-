@@ -28,6 +28,20 @@ Multi-language, market-aware email delivery:
 - **Automation**: `lib/email/automation.ts` - Workflow engine
 - **Service**: `lib/email-service.ts` - Market routing + Resend integration
 
+### Content Management System
+Dynamic content and A/B testing framework:
+- **Content Management**: `lib/content-management.tsx` - Multi-language content provider
+- **A/B Testing**: `lib/ab-testing.ts` - Market-specific variant testing
+- **Dynamic Carousel**: `lib/dynamic-carousel.ts` - Environment-driven image management
+- **Video Management**: `lib/demo-videos.ts` - Cache-busting video system
+
+### Admin & Security Layer
+Comprehensive admin interface with security:
+- **Admin Interface**: `components/SuperAdminHelpTab.tsx` - Full dashboard
+- **Security**: `lib/security/` - Rate limiting, headers, auth management
+- **GDPR Compliance**: `lib/gdpr/` - Privacy rights and consent management
+- **Performance Monitoring**: `lib/global-performance.ts` - Web vitals tracking
+
 ## Key Entry Points & Data Flow
 
 **Contact Form Pipeline**: `app/contact/page.tsx` → `app/api/request-demo/route.ts` → `lib/crm/manager.ts` + `lib/email-service.ts`
@@ -36,12 +50,23 @@ Multi-language, market-aware email delivery:
 - `/api/request-demo` - Main lead capture (supports FormData + JSON)
 - `/api/health` - Railway deployment healthcheck
 - `/api/analytics/*` - Performance tracking
-- `/api/admin/*` - Admin interface APIs
+- `/api/admin/*` - Admin interface APIs (carousel, super-admin)
+- `/api/video-debug/*` - Video cache-busting debugging
+- `/api/gdpr/*` - Privacy compliance endpoints
+- `/api/security/*` - Rate limiting and security headers
+
+**Admin System Architecture**:
+- `app/admin/carousel/` - Carousel management interface
+- `components/SuperAdminHelpTab.tsx` - Comprehensive admin dashboard
+- `components/AdminTabs.tsx` - Maintenance and emergency tools
+- `lib/security/manager.ts` - Security middleware and rate limiting
 
 **UI Components**:
 - `components/marketing/` - Header, footer, shared marketing components
 - `components/ui/` - Reusable design system components
 - `components/analytics.tsx` - Google Analytics integration
+- `components/CookieConsentBanner.tsx` - GDPR compliance
+- `components/DataRightsForms.tsx` - Privacy rights management
 
 ## Development Patterns
 
@@ -80,6 +105,14 @@ CONTACT_EMAIL_GLOBAL=global@...   # Global fallback
 NEXT_PUBLIC_GA_ID=G-xxxxx         # Google Analytics
 CRM_PROVIDER=hubspot|salesforce|pipedrive
 CRM_API_KEY=xxxxx                 # CRM integration
+
+# Video Cache Busting (for updates)
+NEXT_PUBLIC_VIDEO_CACHE_BUST=v1.2.3
+
+# Dynamic Carousel Images (JSON arrays)
+NEXT_PUBLIC_LATAM_CAROUSEL_IMAGES='[{"src":"/images/...","alt":"..."}]'
+NEXT_PUBLIC_USA_CAROUSEL_IMAGES='[{"src":"/images/...","alt":"..."}]'
+NEXT_PUBLIC_GLOBAL_CAROUSEL_IMAGES='[{"src":"/images/...","alt":"..."}]'
 ```
 
 ## Common Tasks & Debugging
@@ -99,6 +132,18 @@ CRM_API_KEY=xxxxx                 # CRM integration
 1. Review `lib/crm/manager.ts` adapter initialization
 2. Check specific adapter in `lib/crm/adapters/[provider].ts`
 3. Verify `CRM_PROVIDER` and `CRM_API_KEY` environment variables
+
+### Video Cache Busting Issues
+1. Check `NEXT_PUBLIC_VIDEO_CACHE_BUST` environment variable
+2. Review `lib/demo-videos.ts` cache-busting logic
+3. Use `/api/video-debug/cache-status` to check current cache state
+4. Videos not updating: increment cache-bust value and redeploy
+
+### Admin Interface Problems
+1. Access SuperAdmin dashboard via `components/SuperAdminHelpTab.tsx`
+2. Check carousel management at `app/admin/carousel/`
+3. Security rate limiting managed in `lib/security/rate-limiter.ts`
+4. GDPR compliance tools in `lib/gdpr/` and `components/DataRightsForms.tsx`
 
 ### Performance Monitoring
 - Web vitals tracked in `lib/performance.ts`

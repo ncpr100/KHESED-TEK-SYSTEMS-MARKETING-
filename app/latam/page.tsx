@@ -414,21 +414,48 @@ export default function LatamMarketPage() {
 
       {/* About Section - Nosotros */}
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-6">Sobre KHESED-TEK SYSTEMS</h2>
-        <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
+        <h2 className="text-3xl font-semibold mb-6">Nuestra Misión</h2>
+        
+        {/* Core Mission Statement */}
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 mb-12">
+          <div style={{ color: 'var(--muted)' }} className="text-lg mb-6 space-y-4">
+            <p className="font-medium text-[var(--text)] leading-relaxed">
+              Nuestra misión es desplegar la tecnología como una expresión práctica del Khesed de Dios 
+              (Su amor de pacto y misericordia) para servir a Su Iglesia.
+            </p>
+            <p className="leading-relaxed">
+              Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: 
+              <span className="font-semibold text-[var(--brand)]"> el 33% de todas las ganancias de nuestras suscripciones</span> 
+              se asignan directamente para financiar las obras comunitarias de Misión Khesed.
+            </p>
+            <p className="leading-relaxed">
+              Este compromiso asegura que cada solución tecnológica que creamos se convierta en un acto de amor práctico y generacional.
+            </p>
+            <p className="font-medium text-[var(--brand)] italic leading-relaxed">
+              Porque creemos que servir a la Iglesia es también servir al mundo al cual Ella es enviada.
+            </p>
+          </div>
+          
+          {/* Biblical Foundation */}
+          <div className="border-t border-[var(--border)] pt-6 mt-6">
+            <p className="text-sm font-medium text-[var(--brand)] mb-2">Fundamento Bíblico</p>
+            <p className="text-sm italic text-[var(--muted)]">
+              "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños" 
+              <span className="font-medium">— Proverbios 27:23</span>
+            </p>
+          </div>
+        </div>
+        
+        {/* Supporting Context */}
+        <div style={{ color: 'var(--muted)' }} className="text-base mb-8 space-y-4">
           <p>
-            Somos una firma innovadora de software y automatización con sede en Barranquilla, dedicada exclusivamente a servir al Reino. 
-            Empoderamos a organizaciones basadas en la fe mediante el diseño de soluciones personalizadas de Inteligencia Artificial 
+            Somos una firma innovadora de software con sede en Barranquilla, dedicada exclusivamente a servir al Reino. 
+            Empoderamos a organizaciones basadas en la fe mediante soluciones de Inteligencia Artificial 
             e integración de procesos, resolviendo sus desafíos operativos más complejos.
           </p>
           <p>
-            Entendemos que, si bien su misión es espiritual, la ejecución es práctica. Optimizamos sus tareas administrativas 
-            y la asignación de recursos para que su equipo recupere el activo más valioso: tiempo para pastorear y fortalecer a la comunidad, 
-            mientras nosotros gestionamos la complejidad tecnológica.
-          </p>
-          <p className="font-medium text-[var(--brand)]">
-            Nuestra misión es dotar a su iglesia de Inteligencia Ministerial, facilitando el mandato bíblico de Proverbios 27:23: 
-            "Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños".
+            Optimizamos sus tareas administrativas para que su equipo recupere el activo más valioso: 
+            tiempo para pastorear y fortalecer a la comunidad, mientras nosotros gestionamos la complejidad tecnológica.
           </p>
         </div>
         <div className="grid sm:grid-cols-4 gap-4 text-center">

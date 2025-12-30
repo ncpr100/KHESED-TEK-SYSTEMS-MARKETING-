@@ -497,22 +497,50 @@ export default function USAMarketPage() {
         </div>
       </section>
 
-      {/* About Section - Nosotros */}
+      {/* About Section - Our Mission */}
       <section id="about" className="max-w-4xl mx-auto text-center px-6 py-12">
-        <h2 className="text-3xl font-semibold mb-6">About KHESED-TEK SYSTEMS</h2>
-        <div style={{ color: 'var(--muted)' }} className="text-lg mb-8 space-y-4">
+        <h2 className="text-3xl font-semibold mb-6">Our Mission</h2>
+        
+        {/* Core Mission Statement */}
+        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 mb-12">
+          <div style={{ color: 'var(--muted)' }} className="text-lg mb-6 space-y-4">
+            <p className="font-medium text-[var(--text)] leading-relaxed">
+              Our mission is to deploy technology as a practical expression of God's Khesed 
+              (His covenant love and mercy) to serve His Church.
+            </p>
+            <p className="leading-relaxed">
+              Faithful to this calling, we transform our work into a tangible offering: 
+              <span className="font-semibold text-[var(--brand)]"> 33% of all subscription profits</span> 
+              are directly allocated to fund the community works of Khesed Mission.
+            </p>
+            <p className="leading-relaxed">
+              This commitment ensures that every technological solution we create becomes an act of practical and generational love.
+            </p>
+            <p className="font-medium text-[var(--brand)] italic leading-relaxed">
+              Because we believe that serving the Church is also serving the world to which She is sent.
+            </p>
+          </div>
+          
+          {/* Biblical Foundation */}
+          <div className="border-t border-[var(--border)] pt-6 mt-6">
+            <p className="text-sm font-medium text-[var(--brand)] mb-2">Biblical Foundation</p>
+            <p className="text-sm italic text-[var(--muted)]">
+              "Be diligent to know the state of your flocks, and attend to your herds" 
+              <span className="font-medium">— Proverbs 27:23</span>
+            </p>
+          </div>
+        </div>
+        
+        {/* Supporting Context */}
+        <div style={{ color: 'var(--muted)' }} className="text-base mb-8 space-y-4">
           <p>
-            We are an innovative software and automation firm based in Barranquilla, dedicated exclusively to serving the Kingdom. 
-            We empower faith-based organizations through the design of personalized Artificial Intelligence solutions 
+            We are an innovative software firm based in Barranquilla, dedicated exclusively to serving the Kingdom. 
+            We empower faith-based organizations through Artificial Intelligence solutions 
             and process integration, solving their most complex operational challenges.
           </p>
           <p>
-            We understand that while your mission is spiritual, execution is practical. We optimize your administrative tasks 
-            and resource allocation so your team can recover the most valuable asset: time to shepherd and strengthen the community, 
-            while we manage the technological complexity.
-          </p>
-          <p className="font-medium text-[var(--brand)]">
-            Let us build the digital infrastructure that supports and amplifies your eternal impact.
+            We optimize administrative tasks so your team can recover the most valuable asset: 
+            time to shepherd and strengthen the community, while we manage the technological complexity.
           </p>
         </div>
         <div className="grid sm:grid-cols-4 gap-4 text-center">
