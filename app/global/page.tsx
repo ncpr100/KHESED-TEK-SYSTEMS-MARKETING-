@@ -683,8 +683,8 @@ export default function GlobalMarketPage() {
             </p>
             <p className="leading-relaxed">
               {language === 'es'
-                ? <>Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: <span className="font-semibold text-[var(--brand)]">el 33% de todas las ganancias de nuestras suscripciones</span>{' '} se asignan directamente para financiar las obras comunitarias de Misión Khesed.</>
-                : <>Faithful to this calling, we transform our work into a tangible offering: <span className="font-semibold text-[var(--brand)]">33% of all subscription profits</span>{' '} are directly allocated to fund the community works of Khesed Mission.</>
+                ? <>Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible:{' '}<span className="font-semibold text-[var(--brand)]">el 33% de todas las ganancias de nuestras suscripciones</span>{' '}se asignan directamente para financiar las obras comunitarias de Misión Khesed.</>
+                : <>Faithful to this calling, we transform our work into a tangible offering:{' '}<span className="font-semibold text-[var(--brand)]">33% of all subscription profits</span>{' '}are directly allocated to fund the community works of Khesed Mission.</>
               }
             </p>
             <p className="leading-relaxed">

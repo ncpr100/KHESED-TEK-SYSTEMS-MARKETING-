@@ -509,7 +509,7 @@ export default function USAMarketPage() {
               (His covenant love and mercy) to serve His Church.
             </p>
             <p className="leading-relaxed">
-              Faithful to this calling, we transform our work into a tangible offering: 
+              Faithful to this calling, we transform our work into a tangible offering:{' '}
               <span className="font-semibold text-[var(--brand)]">33% of all subscription profits</span>{' '}
               are directly allocated to fund the community works of Khesed Mission.
             </p>

@@ -424,7 +424,7 @@ export default function LatamMarketPage() {
               (Su amor de pacto y misericordia) para servir a Su Iglesia.
             </p>
             <p className="leading-relaxed">
-              Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: 
+              Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible:{' '}
               <span className="font-semibold text-[var(--brand)]">el 33% de todas las ganancias de nuestras suscripciones</span>{' '}
               se asignan directamente para financiar las obras comunitarias de Misión Khesed.
             </p>
