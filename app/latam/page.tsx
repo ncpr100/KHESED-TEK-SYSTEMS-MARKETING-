@@ -425,7 +425,7 @@ export default function LatamMarketPage() {
             </p>
             <p className="leading-relaxed">
               Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: 
-              <span className="font-semibold text-[var(--brand)]"> el 33% de todas las ganancias de nuestras suscripciones</span> 
+              <span className="font-semibold text-[var(--brand)]">el 33% de todas las ganancias de nuestras suscripciones</span>{' '}
               se asignan directamente para financiar las obras comunitarias de Misión Khesed.
             </p>
             <p className="leading-relaxed">
