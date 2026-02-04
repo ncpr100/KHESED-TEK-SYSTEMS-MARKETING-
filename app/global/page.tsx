@@ -434,7 +434,7 @@ export default function GlobalMarketPage() {
           {[
             {
               id: "small",
-              name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church',
+              name: language === 'es' ? 'BÁSICO - Iglesia Pequeña' : 'BASIC - Small Church',
               price: "$149.99 USD",
               period: language === 'es' ? '/mes' : '/month',
               members: language === 'es' ? 'Hasta 500 miembros' : 'Up to 500 members',
@@ -446,7 +446,7 @@ export default function GlobalMarketPage() {
             },
             {
               id: "medium",
-              name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', 
+              name: language === 'es' ? 'PROFESIONAL - Iglesia Mediana' : 'PROFESSIONAL - Medium Church', 
               price: "$299.99 USD",
               period: language === 'es' ? '/mes' : '/month',
               members: language === 'es' ? 'Hasta 2,000 miembros' : 'Up to 2,000 members',
@@ -459,7 +459,7 @@ export default function GlobalMarketPage() {
             },
             {
               id: "large",
-              name: language === 'es' ? 'Iglesia Grande' : 'Large Church',
+              name: language === 'es' ? 'EMPRESARIAL - Iglesia Grande' : 'ENTERPRISE - Large Church',
               price: language === 'es' ? 'Personalizado' : 'Custom', 
               period: '',
               members: language === 'es' ? 'Miembros ilimitados' : 'Unlimited members',
@@ -482,9 +482,9 @@ export default function GlobalMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: language === 'es' ? 'Iglesia Pequeña' : 'Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "500", features: [] },
-            { id: "medium", name: language === 'es' ? 'Iglesia Mediana' : 'Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "2,000", features: [], popular: true },
-            { id: "large", name: language === 'es' ? 'Iglesia Grande' : 'Large Church', price: language === 'es' ? 'Personalizado' : 'Custom', period: '', members: "Unlimited", features: [] }
+            { id: "small", name: language === 'es' ? 'BÁSICO - Iglesia Pequeña' : 'BASIC - Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "500", features: [] },
+            { id: "medium", name: language === 'es' ? 'PROFESIONAL - Iglesia Mediana' : 'PROFESSIONAL - Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "2,000", features: [], popular: true },
+            { id: "large", name: language === 'es' ? 'EMPRESARIAL - Iglesia Grande' : 'ENTERPRISE - Large Church', price: language === 'es' ? 'Personalizado' : 'Custom', period: '', members: "Unlimited", features: [] }
           ]}
           language={language}
           className="mt-16"

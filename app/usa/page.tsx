@@ -312,7 +312,7 @@ export default function USAMarketPage() {
           {[
             {
               id: "small",
-              name: "Small Church",
+              name: "BASIC - Small Church",
               price: "$149.99",
               period: "/month",
               members: "Up to 500 members",
@@ -322,7 +322,7 @@ export default function USAMarketPage() {
             },
             {
               id: "medium",
-              name: "Medium Church", 
+              name: "PROFESSIONAL - Medium Church", 
               price: "$299.99",
               period: "/month",
               members: "Up to 2,000 members",
@@ -333,7 +333,7 @@ export default function USAMarketPage() {
             },
             {
               id: "large",
-              name: "Large Church",
+              name: "ENTERPRISE - Large Church",
               price: "Custom", 
               period: "",
               members: "Unlimited members",
@@ -354,9 +354,9 @@ export default function USAMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: "Small Church", price: "$149.99", period: "/month", members: "500", features: [] },
-            { id: "medium", name: "Medium Church", price: "$299.99", period: "/month", members: "2,000", features: [], popular: true },
-            { id: "large", name: "Large Church", price: "Custom", period: "", members: "Unlimited", features: [] }
+            { id: "small", name: "BASIC - Small Church", price: "$149.99", period: "/month", members: "500", features: [] },
+            { id: "medium", name: "PROFESSIONAL - Medium Church", price: "$299.99", period: "/month", members: "2,000", features: [], popular: true },
+            { id: "large", name: "ENTERPRISE - Large Church", price: "Custom", period: "", members: "Unlimited", features: [] }
           ]}
           language="en"
           className="mt-16"

@@ -308,7 +308,7 @@ export default function LatamMarketPage() {
           {[
             {
               id: "small",
-              name: "Iglesia Pequeña",
+              name: "BÁSICO - Iglesia Pequeña",
               price: "$149.99 USD",
               period: "/mes",
               members: "Hasta 500 miembros",
@@ -318,7 +318,7 @@ export default function LatamMarketPage() {
             },
             {
               id: "medium",
-              name: "Iglesia Mediana", 
+              name: "PROFESIONAL - Iglesia Mediana", 
               price: "$299.99 USD",
               period: "/mes",
               members: "Hasta 2,000 miembros",
@@ -329,7 +329,7 @@ export default function LatamMarketPage() {
             },
             {
               id: "large",
-              name: "Iglesia Grande",
+              name: "EMPRESARIAL - Iglesia Grande",
               price: "Personalizado", 
               period: "",
               members: "Miembros ilimitados",
@@ -350,9 +350,9 @@ export default function LatamMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: "Iglesia Pequeña", price: "$149.99", period: "/mes", members: "500", features: [] },
-            { id: "medium", name: "Iglesia Mediana", price: "$299.99", period: "/mes", members: "2,000", features: [], popular: true },
-            { id: "large", name: "Iglesia Grande", price: "Personalizado", period: "", members: "Ilimitado", features: [] }
+            { id: "small", name: "BÁSICO - Iglesia Pequeña", price: "$149.99", period: "/mes", members: "500", features: [] },
+            { id: "medium", name: "PROFESIONAL - Iglesia Mediana", price: "$299.99", period: "/mes", members: "2,000", features: [], popular: true },
+            { id: "large", name: "EMPRESARIAL - Iglesia Grande", price: "Personalizado", period: "", members: "Ilimitado", features: [] }
           ]}
           language="es"
           className="mt-16"

@@ -87,7 +87,7 @@ export default function ROICalculator({
         insights: [
           language === 'es' 
             ? 'Para iglesias grandes, ofrecemos soluciones completamente personalizadas'
-            : 'For large churches, we offer fully customized solutions',
+            : 'For ENTERPRISE plan organizations, we offer fully customized solutions',
           language === 'es'
             ? 'Implementación y capacitación completamente gratuitas'
             : 'Completely free implementation and training',
@@ -333,12 +333,12 @@ export default function ROICalculator({
             {inputs.churchSize === 'large' ? (
               <div className="text-center p-8 bg-gradient-to-r from-[var(--brand)]/10 to-[var(--brand2)]/10 rounded-lg border border-[var(--border)]">
                 <h4 className="text-xl font-semibold mb-4">
-                  {language === 'es' ? 'Soluciones Personalizadas para Iglesias Grandes' : 'Custom Solutions for Large Churches'}
+                  {language === 'es' ? 'Soluciones Personalizadas EMPRESARIAL' : 'Custom ENTERPRISE Solutions'}
                 </h4>
                 <p className="text-[var(--muted)] mb-6">
                   {language === 'es' 
-                    ? 'Para iglesias grandes con necesidades específicas, ofrecemos soluciones completamente personalizadas con precios adaptados a su organización.'
-                    : 'For large churches with specific needs, we offer fully customized solutions with pricing tailored to your organization.'
+                    ? 'Para organizaciones con el plan EMPRESARIAL, ofrecemos soluciones completamente personalizadas con precios adaptados a su organización.'
+                    : 'For organizations with the ENTERPRISE plan, we offer fully customized solutions with pricing tailored to your organization.'
                   }
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -586,7 +586,7 @@ function generateInsights(
     }
     
     if (profile.memberCount > 500) {
-      insights.push('Scalability needed: A robust system is essential for large churches.');
+      insights.push('Scalability needed: A robust system is essential for ENTERPRISE organizations.');
     }
   }
 
