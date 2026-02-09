@@ -65,7 +65,7 @@ const nextConfig = {
 
   // Vercel-optimized experimental features
   experimental: {
-    // optimizeCss: true, // Disabled - causes critters module error in Next.js 15
+    optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
 
@@ -74,10 +74,8 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   
-  // TEMPORARY: Disable ESLint during build due to Next.js 15 + ESLint 9 compatibility issue
-  // TODO: Re-enable after fixing circular dependency in eslint-config-next
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
 
   // Vercel Analytics and Speed Insights optimization
