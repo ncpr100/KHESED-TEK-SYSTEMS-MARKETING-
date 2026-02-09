@@ -128,7 +128,7 @@ export default function DemoVideoSection({
 }: DemoVideoSectionProps) {
   const [selectedVideo, setSelectedVideo] = useState<DemoVideo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<'video' | 'images'>('images'); // Default to Capturas since no founder video exists yet
+  const [viewMode, setViewMode] = useState<'video' | 'images'>('video'); // Default to video - founder's message is available
   const [videoError, setVideoError] = useState(false);
 
   // Filter videos by market and language using utility function
