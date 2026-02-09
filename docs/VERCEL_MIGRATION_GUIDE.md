@@ -168,12 +168,12 @@ NEXT_TELEMETRY_DISABLED=1
 
 # Email Service (Resend)
 RESEND_API_KEY=re_****
-RESEND_DOMAIN=khesedtek.com
+RESEND_DOMAIN=khesed-tek-systems.org
 
 # Market-specific Contact Emails
-CONTACT_EMAIL_LATAM=contacto@khesedtek.com
-CONTACT_EMAIL_USA=usa@khesedtek.com  
-CONTACT_EMAIL_GLOBAL=global@khesedtek.com
+CONTACT_EMAIL_LATAM=contacto@khesed-tek-systems.org
+CONTACT_EMAIL_USA=contact@khesed-tek-systems.org
+CONTACT_EMAIL_GLOBAL=contact@khesed-tek-systems.org
 
 # Analytics & Tracking
 NEXT_PUBLIC_GA_ID=G-J8QN6G9SQN
