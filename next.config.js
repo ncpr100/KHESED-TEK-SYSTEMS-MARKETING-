@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // CRITICAL: Railway requires 'standalone' output for Docker builds  
+  // Railway requires 'standalone' output for Docker deployment
   output: 'standalone',
 
-  // Enhanced image optimization for Vercel CDN
+  // Image optimization for Railway
   images: {
     remotePatterns: [
       {
@@ -63,24 +63,13 @@ const nextConfig = {
     ];
   },
 
-  // Vercel-optimized experimental features
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react'],
-  },
-
-  // Enhanced for Vercel Edge Runtime
+  // Railway deployment configuration
   typescript: {
     ignoreBuildErrors: false,
   },
   
   eslint: {
     ignoreDuringBuilds: true,
-  },
-
-  // Vercel Analytics and Speed Insights optimization
-  env: {
-    VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID,
   }
 };
 
