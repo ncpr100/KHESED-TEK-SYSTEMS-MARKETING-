@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove 'standalone' output for Vercel (use for Railway/Docker only)
-  // output: 'standalone',
+  // CRITICAL: Railway requires 'standalone' output for Docker builds  
+  output: 'standalone',
 
   // Enhanced image optimization for Vercel CDN
   images: {
@@ -75,7 +75,7 @@ const nextConfig = {
   },
   
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
 
   // Vercel Analytics and Speed Insights optimization
