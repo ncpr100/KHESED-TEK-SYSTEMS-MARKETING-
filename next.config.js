@@ -74,8 +74,10 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   
+  // TEMPORARY: Disable ESLint during build due to Next.js 15 + ESLint 9 compatibility issue
+  // TODO: Re-enable after fixing circular dependency in eslint-config-next
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
 
   // Vercel Analytics and Speed Insights optimization
