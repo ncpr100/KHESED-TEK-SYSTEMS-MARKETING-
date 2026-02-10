@@ -42,8 +42,9 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'", 
               "img-src 'self' data: blob: *.googleapis.com *.googleusercontent.com *.google-analytics.com",
               "font-src 'self' data:",
+              "frame-src 'self' *.youtube.com *.youtube-nocookie.com",
               "connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com *.vercel.live vitals.vercel-insights.com",
-              "frame-ancestors 'none'"
+              "frame-ancestors 'self'"
             ].join('; ')
           },
           {
