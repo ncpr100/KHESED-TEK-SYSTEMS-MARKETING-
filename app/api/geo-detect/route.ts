@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Force dynamic routing for server-side geo detection
-export const runtime = 'edge';
+// Use Node.js runtime for better compatibility and static generation
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET(request: NextRequest) {
   try {
