@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     const { testEmail } = await request.json();
     
-    console.log('Testing email delivery to:', testEmail);
+    console.log('Testing email delivery to business email');
     
     // Test email delivery
     const result = await sendMarketAwareEmail({
@@ -18,7 +18,13 @@ export async function POST(request: NextRequest) {
       market: 'LATAM',
       leadId: 'test-123',
       leadScore: 85,
-      priority: { label: 'High', color: 'red' }
+      priority: { 
+        level: 'high',
+        label: 'Hot Lead', 
+        color: '#ef4444',
+        marketContext: 'LATAM market - High priority',
+        recommendedActions: ['Contact within 2 hours', 'Schedule demo call']
+      }
     });
 
     if (result.success) {

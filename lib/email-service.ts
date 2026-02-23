@@ -142,7 +142,13 @@ interface EmailData {
   market?: Market;
   leadId?: string;
   leadScore?: number;
-  priority?: { level: string; label: string };
+  priority?: { 
+    level: 'high' | 'medium' | 'low';
+    label: string;
+    color: string;
+    marketContext: string;
+    recommendedActions: string[];
+  };
 }
 
 export async function sendMarketAwareEmail(
