@@ -125,6 +125,8 @@ export function detectMarketFromEmail(email: string, formData?: any): Market {
   const emailDomain = email.split('@')[1]?.toLowerCase();
   
   if (emailDomain?.endsWith('.us') || 
+      emailDomain?.endsWith('.org') ||  // US organizations typically use .org
+      emailDomain?.includes('church') ||  // Church domains indicate US market
       (formData?.whatsapp && formData.whatsapp.includes('+1'))) {
     return 'USA';
   }
@@ -135,9 +137,10 @@ export function detectMarketFromEmail(email: string, formData?: any): Market {
     return 'LATAM';
   }
   
-  // European or other international indicators
-  if (emailDomain?.match(/\.(eu|de|fr|uk|au|ca|mx|br)$/)) {
+  // European or other international indicators  
+  if (emailDomain?.match(/\.(eu|de|fr|uk|au|ca|mx|br|com)$/)) {  // Added .com for global
     return 'GLOBAL';
+  }
   }
   
   // Default based on content language or fallback to LATAM
