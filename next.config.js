@@ -46,12 +46,12 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.vercel.live *.cloudflare.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://*.vercel.live https://*.cloudflare.com https://static.cloudflareinsights.com",
               "style-src 'self' 'unsafe-inline'", 
-              "img-src 'self' data: blob: *.googleapis.com *.googleusercontent.com *.google-analytics.com",
+              "img-src 'self' data: blob: https://*.googleapis.com https://*.googleusercontent.com https://*.google-analytics.com",
               "font-src 'self' data:",
-              "frame-src 'self' *.youtube.com *.youtube-nocookie.com",
-              "connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com *.vercel.live vitals.vercel-insights.com",
+              "frame-src 'self' https://*.youtube.com https://*.youtube-nocookie.com",
+              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.vercel.live https://vitals.vercel-insights.com https://static.cloudflareinsights.com",
               "frame-ancestors 'self'"
             ].join('; ')
           },
