@@ -17,16 +17,16 @@ Modern, dark-themed marketing website built with Next.js 14 (App Router), TypeSc
 
 1. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 2. Create `.env.local` and add your Resend API key:
 
-```env
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxx
-CONTACT_EMAIL=soporte@khesed-tek-systems.org
-```
+   ```env
+   RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxx
+   CONTACT_EMAIL=soporte@khesed-tek-systems.org
+   ```
 
    **Production Domain:** <www.khesed-tek-systems.org>
 
@@ -34,9 +34,9 @@ CONTACT_EMAIL=soporte@khesed-tek-systems.org
 
 4. Run development server:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 5. Open <http://localhost:3000>
 
