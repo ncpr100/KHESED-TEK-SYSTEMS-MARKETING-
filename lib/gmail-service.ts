@@ -1,5 +1,5 @@
-// Market-aware email service for KHESED-TEK SYSTEMS
-import { Resend } from 'resend';
+// Google SMTP email service for KHESED-TEK SYSTEMS
+import * as nodemailer from 'nodemailer';
 
 export type Market = 'LATAM' | 'USA' | 'GLOBAL';
 
@@ -11,10 +11,10 @@ interface MarketConfig {
   currency: string;
 }
 
-// Market-specific email configuration
+// Market-specific email configuration using Google Workspace
 const MARKET_EMAIL_CONFIG = {
   'LATAM': {
-    from: 'KHESED-TEK SYSTEMS <contacto@khesed-tek-systems.org>',
+    from: 'contacto@khesed-tek-systems.org',
     to: process.env.CONTACT_EMAIL_LATAM || 'contacto@khesed-tek-systems.org',
     name: 'LATAM',
     timezone: 'America/Bogota',
@@ -23,7 +23,7 @@ const MARKET_EMAIL_CONFIG = {
   },
   
   'USA': {
-    from: 'KHESED-TEK SYSTEMS <contact@khesed-tek-systems.org>',
+    from: 'contact@khesed-tek-systems.org',
     to: process.env.CONTACT_EMAIL_USA || 'contact@khesed-tek-systems.org',
     name: 'USA',
     timezone: 'America/New_York',
@@ -32,7 +32,7 @@ const MARKET_EMAIL_CONFIG = {
   },
   
   'GLOBAL': {
-    from: 'KHESED-TEK SYSTEMS <global@khesed-tek-systems.org>',
+    from: 'global@khesed-tek-systems.org',
     to: process.env.CONTACT_EMAIL_GLOBAL || 'global@khesed-tek-systems.org',
     name: 'GLOBAL',
     timezone: 'UTC',
@@ -91,20 +91,37 @@ ${data.priority?.level === 'high' ? '\n🔥 HIGH PRIORITY LEAD - Contact immedia
       `.trim()
     }
   }
-};
+} as const;
 
-// Lazy-load Resend to avoid build-time API key requirement
-function getResend(): Resend | null {
-  if (!process.env.RESEND_API_KEY) {
+// Create Gmail SMTP transporter
+function createGmailTransporter() {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.log('⚠️  Gmail SMTP not configured - email notification skipped');
+    console.log('💡 To enable emails: Set GMAIL_USER and GMAIL_APP_PASSWORD in environment variables');
     return null;
   }
-  return new Resend(process.env.RESEND_API_KEY);
+
+  const appPassword = process.env.GMAIL_APP_PASSWORD.replace(/\s/g, ''); // Remove any spaces
+  
+  console.log('🔧 Creating Gmail transporter for:', process.env.GMAIL_USER);
+  console.log('📝 App password length:', appPassword.length);
+
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER, // your-email@khesed-tek-systems.org
+      pass: appPassword // App-specific password from Google (16 chars, no spaces)
+    },
+    secure: true,
+    port: 465,
+    debug: false, // Disable debug logging for production
+    logger: false // Disable logging for production
+  });
 }
 
 // Determine market from various inputs
 export function detectMarketFromEmail(email: string, formData?: any): Market {
   // USA domains
-  const usaDomains = ['.com', '.org', '.net', '.edu', '.gov'];
   const emailDomain = email.split('@')[1]?.toLowerCase();
   
   if (emailDomain?.endsWith('.us') || 
@@ -154,17 +171,29 @@ interface EmailData {
 export async function sendMarketAwareEmail(
   emailData: EmailData,
   templateType: keyof typeof EMAIL_TEMPLATES = 'demo_request'
-): Promise<{ success: boolean; data?: any; error?: any; market: Market }> {
+): Promise<{ success: boolean; data?: any; error?: any; market: Market; details?: any }> {
   
   const market = emailData.market || detectMarketFromEmail(emailData.email, emailData);
   const config = MARKET_EMAIL_CONFIG[market];
   const template = EMAIL_TEMPLATES[templateType][config.language as 'es' | 'en'];
   
-  const resend = getResend();
-  if (!resend) {
-    console.log('⚠️  Resend not configured - email notification skipped');
-    console.log('💡 To enable emails: Set RESEND_API_KEY in .env.local');
-    return { success: false, error: 'Resend not configured', market };
+  const transporter = createGmailTransporter();
+  if (!transporter) {
+    return { success: false, error: 'Gmail SMTP not configured', market };
+  }
+
+  // Verify SMTP connection
+  try {
+    await transporter.verify();
+    console.log('✅ Gmail SMTP connection verified');
+  } catch (verifyError) {
+    console.error('❌ Gmail SMTP connection failed:', verifyError);
+    return { 
+      success: false, 
+      error: 'Gmail SMTP authentication failed. Check GMAIL_USER and GMAIL_APP_PASSWORD.',
+      details: verifyError,
+      market 
+    };
   }
 
   try {
@@ -176,15 +205,10 @@ export async function sendMarketAwareEmail(
       priority: emailData.priority
     });
 
-    // Use verified domain if available, fallback to resend.dev
-    const fromAddress = process.env.RESEND_DOMAIN 
-      ? config.from 
-      : `KHESED-TEK SYSTEMS <noreply@resend.dev>`;
-
-    const { data, error } = await resend.emails.send({
-      from: fromAddress,
+    const mailOptions = {
+      from: `KHESED-TEK SYSTEMS <${process.env.GMAIL_USER}>`, // Use GMAIL_USER directly
       to: config.to,
-      reply_to: emailData.email,
+      replyTo: emailData.email,
       subject,
       text: body,
       headers: {
@@ -192,22 +216,36 @@ export async function sendMarketAwareEmail(
         'X-Lead-Score': emailData.leadScore?.toString() || '0',
         'X-Priority': emailData.priority?.level || 'normal'
       }
+    };
+
+    console.log('📧 Attempting to send email:', {
+      from: mailOptions.from,
+      to: mailOptions.to,
+      subject: mailOptions.subject,
+      market: market
     });
 
-    if (error) {
-      console.error(`❌ Email failed for ${market} market:`, error);
-      return { success: false, error, market };
-    }
+    const result = await transporter.sendMail(mailOptions);
 
-    console.log(`✅ Email sent successfully to ${market} market:`, data?.id);
-    return { success: true, data, market };
+    console.log(`✅ Email sent successfully to ${market} market via Gmail:`, result.messageId);
+    return { success: true, data: { id: result.messageId }, market };
 
   } catch (emailError) {
-    console.error(`Email sending failed for ${market} market:`, emailError);
+    console.error(`❌ Email sending failed for ${market} market:`, {
+      error: emailError instanceof Error ? emailError.message : emailError,
+      stack: emailError instanceof Error ? emailError.stack : undefined,
+      config: {
+        hasGmailUser: !!process.env.GMAIL_USER,
+        hasGmailPassword: !!process.env.GMAIL_APP_PASSWORD,
+        targetEmail: config.to,
+        market: market
+      }
+    });
     return { 
       success: false, 
       error: emailError instanceof Error ? emailError.message : 'Unknown error',
-      market 
+      market,
+      details: emailError
     };
   }
 }
@@ -220,10 +258,10 @@ export function getMarketConfig(market: Market): MarketConfig {
 // Validate email configuration for a market
 export function validateMarketEmailConfig(market: Market): boolean {
   const config = MARKET_EMAIL_CONFIG[market];
-  const hasApiKey = !!process.env.RESEND_API_KEY;
+  const hasGmailConfig = !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
   const hasTargetEmail = !!config.to;
   
-  return hasApiKey && hasTargetEmail;
+  return hasGmailConfig && hasTargetEmail;
 }
 
 // Get all configured markets

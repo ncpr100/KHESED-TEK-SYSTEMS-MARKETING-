@@ -1,36 +1,61 @@
 import { EmailProvider, SendEmailParams, SendEmailResult, DeliveryStatus, WebhookResult, EmailEvent } from './types';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
+import { v4 as uuidv4 } from 'uuid';
 
-export class ResendEmailProvider implements EmailProvider {
-  readonly name = 'Resend';
-  private resend: Resend;
+export class GmailEmailProvider implements EmailProvider {
+  readonly name = 'Gmail';
+  private transporter: nodemailer.Transporter | null = null;
 
-  constructor(apiKey: string) {
-    this.resend = new Resend(apiKey);
+  constructor(
+    private gmailUser: string,
+    private gmailAppPassword: string
+  ) {
+    this.initializeTransporter();
+  }
+
+  private initializeTransporter() {
+    try {
+      this.transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: this.gmailUser,
+          pass: this.gmailAppPassword,
+        },
+        secure: true,
+      });
+    } catch (error) {
+      console.error('Failed to initialize Gmail transporter:', error);
+    }
   }
 
   async sendEmail(params: SendEmailParams): Promise<SendEmailResult> {
+    if (!this.transporter) {
+      return {
+        success: false,
+        error: 'Gmail transporter not initialized',
+      };
+    }
+
     try {
-      const { data, error } = await this.resend.emails.send({
-        from: params.from,
+      const emailId = uuidv4();
+      
+      const info = await this.transporter.sendMail({
+        from: params.from || this.gmailUser,
         to: params.to,
         subject: params.subject,
         html: params.html,
         text: params.text,
-        reply_to: params.replyTo,
-        tags: params.tags?.map(tag => ({ name: 'campaign', value: tag })),
+        replyTo: params.replyTo,
+        headers: {
+          'X-Email-ID': emailId,
+          'X-Campaign-Tags': params.tags?.join(',') || '',
+          'X-Metadata': JSON.stringify(params.metadata || {}),
+        } as any, // Type assertion for custom headers
       });
-
-      if (error) {
-        return {
-          success: false,
-          error: error.message || 'Failed to send email',
-        };
-      }
 
       return {
         success: true,
-        emailId: data?.id,
+        emailId: info.messageId || emailId,
       };
     } catch (error) {
       return {
@@ -41,61 +66,20 @@ export class ResendEmailProvider implements EmailProvider {
   }
 
   async trackDelivery(emailId: string): Promise<DeliveryStatus> {
-    // Resend doesn't provide a direct API for delivery status
-    // This would typically be handled via webhooks
+    // Gmail SMTP doesn't provide direct delivery tracking
+    // This would require additional setup with Gmail API
     return {
       status: 'unknown',
     };
   }
 
   async handleWebhook(payload: any): Promise<WebhookResult> {
-    const events: EmailEvent[] = [];
-    
-    try {
-      // Parse Resend webhook payload
-      const { type, data } = payload;
-      
-      if (type && data) {
-        const event: EmailEvent = {
-          type: this.mapResendEventType(type),
-          emailId: data.email_id || data.id,
-          timestamp: new Date(data.created_at || Date.now()),
-          metadata: data,
-        };
-        
-        events.push(event);
-      }
-
-      return {
-        processed: true,
-        events,
-      };
-    } catch (error) {
-      console.error('Error processing webhook:', error);
-      return {
-        processed: false,
-        events: [],
-      };
-    }
-  }
-
-  private mapResendEventType(resendType: string): EmailEvent['type'] {
-    switch (resendType) {
-      case 'email.sent':
-        return 'sent';
-      case 'email.delivered':
-        return 'delivered';
-      case 'email.opened':
-        return 'opened';
-      case 'email.clicked':
-        return 'clicked';
-      case 'email.bounced':
-        return 'bounced';
-      case 'email.complained':
-        return 'complained';
-      default:
-        return 'sent';
-    }
+    // Gmail SMTP doesn't have native webhooks
+    // This would need to be implemented with Gmail API for advanced tracking
+    return {
+      processed: false,
+      events: [],
+    };
   }
 }
 
@@ -157,7 +141,7 @@ export class EmailAutomationEngine {
     // This would integrate with TemplateManager to render the template
     // and then send via the email provider
     
-    const from = process.env.EMAIL_FROM || 'KHESED-TEK <onboarding@resend.dev>';
+    const from = process.env.GMAIL_USER || 'contacto@khesed-tek-systems.org';
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.khesed-tek.com';
     
     // Add default variables
@@ -231,20 +215,22 @@ let emailEngine: EmailAutomationEngine | null = null;
 export function initializeEmailAutomation(): EmailAutomationEngine | null {
   if (emailEngine) return emailEngine;
 
-  const resendApiKey = process.env.RESEND_API_KEY;
-  if (!resendApiKey) {
-    console.warn('RESEND_API_KEY not found. Email automation disabled.');
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+  
+  if (!gmailUser || !gmailAppPassword) {
+    console.warn('GMAIL_USER or GMAIL_APP_PASSWORD not found. Email automation disabled.');
     return null;
   }
 
   try {
-    const emailProvider = new ResendEmailProvider(resendApiKey);
+    const emailProvider = new GmailEmailProvider(gmailUser, gmailAppPassword);
     emailEngine = new EmailAutomationEngine(emailProvider);
     
     // Start the engine
     emailEngine.start();
     
-    console.log('Email automation initialized successfully');
+    console.log('Email automation initialized successfully with Gmail');
     return emailEngine;
   } catch (error) {
     console.error('Failed to initialize email automation:', error);

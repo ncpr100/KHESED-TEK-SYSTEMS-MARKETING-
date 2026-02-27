@@ -190,11 +190,11 @@ fetch('/api/crm?action=health')
               "DNS/SPF record issues"
             ],
             solutions: [
-              "Verify RESEND_API_KEY environment variable",
-              "Check Resend dashboard for delivery status",
+              "Verify GMAIL_USER and GMAIL_APP_PASSWORD environment variables",
+              "Check Gmail SMTP authentication settings",
               "Test email templates individually",
-              "Verify domain DNS settings",
-              "Check /api/email-automation health endpoint"
+              "Verify Gmail App Password is correct",
+              "Check /api/debug-email configuration endpoint"
             ],
             code: `// Test email sending
 fetch('/api/email-automation', {
@@ -432,11 +432,17 @@ function getConfigurationGuide() {
         description: "Required and optional environment variables for system operation",
         variables: [
           {
-            name: "RESEND_API_KEY",
+            name: "GMAIL_USER",
             required: true,
-            description: "Resend API key for email sending",
-            example: "re_xxxxxxxxxx",
-            where: "Get from https://resend.com/api-keys"
+            description: "Gmail account for SMTP email sending",
+            example: "contacto@khesed-tek-systems.org"
+          },
+          {
+            name: "GMAIL_APP_PASSWORD",
+            required: true,
+            description: "Gmail App Password for SMTP authentication",
+            example: "abcd efgh ijkl mnop",
+            where: "Generate at https://myaccount.google.com/apppasswords"
           },
           {
             name: "CONTACT_EMAIL",
@@ -522,17 +528,17 @@ function getConfigurationGuide() {
         category: "Email Configuration",
         description: "Resend email service configuration",
         steps: [
-          "Sign up for Resend account",
-          "Verify your domain",
-          "Configure DNS records (SPF, DKIM, DMARC)",
-          "Generate API key",
-          "Set RESEND_API_KEY environment variable",
-          "Test email sending"
+          "Enable 2FA on Gmail account",
+          "Generate Gmail App Password",
+          "Configure GMAIL_USER environment variable",
+          "Configure GMAIL_APP_PASSWORD environment variable",
+          "Set GMAIL_USER environment variable",
+          "Test Gmail SMTP sending"
         ],
-        dnsRecords: {
-          spf: "v=spf1 include:_spf.resend.com ~all",
-          dkim: "Generated automatically by Resend",
-          dmarc: "v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com"
+        gmailSetup: {
+          appPassword: "Generate at Google Account Security → App Passwords",
+          authentication: "Uses Gmail's SMTP servers (no DNS configuration required)",
+          security: "App Password provides secure authentication without main password"
         }
       }
     ]

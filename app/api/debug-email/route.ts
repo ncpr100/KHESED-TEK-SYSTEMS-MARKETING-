@@ -6,8 +6,9 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV,
       emailConfig: {
-        resendApiKey: process.env.RESEND_API_KEY ? `✅ Set (${process.env.RESEND_API_KEY.substring(0, 8)}...)` : '❌ Missing',
-        resendDomain: process.env.RESEND_DOMAIN || '❌ Not set',
+        emailService: 'Gmail SMTP',
+        gmailUser: process.env.GMAIL_USER ? `✅ Set (${process.env.GMAIL_USER})` : '❌ Missing',
+        gmailAppPassword: process.env.GMAIL_APP_PASSWORD ? '✅ Set (password configured)' : '❌ Missing',
         contactEmailLatam: process.env.CONTACT_EMAIL_LATAM || '❌ Missing',
         contactEmailUsa: process.env.CONTACT_EMAIL_USA || '❌ Missing', 
         contactEmailGlobal: process.env.CONTACT_EMAIL_GLOBAL || '❌ Missing',
@@ -17,12 +18,12 @@ export async function GET(request: NextRequest) {
         usa: 'KHESED-TEK SYSTEMS <contact@khesed-tek-systems.org>',
         global: 'KHESED-TEK SYSTEMS <global@khesed-tek-systems.org>',
       },
-      domainVerificationRequired: 'khesed-tek-systems.org must be verified in Resend',
+      gmailSetup: 'Using Google App Password for SMTP authentication',
       nextSteps: [
-        'Check Resend dashboard for domain verification status',
-        'Verify DNS records for khesed-tek-systems.org are set correctly',
-        'Test email sending with verified domain',
-        'Check Resend logs for detailed error messages'
+        'Ensure Gmail user account has 2FA enabled',
+        'Generate Google App Password in Google Account Security settings',
+        'Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables',
+        'Test email sending with Gmail SMTP service'
       ]
     };
 

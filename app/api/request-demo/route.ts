@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { getCRM } from '@/lib/crm/manager';
 import { Lead, ActivityType } from '@/lib/crm/types';
 import { MarketAwareLeadScoring, getMarketAwarePriority } from '@/lib/crm/market-scoring';
-import { sendMarketAwareEmail, detectMarketFromEmail, type Market } from '@/lib/email-service';
+import { sendMarketAwareEmail, detectMarketFromEmail, type Market } from '@/lib/gmail-service';
 import { trackDemoRequest, trackContactSubmission, detectUserMarket } from '@/lib/analytics';
 
 const leadScoring = new MarketAwareLeadScoring();

@@ -1,11 +1,14 @@
-import { sendMarketAwareEmail } from '@/lib/email-service';
+import { sendMarketAwareEmail } from '@/lib/gmail-service';
 import { NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    const { testEmail } = await request.json();
+    const body = await request.json();
+    const testEmail = body.testEmail || body.to || 'test@example.com';
     
-    console.log('Testing email delivery to business email');
+    console.log('Testing email delivery to:', testEmail);
+    console.log('Gmail User:', process.env.GMAIL_USER ? 'Set' : 'Missing');
+    console.log('Gmail App Password:', process.env.GMAIL_APP_PASSWORD ? 'Set (16 chars)' : 'Missing');
     
     // Test email delivery
     const result = await sendMarketAwareEmail({
