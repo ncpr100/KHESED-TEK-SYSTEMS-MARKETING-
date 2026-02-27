@@ -179,7 +179,7 @@ export async function sendMarketAwareEmail(
     // Use verified domain if available, fallback to resend.dev
     const fromAddress = process.env.RESEND_DOMAIN 
       ? config.from 
-      : `KHESED-TEK SYSTEMS Demo <onboarding@resend.dev>`;
+      : `KHESED-TEK SYSTEMS <noreply@resend.dev>`;
 
     const { data, error } = await resend.emails.send({
       from: fromAddress,
