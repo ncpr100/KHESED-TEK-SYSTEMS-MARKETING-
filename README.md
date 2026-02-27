@@ -28,7 +28,7 @@ RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxx
 CONTACT_EMAIL=soporte@khesed-tek-systems.org
 ```
 
-**Production Domain:** <www.khesed-tek-systems.org>
+   **Production Domain:** <www.khesed-tek-systems.org>
 
 3. Add your logo to `public/khesed-tek-logo.png`
 
