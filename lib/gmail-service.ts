@@ -141,7 +141,6 @@ export function detectMarketFromEmail(email: string, formData?: any): Market {
   if (emailDomain?.match(/\.(eu|de|fr|uk|au|ca|mx|br|com)$/)) {  // Added .com for global
     return 'GLOBAL';
   }
-  }
   
   // Default based on content language or fallback to LATAM
   if (formData?.language === 'en') {
