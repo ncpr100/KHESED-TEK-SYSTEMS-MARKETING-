@@ -46,18 +46,18 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://*.vercel.live https://*.cloudflare.com https://static.cloudflareinsights.com https://webpack-74c359c67fa0.uf.boot.dev",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://*.vercel.live https://*.vercel-insights.com https://*.cloudflare.com https://static.cloudflareinsights.com https://*.uf.boot.dev",
               "style-src 'self' 'unsafe-inline'", 
               "img-src 'self' data: blob: https://*.googleapis.com https://*.googleusercontent.com https://*.google-analytics.com",
               "font-src 'self' data:",
               "frame-src 'self' https://*.youtube.com https://*.youtube-nocookie.com https://*.vercel.live",
-              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.vercel.live https://vitals.vercel-insights.com https://static.cloudflareinsights.com https://webpack-74c359c67fa0.uf.boot.dev",
+              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.vercel.live https://vitals.vercel-insights.com https://*.vercel-insights.com https://static.cloudflareinsights.com https://*.uf.boot.dev",
               "frame-ancestors 'self'"
             ].join('; ')
           },
           {
             key: 'Permissions-Policy',
-            value: 'geolocation=(), microphone=(), camera=()'
+            value: 'camera=(), microphone=(), geolocation=(self)'
           },
           {
             key: 'X-Content-Type-Options',

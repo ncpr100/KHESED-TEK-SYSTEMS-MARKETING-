@@ -1,63 +1,85 @@
-# 🚀 ONE-CLICK RAILWAY DEPLOYMENT
+# 🚀 VERCEL DEPLOYMENT
 
-## **Click This Button to Deploy Instantly:**
+## **Deploy to Vercel in 2 Minutes:**
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/nextjs)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ncpr100/KHESED-TEK-SYSTEMS-MARKETING-)
 
 ## **Manual Deployment Steps:**
 
-### **1. Quick Deploy (2 minutes)**
-1. Go to [railway.app](https://railway.app)
+### **1. Quick Deploy**
+
+1. Go to [vercel.com](https://vercel.com)
 2. Sign in with GitHub
-3. Click "New Project"
-4. Select "Deploy from GitHub repo"
-5. Choose: `ncpr100/KHESED-TEK-SYSTEMS-MARKETING-`
-6. **IMPORTANT**: Select the `khesed-tek-marketing-site` folder
-7. Add environment variable: `NODE_ENV=production`
-8. Click Deploy
+3. Click "Import Project"
+4. Select: `ncpr100/KHESED-TEK-SYSTEMS-MARKETING-`
+5. Framework Preset: **Next.js** (auto-detected)
+6. Root Directory: **Leave as default** (repository root)
+7. Build Command: `npm run build` (auto-detected)
+8. Output Directory: `.next` (auto-detected)
+9. Click **Deploy**
 
-### **2. If Subfolder Detection Fails**
+### **2. Add Environment Variables (After Deploy)**
 
-**Option A: Use Railway CLI**
-```bash
-npm install -g @railway/cli
-railway login
-cd /workspaces/KHESED-TEK-SYSTEMS-MARKETING-/khesed-tek-marketing-site
-railway deploy
+Go to **Vercel Dashboard → Project Settings → Environment Variables** and add:
+
+```env
+# Required
+RESEND_API_KEY=re_xxxxx
+CONTACT_EMAIL_LATAM=contacto@khesed-tek-systems.org
+CONTACT_EMAIL_USA=contact@khesed-tek-systems.org
+CONTACT_EMAIL_GLOBAL=global@khesed-tek-systems.org
+
+# Optional
+NEXT_PUBLIC_GA_ID=G-xxxxx
+CRM_PROVIDER=hubspot
+CRM_API_KEY=xxxxx
 ```
 
-**Option B: Move to Repository Root**
-```bash
-cd /workspaces/KHESED-TEK-SYSTEMS-MARKETING-/
-mv khesed-tek-marketing-site/* .
-mv khesed-tek-marketing-site/.[^.]* . 2>/dev/null || true
-rmdir khesed-tek-marketing-site
-git add .
-git commit -m "Move to root for Railway deployment"
-git push origin main
-# Then deploy from Railway dashboard
-```
+After adding variables, Vercel will **automatically redeploy**.
 
 ### **3. Verify Deployment**
+
 After deployment, test:
-- Main site: `https://your-app.railway.app`
-- Health check: `https://your-app.railway.app/api/health`
-- Config status: `https://your-app.railway.app/api/config`
+
+- Main site: `https://your-project.vercel.app`
+- Health check: `https://your-project.vercel.app/api/health`
+- Contact form: Test submission at `/contact`
 
 ## **Troubleshooting**
 
-**Build fails?** Check the detailed troubleshooting guide in `RAILWAY_TROUBLESHOOTING.md`
+**Build fails?**
 
-**Can't find package.json?** Railway needs to deploy from the `khesed-tek-marketing-site` subfolder
+- Check Vercel deployment logs in the dashboard
+- Verify all dependencies are in `package.json`
+- Run `npm run build` locally first
 
-**Site loads but APIs fail?** That's normal without API keys - basic functionality works fine
+**Environment variables not working?**
+
+- Ensure they're set for **Production** environment
+- Vercel requires redeployment after adding variables
+
+**Site loads but APIs fail?**
+
+- Add `RESEND_API_KEY` environment variable
+- Verify email addresses in Resend dashboard
+
+## **Configure Custom Domain**
+
+1. Go to **Vercel Dashboard → Domains**
+2. Add your domain: `khesed-tek-systems.org`
+3. Add DNS records as shown by Vercel
+4. Wait for SSL certificate (automatic)
 
 ---
 
 ## **What You Get After Deployment:**
+
 - ✅ Complete marketing website
-- ✅ Working contact forms (logged in Railway)
+- ✅ Working contact forms with email integration
+- ✅ Multi-market support (LATAM/USA/GLOBAL)
 - ✅ Admin dashboard with system monitoring
+- ✅ Automatic SSL certificates
+- ✅ Global CDN with edge caching
 - ✅ Security features and rate limiting
 - ✅ GDPR compliance tools
 - ✅ Health monitoring endpoints

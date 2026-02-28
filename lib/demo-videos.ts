@@ -29,7 +29,7 @@ function addCacheBust(url: string): string {
 }
 
 // Environment variables for video URLs (fallback to safe defaults)
-// CRITICAL: Forcing cache bust for Railway deployment - Updated 2025-12-13
+// CRITICAL: Forcing cache bust for Vercel deployment - Updated 2026-02-28
 const VIDEO_URLS = {
   LATAM_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_LATAM_DEMO_VIDEO || 'https://www.youtube.com/embed/d4rKaIUTCQQ'),
   USA_MAIN_DEMO: addCacheBust(process.env.NEXT_PUBLIC_USA_DEMO_VIDEO || 'https://www.youtube.com/embed/d4rKaIUTCQQ'),
@@ -180,7 +180,9 @@ export const VIDEO_ANALYTICS = {
 /*
 TO UPDATE DEMO VIDEOS:
 
-1. Environment Variables (Railway Dashboard):
+1. Environment Variables (Vercel Dashboard):
+   Go to: Vercel Dashboard → Project Settings → Environment Variables
+   
    - NEXT_PUBLIC_LATAM_DEMO_VIDEO=https://www.youtube.com/embed/YOUR_VIDEO_ID
    - NEXT_PUBLIC_USA_DEMO_VIDEO=https://www.youtube.com/embed/YOUR_VIDEO_ID
    - NEXT_PUBLIC_LATAM_QUICK_TOUR=https://www.youtube.com/embed/YOUR_VIDEO_ID

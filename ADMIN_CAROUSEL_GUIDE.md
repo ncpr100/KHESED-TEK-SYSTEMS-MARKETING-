@@ -45,7 +45,7 @@ git push origin main
 
 ### **METHOD 3: Environment Variables (Dynamic)**
 
-Set in Railway Dashboard:
+Set in Vercel Dashboard (Project Settings → Environment Variables):
 ```bash
 NEXT_PUBLIC_LATAM_CAROUSEL_IMAGES='[{"src":"/images/new-image.jpg","title":"Title","description":"Description","alt":"Alt text"}]'
 ```
@@ -112,7 +112,7 @@ npm run admin:backup-images
    - Click "🖼️ Screenshots" button
 
 2. **Production Testing**:
-   - Wait for Railway deployment
+   - Wait for Vercel automatic deployment
    - Check live site carousel
 
 ## 🚨 **Emergency Rollback**

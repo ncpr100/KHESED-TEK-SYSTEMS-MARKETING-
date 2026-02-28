@@ -48,7 +48,7 @@ Comprehensive admin interface with security:
 
 **Core API Routes**:
 - `/api/request-demo` - Main lead capture (supports FormData + JSON)
-- `/api/health` - Railway deployment healthcheck
+- `/api/health` - Vercel deployment healthcheck
 - `/api/analytics/*` - Performance tracking
 - `/api/admin/*` - Admin interface APIs (carousel, super-admin)
 - `/api/video-debug/*` - Video cache-busting debugging
@@ -159,13 +159,13 @@ cp .env.example .env.local  # Add your API keys
 npm run dev                 # Start on port 3000
 ```
 
-### Deployment (Railway)
+### Deployment (Vercel)
 ```bash
 npm run build              # Validate build
-git push origin main       # Triggers Railway deployment
+git push origin main       # Triggers Vercel deployment
 ```
 
-**Railway Config**: `railway.json` with Docker build, healthcheck at `/api/health`
+**Vercel Config**: Automatic deployments from GitHub, healthcheck at `/api/health`
 
 ### Testing Lead Flow
 ```bash
@@ -240,7 +240,7 @@ npm run lint         # ESLint validation
 
 **Spanish Content**: All user-facing text should remain in Spanish for LATAM market unless explicitly building USA/GLOBAL variants.
 
-**Railway Deployment**: Requires `output: 'standalone'` in `next.config.js` for containerization.
+**Vercel Deployment**: Uses standard Next.js output. Remove `output: 'standalone'` from `next.config.js` (that's only for Docker/Railway).
 
 ---
 

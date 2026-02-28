@@ -5,8 +5,8 @@ export function middleware(request: NextRequest) {
   // Get the hostname from the request
   const hostname = request.headers.get('host') || ''
   
-  // If accessing with www subdomain on Railway, redirect to non-www
-  if (hostname.startsWith('www.') && hostname.includes('.up.railway.app')) {
+  // If accessing with www subdomain on Vercel preview, redirect to non-www
+  if (hostname.startsWith('www.') && hostname.includes('.vercel.app')) {
     const newUrl = request.url.replace(hostname, hostname.replace('www.', ''))
     return NextResponse.redirect(newUrl, 301)
   }

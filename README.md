@@ -42,14 +42,14 @@ Modern, dark-themed marketing website built with Next.js 14 (App Router), TypeSc
 
 ## Deployment
 
-Deploy to Railway:
+Deploy to Vercel:
 
 ```bash
 npm run build
 git push origin main
 ```
 
-Remember to add environment variables in your Railway dashboard.
+Remember to add environment variables in your Vercel dashboard at: **Project Settings → Environment Variables**
 
 ## Contact
 

@@ -1,10 +1,11 @@
-# Railway Deployment - Minimal Setup Guide
+# Vercel Deployment - Minimal Setup Guide
 
 ## 🚀 Deploy WITHOUT API Keys (Basic Version)
 
 You can deploy the marketing site immediately with just the basic functionality. The API keys are only needed for advanced features.
 
 ### **What Works WITHOUT API Keys:**
+
 - ✅ **Marketing Website**: Complete homepage, contact forms, all pages
 - ✅ **Basic Contact Forms**: Form submissions (stored locally)
 - ✅ **GDPR Tools**: Cookie consent, privacy policy, data rights forms
@@ -13,21 +14,25 @@ You can deploy the marketing site immediately with just the basic functionality.
 - ✅ **All UI Components**: Full website functionality
 
 ### **What Requires API Keys (Optional):**
+
 - 🔌 **CRM Integration**: HubSpot/Salesforce (only if you want automatic CRM sync)
-- 📧 **Email Automation**: SendGrid/SMTP (only for automated emails)
-- 📊 **Advanced Analytics**: External analytics services
+- 📧 **Email Automation**: Resend (only for automated emails)
+- 📊 **Advanced Analytics**: Google Analytics (tracking)
 
 ---
 
 ## **MINIMAL DEPLOYMENT - No API Keys Needed**
 
-### **Step 1: Deploy to Railway**
-1. Go to [railway.app](https://railway.app) and sign in with GitHub
-2. Click "New Project" → "Deploy from GitHub repo"
-3. Select: `ncpr100/KHESED-TEK-SYSTEMS-MARKETING-`
-4. Choose the `khesed-tek-marketing-site` folder
+### **Step 1: Deploy to Vercel**
 
-### **Step 2: Set Only These Environment Variables**
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
+2. Click "Import Project" → Select your GitHub repository
+3. Select: `ncpr100/KHESED-TEK-SYSTEMS-MARKETING-`
+4. Framework: **Next.js** (auto-detected)
+5. Click **Deploy**
+
+### **Step 2: Set Only These Environment Variables (Optional)**
+
 ```env
 NODE_ENV=production
 NEXT_TELEMETRY_DISABLED=1
@@ -39,32 +44,45 @@ NEXT_TELEMETRY_DISABLED=1
 
 ## **Add API Keys Later (When You Get Them)**
 
-### **Free/Easy to Get:**
+### **Recommended: Free Tier Services**
+
 ```env
 # SendGrid (Free tier: 100 emails/day)
 SENDGRID_API_KEY=your_key_here
 # Sign up at: https://sendgrid.com (free account)
 
 # Basic security (generate any random 32-character string)
-JWT_SECRET=make_this_any_32_character_string
-API_SECRET=another_random_string_here
+---
+
+## **Add API Keys Later (When You Get Them)**
+
+### **Recommended: Free Tier Services**
+```env
+# Resend (Free tier: 3,000 emails/month)
+RESEND_API_KEY=re_your_key_here
+CONTACT_EMAIL_LATAM=contacto@your-domain.com
+CONTACT_EMAIL_USA=contact@your-domain.com
+CONTACT_EMAIL_GLOBAL=global@your-domain.com
+# Sign up at: https://resend.com (free account)
+
+# Google Analytics (Free)
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+# Sign up at: https://analytics.google.com
 ```
 
 ### **Business/Paid Services (Add When Ready):**
+
 ```env
 # HubSpot (Business tool)
 HUBSPOT_API_KEY=your_hubspot_key
+CRM_PROVIDER=hubspot
 # Sign up at: https://hubspot.com
 
 # Salesforce (Enterprise CRM)
 SALESFORCE_CLIENT_ID=your_sf_id
 SALESFORCE_CLIENT_SECRET=your_sf_secret
+CRM_PROVIDER=salesforce
 # Contact Salesforce sales team
-
-# Custom SMTP (Your email provider)
-SMTP_HOST=mail.your-domain.com
-SMTP_USER=your_email@your-domain.com
-SMTP_PASS=your_email_password
 ```
 
 ---
@@ -72,44 +90,44 @@ SMTP_PASS=your_email_password
 ## **What Happens Without Each API Key:**
 
 ### **No CRM Keys (HubSpot/Salesforce):**
+
 - ✅ Contact forms still work
 - ✅ Form data is logged in the system
 - ❌ No automatic CRM sync
 - **Solution**: Manually export contact data from admin dashboard
 
-### **No Email Keys (SendGrid/SMTP):**
+### **No Email Keys (Resend):**
+
 - ✅ Website works perfectly
 - ✅ Contact forms submit successfully
-- ❌ No automated email responses
-- **Solution**: You'll get notifications, but customers won't get auto-replies
-
-### **No Security Keys:**
-- ✅ Basic security still works
-- ✅ Rate limiting active
-- ❌ Advanced encryption features disabled
-- **Solution**: Generate simple random strings when ready
+- ❌ No automated email notifications
+- **Solution**: You'll see form submissions in logs, but won't get email notifications
 
 ---
 
 ## **Priority Order for Getting API Keys:**
 
-### **1. Start With (Free/Easy):**
+### **1. Start Email Integration (Free):**
+
 ```env
-# Just generate random 32-character strings
-JWT_SECRET=abcdef1234567890abcdef1234567890
-API_SECRET=fedcba0987654321fedcba0987654321
+# Resend free account (3,000 emails/month)
+RESEND_API_KEY=re_your_key_here
+CONTACT_EMAIL_LATAM=contacto@your-domain.com
 ```
 
-### **2. Add Email (Free Tier):**
+### **2. Add Analytics (Free):**
+
 ```env
-# SendGrid free account (100 emails/day)
-SENDGRID_API_KEY=SG.your_key_here
+# Google Analytics free account
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
 
 ### **3. Add CRM When Business Grows:**
+
 ```env
-# Start with HubSpot free tier
-HUBSPOT_API_KEY=your_hubspot_key
+# Start with HubSpot or Pipedrive
+CRM_PROVIDER=hubspot
+CRM_API_KEY=your_hubspot_key
 ```
 
 ---
@@ -118,40 +136,40 @@ HUBSPOT_API_KEY=your_hubspot_key
 
 Your site is already pushed to GitHub, so just:
 
-1. **Go to Railway**: [railway.app](https://railway.app)
+1. **Go to Vercel**: [vercel.com](https://vercel.com)
 2. **Sign in with GitHub**
-3. **Click "New Project"**
-4. **Deploy from GitHub repo**: `ncpr100/KHESED-TEK-SYSTEMS-MARKETING-`
-5. **Add minimal env vars**:
-   ```env
-   NODE_ENV=production
-   ```
-6. **Deploy!** ✅
+3. **Click "Import Project"**
+4. **Select repository**: `ncpr100/KHESED-TEK-SYSTEMS-MARKETING-`
+5. **Click Deploy!** ✅
+
+No environment variables needed for basic deployment!
 
 ---
 
 ## **Testing Your Deployed Site:**
 
 ### **What to Test:**
+
 - ✅ Homepage loads
-- ✅ Contact form submits (check Railway logs for submissions)
+- ✅ Contact form submits (check Vercel logs for submissions)
 - ✅ All pages work
 - ✅ Admin dashboard accessible
 - ✅ GDPR tools functional
 
 ### **Expected Behavior Without API Keys:**
-- Contact forms work but no CRM sync
-- No automated emails sent
+
+- Contact forms work but no email notifications
+- No CRM sync
 - All other features work normally
 
 ---
 
-## **Add API Keys Later via Railway Dashboard:**
+## **Add API Keys Later via Vercel Dashboard:**
 
-1. Go to your Railway project
-2. Click "Variables" tab
-3. Add new environment variables
-4. Railway automatically redeploys with new settings
+1. Go to **Vercel Dashboard** → **Project Settings** → **Environment Variables**
+2. Add new environment variables
+3. Select **Production** environment
+4. Vercel automatically redeploys with new settings
 
 **No code changes needed!** Just add the environment variables when you get the API keys.
 
@@ -159,14 +177,15 @@ Your site is already pushed to GitHub, so just:
 
 ## **🎉 Summary:**
 
-**Deploy NOW with just:**
-```env
-NODE_ENV=production
-```
+**Deploy NOW with:**
+
+- No environment variables required!
+- Just click Deploy in Vercel
 
 **Add later when ready:**
-- Email API (SendGrid free tier)
-- CRM API (when you set up HubSpot/Salesforce)
-- Custom SMTP (when you have business email)
+
+- Email API (Resend free tier: 3,000 emails/month)
+- Analytics (Google Analytics - free)
+- CRM API (when you set up HubSpot/Salesforce/Pipedrive)
 
 Your marketing site will work perfectly without any external API keys! 🚀
