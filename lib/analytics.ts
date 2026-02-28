@@ -166,18 +166,35 @@ export const trackEvent = async (
       ...customParams
     };
 
-    // Add geo context if available (non-blocking)
+    // Add geo context if available (non-blocking, with fallback)
     if (typeof window !== 'undefined' && 'navigator' in window && 'geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          eventParams.custom_parameter_latitude = position.coords.latitude;
-          eventParams.custom_parameter_longitude = position.coords.longitude;
-          eventParams.custom_parameter_accuracy = position.coords.accuracy;
-        },
-        () => {
-          // Silently fail - no geo data
-        },
-        { timeout: 1000, enableHighAccuracy: false }
+      try {
+        // PROTOCOL VIOLATION FIX: Make geolocation completely non-blocking  
+        const geoPromise = new Promise((resolve) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              eventParams.custom_parameter_latitude = position.coords.latitude;
+              eventParams.custom_parameter_longitude = position.coords.longitude;
+              eventParams.custom_parameter_accuracy = position.coords.accuracy;
+              resolve(position);
+            },
+            () => {
+              // Silently fail - no geo data, form continues normally
+              resolve(null);
+            },
+            { timeout: 500, enableHighAccuracy: false } // Reduced timeout
+          );
+        });
+        
+        // Don't block form execution - fire and forget
+        geoPromise.catch(() => {
+          // Permissions Policy blocking - expected behavior, no error
+        });
+      } catch (error) {
+        // Permissions Policy violation - continue without geo data
+        console.debug('Geo access blocked by Permissions Policy - continuing without location data');
+      }
+    }
       );
     }
 
