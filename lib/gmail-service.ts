@@ -114,8 +114,8 @@ function createGmailTransporter() {
     },
     secure: true,
     port: 465,
-    debug: false, // Disable debug logging for production
-    logger: false // Disable logging for production
+    debug: true, // Enable debug logging to troubleshoot delivery issues
+    logger: true // Enable logging to see SMTP conversation
   });
 }
 
@@ -230,7 +230,20 @@ export async function sendMarketAwareEmail(
     const result = await transporter.sendMail(mailOptions);
 
     console.log(`✅ Email sent successfully to ${market} market via Gmail:`, result.messageId);
-    return { success: true, data: { id: result.messageId }, market };
+    console.log('📋 Full SMTP response:', JSON.stringify(result, null, 2));
+    
+    // Check if email was actually accepted
+    if (result.rejected && result.rejected.length > 0) {
+      console.error('⚠️ Some recipients were rejected:', result.rejected);
+      return { 
+        success: false, 
+        error: `Recipients rejected: ${result.rejected.join(', ')}`,
+        market,
+        details: result
+      };
+    }
+    
+    return { success: true, data: { id: result.messageId, response: result.response }, market };
 
   } catch (emailError) {
     console.error(`❌ Email sending failed for ${market} market:`, {
