@@ -36,7 +36,7 @@ export class SecurityHeadersManager {
       'Permissions-Policy': [
         'camera=()',
         'microphone=()',
-        'geolocation=()',
+        'geolocation=(self)',
         'payment=()',
         'usb=()',
         'magnetometer=()',
