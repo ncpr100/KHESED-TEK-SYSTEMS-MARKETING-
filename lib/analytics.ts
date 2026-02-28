@@ -195,8 +195,7 @@ export const trackEvent = async (
         console.debug('Geo access blocked by Permissions Policy - continuing without location data');
       }
     }
-      );
-    }
+    // Geolocation block complete - trigger syntax validation
 
     window.gtag('event', action, eventParams);
     
