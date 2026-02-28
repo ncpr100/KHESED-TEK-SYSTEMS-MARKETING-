@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Form - Simple Email</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #0e0e10;
+      color: #e7e7ea;
+    }
+    form {
+      background: #17171a;
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid #232329;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      background: #0e0e10;
+      border: 1px solid #232329;
+      color: #e7e7ea;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      display: none;
+    }
+    .success {
+      background: #1a4d2e;
+      border: 1px solid #4f9a65;
+      color: #90ee90;
+    }
+    .error {
+      background: #4d1a1a;
+      border: 1px solid #9a4f4f;
+      color: #ff6b6b;
+    }
+.info {
+      background: #1a2a4d;
+      border: 1px solid #4f6a9a;
+      color: #6bb6ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test Form - Simple Email Endpoint</h1>
+  <p style="color: #888;">This form uses /api/simple-demo (no CRM, no analytics - just email)</p>
+
+  <form id="testForm">
+    <label for="name">Nombre *</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Correo Electrónico *</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="org">Organización</label>
+    <input type="text" id="org" name="org">
+
+    <label for="whatsapp">WhatsApp</label>
+    <input type="tel" id="whatsapp" name="whatsapp">
+
+    <label for="message">Mensaje</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+
+    <label>
+      <input type="checkbox" name="wantsDemo" value="true">
+      Solicitar demo
+    </label>
+
+    <button type="submit">Enviar Solicitud</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('testForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const button = form.querySelector('button');
+      button.disabled = true;
+      button.textContent = 'Enviando...';
+
+      resultDiv.style.display = 'block';
+      resultDiv.className = 'info';
+      resultDiv.textContent = '⏳ Enviando solicitud...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('/api/simple-demo', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.ok) {
+          resultDiv.className = 'success';
+          resultDiv.innerHTML = `
+            <strong>✅ ¡Éxito!</strong><br>
+            Email ID: ${data.emailId}<br>
+            Market: ${data.market}<br>
+            ${data.message}
+          `;
+          form.reset();
+        } else {
+          resultDiv.className = 'error';
+          resultDiv.innerHTML = `
+            <strong>❌ Error</strong><br>
+            ${data.error}<br>
+            ${data.details ? `<small>${data.details}</small>` : ''}
+          `;
+        }
+      } catch (error) {
+        resultDiv.className = 'error';
+        resultDiv.innerHTML = `
+          <strong>❌ Error de Red</strong><br>
+          ${error.message}
+        `;
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Enviar Solicitud';
+      }
+    });
+  </script>
+</body>
+</html>
