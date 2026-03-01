@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { getCRM } from '@/lib/crm/manager';
 import { Lead, ActivityType } from '@/lib/crm/types';
 import { MarketAwareLeadScoring, getMarketAwarePriority } from '@/lib/crm/market-scoring';
-import { sendMarketAwareEmail, detectMarketFromEmail, type Market } from '@/lib/gmail-service';
+import { sendMarketAwareEmail, sendCustomerConfirmation, detectMarketFromEmail, type Market } from '@/lib/gmail-service';
 import { trackDemoRequest, trackContactSubmission, detectUserMarket } from '@/lib/analytics';
 
 const leadScoring = new MarketAwareLeadScoring();
@@ -47,9 +47,10 @@ export async function POST(request: NextRequest) {
     let leadScore: number | undefined;
     let leadPriority: any;
 
-    const crm = getCRM();
-    if (crm) {
-      try {
+    // CRM integration is optional - don't let it block email delivery
+    try {
+      const crm = getCRM();
+      if (crm) {
         const adapter = crm.getAdapter();
         const [firstName, ...lastNameParts] = payload.name.split(' ');
         
@@ -108,9 +109,9 @@ export async function POST(request: NextRequest) {
         } else {
           console.warn('Failed to create CRM lead:', leadResult.error);
         }
-      } catch (crmError) {
-        console.warn('CRM integration error (continuing with email):', crmError);
       }
+    } catch (crmError) {
+      console.warn('CRM integration error (continuing with email):', crmError instanceof Error ? crmError.message : crmError);
     }
 
     // Log form submission to console (for development/testing)
@@ -152,32 +153,91 @@ export async function POST(request: NextRequest) {
     let emailSent = emailResult.success;
     let emailData = emailResult.data;
 
-    // Log email result in CRM
-    if (crm && leadId) {
-      const adapter = crm.getAdapter();
-      if (emailResult.success) {
-        await adapter.logActivity(leadId, {
-          type: ActivityType.EMAIL_SENT,
-          description: `Demo request notification sent to ${emailResult.market} team`,
-          timestamp: new Date(),
-          metadata: { 
-            emailId: emailData?.id,
-            market: emailResult.market,
-            type: 'internal_notification' 
-          },
-        });
-      } else {
-        await adapter.logActivity(leadId, {
-          type: ActivityType.NOTE_ADDED,
-          description: `Email notification failed: ${emailResult.error}`,
-          timestamp: new Date(),
-          metadata: { 
-            error: emailResult.error, 
-            market: emailResult.market,
-            type: 'email_failure' 
-          },
-        });
+    // Log email result in CRM (optional, don't block on failure)
+    if (leadId) {
+      try {
+        const crm = getCRM();
+        if (crm) {
+          const adapter = crm.getAdapter();
+          if (emailResult.success) {
+            await adapter.logActivity(leadId, {
+              type: ActivityType.EMAIL_SENT,
+              description: `Demo request notification sent to ${emailResult.market} team`,
+              timestamp: new Date(),
+              metadata: { 
+                emailId: emailData?.id,
+                market: emailResult.market,
+                type: 'internal_notification' 
+              },
+            });
+          } else {
+            await adapter.logActivity(leadId, {
+              type: ActivityType.NOTE_ADDED,
+              description: `Email notification failed: ${emailResult.error}`,
+              timestamp: new Date(),
+              metadata: { 
+                error: emailResult.error, 
+                market: emailResult.market,
+                type: 'email_failure' 
+              },
+            });
+          }
+        }
+      } catch (crmLogError) {
+        console.warn('CRM activity logging error (non-critical):', crmLogError);
       }
+    }
+
+    // Send customer confirmation email
+    let customerEmailSent = false;
+    let customerEmailId: string | undefined;
+    
+    try {
+      console.log('📤 Sending customer confirmation email...');
+      const customerEmailResult = await sendCustomerConfirmation({
+        name: payload.name,
+        email: payload.email,
+        org: payload.org,
+        whatsapp: payload.whatsapp,
+        message: payload.message,
+        wantsDemo: payload.wantsDemo,
+        receivedAt: payload.receivedAt,
+        market
+      });
+
+      customerEmailSent = customerEmailResult.success;
+      customerEmailId = customerEmailResult.data?.id;
+
+      if (customerEmailResult.success) {
+        console.log('✅ Customer confirmation email sent:', customerEmailId);
+        
+        // Log customer email in CRM
+        if (leadId) {
+          try {
+            const crm = getCRM();
+            if (crm) {
+              const adapter = crm.getAdapter();
+              await adapter.logActivity(leadId, {
+                type: ActivityType.EMAIL_SENT,
+                description: `Confirmation email sent to customer`,
+                timestamp: new Date(),
+                metadata: { 
+                  emailId: customerEmailId,
+                  market: customerEmailResult.market,
+                  type: 'customer_confirmation',
+                  recipient: payload.email
+                },
+              });
+            }
+          } catch (crmLogError) {
+            console.warn('CRM customer email logging error (non-critical):', crmLogError);
+          }
+        }
+      } else {
+        console.error('❌ Customer confirmation email failed:', customerEmailResult.error);
+      }
+    } catch (customerEmailError) {
+      console.error('❌ Customer confirmation error:', customerEmailError);
     }
 
     // Trigger email automation campaign
@@ -214,20 +274,27 @@ export async function POST(request: NextRequest) {
 
     console.log('✓ Demo request processed:', {
       emailId: emailData?.id,
+      customerEmailId,
       leadId,
       leadScore,
       priority: leadPriority?.label,
       market,
-      emailSent
+      internalEmailSent: emailSent,
+      customerEmailSent
     });
 
     return Response.json({ 
       ok: true, 
       id: emailData?.id,
+      customerEmailId,
       leadId,
       leadScore,
       priority: leadPriority?.label,
-      market
+      market,
+      emailsSent: {
+        internal: emailSent,
+        customer: customerEmailSent
+      }
     });
   } catch (err) {
     console.error('Request Demo Error:', err);

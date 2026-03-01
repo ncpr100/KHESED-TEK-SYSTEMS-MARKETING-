@@ -90,6 +90,76 @@ Received: ${new Date(data.receivedAt).toLocaleString('en-US', {
 ${data.priority?.level === 'high' ? '\n🔥 HIGH PRIORITY LEAD - Contact immediately' : ''}
       `.trim()
     }
+  },
+  customer_confirmation: {
+    es: {
+      subject: (name: string) => `Gracias por contactarnos, ${name}`,
+      body: (data: any) => `
+Hola ${data.name},
+
+¡Gracias por contactar a KHESED-TEK SYSTEMS!
+
+Hemos recibido tu solicitud${data.wantsDemo ? ' de demostración' : ''} y nos pondremos en contacto contigo muy pronto.
+
+📧 Tu información:
+• Nombre: ${data.name}
+• Email: ${data.email}
+• Organización: ${data.org || 'No especificada'}
+${data.whatsapp ? `• WhatsApp: ${data.whatsapp}` : ''}
+
+${data.message ? `Tu mensaje:\n"${data.message}"\n` : ''}
+Nuestro equipo revisará tu solicitud y te responderá dentro de las próximas 24 horas.
+
+${data.wantsDemo ? '🎯 Tu demostración será programada pronto. Te enviaremos un enlace de calendario para que elijas el horario que mejor te convenga.\n' : ''}
+Mientras tanto, puedes:
+• Visitar nuestro sitio web: https://www.khesed-tek-systems.org
+• Conocer nuestros servicios: https://www.khesed-tek-systems.org/latam
+• Leer testimonios de clientes: https://www.khesed-tek-systems.org/latam#testimonials
+
+¿Tienes alguna pregunta urgente? Contáctanos:
+📱 WhatsApp: +57 300 123 4567
+📧 Email: contacto@khesed-tek-systems.org
+
+¡Bendiciones!
+
+El equipo de KHESED-TEK SYSTEMS
+Soluciones tecnológicas para iglesias y organizaciones religiosas
+      `.trim()
+    },
+    en: {
+      subject: (name: string) => `Thank you for contacting us, ${name}`,
+      body: (data: any) => `
+Hello ${data.name},
+
+Thank you for contacting KHESED-TEK SYSTEMS!
+
+We have received your ${data.wantsDemo ? 'demo ' : ''}request and will get back to you very soon.
+
+📧 Your information:
+• Name: ${data.name}
+• Email: ${data.email}
+• Organization: ${data.org || 'Not specified'}
+${data.whatsapp ? `• WhatsApp: ${data.whatsapp}` : ''}
+
+${data.message ? `Your message:\n"${data.message}"\n` : ''}
+Our team will review your request and respond within the next 24 hours.
+
+${data.wantsDemo ? '🎯 Your demo will be scheduled soon. We\'ll send you a calendar link to choose a time that works best for you.\n' : ''}
+In the meantime, you can:
+• Visit our website: https://www.khesed-tek-systems.org
+• Learn about our services: https://www.khesed-tek-systems.org/usa
+• Read client testimonials: https://www.khesed-tek-systems.org/usa#testimonials
+
+Have an urgent question? Contact us:
+📱 Phone: +1 (555) 123-4567
+📧 Email: contact@khesed-tek-systems.org
+
+Blessings!
+
+The KHESED-TEK SYSTEMS Team
+Technology solutions for churches and religious organizations
+      `.trim()
+    }
   }
 } as const;
 
@@ -200,7 +270,12 @@ export async function sendMarketAwareEmail(
 
   try {
     const isPriority = emailData.priority?.level === 'high';
-    const subject = template.subject(isPriority, emailData.name);
+    
+    // Generate subject based on template type
+    const subject = templateType === 'demo_request' 
+      ? (template as any).subject(isPriority, emailData.name)
+      : (template as any).subject(emailData.name);
+      
     const body = template.body({
       ...emailData,
       market: market,
@@ -261,6 +336,70 @@ export async function sendMarketAwareEmail(
       error: emailError instanceof Error ? emailError.message : 'Unknown error',
       market,
       details: emailError
+    };
+  }
+}
+
+// Send customer confirmation email
+export async function sendCustomerConfirmation(
+  emailData: EmailData
+): Promise<{ success: boolean; data?: any; error?: any; market: Market }> {
+  
+  const market = emailData.market || detectMarketFromEmail(emailData.email, emailData);
+  const config = MARKET_EMAIL_CONFIG[market];
+  const template = EMAIL_TEMPLATES['customer_confirmation'][config.language as 'es' | 'en'];
+  
+  const transporter = createGmailTransporter();
+  if (!transporter) {
+    return { success: false, error: 'Gmail SMTP not configured', market };
+  }
+
+  try {
+    const subject = template.subject(emailData.name);
+    const body = template.body({
+      ...emailData,
+      market: market
+    });
+
+    const mailOptions = {
+      from: `KHESED-TEK SYSTEMS <${process.env.GMAIL_USER}>`,
+      to: emailData.email, // Send to customer
+      replyTo: config.to, // Reply goes to internal team
+      subject,
+      text: body,
+      headers: {
+        'X-Market': market,
+        'X-Email-Type': 'customer_confirmation'
+      }
+    };
+
+    console.log('📧 Sending customer confirmation email:', {
+      to: mailOptions.to,
+      subject: mailOptions.subject,
+      market: market
+    });
+
+    const result = await transporter.sendMail(mailOptions);
+
+    console.log(`✅ Customer confirmation sent to ${emailData.email}:`, result.messageId);
+    
+    if (result.rejected && result.rejected.length > 0) {
+      console.error('⚠️ Customer email rejected:', result.rejected);
+      return { 
+        success: false, 
+        error: `Recipient rejected: ${result.rejected.join(', ')}`,
+        market
+      };
+    }
+    
+    return { success: true, data: { id: result.messageId }, market };
+
+  } catch (emailError) {
+    console.error(`❌ Customer confirmation failed:`, emailError);
+    return { 
+      success: false, 
+      error: emailError instanceof Error ? emailError.message : 'Unknown error',
+      market
     };
   }
 }

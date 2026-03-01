@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { sendMarketAwareEmail, detectMarketFromEmail } from '@/lib/gmail-service';
+import { sendMarketAwareEmail, sendCustomerConfirmation, detectMarketFromEmail } from '@/lib/gmail-service';
 
 // Simplified demo request handler - focuses ONLY on email sending
 export async function POST(request: NextRequest) {
@@ -57,12 +57,31 @@ export async function POST(request: NextRequest) {
     console.log('📬 Email result:', emailResult);
 
     if (emailResult.success) {
-      console.log('✅ Email sent successfully!');
+      console.log('✅ Internal email sent successfully!');
+      
+      // Send customer confirmation email
+      console.log('📤 Sending customer confirmation...');
+      const customerEmailResult = await sendCustomerConfirmation({
+        ...payload,
+        market
+      });
+
+      if (customerEmailResult.success) {
+        console.log('✅ Customer confirmation sent!');
+      } else {
+        console.error('⚠️ Customer confirmation failed (non-critical):', customerEmailResult.error);
+      }
+
       return Response.json({ 
         ok: true, 
         message: 'Solicitud enviada exitosamente',
         emailId: emailResult.data?.id,
-        market
+        customerEmailId: customerEmailResult.data?.id,
+        market,
+        emailsSent: {
+          internal: true,
+          customer: customerEmailResult.success
+        }
       });
     } else {
       console.error('❌ Email failed:', emailResult.error);
