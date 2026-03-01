@@ -14,6 +14,10 @@ export async function POST(request: NextRequest) {
   
   try {
     const formData = await request.formData();
+    
+    // Extract all form fields including organization details
+    const features = formData.getAll('features');
+    
     const payload = {
       name: String(formData.get('name') || '').trim(),
       email: String(formData.get('email') || '').trim(),
@@ -21,6 +25,12 @@ export async function POST(request: NextRequest) {
       whatsapp: String(formData.get('whatsapp') || '').trim(),
       message: String(formData.get('message') || '').trim(),
       wantsDemo: !!formData.get('wantsDemo'),
+      // Organization details
+      churchSize: String(formData.get('churchSize') || ''),
+      currentSoftware: String(formData.get('currentSoftware') || ''),
+      timeline: String(formData.get('timeline') || ''),
+      budget: String(formData.get('budget') || ''),
+      features: features.length > 0 ? features.map(f => String(f)) : [],
       receivedAt: new Date().toISOString(),
     };
 
@@ -65,6 +75,12 @@ export async function POST(request: NextRequest) {
             wantsDemo: payload.wantsDemo,
             initialMessage: payload.message,
             formSubmissionDate: payload.receivedAt,
+            // Organization details
+            churchSize: payload.churchSize,
+            currentSoftware: payload.currentSoftware,
+            timeline: payload.timeline,
+            budget: payload.budget,
+            features: payload.features.join(', '),
           },
         };
 
@@ -143,6 +159,11 @@ export async function POST(request: NextRequest) {
       whatsapp: payload.whatsapp,
       message: payload.message,
       wantsDemo: payload.wantsDemo,
+      churchSize: payload.churchSize,
+      currentSoftware: payload.currentSoftware,
+      timeline: payload.timeline,
+      budget: payload.budget,
+      features: payload.features,
       receivedAt: payload.receivedAt,
       market,
       leadId,
@@ -201,6 +222,11 @@ export async function POST(request: NextRequest) {
         whatsapp: payload.whatsapp,
         message: payload.message,
         wantsDemo: payload.wantsDemo,
+        churchSize: payload.churchSize,
+        currentSoftware: payload.currentSoftware,
+        timeline: payload.timeline,
+        budget: payload.budget,
+        features: payload.features,
         receivedAt: payload.receivedAt,
         market
       });

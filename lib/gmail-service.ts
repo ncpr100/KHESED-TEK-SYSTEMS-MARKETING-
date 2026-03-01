@@ -59,6 +59,13 @@ ${data.leadScore ? `📊 Puntuación Lead: ${data.leadScore}/100 (${data.priorit
 🎯 Quiere demo: ${data.wantsDemo ? 'Sí' : 'No'}
 🌍 Mercado: ${data.market}
 
+📊 DETALLES DE LA ORGANIZACIÓN:
+${data.churchSize ? `• Tamaño: ${data.churchSize}` : ''}
+${data.currentSoftware ? `• Sistema actual: ${data.currentSoftware}` : ''}
+${data.timeline ? `• Cronograma: ${data.timeline}` : ''}
+${data.budget ? `• Presupuesto: ${data.budget}` : ''}
+${data.features && data.features.length > 0 ? `\n🎯 Funciones prioritarias:\n${data.features.map((f: string) => `  • ${f}`).join('\n')}` : ''}
+
 Mensaje:
 ${data.message || 'Sin mensaje'}
 
@@ -80,6 +87,13 @@ ${data.leadScore ? `📊 Lead Score: ${data.leadScore}/100 (${data.priority?.lab
 📱 WhatsApp: ${data.whatsapp || 'Not specified'}
 🎯 Wants demo: ${data.wantsDemo ? 'Yes' : 'No'}
 🌍 Market: ${data.market}
+
+📊 ORGANIZATION DETAILS:
+${data.churchSize ? `• Size: ${data.churchSize}` : ''}
+${data.currentSoftware ? `• Current system: ${data.currentSoftware}` : ''}
+${data.timeline ? `• Timeline: ${data.timeline}` : ''}
+${data.budget ? `• Budget: ${data.budget}` : ''}
+${data.features && data.features.length > 0 ? `\n🎯 Priority features:\n${data.features.map((f: string) => `  • ${f}`).join('\n')}` : ''}
 
 Message:
 ${data.message || 'No message'}
@@ -226,8 +240,12 @@ interface EmailData {
   org?: string;
   whatsapp?: string;
   message?: string;
-  wantsDemo: boolean;
-  receivedAt: string;
+  wantsDemo: boolean;  // Organization details
+  churchSize?: string;
+  currentSoftware?: string;
+  timeline?: string;
+  budget?: string;
+  features?: string[];  receivedAt: string;
   market?: Market;
   leadId?: string;
   leadScore?: number;
