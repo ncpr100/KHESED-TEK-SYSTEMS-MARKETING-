@@ -55,15 +55,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
             alt="KHESED-TEK SYSTEMS"
-            width={36}
-            height={36}
+            width={512}
+            height={232}
             priority
+            className="h-[70px] w-auto sm:h-[90px]"
           />
-          <span className="font-semibold">KHESED-TEK SYSTEMS</span>
         </Link>
         
         <div className="flex items-center gap-6">
