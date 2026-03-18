@@ -178,7 +178,7 @@ KHESED-TEK-SYSTEMS-MARKETING-/
 ### **Files & Directories**
 
 | Type | Convention | ✅ Correct | ❌ Wrong |
-|------|------------|-----------|---------|
+| ------ | ------------ | --------- | ------- |
 | **Components** | kebab-case | `header.tsx`, `super-admin-help-tab.tsx` | `Header.tsx`, `SuperAdminHelpTab.tsx` |
 | **Utilities/Libs** | kebab-case | `global-market.tsx`, `email-service.ts` | `GlobalMarket.tsx`, `EmailService.ts` |
 | **Types** | kebab-case | `competitive-analysis.ts` | `CompetitiveAnalysis.ts` |
@@ -251,7 +251,7 @@ import Header from '../../../components/header';      // ❌ Never use relative 
 ### **Markets**
 
 | Market | Route | Language | Currency | Primary Users |
-|--------|-------|----------|----------|---------------|
+| ------ | ----- | -------- | -------- | ------------- |
 | **LATAM** | `/latam` | Spanish (es) | USD/COP | Colombia, LATAM countries |
 | **USA** | `/usa` | English (en) | USD | United States |
 | **GLOBAL** | `/global` | English (en) | USD | International fallback |
@@ -313,7 +313,7 @@ Response: {ok: true, leadId, emailsSent}
 ### **Market-Aware Routing**
 
 | Form Email | Routed To | Market |
-|------------|-----------|--------|
+| ---------- | --------- | ------ |
 | `*.co` | contacto@khesed-tek-systems.org | LATAM |
 | `*.com`, `*.org` (non-LATAM) | contact@khesed-tek-systems.org | USA |
 | Other | global@khesed-tek-systems.org | GLOBAL |
@@ -567,7 +567,7 @@ node scripts/tests/verify-deployment.js
 ## 🔄 VERSION HISTORY
 
 | Version | Date | Changes |
-|---------|------|---------|
+| ------- | ---- | ------- |
 | 2.0 | 2026-03-13 | Created SOURCE OF TRUTH, Phase 1 refactoring |
 | 1.5 | 2026-03-13 | Logo update (rectangular 512×232) |
 | 1.4 | 2026-03-01 | Complete form data capture added |
