@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MaintenanceTab, EmergencyTab } from './AdminTabs';
+import { MaintenanceTab, EmergencyTab } from './admin-tabs';
 
 // Icon component for outline icons
 const OutlineIcon = ({ name, className = "w-5 h-5" }: { name: string; className?: string }) => {
