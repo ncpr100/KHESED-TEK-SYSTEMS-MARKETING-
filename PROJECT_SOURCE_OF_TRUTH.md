@@ -2,9 +2,9 @@
 
 **KHESED-TEK Marketing Site - Enterprise Standard Documentation**
 
-**Last Updated**: March 13, 2026  
-**Version**: 2.0  
-**Status**: Production Active
+**Last Updated**: March 18, 2026  
+**Version**: 2.2  
+**Status**: Production Active + E-commerce Enabled
 
 ---
 
@@ -43,6 +43,10 @@ KHESED-TEK-SYSTEMS-MARKETING-/
 │       ├── request-demo/route.ts   # Main form handler (CRM + email)
 │       ├── simple-demo/route.ts    # Test endpoint (bypasses CRM)
 │       ├── health/route.ts         # Vercel healthcheck
+│       ├── products/               # **NEW** Product sales endpoints
+│       │   └── request/route.ts    # Product purchase requests
+│       ├── webhooks/               # **NEW** External webhooks
+│       │   └── paddle/route.ts     # Paddle payment confirmations
 │       ├── analytics/              # Performance tracking
 │       ├── admin/                  # Admin APIs
 │       ├── gdpr/                   # Privacy compliance
@@ -72,6 +76,8 @@ KHESED-TEK-SYSTEMS-MARKETING-/
 │   │   └── competitive-advantage-table.tsx
 │   ├── auth/
 │   │   └── login-signup.tsx
+│   ├── products/                    # **NEW** Product sales components
+│   │   └── product-request-form.tsx # E-book/Journal App request form
 │   ├── admin-tabs.tsx              # Admin maintenance tools
 │   ├── super-admin-help-tab.tsx    # SuperAdmin dashboard
 │   ├── analytics.tsx                # Google Analytics wrapper
@@ -88,9 +94,15 @@ KHESED-TEK-SYSTEMS-MARKETING-/
 │   │       ├── hubspot.ts
 │   │       ├── salesforce.ts
 │   │       └── pipedrive.ts
+│   ├── products/                    # **NEW** Product management
+│   │   ├── catalog.ts              # Product definitions (e-books, apps)
+│   │   └── supabase-client.ts      # Supabase database operations
+│   ├── payment/                     # **NEW** Payment processing
+│   │   └── paddle-client.ts        # Paddle checkout & webhooks
 │   ├── email/                       # Email system
 │   │   ├── types.ts
 │   │   ├── templates.ts            # Email templates (ES/EN)
+│   │   ├── product-templates.ts    # **NEW** Product email templates
 │   │   ├── campaigns.ts            # Campaign management
 │   │   └── automation.ts           # Workflow engine
 │   ├── gdpr/                        # GDPR compliance
@@ -120,6 +132,7 @@ KHESED-TEK-SYSTEMS-MARKETING-/
 │   ├── competitive-analysis.ts
 │   ├── demo-video.ts
 │   ├── pricing.ts
+│   ├── products.ts                 # **NEW** Product sales types
 │   ├── roi-calculator.ts
 │   └── testimonials.ts
 │
@@ -363,7 +376,88 @@ await crm.updateContact(leadId, { leadScore: score });
 
 ---
 
-## 🔒 SECURITY & COMPLIANCE
+## � PRODUCT SALES SYSTEM
+
+### **Architecture**: Supabase + Paddle Integration
+
+**Products Available**:
+1. **E-books** (3 titles, Spanish + English):
+   - "Paz en la Tormenta" / "Peace in the Storm" ($9.99)
+   - "Floreciendo en el Fuego" / "Blooming in the Fire" ($9.99)
+   - "Vida de Impacto" / "Impactful Living" ($9.99)
+2. **Journal App**: "Mi Identidad Real" / "Real ID" (Coming Soon - Interest registration)
+
+### **Purchase Flow**
+
+```
+Customer Submits Form (productrequest-form.tsx)
+  ↓
+POST /api/products/request
+  ↓
+1. Validate form data (name, email, product, language)
+2. Create record in Supabase (product_requests table)
+3. Generate Paddle checkout link (payment processing)
+4. Send email with payment link (product-templates.ts)
+  ↓
+Customer Completes Payment on Paddle
+  ↓
+Paddle Webhook → POST /api/webhooks/paddle
+  ↓
+1. Verify webhook signature
+2. Find product request by transaction ID
+3. Generate signed download URL (Supabase Storage, 24h expiry)
+4. Update request status to 'delivered'
+5. Send email with download link
+```
+
+### **Database** (`lib/products/supabase-client.ts`)
+
+**Table**: `product_requests`
+- Tracks all purchase requests and fulfillment
+- Stores customer info, product selection, payment status
+- Maps Paddle transactions to download links
+
+**Storage**: `ebooks` bucket (Supabase Storage)
+- Stores PDF files securely
+- Generates signed URLs (time-limited access)
+- Prevents unauthorized downloads
+
+### **Payment Processing** (`lib/payment/paddle-client.ts`)
+
+**Provider**: Paddle (https://paddle.com)
+- Handles checkout, payment processing, tax compliance
+- Sends webhooks on transaction complete/failed
+- Supports sandbox + production environments
+
+**API Routes**:
+- `/api/products/request` - Form submission, creates checkout
+- `/api/webhooks/paddle` - Payment confirmation handler
+
+### **Email Templates** (`lib/email/product-templates.ts`)
+
+1. **Payment Link Email** (sent after form submission):
+   - Includes product details and secure Paddle checkout URL
+   - Bilingual (Spanish/English based on selection)
+   
+2. **Download Link Email** (sent after successful payment):
+   - Includes signed download URL (24-hour expiry)
+   - Download instructions and tips
+   
+3. **Journal App Interest Email** (for unavailable products):
+   - Confirms interest registration
+   - Promises future notification when available
+
+### **Product Catalog** (`lib/products/catalog.ts`)
+
+Central source of truth for:
+- Product metadata (titles, descriptions, prices)
+- Paddle product IDs (per language)
+- Availability status
+- Download file paths
+
+---
+
+## �🔒 SECURITY & COMPLIANCE
 
 ### **Security Headers** (`lib/security/security-headers.ts`)
 
@@ -568,6 +662,8 @@ node scripts/tests/verify-deployment.js
 
 | Version | Date | Changes |
 | ------- | ---- | ------- |
+| 2.2 | 2026-03-18 | **Product Sales System** - E-books + Journal App pre-orders |
+| 2.1 | 2026-03-13 | Component naming refactoring, CHANGELOG created |
 | 2.0 | 2026-03-13 | Created SOURCE OF TRUTH, Phase 1 refactoring |
 | 1.5 | 2026-03-13 | Logo update (rectangular 512×232) |
 | 1.4 | 2026-03-01 | Complete form data capture added |
@@ -584,6 +680,7 @@ node scripts/tests/verify-deployment.js
 **Deployment**: ✅ Vercel auto-deploy active  
 **Email System**: ✅ Gmail SMTP operational  
 **CRM Integration**: ✅ Optional adapters ready  
+**E-commerce**: ⚙️ READY (requires Supabase + Paddle setup)  
 **Form Flow**: ✅ Complete data capture  
 **Documentation**: ✅ Organized (Phase 1 complete)  
 **Logo**: ✅ Rectangular brand logo (512×232)  
