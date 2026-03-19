@@ -2,11 +2,12 @@
 
 /**
  * Product Request Form
- * Form for purchasing E-books and registering interest in Journal App
+ * Form for requesting E-books (via donation) and registering interest in Journal App
  */
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { ProductType, Language } from '@/types/products';
+import { getPriceWithFee } from '@/lib/products/catalog';
 
 interface ProductOption {
   value: ProductType;
@@ -45,10 +46,17 @@ export default function ProductRequestForm() {
     customerEmail: '',
     country: '',
   });
+  const [coverProcessingFees, setCoverProcessingFees] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const isSpanish = language === 'es';
+
+  // Calculate pricing with fees
+  const pricing = useMemo(() => {
+    if (!formData.productType) return null;
+    return getPriceWithFee(formData.productType as ProductType);
+  }, [formData.productType]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,6 +72,7 @@ export default function ProductRequestForm() {
         body: JSON.stringify({
           ...formData,
           language,
+          coverProcessingFees,
         }),
       });
 
@@ -73,8 +82,8 @@ export default function ProductRequestForm() {
         setMessage({
           type: 'success',
           text: isSpanish
-            ? '¡Éxito! Revisa tu correo electrónico para continuar.'
-            : 'Success! Check your email to continue.',
+            ? '¡Gracias por tu generosidad! Revisa tu correo electrónico para completar tu donación.'
+            : 'Thank you for your generosity! Check your email to complete your donation.',
         });
         // Reset form
         setFormData({
@@ -83,6 +92,7 @@ export default function ProductRequestForm() {
           customerEmail: '',
           country: '',
         });
+        setCoverProcessingFees(false);
       } else {
         setMessage({
           type: 'error',
@@ -140,17 +150,34 @@ export default function ProductRequestForm() {
         </div>
       </div>
 
+      {/* Mission Banner - 33% Message */}
+      <div className="mb-8 p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(110, 231, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)', border: '1px solid rgba(110, 231, 255, 0.2)' }}>
+        <h3 className="text-lg font-bold mb-3 gradient-text">
+          {isSpanish ? 'Tecnología y Recursos con Propósito' : 'Technology and Resources with Purpose'}
+        </h3>
+        <p className="text-sm text-[#e7e7ea] leading-relaxed mb-3">
+          {isSpanish
+            ? 'En Khesed-Tek Systems, cada donación no es solo una transacción, es una alianza. El 33% de todos los fondos recaudados a través de nuestros productos y servicios se destina directamente a financiar los programas de rehabilitación de Fundación Misión Khesed, transformando vidas de personas en situación de adicción, alcoholismo e indigencia en Colombia y Latinoamérica.'
+            : 'At Khesed-Tek Systems, every donation is not just a transaction, it\'s a partnership. 33% of all funds raised through our products and services goes directly to funding the rehabilitation programs of Fundación Misión Khesed, transforming the lives of people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.'}
+        </p>
+        <p className="text-sm font-semibold text-[#6ee7ff]">
+          {isSpanish
+            ? 'Tu contribución no solo te fortalece a ti; restaura vidas.'
+            : 'Your contribution not only strengthens you; it restores lives.'}
+        </p>
+      </div>
+
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
           <span className="gradient-text">
-            {isSpanish ? 'Solicitar Producto' : 'Request Product'}
+            {isSpanish ? 'Contribuir con tu Donación' : 'Contribute with Your Donation'}
           </span>
         </h1>
         <p className="text-[#9ca3af]">
           {isSpanish
-            ? 'Completa el formulario y recibirás un enlace de pago por correo electrónico'
-            : 'Complete the form and you will receive a payment link via email'}
+            ? 'Completa el formulario y recibirás un enlace de donación seguro por correo electrónico'
+            : 'Complete the form and you will receive a secure donation link via email'}
         </p>
       </div>
 
@@ -231,6 +258,50 @@ export default function ProductRequestForm() {
           </p>
         </div>
 
+        {/* Processing Fees Checkbox (only show when product selected) */}
+        {formData.productType && pricing && (
+          <div className="p-4 rounded-lg bg-[#17171a] border border-[#232329]">
+            <label className="flex items-start cursor-pointer">
+              <input
+                type="checkbox"
+                checked={coverProcessingFees}
+                onChange={(e) => setCoverProcessingFees(e.target.checked)}
+                className="mt-1 h-4 w-4 rounded border-[#232329] bg-[#0e0e10] text-[#6ee7ff] focus:ring-[#6ee7ff] focus:ring-offset-0"
+              />
+              <span className="ml-3 flex-1">
+                <span className="block text-sm font-medium text-[#e7e7ea]">
+                  {isSpanish
+                    ? '¿Deseas ayudarnos a cubrir los costos de procesamiento?'
+                    : 'Would you like to help us cover the processing costs?'}
+                </span>
+                <span className="block text-xs text-[#9ca3af] mt-1">
+                  {isSpanish
+                    ? `Esto ayuda a que el 100% de tu donación llegue al recurso y misión (+$${pricing.fee.toFixed(2)} USD)`
+                    : `This helps ensure 100% of your donation reaches the resource and mission (+$${pricing.fee.toFixed(2)} USD)`}
+                </span>
+              </span>
+            </label>
+            
+            {/* Price Breakdown */}
+            <div className="mt-3 pt-3 border-t border-[#232329] text-sm">
+              <div className="flex justify-between text-[#9ca3af]">
+                <span>{isSpanish ? 'Aporte base' : 'Base contribution'}:</span>
+                <span>${pricing.basePrice.toFixed(2)} USD</span>
+              </div>
+              {coverProcessingFees && (
+                <div className="flex justify-between text-[#9ca3af] mt-1">
+                  <span>{isSpanish ? 'Costos de procesamiento' : 'Processing costs'}:</span>
+                  <span>+${pricing.fee.toFixed(2)} USD</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold text-[#e7e7ea] mt-2 pt-2 border-t border-[#232329]">
+                <span>{isSpanish ? 'Total' : 'Total'}:</span>
+                <span>${coverProcessingFees ? pricing.total.toFixed(2) : pricing.basePrice.toFixed(2)} USD</span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Submit Button */}
         <button
           type="submit"
@@ -239,7 +310,7 @@ export default function ProductRequestForm() {
         >
           {loading
             ? (isSpanish ? 'Procesando...' : 'Processing...')
-            : (isSpanish ? 'Solicitar Producto' : 'Request Product')}
+            : (isSpanish ? 'Continuar con Donación' : 'Continue with Donation')}
         </button>
 
         {/* Message */}
@@ -259,13 +330,13 @@ export default function ProductRequestForm() {
         <div className="text-center text-sm text-[#9ca3af]">
           <p>
             {isSpanish
-              ? '* No se solicitan datos de pago en este formulario'
-              : '* No payment data is requested in this form'}
+              ? '* No se solicitan datos de tarjeta en este formulario'
+              : '* No card details are requested in this form'}
           </p>
           <p className="mt-1">
             {isSpanish
-              ? 'Recibirás un enlace de pago seguro por correo electrónico'
-              : 'You will receive a secure payment link via email'}
+              ? 'Recibirás un enlace de donación seguro por correo electrónico'
+              : 'You will receive a secure donation link via email'}
           </p>
         </div>
       </form>

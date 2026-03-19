@@ -26,7 +26,8 @@ import {
   getProductInfo,
   getProductTitle,
   getProductDescription,
-  isProductAvailable 
+  isProductAvailable,
+  getPriceWithFee 
 } from '@/lib/products/catalog';
 import { 
   getPaymentLinkEmailTemplate,
@@ -57,6 +58,9 @@ export async function POST(request: NextRequest) {
       customerEmail: String(formData.customerEmail || '').trim(),
       country: formData.country,
     };
+    
+    // Extract processing fees flag
+    const coverProcessingFees = Boolean(formData.coverProcessingFees);
     
     // Validation
     if (!payload.productType || !payload.customerName || !payload.customerEmail) {
@@ -155,6 +159,12 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    // Calculate final price (base price + processing fees if user opted in)
+    const pricing = getPriceWithFee(payload.productType);
+    const finalPrice = coverProcessingFees ? pricing.total : pricing.basePrice;
+    
+    console.log(`Processing fees: ${coverProcessingFees ? 'Yes' : 'No'} | Final price: $${finalPrice.toFixed(2)}`);
+    
     // Create Paddle checkout link
     const checkoutData = await createCheckoutLink(
       paddleProductId,
@@ -164,7 +174,8 @@ export async function POST(request: NextRequest) {
         productRequestId: productRequest.id,
         productType: payload.productType,
         language: payload.language,
-      }
+      },
+      finalPrice // Pass calculated price
     );
     
     console.log('Paddle checkout created:', checkoutData.checkoutId);
@@ -181,7 +192,7 @@ export async function POST(request: NextRequest) {
     const productTitle = getProductTitle(payload.productType, payload.language);
     const productDescription = getProductDescription(payload.productType, payload.language);
     
-    // Send payment link email
+    // Send payment link email with pricing details
     const emailTemplate = getPaymentLinkEmailTemplate({
       customerName: payload.customerName,
       productType: payload.productType,
@@ -189,6 +200,13 @@ export async function POST(request: NextRequest) {
       paymentLink: checkoutData.checkoutUrl,
       productTitle,
       productDescription,
+      // Include processing fees info if user opted in
+      ...(coverProcessingFees && {
+        coverProcessingFees: true,
+        basePrice: pricing.basePrice,
+        processingFee: pricing.fee,
+        totalPrice: pricing.total,
+      }),
     });
     
     await transporter.sendMail({

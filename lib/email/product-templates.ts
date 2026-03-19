@@ -1,13 +1,14 @@
 /**
  * Product Email Templates
- * Email templates for product sales (E-books, Journal App)
+ * Email templates for product donations (E-books, Journal App)
+ * All products are supported through donations with 33% going to rehabilitation programs
  */
 
 import { Language, ProductType } from '@/types/products';
 import { getProductTitle, getProductDescription } from '@/lib/products/catalog';
 
 /**
- * Payment link email (sent after form submission)
+ * Donation link email (sent after form submission)
  */
 export interface PaymentEmailData {
   customerName: string;
@@ -16,6 +17,11 @@ export interface PaymentEmailData {
   paymentLink: string;
   productTitle: string;
   productDescription: string;
+  // Optional: Processing fees information
+  coverProcessingFees?: boolean;
+  basePrice?: number;
+  processingFee?: number;
+  totalPrice?: number;
 }
 
 export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: string; html: string; text: string } {
@@ -23,7 +29,7 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
   
   if (isSpanish) {
     return {
-      subject: `Tu enlace de pago para "${data.productTitle}"`,
+      subject: `Gracias por tu inter\u00e9s en "${data.productTitle}"`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -35,32 +41,55 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
             .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
             .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
+            .mission-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h1>¡Gracias por tu interés!</h1>
+              <h1>\u00a1Gracias por tu generosidad!</h1>
             </div>
             <div class="content">
               <p>Hola ${data.customerName},</p>
               
-              <p>Gracias por tu interés en <strong>${data.productTitle}</strong>.</p>
+              <p>Gracias por tu inter\u00e9s en <strong>${data.productTitle}</strong>.</p>
               
               <p>${data.productDescription}</p>
               
-              <p>Para completar tu compra, haz clic en el siguiente botón:</p>
+              <div class="mission-box">
+                <h3 style="margin-top: 0; color: #ff9800;">\ud83e\udd1d Tu donaci\u00f3n transforma vidas</h3>
+                <p style="margin: 0; font-size: 14px;">
+                  <strong>El 33% de todos los fondos recaudados a trav\u00e9s de Khesed-Tek Systems</strong> se destina directamente a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed, transformando vidas de personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia en Colombia y Latinoam\u00e9rica.
+                </p>
+                <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #ff9800;">
+                  Tu contribuci\u00f3n no solo te fortalece a ti; restaura vidas.
+                </p>
+              </div>
+              
+              <p>Para completar tu donaci\u00f3n y acceder al recurso, haz clic en el siguiente bot\u00f3n:</p>
               
               <div style="text-align: center;">
-                <a href="${data.paymentLink}" class="button">Completar Pago Seguro</a>
+                <a href="${data.paymentLink}" class="button">Completar Donaci\u00f3n Segura</a>
               </div>
               
               <p><small>O copia y pega este enlace en tu navegador:<br>${data.paymentLink}</small></p>
               
-              <p><strong>Precio:</strong> $9.99 USD</p>
+              ${data.coverProcessingFees && data.basePrice && data.processingFee && data.totalPrice ? `
+              <div style="background: #f0f0f0; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <p style="margin: 5px 0;"><strong>Desglose de tu donaci\u00f3n:</strong></p>
+                <p style="margin: 5px 0;">Aporte base: $${data.basePrice.toFixed(2)} USD</p>
+                <p style="margin: 5px 0;">Costos de procesamiento: +$${data.processingFee.toFixed(2)} USD</p>
+                <p style="margin: 5px 0; font-size: 18px;"><strong>Total: $${data.totalPrice.toFixed(2)} USD</strong></p>
+                <p style="margin: 10px 0 0 0; font-size: 13px; color: #666;">
+                  \u00a1Gracias por ayudarnos a cubrir los costos! Esto significa que el 100% de tu aporte base llega directamente al recurso y los programas de rehabilitaci\u00f3n.
+                </p>
+              </div>
+              ` : `
+              <p><strong>Aporte sugerido:</strong> ${data.basePrice ? `$${data.basePrice.toFixed(2)}` : '$9.99'} USD</p>
+              `}
               
-              <p>Una vez que completes el pago, recibirás inmediatamente un correo con el enlace de descarga.</p>
+              <p>Una vez que completes tu donaci\u00f3n, recibir\u00e1s inmediatamente un correo con el enlace de descarga.</p>
               
               <p>Si tienes alguna pregunta, no dudes en responder a este correo.</p>
               
@@ -69,8 +98,8 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
             </div>
             <div class="footer">
               <p>KHESED-TEK Systems<br>
-              Tecnología para el Reino<br>
-              <a href="https://khesed-tek-systems.org">khesed-tek-systems.org</a></p>
+              Tecnolog\u00eda para el Reino<br>
+              <a href="https://www.khesed-tek-systems.org">www.khesed-tek-systems.org</a></p>
             </div>
           </div>
         </body>
@@ -79,16 +108,31 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
       text: `
 Hola ${data.customerName},
 
-Gracias por tu interés en ${data.productTitle}.
+Gracias por tu inter\u00e9s en ${data.productTitle}.
 
 ${data.productDescription}
 
-Para completar tu compra, visita el siguiente enlace:
+\ud83e\udd1d TU DONACI\u00d3N TRANSFORMA VIDAS
+
+El 33% de todos los fondos recaudados a trav\u00e9s de Khesed-Tek Systems se destina directamente a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed, transformando vidas de personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia en Colombia y Latinoam\u00e9rica.
+
+Tu contribuci\u00f3n no solo te fortalece a ti; restaura vidas.
+
+---
+
+Para completar tu donaci\u00f3n y acceder al recurso, visita el siguiente enlace:
 ${data.paymentLink}
 
-Precio: $9.99 USD
+${data.coverProcessingFees && data.basePrice && data.processingFee && data.totalPrice ? `
+DESGLOSE DE TU DONACI\u00d3N:
+- Aporte base: $${data.basePrice.toFixed(2)} USD
+- Costos de procesamiento: +$${data.processingFee.toFixed(2)} USD
+- TOTAL: $${data.totalPrice.toFixed(2)} USD
 
-Una vez que completes el pago, recibirás inmediatamente un correo con el enlace de descarga.
+\u00a1Gracias por ayudarnos a cubrir los costos! Esto significa que el 100% de tu aporte base llega directamente al recurso y los programas de rehabilitaci\u00f3n.
+` : `Aporte sugerido: ${data.basePrice ? `$${data.basePrice.toFixed(2)}` : '$9.99'} USD`}
+
+Una vez que completes tu donaci\u00f3n, recibir\u00e1s inmediatamente un correo con el enlace de descarga.
 
 Si tienes alguna pregunta, no dudes en responder a este correo.
 
@@ -97,13 +141,13 @@ Equipo KHESED-TEK
 
 ---
 KHESED-TEK Systems
-Tecnología para el Reino
-https://khesed-tek-systems.org
+Tecnolog\u00eda para el Reino
+https://www.khesed-tek-systems.org
       `,
     };
   } else {
     return {
-      subject: `Your payment link for "${data.productTitle}"`,
+      subject: `Thank you for your interest in "${data.productTitle}"`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -115,13 +159,14 @@ https://khesed-tek-systems.org
             .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
             .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
+            .mission-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h1>Thank You for Your Interest!</h1>
+              <h1>Thank You for Your Generosity!</h1>
             </div>
             <div class="content">
               <p>Hello ${data.customerName},</p>
@@ -130,17 +175,39 @@ https://khesed-tek-systems.org
               
               <p>${data.productDescription}</p>
               
-              <p>To complete your purchase, click the button below:</p>
+              <div class="mission-box">
+                <h3 style="margin-top: 0; color: #ff9800;">\ud83e\udd1d Your donation transforms lives</h3>
+                <p style="margin: 0; font-size: 14px;">
+                  <strong>33% of all funds raised through Khesed-Tek Systems</strong> goes directly to funding the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed, transforming the lives of people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.
+                </p>
+                <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #ff9800;">
+                  Your contribution not only strengthens you; it restores lives.
+                </p>
+              </div>
+              
+              <p>To complete your donation and access the resource, click the button below:</p>
               
               <div style="text-align: center;">
-                <a href="${data.paymentLink}" class="button">Complete Secure Payment</a>
+                <a href="${data.paymentLink}" class="button">Complete Secure Donation</a>
               </div>
               
               <p><small>Or copy and paste this link into your browser:<br>${data.paymentLink}</small></p>
               
-              <p><strong>Price:</strong> $9.99 USD</p>
+              ${data.coverProcessingFees && data.basePrice && data.processingFee && data.totalPrice ? `
+              <div style="background: #f0f0f0; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <p style="margin: 5px 0;"><strong>Your donation breakdown:</strong></p>
+                <p style="margin: 5px 0;">Base contribution: $${data.basePrice.toFixed(2)} USD</p>
+                <p style="margin: 5px 0;">Processing costs: +$${data.processingFee.toFixed(2)} USD</p>
+                <p style="margin: 5px 0; font-size: 18px;"><strong>Total: $${data.totalPrice.toFixed(2)} USD</strong></p>
+                <p style="margin: 10px 0 0 0; font-size: 13px; color: #666;">
+                  Thank you for helping us cover the costs! This means that 100% of your base contribution goes directly to the resource and rehabilitation programs.
+                </p>
+              </div>
+              ` : `
+              <p><strong>Suggested contribution:</strong> ${data.basePrice ? `$${data.basePrice.toFixed(2)}` : '$9.99'} USD</p>
+              `}
               
-              <p>Once you complete the payment, you will immediately receive an email with the download link.</p>
+              <p>Once you complete your donation, you will immediately receive an email with the download link.</p>
               
               <p>If you have any questions, please don't hesitate to reply to this email.</p>
               
@@ -150,7 +217,7 @@ https://khesed-tek-systems.org
             <div class="footer">
               <p>KHESED-TEK Systems<br>
               Technology for the Kingdom<br>
-              <a href="https://khesed-tek-systems.org">khesed-tek-systems.org</a></p>
+              <a href="https://www.khesed-tek-systems.org">www.khesed-tek-systems.org</a></p>
             </div>
           </div>
         </body>
@@ -163,12 +230,27 @@ Thank you for your interest in ${data.productTitle}.
 
 ${data.productDescription}
 
-To complete your purchase, visit the following link:
+\ud83e\udd1d YOUR DONATION TRANSFORMS LIVES
+
+33% of all funds raised through Khesed-Tek Systems goes directly to funding the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed, transforming the lives of people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.
+
+Your contribution not only strengthens you; it restores lives.
+
+---
+
+To complete your donation and access the resource, visit the following link:
 ${data.paymentLink}
 
-Price: $9.99 USD
+${data.coverProcessingFees && data.basePrice && data.processingFee && data.totalPrice ? `
+YOUR DONATION BREAKDOWN:
+- Base contribution: $${data.basePrice.toFixed(2)} USD
+- Processing costs: +$${data.processingFee.toFixed(2)} USD
+- TOTAL: $${data.totalPrice.toFixed(2)} USD
 
-Once you complete the payment, you will immediately receive an email with the download link.
+Thank you for helping us cover the costs! This means that 100% of your base contribution goes directly to the resource and rehabilitation programs.
+` : `Suggested contribution: ${data.basePrice ? `$${data.basePrice.toFixed(2)}` : '$9.99'} USD`}
+
+Once you complete your donation, you will immediately receive an email with the download link.
 
 If you have any questions, please don't hesitate to reply to this email.
 
@@ -178,14 +260,14 @@ KHESED-TEK Team
 ---
 KHESED-TEK Systems
 Technology for the Kingdom
-https://khesed-tek-systems.org
+https://www.khesed-tek-systems.org
       `,
     };
   }
 }
 
 /**
- * Download link email (sent after successful payment)
+ * Download link email (sent after successful donation)
  */
 export interface DownloadEmailData {
   customerName: string;
@@ -201,7 +283,7 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
   
   if (isSpanish) {
     return {
-      subject: `¡Tu descarga está lista! - ${data.productTitle}`,
+      subject: `\u00a1Tu descarga est\u00e1 lista! - ${data.productTitle}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -214,20 +296,21 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
             .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
             .alert { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
+            .mission-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h1>¡Pago Confirmado! 🎉</h1>
+              <h1>\u00a1Donaci\u00f3n Confirmada! \ud83c\udf89</h1>
             </div>
             <div class="content">
               <p>Hola ${data.customerName},</p>
               
-              <p>¡Gracias por tu compra de <strong>${data.productTitle}</strong>!</p>
+              <p>\u00a1Gracias por tu generosa donaci\u00f3n para <strong>${data.productTitle}</strong>!</p>
               
-              <p>Tu pago ha sido procesado exitosamente. Puedes descargar tu e-book haciendo clic en el siguiente botón:</p>
+              <p>Tu donaci\u00f3n ha sido procesada exitosamente. Puedes descargar tu e-book haciendo clic en el siguiente bot\u00f3n:</p>
               
               <div style="text-align: center;">
                 <a href="${data.downloadLink}" class="button">Descargar E-book (PDF)</a>
@@ -236,7 +319,7 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
               <p><small>O copia y pega este enlace en tu navegador:<br>${data.downloadLink}</small></p>
               
               <div class="alert">
-                <strong>⚠️ Importante:</strong> Este enlace de descarga expirará en ${data.expiresInHours} horas. Por favor, descarga tu e-book pronto.
+                <strong>\u26a0\ufe0f Importante:</strong> Este enlace de descarga expirar\u00e1 en ${data.expiresInHours} horas. Por favor, descarga tu e-book pronto.
               </div>
               
               <p><strong>Consejos:</strong></p>
@@ -246,15 +329,25 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
                 <li>Si tienes problemas para descargar, responde a este correo</li>
               </ul>
               
-              <p>¡Disfruta tu lectura y que Dios te bendiga!</p>
+              <div class="mission-box">
+                <h3 style="margin-top: 0; color: #4caf50;">\ud83d\udc9a Gracias por transformar vidas</h3>
+                <p style="margin: 0; font-size: 14px;">
+                  Como parte de nuestra misi\u00f3n de transparencia, queremos que sepas que <strong>el 33% de tu donaci\u00f3n</strong> ya est\u00e1 siendo destinado a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed. Juntos estamos llevando esperanza y restauraci\u00f3n a personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia en Colombia y Latinoam\u00e9rica.
+                </p>
+                <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #4caf50;">
+                  Tu donaci\u00f3n no solo te fortalece a ti; est\u00e1 transformando vidas.
+                </p>
+              </div>
+              
+              <p>\u00a1Disfruta tu lectura y que Dios te bendiga!</p>
               
               <p>Bendiciones,<br>
               <strong>Equipo KHESED-TEK</strong></p>
             </div>
             <div class="footer">
               <p>KHESED-TEK Systems<br>
-              Tecnología para el Reino<br>
-              <a href="https://khesed-tek-systems.org">khesed-tek-systems.org</a></p>
+              Tecnolog\u00eda para el Reino<br>
+              <a href="https://www.khesed-tek-systems.org">www.khesed-tek-systems.org</a></p>
             </div>
           </div>
         </body>
@@ -263,28 +356,34 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
       text: `
 Hola ${data.customerName},
 
-¡Gracias por tu compra de ${data.productTitle}!
+\u00a1Gracias por tu generosa donaci\u00f3n para ${data.productTitle}!
 
-Tu pago ha sido procesado exitosamente. Puedes descargar tu e-book en el siguiente enlace:
+Tu donaci\u00f3n ha sido procesada exitosamente. Puedes descargar tu e-book en el siguiente enlace:
 
 ${data.downloadLink}
 
-⚠️ IMPORTANTE: Este enlace de descarga expirará en ${data.expiresInHours} horas. Por favor, descarga tu e-book pronto.
+\u26a0\ufe0f IMPORTANTE: Este enlace de descarga expirar\u00e1 en ${data.expiresInHours} horas. Por favor, descarga tu e-book pronto.
 
 Consejos:
 - Guarda el archivo PDF en un lugar seguro en tu dispositivo
 - Puedes leer el PDF en cualquier lector de PDFs (Adobe Reader, navegador web, etc.)
 - Si tienes problemas para descargar, responde a este correo
 
-¡Disfruta tu lectura y que Dios te bendiga!
+\ud83d\udc9a GRACIAS POR TRANSFORMAR VIDAS
+
+Como parte de nuestra misi\u00f3n de transparencia, queremos que sepas que el 33% de tu donaci\u00f3n ya est\u00e1 siendo destinado a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed. Juntos estamos llevando esperanza y restauraci\u00f3n a personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia.
+
+Tu donaci\u00f3n no solo te fortalece a ti; est\u00e1 transformando vidas.
+
+\u00a1Disfruta tu lectura y que Dios te bendiga!
 
 Bendiciones,
 Equipo KHESED-TEK
 
 ---
 KHESED-TEK Systems
-Tecnología para el Reino
-https://khesed-tek-systems.org
+Tecnolog\u00eda para el Reino
+https://www.khesed-tek-systems.org
       `,
     };
   } else {
@@ -302,20 +401,21 @@ https://khesed-tek-systems.org
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
             .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
             .alert { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
+            .mission-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h1>Payment Confirmed! 🎉</h1>
+              <h1>Donation Confirmed! \ud83c\udf89</h1>
             </div>
             <div class="content">
               <p>Hello ${data.customerName},</p>
               
-              <p>Thank you for purchasing <strong>${data.productTitle}</strong>!</p>
+              <p>Thank you for your generous donation for <strong>${data.productTitle}</strong>!</p>
               
-              <p>Your payment has been successfully processed. You can download your e-book by clicking the button below:</p>
+              <p>Your donation has been successfully processed. You can download your e-book by clicking the button below:</p>
               
               <div style="text-align: center;">
                 <a href="${data.downloadLink}" class="button">Download E-book (PDF)</a>
@@ -324,7 +424,7 @@ https://khesed-tek-systems.org
               <p><small>Or copy and paste this link into your browser:<br>${data.downloadLink}</small></p>
               
               <div class="alert">
-                <strong>⚠️ Important:</strong> This download link will expire in ${data.expiresInHours} hours. Please download your e-book soon.
+                <strong>\u26a0\ufe0f Important:</strong> This download link will expire in ${data.expiresInHours} hours. Please download your e-book soon.
               </div>
               
               <p><strong>Tips:</strong></p>
@@ -334,6 +434,16 @@ https://khesed-tek-systems.org
                 <li>If you have trouble downloading, please reply to this email</li>
               </ul>
               
+              <div class="mission-box">
+                <h3 style="margin-top: 0; color: #4caf50;">\ud83d\udc9a Thank you for transforming lives</h3>
+                <p style="margin: 0; font-size: 14px;">
+                  As part of our mission of transparency, we want you to know that <strong>33% of your donation</strong> is already being allocated to fund the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed. Together we are bringing hope and restoration to people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.
+                </p>
+                <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #4caf50;">
+                  Your donation not only strengthens you; it is transforming lives.
+                </p>
+              </div>
+              
               <p>Enjoy your reading and God bless you!</p>
               
               <p>Blessings,<br>
@@ -342,7 +452,7 @@ https://khesed-tek-systems.org
             <div class="footer">
               <p>KHESED-TEK Systems<br>
               Technology for the Kingdom<br>
-              <a href="https://khesed-tek-systems.org">khesed-tek-systems.org</a></p>
+              <a href="https://www.khesed-tek-systems.org">www.khesed-tek-systems.org</a></p>
             </div>
           </div>
         </body>
@@ -351,18 +461,24 @@ https://khesed-tek-systems.org
       text: `
 Hello ${data.customerName},
 
-Thank you for purchasing ${data.productTitle}!
+Thank you for your generous donation for ${data.productTitle}!
 
-Your payment has been successfully processed. You can download your e-book at the following link:
+Your donation has been successfully processed. You can download your e-book at the following link:
 
 ${data.downloadLink}
 
-⚠️ IMPORTANT: This download link will expire in ${data.expiresInHours} hours. Please download your e-book soon.
+\u26a0\ufe0f IMPORTANT: This download link will expire in ${data.expiresInHours} hours. Please download your e-book soon.
 
 Tips:
 - Save the PDF file to a secure location on your device
 - You can read the PDF in any PDF reader (Adobe Reader, web browser, etc.)
 - If you have trouble downloading, please reply to this email
+
+\ud83d\udc9a THANK YOU FOR TRANSFORMING LIVES
+
+As part of our mission of transparency, we want you to know that 33% of your donation is already being allocated to fund the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed. Together we are bringing hope and restoration to people struggling with addiction, alcoholism, and homelessness.
+
+Your donation not only strengthens you; it is transforming lives.
 
 Enjoy your reading and God bless you!
 
@@ -372,7 +488,7 @@ KHESED-TEK Team
 ---
 KHESED-TEK Systems
 Technology for the Kingdom
-https://khesed-tek-systems.org
+https://www.khesed-tek-systems.org
       `,
     };
   }

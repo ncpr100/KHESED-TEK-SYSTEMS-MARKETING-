@@ -10,8 +10,8 @@ export const PRODUCT_CATALOG: Record<ProductType, ProductInfo> = {
     id: 'ebook_peace',
     titleES: 'Paz en la Tormenta',
     titleEN: 'Peace in the Storm',
-    descriptionES: 'Encuentra paz interior incluso en los momentos más difíciles de tu vida.',
-    descriptionEN: 'Find inner peace even in the most difficult moments of your life.',
+    descriptionES: 'Encuentra paz interior incluso en los momentos más difíciles. Tu aporte apoya programas de rehabilitación.',
+    descriptionEN: 'Find inner peace even in the most difficult moments. Your contribution supports rehabilitation programs.',
     priceUSD: 9.99,
     paddleProductIdES: process.env.PADDLE_PRODUCT_EBOOK_PEACE_ES,
     paddleProductIdEN: process.env.PADDLE_PRODUCT_EBOOK_PEACE_EN,
@@ -23,8 +23,8 @@ export const PRODUCT_CATALOG: Record<ProductType, ProductInfo> = {
     id: 'ebook_blooming',
     titleES: 'Floreciendo en el Fuego',
     titleEN: 'Blooming in the Fire',
-    descriptionES: 'Descubre cómo crecer y florecer a través de las pruebas y desafíos.',
-    descriptionEN: 'Discover how to grow and bloom through trials and challenges.',
+    descriptionES: 'Descubre cómo crecer a través de las pruebas. Tu donación transforma vidas.',
+    descriptionEN: 'Discover how to grow through trials. Your donation transforms lives.',
     priceUSD: 9.99,
     paddleProductIdES: process.env.PADDLE_PRODUCT_EBOOK_BLOOMING_ES,
     paddleProductIdEN: process.env.PADDLE_PRODUCT_EBOOK_BLOOMING_EN,
@@ -36,8 +36,8 @@ export const PRODUCT_CATALOG: Record<ProductType, ProductInfo> = {
     id: 'ebook_impactful',
     titleES: 'Vida de Impacto',
     titleEN: 'Impactful Living',
-    descriptionES: 'Aprende a vivir una vida que deje un legado significativo.',
-    descriptionEN: 'Learn to live a life that leaves a meaningful legacy.',
+    descriptionES: 'Vive una vida de legado significativo. Tu contribución restaura vidas.',
+    descriptionEN: 'Live a life that leaves a meaningful legacy. Your contribution restores lives.',
     priceUSD: 9.99,
     paddleProductIdES: process.env.PADDLE_PRODUCT_EBOOK_IMPACTFUL_ES,
     paddleProductIdEN: process.env.PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN,
@@ -49,8 +49,8 @@ export const PRODUCT_CATALOG: Record<ProductType, ProductInfo> = {
     id: 'journal_app',
     titleES: 'Mi Identidad Real',
     titleEN: 'Real ID',
-    descriptionES: 'Aplicación de diario para descubrir tu verdadera identidad en Cristo.',
-    descriptionEN: 'Journal app to discover your true identity in Christ.',
+    descriptionES: 'Próximamente: Aplicación para descubrir tu identidad en Cristo. Tu interés ya siembra esperanza.',
+    descriptionEN: 'Coming soon: Journal app to discover your identity in Christ. Your interest already plants hope.',
     priceUSD: 0, // Free for now, will be updated when available
     available: false, // Not yet available
     isPhysical: true, // This is an app, not a download
@@ -115,4 +115,26 @@ export function formatProductDisplayName(productType: ProductType, language: 'es
   const product = getProductInfo(productType);
   const title = language === 'es' ? product.titleES : product.titleEN;
   return `${title} (${language.toUpperCase()})`;
+}
+
+/**
+ * Calculate Paddle processing fee (5% + $0.50)
+ * This is an estimate - actual fees may vary by payment method and region
+ */
+export function calculateProcessingFee(priceUSD: number): number {
+  const percentageFee = priceUSD * 0.05; // 5%
+  const fixedFee = 0.50; // $0.50
+  return Math.round((percentageFee + fixedFee) * 100) / 100; // Round to 2 decimals
+}
+
+/**
+ * Get total price including processing fee
+ */
+export function getPriceWithFee(productType: ProductType): { basePrice: number; fee: number; total: number } {
+  const product = getProductInfo(productType);
+  const basePrice = product.priceUSD;
+  const fee = calculateProcessingFee(basePrice);
+  const total = Math.round((basePrice + fee) * 100) / 100; // Round to 2 decimals
+  
+  return { basePrice, fee, total };
 }

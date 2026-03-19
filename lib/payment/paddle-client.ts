@@ -36,16 +36,36 @@ export function getPaddleClient() {
 /**
  * Create checkout session and get payment link
  * Uses Paddle REST API
+ * 
+ * @param priceOverride Optional price in USD (e.g., 10.99). If provided, overrides the default product price.
  */
 export async function createCheckoutLink(
   productId: string,
   customerEmail: string,
   customerName: string,
-  customData?: Record<string, any>
+  customData?: Record<string, any>,
+  priceOverride?: number
 ): Promise<PaddleCheckoutResponse> {
   const paddle = getPaddleClient();
   
   try {
+    // Build items array with optional price override
+    const items = [
+      {
+        price_id: productId,
+        quantity: 1,
+        ...(priceOverride && {
+          // Convert USD to cents (Paddle requires integer amount in minor currency unit)
+          price: {
+            amount: Math.round(priceOverride * 100).toString(),
+            currency_code: 'USD'
+          }
+        })
+      },
+    ];
+    
+    console.log('Creating Paddle checkout with items:', JSON.stringify(items, null, 2));
+    
     const response = await fetch(`${paddle.apiUrl}/checkouts`, {
       method: 'POST',
       headers: {
@@ -53,12 +73,7 @@ export async function createCheckoutLink(
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        items: [
-          {
-            price_id: productId,
-            quantity: 1,
-          },
-        ],
+        items,
         customer: {
           email: customerEmail,
         },
