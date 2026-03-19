@@ -60,7 +60,7 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
               <div class="mission-box">
                 <h3 style="margin-top: 0; color: #ff9800;">\ud83e\udd1d Tu donaci\u00f3n transforma vidas</h3>
                 <p style="margin: 0; font-size: 14px;">
-                  <strong>El 33% de todos los fondos recaudados a trav\u00e9s de Khesed-Tek Systems</strong> se destina directamente a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed, transformando vidas de personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia en Colombia y Latinoam\u00e9rica.
+                  <strong>El 33% de todos los fondos recaudados a través de Khesed-Tek Systems</strong> se destina directamente a Fundación Misión Khesed para apoyar su trabajo en alianza con programas locales, iglesias y organizaciones en Colombia y Latinoamérica, ayudando a comunidades vulnerables con alimentos, ropa y apoyo integral.
                 </p>
                 <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #ff9800;">
                   Tu contribuci\u00f3n no solo te fortalece a ti; restaura vidas.
@@ -82,7 +82,7 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
                 <p style="margin: 5px 0;">Costos de procesamiento: +$${data.processingFee.toFixed(2)} USD</p>
                 <p style="margin: 5px 0; font-size: 18px;"><strong>Total: $${data.totalPrice.toFixed(2)} USD</strong></p>
                 <p style="margin: 10px 0 0 0; font-size: 13px; color: #666;">
-                  \u00a1Gracias por ayudarnos a cubrir los costos! Esto significa que el 100% de tu aporte base llega directamente al recurso y los programas de rehabilitaci\u00f3n.
+                  \u00a1Gracias por ayudarnos a cubrir los costos! Esto significa que el 100% de tu aporte base llega directamente al recurso y al apoyo de comunidades vulnerables.
                 </p>
               </div>
               ` : `
@@ -114,7 +114,7 @@ ${data.productDescription}
 
 \ud83e\udd1d TU DONACI\u00d3N TRANSFORMA VIDAS
 
-El 33% de todos los fondos recaudados a trav\u00e9s de Khesed-Tek Systems se destina directamente a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed, transformando vidas de personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia en Colombia y Latinoam\u00e9rica.
+El 33% de todos los fondos recaudados a trav\u00e9s de Khesed-Tek Systems se destina directamente a Fundaci\u00f3n Misi\u00f3n Khesed para apoyar su trabajo en alianza con programas locales, iglesias y organizaciones en Colombia y Latinoam\u00e9rica, ayudando a comunidades vulnerables con alimentos, ropa y apoyo integral.
 
 Tu contribuci\u00f3n no solo te fortalece a ti; restaura vidas.
 
@@ -129,7 +129,7 @@ DESGLOSE DE TU DONACI\u00d3N:
 - Costos de procesamiento: +$${data.processingFee.toFixed(2)} USD
 - TOTAL: $${data.totalPrice.toFixed(2)} USD
 
-\u00a1Gracias por ayudarnos a cubrir los costos! Esto significa que el 100% de tu aporte base llega directamente al recurso y los programas de rehabilitaci\u00f3n.
+\u00a1Gracias por ayudarnos a cubrir los costos! Esto significa que el 100% de tu aporte base llega directamente al recurso y al apoyo de comunidades vulnerables.
 ` : `Aporte sugerido: ${data.basePrice ? `$${data.basePrice.toFixed(2)}` : '$9.99'} USD`}
 
 Una vez que completes tu donaci\u00f3n, recibir\u00e1s inmediatamente un correo con el enlace de descarga.
@@ -178,7 +178,7 @@ https://www.khesed-tek-systems.org
               <div class="mission-box">
                 <h3 style="margin-top: 0; color: #ff9800;">\ud83e\udd1d Your donation transforms lives</h3>
                 <p style="margin: 0; font-size: 14px;">
-                  <strong>33% of all funds raised through Khesed-Tek Systems</strong> goes directly to funding the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed, transforming the lives of people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.
+                  <strong>33% of all funds raised through Khesed-Tek Systems</strong> goes directly to Fundación Misión Khesed to support their work in partnership with local programs, churches, and organizations in Colombia and Latin America, helping vulnerable communities with food, clothing, and comprehensive support.
                 </p>
                 <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #ff9800;">
                   Your contribution not only strengthens you; it restores lives.
@@ -200,7 +200,7 @@ https://www.khesed-tek-systems.org
                 <p style="margin: 5px 0;">Processing costs: +$${data.processingFee.toFixed(2)} USD</p>
                 <p style="margin: 5px 0; font-size: 18px;"><strong>Total: $${data.totalPrice.toFixed(2)} USD</strong></p>
                 <p style="margin: 10px 0 0 0; font-size: 13px; color: #666;">
-                  Thank you for helping us cover the costs! This means that 100% of your base contribution goes directly to the resource and rehabilitation programs.
+                  Thank you for helping us cover the costs! This means that 100% of your base contribution goes directly to the resource and supporting vulnerable communities.
                 </p>
               </div>
               ` : `
@@ -232,7 +232,7 @@ ${data.productDescription}
 
 \ud83e\udd1d YOUR DONATION TRANSFORMS LIVES
 
-33% of all funds raised through Khesed-Tek Systems goes directly to funding the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed, transforming the lives of people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.
+33% of all funds raised through Khesed-Tek Systems goes directly to Fundaci\u00f3n Misi\u00f3n Khesed to support their work in partnership with local programs, churches, and organizations in Colombia and Latin America, helping vulnerable communities with food, clothing, and comprehensive support.
 
 Your contribution not only strengthens you; it restores lives.
 
@@ -247,7 +247,7 @@ YOUR DONATION BREAKDOWN:
 - Processing costs: +$${data.processingFee.toFixed(2)} USD
 - TOTAL: $${data.totalPrice.toFixed(2)} USD
 
-Thank you for helping us cover the costs! This means that 100% of your base contribution goes directly to the resource and rehabilitation programs.
+Thank you for helping us cover the costs! This means that 100% of your base contribution goes directly to the resource and supporting vulnerable communities.
 ` : `Suggested contribution: ${data.basePrice ? `$${data.basePrice.toFixed(2)}` : '$9.99'} USD`}
 
 Once you complete your donation, you will immediately receive an email with the download link.
@@ -332,7 +332,7 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
               <div class="mission-box">
                 <h3 style="margin-top: 0; color: #4caf50;">\ud83d\udc9a Gracias por transformar vidas</h3>
                 <p style="margin: 0; font-size: 14px;">
-                  Como parte de nuestra misi\u00f3n de transparencia, queremos que sepas que <strong>el 33% de tu donaci\u00f3n</strong> ya est\u00e1 siendo destinado a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed. Juntos estamos llevando esperanza y restauraci\u00f3n a personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia en Colombia y Latinoam\u00e9rica.
+                  Como parte de nuestra misión de transparencia, queremos que sepas que <strong>el 33% de tu donación</strong> ya está siendo destinado a Fundación Misión Khesed para apoyar su trabajo en alianza con programas locales, iglesias y organizaciones. Juntos estamos llevando esperanza a comunidades vulnerables en Colombia y Latinoamérica, ayudando con alimentos, ropa y apoyo integral.
                 </p>
                 <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #4caf50;">
                   Tu donaci\u00f3n no solo te fortalece a ti; est\u00e1 transformando vidas.
@@ -371,7 +371,7 @@ Consejos:
 
 \ud83d\udc9a GRACIAS POR TRANSFORMAR VIDAS
 
-Como parte de nuestra misi\u00f3n de transparencia, queremos que sepas que el 33% de tu donaci\u00f3n ya est\u00e1 siendo destinado a financiar los programas de rehabilitaci\u00f3n de Fundaci\u00f3n Misi\u00f3n Khesed. Juntos estamos llevando esperanza y restauraci\u00f3n a personas en situaci\u00f3n de adicci\u00f3n, alcoholismo e indigencia.
+Como parte de nuestra misi\u00f3n de transparencia, queremos que sepas que el 33% de tu donaci\u00f3n ya est\u00e1 siendo destinado a Fundaci\u00f3n Misi\u00f3n Khesed para apoyar su trabajo en alianza con programas locales, iglesias y organizaciones. Juntos estamos llevando esperanza a comunidades vulnerables en Colombia y Latinoam\u00e9rica, ayudando con alimentos, ropa y apoyo integral.
 
 Tu donaci\u00f3n no solo te fortalece a ti; est\u00e1 transformando vidas.
 
@@ -437,7 +437,7 @@ https://www.khesed-tek-systems.org
               <div class="mission-box">
                 <h3 style="margin-top: 0; color: #4caf50;">\ud83d\udc9a Thank you for transforming lives</h3>
                 <p style="margin: 0; font-size: 14px;">
-                  As part of our mission of transparency, we want you to know that <strong>33% of your donation</strong> is already being allocated to fund the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed. Together we are bringing hope and restoration to people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.
+                  As part of our mission of transparency, we want you to know that <strong>33% of your donation</strong> is already being allocated to Fundación Misión Khesed to support their work in partnership with local programs, churches, and organizations. Together we are bringing hope to vulnerable communities in Colombia and Latin America, helping with food, clothing, and comprehensive support.
                 </p>
                 <p style="margin: 10px 0 0 0; font-size: 14px; font-weight: bold; color: #4caf50;">
                   Your donation not only strengthens you; it is transforming lives.
@@ -476,7 +476,7 @@ Tips:
 
 \ud83d\udc9a THANK YOU FOR TRANSFORMING LIVES
 
-As part of our mission of transparency, we want you to know that 33% of your donation is already being allocated to fund the rehabilitation programs of Fundaci\u00f3n Misi\u00f3n Khesed. Together we are bringing hope and restoration to people struggling with addiction, alcoholism, and homelessness.
+As part of our mission of transparency, we want you to know that 33% of your donation is already being allocated to Fundaci\u00f3n Misi\u00f3n Khesed to support their work in partnership with local programs, churches, and organizations. Together we are bringing hope to vulnerable communities in Colombia and Latin America, helping with food, clothing, and comprehensive support.
 
 Your donation not only strengthens you; it is transforming lives.
 

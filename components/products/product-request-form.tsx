@@ -157,8 +157,8 @@ export default function ProductRequestForm() {
         </h3>
         <p className="text-sm text-[#e7e7ea] leading-relaxed mb-3">
           {isSpanish
-            ? 'En Khesed-Tek Systems, cada donación no es solo una transacción, es una alianza. El 33% de todos los fondos recaudados a través de nuestros productos y servicios se destina directamente a financiar los programas de rehabilitación de Fundación Misión Khesed, transformando vidas de personas en situación de adicción, alcoholismo e indigencia en Colombia y Latinoamérica.'
-            : 'At Khesed-Tek Systems, every donation is not just a transaction, it\'s a partnership. 33% of all funds raised through our products and services goes directly to funding the rehabilitation programs of Fundación Misión Khesed, transforming the lives of people struggling with addiction, alcoholism, and homelessness in Colombia and Latin America.'}
+            ? 'En Khesed-Tek Systems, cada donación no es solo una transacción, es una alianza. El 33% de todos los fondos recaudados a través de nuestros productos y servicios se destina directamente a Fundación Misión Khesed para apoyar su trabajo en alianza con programas locales, iglesias y organizaciones en Colombia y Latinoamérica, ayudando a comunidades vulnerables con alimentos, ropa y apoyo integral.'
+            : 'At Khesed-Tek Systems, every donation is not just a transaction, it\'s a partnership. 33% of all funds raised through our products and services goes directly to Fundación Misión Khesed to support their work in partnership with local programs, churches, and organizations in Colombia and Latin America, helping vulnerable communities with food, clothing, and comprehensive support.'}
         </p>
         <p className="text-sm font-semibold text-[#6ee7ff]">
           {isSpanish
