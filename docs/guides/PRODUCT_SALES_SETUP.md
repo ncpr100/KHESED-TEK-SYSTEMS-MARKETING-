@@ -182,7 +182,17 @@ Create 6 products (3 e-books × 2 languages):
 1. Go to **Developer Tools** → **Authentication**
 2. Click "Create API key"
 3. Name: `Production API`
-4. Copy **API Key**: `xxx...` → Save as `PADDLE_API_KEY`
+4. **Select permissions** (CRITICAL):
+   - ✅ `transaction:read` - Read transaction data
+   - ✅ `transaction:write` - Create checkouts
+   - ✅ `product:read` - Read product information
+   - ✅ `price:read` - Read pricing information
+   - ✅ `customer:read` - Read customer data
+   - ✅ `customer:write` - Create/update customers
+   - (Or select "Full Access" if you're the only admin)
+5. Click "Create key"
+6. Copy **API Key**: `xxx...` → Save as `PADDLE_API_KEY`
+7. ⚠️ **IMPORTANT**: Store this key securely - it won't be shown again!
 
 ---
 
