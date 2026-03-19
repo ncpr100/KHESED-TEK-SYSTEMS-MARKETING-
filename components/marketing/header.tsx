@@ -51,6 +51,7 @@ export default function Header() {
   const aboutText = effectiveLanguage === 'es' ? 'Nosotros' : 'About';
   const contactText = effectiveLanguage === 'es' ? 'Contacto' : 'Contact';
   const scheduleText = effectiveLanguage === 'es' ? 'Agendar' : 'Schedule';
+  const productsText = effectiveLanguage === 'es' ? 'Productos' : 'Products';
 
   return (
     <header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-[var(--border)]">
@@ -72,6 +73,7 @@ export default function Header() {
             <Link href={featuresHref} className="hover:text-[var(--text)] transition">{featuresText}</Link>
             <Link href={aboutHref} className="hover:text-[var(--text)] transition">{aboutText}</Link>
             <Link href="/schedule" className="hover:text-[var(--text)] transition">{scheduleText}</Link>
+            <Link href="/products" className="hover:text-[var(--text)] transition">{productsText}</Link>
             <Link href={contactHref} className="hover:text-[var(--text)] transition">{contactText}</Link>
             {/* Admin Access - Development Only */}
             {process.env.NODE_ENV === 'development' && (
@@ -139,6 +141,13 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               {scheduleText}
+            </Link>
+            <Link 
+              href="/products" 
+              className="block text-[var(--muted)] hover:text-[var(--text)] transition py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {productsText}
             </Link>
             <Link 
               href={contactHref} 
