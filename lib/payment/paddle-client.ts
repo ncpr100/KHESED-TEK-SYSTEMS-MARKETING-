@@ -66,17 +66,16 @@ export async function createCheckoutLink(
     
     console.log('Creating Paddle checkout with items:', JSON.stringify(items, null, 2));
     
-    const response = await fetch(`${paddle.apiUrl}/checkouts`, {
+    const response = await fetch(`${paddle.apiUrl}/transactions`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${paddle.apiKey}`,
         'Content-Type': 'application/json',
+        'Paddle-Version': '1'
       },
       body: JSON.stringify({
         items,
-        customer: {
-          email: customerEmail,
-        },
+        customer_email: customerEmail,
         custom_data: customData || {},
       }),
     });
@@ -92,8 +91,11 @@ export async function createCheckoutLink(
       throw new Error('Invalid response from Paddle API');
     }
     
+    // Extract checkout URL from transaction response
+    const checkoutUrl = data.data.checkout?.url || data.data.checkout_url || '';
+    
     return {
-      checkoutUrl: data.data.url || '',
+      checkoutUrl,
       checkoutId: data.data.id,
     };
   } catch (error: any) {
