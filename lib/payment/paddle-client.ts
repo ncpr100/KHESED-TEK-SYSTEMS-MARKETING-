@@ -35,7 +35,7 @@ export function getPaddleClient() {
 
 /**
  * Create checkout session and get payment link
- * Uses Paddle REST API
+ * Uses direct Paddle Billing checkout URL construction
  * 
  * @param priceOverride Optional price in USD (e.g., 10.99). If provided, overrides the default product price.
  */
@@ -46,60 +46,46 @@ export async function createCheckoutLink(
   customData?: Record<string, any>,
   priceOverride?: number
 ): Promise<PaddleCheckoutResponse> {
-  const paddle = getPaddleClient();
-  
   try {
-    // Build items array with optional price override
-    const items = [
-      {
-        price_id: productId,
-        quantity: 1,
-        ...(priceOverride && {
-          // Convert USD to cents (Paddle requires integer amount in minor currency unit)
-          price: {
-            amount: Math.round(priceOverride * 100).toString(),
-            currency_code: 'USD'
-          }
-        })
-      },
-    ];
+    // Paddle Billing uses direct checkout URLs - no API call needed
+    const params = new URLSearchParams();
     
-    console.log('Creating Paddle checkout with items:', JSON.stringify(items, null, 2));
+    // Add item (price_id + quantity)
+    params.append('items[0][price_id]', productId);
+    params.append('items[0][quantity]', '1');
     
-    const response = await fetch(`${paddle.apiUrl}/transactions`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${paddle.apiKey}`,
-        'Content-Type': 'application/json',
-        'Paddle-Version': '1'
-      },
-      body: JSON.stringify({
-        items,
-        customer_email: customerEmail,
-        custom_data: customData || {},
-      }),
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Paddle API error: ${JSON.stringify(errorData)}`);
+    // Override price if provided (for processing fee, custom pricing)
+    if (priceOverride) {
+      // Convert USD to cents (Paddle requires integer amount in minor currency unit)
+      params.append('items[0][price][amount]', Math.round(priceOverride * 100).toString());
+      params.append('items[0][price][currency_code]', 'USD');
     }
     
-    const data = await response.json();
+    // Add customer email for pre-filling checkout form
+    params.append('customer_email', customerEmail);
     
-    if (!data || !data.data || !data.data.id) {
-      throw new Error('Invalid response from Paddle API');
+    // Add custom data for tracking (if provided)
+    if (customData) {
+      Object.entries(customData).forEach(([key, value]) => {
+        params.append(`custom_data[${key}]`, String(value));
+      });
     }
     
-    // Extract checkout URL from transaction response
-    const checkoutUrl = data.data.checkout?.url || data.data.checkout_url || '';
+    // Build checkout URL (sandbox vs production)
+    const baseUrl = PADDLE_ENVIRONMENT === 'production'
+      ? 'https://buy.paddle.com/checkout'
+      : 'https://sandbox-buy.paddle.com/checkout';
+    
+    const checkoutUrl = `${baseUrl}?${params.toString()}`;
+    
+    console.log('Generated Paddle checkout URL:', checkoutUrl.substring(0, 100) + '...');
     
     return {
       checkoutUrl,
-      checkoutId: data.data.id,
+      checkoutId: null, // No checkout ID with direct URL method
     };
   } catch (error: any) {
-    console.error('Error creating Paddle checkout:', error);
+    console.error('Error creating Paddle checkout URL:', error);
     throw new Error(`Failed to create checkout: ${error.message}`);
   }
 }
