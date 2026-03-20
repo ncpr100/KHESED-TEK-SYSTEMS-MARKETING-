@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
     // Update product request with payment link
     await updateProductRequest(productRequest.id!, {
       paymentLink: checkoutData.checkoutUrl,
-      paddleCheckoutId: checkoutData.checkoutId,
+      paddleCheckoutId: checkoutData.checkoutId ?? undefined, // Convert null to undefined
       status: 'payment_sent',
     });
     
