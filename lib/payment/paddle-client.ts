@@ -37,14 +37,14 @@ export function getPaddleClient() {
  * Create checkout session and get payment link
  * Uses direct Paddle Billing checkout URL construction
  * 
- * @param priceOverride Optional price in USD (e.g., 10.99). If provided, overrides the default product price.
+ * NOTE: Price is determined by the price_id parameter. Use different price_ids
+ * for different prices (e.g., base price vs. with processing fees).
  */
 export async function createCheckoutLink(
   productId: string,
   customerEmail: string,
   customerName: string,
-  customData?: Record<string, any>,
-  priceOverride?: number
+  customData?: Record<string, any>
 ): Promise<PaddleCheckoutResponse> {
   try {
     // Paddle Billing uses direct checkout URLs - no API call needed
@@ -53,13 +53,6 @@ export async function createCheckoutLink(
     // Add item (price_id + quantity)
     params.append('items[0][price_id]', productId);
     params.append('items[0][quantity]', '1');
-    
-    // Override price if provided (for processing fee, custom pricing)
-    if (priceOverride) {
-      // Convert USD to cents (Paddle requires integer amount in minor currency unit)
-      params.append('items[0][price][amount]', Math.round(priceOverride * 100).toString());
-      params.append('items[0][price][currency_code]', 'USD');
-    }
     
     // Add customer email for pre-filling checkout form
     params.append('customer_email', customerEmail);
@@ -78,7 +71,8 @@ export async function createCheckoutLink(
     
     const checkoutUrl = `${baseUrl}?${params.toString()}`;
     
-    console.log('Generated Paddle checkout URL:', checkoutUrl.substring(0, 100) + '...');
+    console.log('Generated Paddle checkout URL:', checkoutUrl.substring(0, 150) + '...');
+    console.log('Full URL length:', checkoutUrl.length, 'characters');
     
     return {
       checkoutUrl,

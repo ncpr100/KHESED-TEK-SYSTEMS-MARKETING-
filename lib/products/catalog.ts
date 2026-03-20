@@ -87,8 +87,17 @@ export function getProductDescription(productType: ProductType, language: 'es' |
 
 /**
  * Get Paddle product ID for specified language
+ * @param withFees - If true, returns the "with processing fees" price ($10.99 instead of $9.99)
  */
-export function getPaddleProductId(productType: ProductType, language: 'es' | 'en'): string | undefined {
+export function getPaddleProductId(productType: ProductType, language: 'es' | 'en', withFees: boolean = false): string | undefined {
+  if (withFees) {
+    // Return "with fees" version from environment variables
+    const suffix = language === 'es' ? 'ES_WITH_FEES' : 'EN_WITH_FEES';
+    const envKey = `PADDLE_PRODUCT_EBOOK_${productType.replace('ebook_', '').toUpperCase()}_${suffix}`;
+    return process.env[envKey];
+  }
+  
+  // Return base price version
   const product = getProductInfo(productType);
   return language === 'es' ? product.paddleProductIdES : product.paddleProductIdEN;
 }

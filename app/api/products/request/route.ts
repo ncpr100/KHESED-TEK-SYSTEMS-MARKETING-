@@ -149,23 +149,23 @@ export async function POST(request: NextRequest) {
     
     console.log('Product request created:', productRequest.id);
     
-    // Get Paddle product ID
-    const paddleProductId = getPaddleProductId(payload.productType, payload.language);
+    // Get Paddle product ID (select between base price and "with fees" version)
+    const paddleProductId = getPaddleProductId(payload.productType, payload.language, coverProcessingFees);
     if (!paddleProductId) {
-      console.error('Paddle product ID not configured for:', payload.productType, payload.language);
+      console.error('Paddle product ID not configured for:', payload.productType, payload.language, `withFees: ${coverProcessingFees}`);
       return Response.json(
         { ok: false, error: 'Product configuration error. Please contact support.' },
         { status: 500 }
       );
     }
     
-    // Calculate final price (base price + processing fees if user opted in)
+    // Get pricing info for email (even though Paddle price is pre-configured)
     const pricing = getPriceWithFee(payload.productType);
     const finalPrice = coverProcessingFees ? pricing.total : pricing.basePrice;
     
-    console.log(`Processing fees: ${coverProcessingFees ? 'Yes' : 'No'} | Final price: $${finalPrice.toFixed(2)}`);
+    console.log(`Processing fees: ${coverProcessingFees ? 'Yes' : 'No'} | Selected price: $${finalPrice.toFixed(2)} | Price ID: ${paddleProductId}`);
     
-    // Create Paddle checkout link
+    // Create Paddle checkout link (price is already in the price_id, no override needed)
     const checkoutData = await createCheckoutLink(
       paddleProductId,
       payload.customerEmail,
@@ -174,8 +174,7 @@ export async function POST(request: NextRequest) {
         productRequestId: productRequest.id,
         productType: payload.productType,
         language: payload.language,
-      },
-      finalPrice // Pass calculated price
+      }
     );
     
     console.log('Paddle checkout created:', checkoutData.checkoutId);
