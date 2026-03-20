@@ -20,16 +20,16 @@ This system allows KHESED-TEK to sell:
 
 ## 🗄️ STEP 1: SUPABASE SETUP
 
-### 1.1 Create Supabase Account
+**⚠️ IMPORTANT: You're using your EXISTING Supabase project (wchqfddjednbpbyofbmj)**
 
-1. Go to https://supabase.com
-2. Sign up with GitHub or email
-3. Click "New Project"
-4. Fill in:
-   - **Project name**: `khesed-tek-products` (or your choice)
-   - **Database password**: Generate strong password (save it!)
-   - **Region**: Choose closest to Colombia (e.g., `South America (São Paulo)`)
-5. Wait 2-3 minutes for project to provision
+Since you already have Supabase configured for your CMS app, we'll **add product sales tables** to that same project. This avoids variable conflicts and keeps everything in one database.
+
+### 1.1 Open Your Existing Supabase Project
+
+1. Go to https://supabase.com/dashboard
+2. Sign in with your existing account
+3. Select project: **wchqfddjednbpbyofbmj** (or your CMS project)
+4. ✅ **Skip creating a new project** - we're using your existing one!
 
 ### 1.2 Create Database Table
 
@@ -97,14 +97,15 @@ CREATE TRIGGER update_product_requests_updated_at
    - `ebooks/vida-de-impacto.pdf`
 4. Each file should be a complete, formatted PDF
 
-### 1.5 Get API Credentials
+### 1.5 Verify API Credentials (Already Configured)
 
-1. Go to **Project Settings** (gear icon, bottom left)
-2. Go to **API** section
-3. Copy these values (you'll need them for .env):
-   - **Project URL**: `https://xxxxx.supabase.co`
-   - **anon/public key**: `eyJhbGc...` (long string)
-   - **service_role key**: `eyJhbGc...` (different long string - KEEP SECRET!)
+Your Supabase credentials are **already in your .env.local** and **already in Vercel** from your CMS setup:
+
+✅ **Project URL**: `https://wchqfddjednbpbyofbmj.supabase.co`
+✅ **anon/public key**: Already set as `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+✅ **service_role key**: Already set as `SUPABASE_SERVICE_ROLE_KEY`
+
+**No action needed** - we're reusing these credentials for product sales!
 
 ---
 
@@ -200,45 +201,68 @@ Create 6 products (3 e-books × 2 languages):
 
 ### 3.1 Update .env.local (for local development)
 
-Create/update `.env.local` in project root:
+Your `.env.local` file is **already configured** with Supabase credentials. You only need to verify it has these sections:
 
 \`\`\`bash
-# === EXISTING VARIABLES (keep these) ===
+# === EXISTING VARIABLES (already configured) ===
 GMAIL_USER=nc@khesed-tek-systems.org
-GMAIL_APP_PASSWORD=your-app-password
-# ... other existing vars ...
+GMAIL_APP_PASSWORD=your-app-password  # ⚠️ Update this if placeholder!
 
-# === NEW SUPABASE VARIABLES ===
-NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... # DIFFERENT from anon key!
+# === SUPABASE VARIABLES (already configured from CMS) ===
+NEXT_PUBLIC_SUPABASE_URL=https://wchqfddjednbpbyofbmj.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc... # Already set
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGc... # Already set
 
-# === NEW PADDLE VARIABLES ===
+# === NEW PADDLE VARIABLES (add these) ===
 PADDLE_API_KEY=your-paddle-api-key
 PADDLE_WEBHOOK_SECRET=pdl_ntfset_xxx...
-PADDLE_ENVIRONMENT=sandbox  # Use 'sandbox' for testing, 'production' when live
+PADDLE_ENVIRONMENT=sandbox  # ✅ Already set to 'sandbox'
 
 # Paddle Product IDs (Price IDs from Step 2.3)
-PADDLE_PRODUCT_EBOOK_PEACE_ES=pri_xxx...
-PADDLE_PRODUCT_EBOOK_PEACE_EN=pri_xxx...
-PADDLE_PRODUCT_EBOOK_BLOOMING_ES=pri_xxx...
-PADDLE_PRODUCT_EBOOK_BLOOMING_EN=pri_xxx...
-PADDLE_PRODUCT_EBOOK_IMPACTFUL_ES=pri_xxx...
-PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx...
+PADDLE_PRODUCT_EBOOK_PEACE_ES=pri_xxx...     # ✅ Already set
+PADDLE_PRODUCT_EBOOK_PEACE_EN=pri_xxx...     # ✅ Already set
+PADDLE_PRODUCT_EBOOK_BLOOMING_ES=pri_xxx...  # ✅ Already set
+PADDLE_PRODUCT_EBOOK_BLOOMING_EN=pri_xxx...  # ✅ Already set
+PADDLE_PRODUCT_EBOOK_IMPACTFUL_ES=pri_xxx... # ✅ Already set
+PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx... # ✅ Already set
 \`\`\`
 
+✅ **Your .env.local is already configured!** All variables are present.
+
 ### 3.2 Update Vercel Environment Variables
+
+**⚠️ IMPORTANT - Avoid Variable Conflict:**
+
+Since Supabase variables **already exist** in Vercel from your CMS app, you **ONLY need to add PADDLE variables** to avoid the "already exists" error.
+
+**Add these 9 variables to Vercel:**
 
 1. Go to https://vercel.com/dashboard
 2. Select your project (`khesed-tek-systems-marketing`)
 3. Go to **Settings** → **Environment Variables**
-4. Add **each variable** from above:
+4. Add **ONLY these variables** (DO NOT add Supabase variables):
+
+**Paddle Core Variables:**
+   - `PADDLE_API_KEY` → `your-api-key`
+   - `PADDLE_WEBHOOK_SECRET` → `pdl_ntfset_xxx...`
+   - `PADDLE_ENVIRONMENT` → `sandbox`
+
+**Paddle Product IDs:**
+   - `PADDLE_PRODUCT_EBOOK_PEACE_ES` → `pri_xxx...`
+   - `PADDLE_PRODUCT_EBOOK_PEACE_EN` → `pri_xxx...`
+   - `PADDLE_PRODUCT_EBOOK_BLOOMING_ES` → `pri_xxx...`
+   - `PADDLE_PRODUCT_EBOOK_BLOOMING_EN` → `pri_xxx...`
+   - `PADDLE_PRODUCT_EBOOK_IMPACTFUL_ES` → `pri_xxx...`
+   - `PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN` → `pri_xxx...`
+
+For each variable:
    - Click "Add"
-   - Paste name (e.g., `NEXT_PUBLIC_SUPABASE_URL`)
+   - Paste name (e.g., `PADDLE_API_KEY`)
    - Paste value
    - Select: `Production`, `Preview`, `Development`
    - Click "Save"
-5. **IMPORTANT**: After adding all variables, redeploy:
+
+5. **After adding all 9 Paddle variables**, redeploy:
    - Go to **Deployments** tab
    - Click three dots on latest deployment
    - Click "Redeploy"
