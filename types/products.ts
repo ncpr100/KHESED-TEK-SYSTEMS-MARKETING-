@@ -58,7 +58,7 @@ export interface ProductFormData {
 
 export interface PaddleCheckoutResponse {
   checkoutUrl: string;
-  checkoutId: string;
+  checkoutId: string | null; // Nullable for direct URL method (no API checkout ID)
 }
 
 export interface PaddleWebhookEvent {
