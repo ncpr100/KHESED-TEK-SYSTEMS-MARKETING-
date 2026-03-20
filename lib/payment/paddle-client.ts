@@ -12,8 +12,8 @@ import { PaddleCheckoutResponse } from '@/types/products';
 const PADDLE_API_KEY = process.env.PADDLE_API_KEY || '';
 const PADDLE_ENVIRONMENT = process.env.PADDLE_ENVIRONMENT || 'sandbox'; // 'sandbox' or 'production'
 const PADDLE_API_URL = PADDLE_ENVIRONMENT === 'production' 
-  ? 'https://api.paddle.com'
-  : 'https://sandbox-api.paddle.com';
+  ? 'https://api.paddle.com/v1'
+  : 'https://sandbox-api.paddle.com/v1';
 
 if (!PADDLE_API_KEY) {
   console.warn('Paddle API key not configured. Payment functionality will be disabled.');
