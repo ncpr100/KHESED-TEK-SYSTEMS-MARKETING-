@@ -107,6 +107,11 @@ const OutlineIcon = ({ name, className = "w-4 h-4" }: OutlineIconProps) => {
         <line x1="8" x2="8" y1="2" y2="6"></line>
         <line x1="3" x2="21" y1="10" y2="10"></line>
       </svg>
+    ),
+    'chevron': (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <polyline points="6,9 12,15 18,9"></polyline>
+      </svg>
     )
   };
 

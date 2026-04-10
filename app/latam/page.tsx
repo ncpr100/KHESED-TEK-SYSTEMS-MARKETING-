@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
+import FAQSection from '@/components/marketing/faq-section';
 import { trackCTAClick, trackServiceView } from '@/lib/analytics';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
 import FeatureComparisonTable from '@/components/pricing/feature-comparison';
@@ -14,6 +15,29 @@ import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
 import OutlineIcon from '@/components/ui/outline-icon';
 
+function BillingToggle({ annual, onChange }: { annual: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <div className="inline-flex items-center gap-1 bg-[var(--surface)] p-1 rounded-full border border-[var(--border)] mt-4">
+      <button
+        onClick={() => onChange(false)}
+        className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+          !annual ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-[var(--text)]'
+        }`}
+      >
+        Mensual
+      </button>
+      <button
+        onClick={() => onChange(true)}
+        className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+          annual ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-[var(--text)]'
+        }`}
+      >
+        Anual <span className="text-xs ml-1 opacity-75">2 meses gratis</span>
+      </button>
+    </div>
+  );
+}
+
 export default function LatamMarketPage() {
   const { market, language } = useGlobalMarket();
   
@@ -21,6 +45,8 @@ export default function LatamMarketPage() {
   const ctaVariant = useABTest(CTA_BUTTON_TEST, 'LATAM');
   
   const heroText = getVariantContent(HERO_HEADLINE_TEST, heroVariant, 'es', HERO_HEADLINE_CONTENT);
+
+  const [annualBilling, setAnnualBilling] = useState(false);
   const ctaText = getVariantContent(CTA_BUTTON_TEST, ctaVariant, 'es', CTA_BUTTON_CONTENT);
 
   const handleCTAClick = () => {
@@ -273,6 +299,9 @@ export default function LatamMarketPage() {
           <div className="text-lg text-[var(--muted)] mb-4">
             Precio fijo por tamaño de iglesia - Sin cargos adicionales por módulos
           </div>
+
+          {/* Billing Toggle */}
+          <BillingToggle annual={annualBilling} onChange={setAnnualBilling} />
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -280,20 +309,20 @@ export default function LatamMarketPage() {
             {
               id: "small",
               name: "BÁSICO - Iglesia Pequeña",
-              price: "$149.99 USD",
-              period: "/mes",
+              price: annualBilling ? "$1,499.90 USD" : "$149.99 USD",
+              period: annualBilling ? "/año" : "/mes",
               members: "Hasta 500 miembros",
-              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos PSE"],
+              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos PSE", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               ctaText: "Solicitar Demo",
               ctaUrl: "/contact?plan=small"
             },
             {
               id: "medium",
               name: "PROFESIONAL - Iglesia Mediana", 
-              price: "$299.99 USD",
-              period: "/mes",
+              price: annualBilling ? "$2,999.90 USD" : "$299.99 USD",
+              period: annualBilling ? "/año" : "/mes",
               members: "Hasta 2,000 miembros",
-              features: ["Todo lo anterior", "Hasta 10 licencias", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo"],
+              features: ["Todo lo anterior", "Hasta 10 licencias", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               popular: true,
               ctaText: "Más popular",
               ctaUrl: "/contact?plan=medium"
@@ -486,6 +515,8 @@ export default function LatamMarketPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection language="es" />
 
       <Footer />
     </main>
