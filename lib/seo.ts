@@ -112,7 +112,6 @@ export const localBusinessSchema = {
   },
   "openingHours": "Mo-Fr 09:00-18:00",
   "priceRange": "$$",
-  "servedCuisine": "Technology Services",
   "paymentAccepted": "Cash, Credit Card, Bank Transfer"
 };
 

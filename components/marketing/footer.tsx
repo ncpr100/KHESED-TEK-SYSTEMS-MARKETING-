@@ -30,7 +30,14 @@ export default function Footer() {
           <div className="text-[var(--text)]">Barranquilla, Atlántico, Colombia</div>
         </div>
       </div>
-      <div>© 2025 KHESED-TEK SYSTEMS. Todos los derechos reservados.</div>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+        <div>© {new Date().getFullYear()} KHESED-TEK SYSTEMS. Todos los derechos reservados.</div>
+        <div className="flex items-center gap-4">
+          <a href="/privacy" className="hover:text-[var(--brand)] transition">Política de Privacidad</a>
+          <span className="text-[var(--border)]">|</span>
+          <a href="/terms" className="hover:text-[var(--brand)] transition">Términos de Servicio</a>
+        </div>
+      </div>
     </footer>
   );
 }

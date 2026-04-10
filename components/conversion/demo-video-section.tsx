@@ -247,10 +247,18 @@ export default function DemoVideoSection({
           <div className="relative group cursor-pointer" onClick={() => handleVideoPlay(mainVideo)}>
             {/* Video Thumbnail */}
             <div className="relative aspect-video bg-gradient-to-br from-[var(--brand)]/20 to-[var(--brand2)]/20 rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[var(--brand)] transition-all duration-300">
-              {/* Placeholder thumbnail with gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center">
-                {/* Clean video area - no text overlay */}
-              </div>
+              {/* Video thumbnail image */}
+              {mainVideo.thumbnailUrl ? (
+                <img
+                  src={mainVideo.thumbnailUrl}
+                  alt={mainVideo.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center">
+                  {/* Clean video area - no text overlay */}
+                </div>
+              )}
 
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-all duration-300">

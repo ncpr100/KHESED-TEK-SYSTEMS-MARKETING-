@@ -71,7 +71,7 @@ export const CTA_BUTTON_TEST: ABTest = {
   testName: 'CTA Button Global Test',
   variants: [
     { id: 'control', name: 'Hablar con nosotros →', weight: 50 },
-    { id: 'variant_a', name: 'Solicitar demo gratuito →', weight: 25 },
+    { id: 'variant_a', name: 'Solicitar demo →', weight: 25 },
     { id: 'variant_b', name: 'Comenzar ahora →', weight: 25 },
   ],
   storageKey: 'ab_test_cta_button_global',
@@ -83,8 +83,8 @@ export const CTA_BUTTON_CONTENT: Record<string, MarketContent> = {
     en: 'Talk to us →'
   },
   variant_a: {
-    es: 'Solicitar demo gratuito →',
-    en: 'Request free demo →'
+    es: 'Solicitar demo →',
+    en: 'Request a demo →'
   },
   variant_b: {
     es: 'Comenzar ahora →',

@@ -177,7 +177,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es' 
                 ? 'IA que adapta automáticamente la interfaz según el contexto cultural. Planning Center y Realm solo ofrecen traducciones básicas.'
                 : 'AI that automatically adapts interface based on cultural context. Planning Center and Realm only offer basic translations.',
-              icon: '田',
+              icon: 'globe',
               advantage: language === 'es' 
                 ? 'vs Planning Center/Realm: Adaptación cultural inteligente única'
                 : 'vs Planning Center/Realm: Unique intelligent cultural adaptation'
@@ -188,7 +188,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'Español, inglés, portugués con IA contextual. Breeze y ChurchTrac no tienen soporte multiidioma.'
                 : 'Spanish, English, Portuguese with contextual AI. Breeze and ChurchTrac lack multi-language support.',
-              icon: '�',
+              icon: 'globe',
               advantage: language === 'es'
                 ? 'vs Breeze/ChurchTrac: Único con multiidioma nativo'
                 : 'vs Breeze/ChurchTrac: Only system with native multi-language'
@@ -232,7 +232,7 @@ export default function GlobalMarketPage() {
               desc: language === 'es'
                 ? 'IA predice tendencias por región y cultura. Ningún competidor ofrece análisis predictivo cultural.'
                 : 'AI predicts trends by region and culture. No competitor offers cultural predictive analytics.',
-              icon: '�',
+              icon: 'diamond',
               advantage: language === 'es'
                 ? 'vs Todos: Análisis predictivo cultural único'
                 : 'vs All: Unique cultural predictive analytics'
@@ -616,7 +616,7 @@ export default function GlobalMarketPage() {
               languages: language === 'es' ? 'Inglés, Árabe, Francés' : 'English, Arabic, French',
               hours: '7AM-7PM CAT',
               contact: 'mea@khesed-tek-systems.org',
-              flag: '田'
+              flag: '🌍'
             }
           ].map((region, idx) => (
             <div key={idx} className="card p-6 text-center">

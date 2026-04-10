@@ -313,7 +313,7 @@ export default function LatamMarketPage() {
               period: "/mes",
               members: "Hasta 500 miembros",
               features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos PSE"],
-              ctaText: "Comenzar gratis",
+              ctaText: "Solicitar Demo",
               ctaUrl: "/contact?plan=small"
             },
             {
@@ -381,35 +381,6 @@ export default function LatamMarketPage() {
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
-      </section>
-
-      {/* Programa Beta Launch */}
-      <section className="max-w-4xl mx-auto px-6 py-12">
-        <div className="card p-8 bg-gradient-to-br from-[var(--brand)]/5 to-[var(--brand2)]/5 text-center">
-          <div className="inline-flex items-center gap-2 bg-[var(--brand)]/10 text-[var(--brand)] px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <OutlineIcon name="rocket" className="w-4 h-4" />
-            <span>Programa Beta - Lanzamiento Especial</span>
-          </div>
-          <h2 className="text-2xl font-semibold mb-4">Únete a Nuestro Programa Beta</h2>
-          <p className="text-[var(--muted)] mb-6 max-w-2xl mx-auto">
-            Sé parte de las primeras iglesias en experimentar KHESED-TEK-CMS. 
-            Obtén acceso completo y ayúdanos a perfeccionar la plataforma diseñada específicamente para iglesias hispanas.
-          </p>
-          <div className="flex justify-center mb-8">
-            <div className="bg-[var(--surface)] p-6 rounded-lg border border-[var(--border)] max-w-sm">
-              <div className="text-3xl font-bold text-[var(--brand)] mb-2">30 días</div>
-              <div className="text-sm text-[var(--muted)]">Acceso completamente gratis</div>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact?program=beta" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full gradient-btn hover:scale-105 transition">
-              Aplicar al Programa Beta →
-            </a>
-            <a href="https://wa.me/573021234410" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition">
-              WhatsApp: +57 302 123 4410
-            </a>
-          </div>
-        </div>
       </section>
 
       {/* About Section - Nosotros */}
