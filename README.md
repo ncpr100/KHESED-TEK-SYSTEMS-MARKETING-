@@ -54,5 +54,5 @@ Remember to add environment variables in your Vercel dashboard at: **Project Set
 ## Contact
 
 - Email: <soporte@khesed-tek-systems.org>
-- WhatsApp: +57 301 795 6893
+- WhatsApp: +57 302 123 4410
 - Location: Barranquilla, Atlántico, Colombia

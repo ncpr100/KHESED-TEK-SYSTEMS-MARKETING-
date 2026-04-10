@@ -142,7 +142,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
     type: 'certification',
     icon: 'award',
     title: 'Experiencia',
-    description: 'Años sirviendo en ministerios',
+    description: 'Años de experiencia ministerial del fundador',
     value: '40+',
     market: 'LATAM'
   },
@@ -151,7 +151,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
     type: 'certification',
     icon: 'award',
     title: 'Experience',
-    description: 'Years serving in ministry',
+    description: "Founder's years of ministry experience",
     value: '40+',
     market: 'USA'
   },
@@ -160,7 +160,7 @@ const TRUST_SIGNALS: TrustSignal[] = [
     type: 'certification',
     icon: 'award',
     title: 'Experience',
-    description: 'Years serving in ministry worldwide',
+    description: "Founder's years of ministry experience",
     value: '40+',
     market: 'GLOBAL'
   },

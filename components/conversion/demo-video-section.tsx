@@ -244,7 +244,15 @@ export default function DemoVideoSection({
         {viewMode === 'video' ? (
           /* Main Video */
         <div className="relative mb-8">
-          <div className="relative group cursor-pointer" onClick={() => handleVideoPlay(mainVideo)}>
+          <a
+            href={mainVideo.videoUrl.includes('youtube.com/embed/') 
+              ? `https://www.youtube.com/watch?v=${mainVideo.videoUrl.split('embed/')[1].split('?')[0]}`
+              : mainVideo.videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group cursor-pointer block"
+            onClick={(e) => { e.preventDefault(); handleVideoPlay(mainVideo); }}
+          >
             {/* Video Thumbnail */}
             <div className="relative aspect-video bg-gradient-to-br from-[var(--brand)]/20 to-[var(--brand2)]/20 rounded-2xl overflow-hidden border border-[var(--border)] group-hover:border-[var(--brand)] transition-all duration-300">
               {/* Video thumbnail image */}
@@ -277,7 +285,7 @@ export default function DemoVideoSection({
 
             {/* Hover Effects */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--brand)]/0 to-[var(--brand2)]/0 group-hover:from-[var(--brand)]/5 group-hover:to-[var(--brand2)]/5 transition-all duration-300 pointer-events-none" />
-          </div>
+          </a>
 
           {/* Video Info */}
           <div className="mt-6 text-center">
