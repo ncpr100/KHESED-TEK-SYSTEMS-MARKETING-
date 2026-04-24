@@ -118,11 +118,15 @@ export default function FAQSection({ language = 'es', className = '' }: FAQSecti
                 </span>
               </button>
 
-              {isOpen && (
-                <div className="px-6 pb-5 text-[var(--muted)] leading-relaxed border-t border-[var(--border)] pt-4">
-                  {item.answer}
-                </div>
-              )}
+              {/* Always rendered for crawlers; visually hidden when closed */}
+              <div
+                className={`px-6 text-[var(--muted)] leading-relaxed border-t border-[var(--border)] transition-all duration-300 ${
+                  isOpen ? 'pb-5 pt-4 max-h-96 overflow-auto' : 'max-h-0 overflow-hidden border-t-0 py-0'
+                }`}
+                aria-hidden={!isOpen}
+              >
+                {item.answer}
+              </div>
             </div>
           );
         })}

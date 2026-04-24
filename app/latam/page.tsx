@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 import FAQSection from '@/components/marketing/faq-section';
-import { trackCTAClick, trackServiceView } from '@/lib/analytics';
+import { trackCTAClick, trackServiceView, analytics } from '@/lib/analytics';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
 import FeatureComparisonTable from '@/components/pricing/feature-comparison';
 import { PricingPlan } from '@/types/pricing';
@@ -14,6 +14,7 @@ import TrustSignalsSection, { TrustBadges } from '@/components/social-proof/trus
 import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
 import OutlineIcon from '@/components/ui/outline-icon';
+import { ScrollTracker } from '@/components/scroll-tracker';
 
 function BillingToggle({ annual, onChange }: { annual: boolean; onChange: (v: boolean) => void }) {
   return (
@@ -56,6 +57,7 @@ export default function LatamMarketPage() {
 
   return (
     <main className="min-h-screen">
+      <ScrollTracker />
       <Header />
 
       {/* LATAM-Specific Hero Section */}
@@ -97,7 +99,7 @@ export default function LatamMarketPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full border border-[var(--border)] hover:border-[var(--brand)] transition"
-              onClick={() => trackCTAClick('latam_whatsapp', 'WhatsApp directo')}
+              onClick={() => { trackCTAClick('latam_whatsapp', 'WhatsApp directo'); analytics.whatsappClick('hero'); }}
             >
               <OutlineIcon name="phone" className="w-4 h-4 text-[var(--brand)]" /> WhatsApp directo
             </a>
@@ -342,7 +344,11 @@ export default function LatamMarketPage() {
               key={plan.id}
               plan={plan as PricingPlan}
               index={idx}
-              onSelect={(planId) => trackCTAClick('latam_pricing', `Plan ${planId}`)}
+              onSelect={(planId) => {
+                trackCTAClick('latam_pricing', `Plan ${planId}`);
+                const planMap: Record<string, 'básico' | 'profesional' | 'empresarial'> = { small: 'básico', medium: 'profesional', large: 'empresarial' };
+                const plan = planMap[planId]; if (plan) analytics.demoRequest(plan);
+              }}
             />
           ))}
         </div>

@@ -502,6 +502,45 @@ export const trackPagePerformance = async (metrics: Record<string, number>) => {
 // Declare gtag for TypeScript
 declare global {
   interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
+    gtag: (...args: unknown[]) => void;
   }
 }
+
+type CTALocation = "hero" | "header" | "pricing" | "footer" | "about" | "banner";
+type PricingPlan = "básico" | "profesional" | "empresarial" | "beta";
+
+export const analytics = {
+  whatsappClick(location: CTALocation) {
+    window.gtag?.("event", "whatsapp_click", { location });
+  },
+
+  demoRequest(plan: PricingPlan) {
+    window.gtag?.("event", "demo_request", { plan });
+  },
+
+  videoPlay(videoTitle: string) {
+    window.gtag?.("event", "video_play", { video_title: videoTitle });
+  },
+
+  roiCalculated(params: {
+    churchSize: "pequeña" | "mediana" | "grande";
+    adminHours: number;
+    volunteerHours: number;
+    manualLevel: number;
+    projectedROI: number;
+  }) {
+    window.gtag?.("event", "roi_calculated", params);
+  },
+
+  faqExpanded(question: string) {
+    window.gtag?.("event", "faq_expanded", { question });
+  },
+
+  sectionViewed(sectionId: string) {
+    window.gtag?.("event", "section_viewed", { section: sectionId });
+  },
+
+  ctaClicked(label: string, destination: string) {
+    window.gtag?.("event", "cta_clicked", { label, destination });
+  },
+};

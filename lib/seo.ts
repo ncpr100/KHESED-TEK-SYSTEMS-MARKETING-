@@ -68,7 +68,9 @@ export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 
       "addressCountry": config.country
     },
     "sameAs": [
-      "https://wa.me/573021234410"
+      "https://wa.me/573021234410",
+      "https://linkedin.com/company/khesed-tek-systems",
+      "https://www.youtube.com/@khesed-tek"
     ],
     "serviceArea": {
       "@type": market === 'GLOBAL' ? "Place" : "Country",
