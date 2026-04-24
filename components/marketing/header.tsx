@@ -70,6 +70,7 @@ export default function Header() {
             width={512}
             height={232}
             priority
+            sizes="(max-width: 640px) 180px, 260px"
             className="h-[70px] w-auto sm:h-[90px]"
           />
         </Link>
@@ -99,12 +100,10 @@ export default function Header() {
             )}
           </nav>
 
-          {/* Sticky Demo CTA — appears after scrolling */}
+          {/* Demo CTA — always visible */}
           <Link
             href="/contact"
-            className={`hidden sm:inline-flex items-center gap-2 gradient-btn text-black font-semibold px-4 py-2 rounded-full text-sm transition-all duration-300 ${
-              scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
-            }`}
+            className="hidden sm:inline-flex items-center gap-2 gradient-btn text-black font-semibold px-4 py-2 rounded-full text-sm"
           >
             {effectiveLanguage === 'es' ? 'Agendar Demo' : 'Schedule Demo'} →
           </Link>

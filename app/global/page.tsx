@@ -2,6 +2,7 @@
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 import { trackCTAClick } from '@/lib/analytics';
+import { ScrollTracker } from '@/components/scroll-tracker';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
 import AnimatedPricingCard from '@/components/pricing/animated-pricing-card';
@@ -29,6 +30,7 @@ export default function GlobalMarketPage() {
 
   return (
     <main className="min-h-screen">
+      <ScrollTracker />
       <Header />
 
       {/* Global-Specific Hero Section */}

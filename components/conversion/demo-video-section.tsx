@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { DemoVideo, VideoModalProps, DemoVideoSectionProps } from '@/types/demo-video';
-import { trackCTAClick } from '@/lib/analytics';
+import { trackCTAClick, analytics } from '@/lib/analytics';
 import { PRODUCTION_DEMO_VIDEOS, getVideosByMarket, getMainDemoVideo } from '@/lib/demo-videos';
 import ImageCarousel from '@/components/ui/image-carousel';
 import { getScreenshotsByMarket, PLACEHOLDER_SCREENSHOTS } from '@/lib/product-screenshots';
@@ -198,6 +198,7 @@ export default function DemoVideoSection({
     setSelectedVideo(video);
     setIsModalOpen(true);
     trackCTAClick('demo_video', `play_${video.id}`);
+    analytics.videoPlay(video.title);
   };
 
   const handleModalClose = () => {
