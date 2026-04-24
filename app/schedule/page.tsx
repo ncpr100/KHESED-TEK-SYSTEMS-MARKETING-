@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
 import OutlineIcon from '@/components/ui/outline-icon';
+import { analytics } from '@/lib/analytics';
 
 export default function SchedulePage() {
   return (
@@ -301,6 +302,7 @@ export default function SchedulePage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+              onClick={() => analytics.whatsappClick('banner')}
             >
               {/* Outline Phone Icon */}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

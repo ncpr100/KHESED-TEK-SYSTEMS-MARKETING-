@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ROIInput, ROICalculation, ChurchProfile, ROICalculatorProps } from '@/types/roi-calculator';
-import { trackCTAClick } from '@/lib/analytics';
+import { trackCTAClick, analytics } from '@/lib/analytics';
 import OutlineIcon from '@/components/ui/outline-icon';
 
 // Church size profiles with realistic data
@@ -182,6 +182,18 @@ export default function ROICalculator({
   const handleCalculate = () => {
     setShowResults(true);
     trackCTAClick('roi_calculator', 'calculate_roi');
+    if (calculation) {
+      const sizeMap: Record<string, 'pequeña' | 'mediana' | 'grande'> = {
+        small: 'pequeña', medium: 'mediana', large: 'grande',
+      };
+      analytics.roiCalculated({
+        churchSize: sizeMap[inputs.churchSize] ?? 'mediana',
+        adminHours: inputs.adminHoursPerWeek,
+        volunteerHours: inputs.volunteerHours,
+        manualLevel: inputs.manualProcesses,
+        projectedROI: Math.round(calculation.roi.monthly),
+      });
+    }
   };
 
   const formatCurrency = (amount: number) => {

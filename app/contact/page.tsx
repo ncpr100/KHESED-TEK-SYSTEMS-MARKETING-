@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
-import { trackFormSubmission, trackEmailClick, trackWhatsAppClick, trackFunnelStep, trackEngagementMilestone } from '@/lib/analytics';
+import { trackFormSubmission, trackEmailClick, trackWhatsAppClick, trackFunnelStep, trackEngagementMilestone, analytics } from '@/lib/analytics';
 import { useABTest, getVariantContent, trackABTestConversion, FORM_TITLE_TEST, FORM_TITLE_CONTENT } from '@/lib/ab-testing';
 import { contactPageSchema, generateBreadcrumbSchema } from '@/lib/seo';
 import { useGlobalMarket } from '@/lib/global-market';
@@ -232,6 +232,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border border-green-600 hover:bg-green-600/10 text-green-200 font-semibold px-4 py-2 rounded-lg transition text-sm"
+                    onClick={() => analytics.whatsappClick('banner')}
                   >
                     {/* Outline Phone Icon */}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

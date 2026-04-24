@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { PricingPlan } from '@/types/pricing';
 import OutlineIcon from '@/components/ui/outline-icon';
+import { analytics } from '@/lib/analytics';
 
 interface AnimatedPricingCardProps {
   plan: PricingPlan;
@@ -27,6 +28,13 @@ export default function AnimatedPricingCard({
       if (onSelect) {
         onSelect(plan.id);
       }
+      const planMap: Record<string, 'básico' | 'profesional' | 'empresarial'> = {
+        small: 'básico',
+        medium: 'profesional',
+        large: 'empresarial',
+      };
+      const planKey = planMap[plan.id];
+      if (planKey) analytics.demoRequest(planKey);
       // Navigate to contact form with pre-selected plan
       window.location.href = `/contact?plan=${plan.id}`;
     } finally {
@@ -63,6 +71,11 @@ export default function AnimatedPricingCard({
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
         <div className="text-center mb-6">
+          {plan.popular && (
+            <span className="inline-block bg-[var(--brand)] text-black text-xs font-semibold px-3 py-1 rounded-full mb-3">
+              Más popular
+            </span>
+          )}
           <h3 className={`
             text-xl font-semibold mb-2 transition-colors duration-300
             ${isHovered ? 'text-[var(--brand)]' : ''}
@@ -146,10 +159,7 @@ export default function AnimatedPricingCard({
               </>
             ) : (
               <>
-                {plan.popular && (
-                  <OutlineIcon name="crown" className="w-4 h-4 text-white mr-2" />
-                )}
-                {plan.ctaText || 'Comenzar ahora'}
+                Solicitar demo
                 <span className={`
                   transition-transform duration-300
                   ${isHovered ? 'translate-x-1' : ''}
