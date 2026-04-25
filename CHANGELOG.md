@@ -5,6 +5,199 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+---
+
+## [1.4.0] - 2026-04-24 — Performance Fixes
+
+### Fixed
+
+| # | Issue | File(s) Changed |
+|---|---|---|
+| P-1 | Sonner toast CSS import caused layout shift on load | `app/globals.css` |
+| P-2 | Vercel Analytics/Speed Insights script loaded blocking | `app/layout.tsx` |
+| P-3 | Missing `<link rel="preconnect">` for Google Fonts and GTM | `app/layout.tsx` |
+| P-4 | Logo `<Image>` missing `sizes` hint — browser downloaded oversized srcset | `components/marketing/header.tsx` |
+| P-5 | Hero section lacked explicit `min-height` causing CLS on font swap | `app/latam/page.tsx` |
+
+### Details
+
+- **P-3**: Added `preconnect` to `fonts.googleapis.com`, `fonts.gstatic.com`, `googletagmanager.com`; added `dns-prefetch` for `static.cloudflareinsights.com`
+- **P-4**: `sizes="(max-width: 640px) 180px, 260px"` added to logo — reduces mobile image payload from 512 px to 180 px equivalent
+- Build validated: zero TypeScript errors introduced
+
+---
+
+## [1.3.0] - 2026-04-24 — Content Consistency Fixes
+
+### Fixed
+
+| # | Issue | File(s) Changed |
+|---|---|---|
+| C-1 | Pricing CTA buttons showed three different labels depending on plan | `components/pricing/animated-pricing-card.tsx` |
+| C-2 | "Más popular" badge rendered below plan title instead of above it | `components/pricing/animated-pricing-card.tsx` |
+| C-3 | Footer missing LinkedIn and YouTube links | `components/marketing/footer.tsx` |
+| C-4 | `sameAs` in Organization schema omitted social profiles | `lib/seo.ts` |
+| C-5 | FAQ answers not in DOM when collapsed — invisible to crawlers | `components/marketing/faq-section.tsx` |
+| C-6 | ROI calculator had no analytics — results never captured | `components/conversion/roi-calculator.tsx` |
+| C-7 | Demo video play events not tracked | `components/conversion/demo-video-section.tsx` |
+| C-8 | Schedule and contact pages missing WhatsApp CTA analytics | `app/schedule/page.tsx`, `app/contact/page.tsx` |
+
+### Details
+
+- **C-1/C-2**: All pricing CTAs unified to `"Solicitar demo →"`; badge moved above `<h3>` in DOM order
+- **C-3**: Added 4th "Síguenos" column to footer grid with LinkedIn and YouTube SVG icon links
+- **C-4**: `sameAs` array extended with `https://linkedin.com/company/khesed-tek-systems` and `https://www.youtube.com/@khesed-tek`
+- **C-5**: FAQ answer divs always rendered; hidden via `max-h-0 overflow-hidden` CSS, revealed with `max-h-96`; `aria-hidden` toggled for accessibility
+
+---
+
+## [1.2.0] - 2026-04-24 — Analytics Fixes
+
+### Fixed
+
+| # | Issue | File(s) Changed |
+|---|---|---|
+| A-1 | No structured GA4 event tracking — all CTAs fired raw `gtag` calls ad-hoc | `lib/analytics.ts` |
+| A-2 | Vercel toolbar injected feedback widget into production UI | Disabled via Vercel project settings |
+| A-3 | No scroll-depth tracking — section view events never fired | `components/scroll-tracker.tsx` *(new)* |
+| A-4 | ROI calculator results not sent to GA4 | `components/conversion/roi-calculator.tsx` |
+| A-5 | WhatsApp clicks from hero, footer, schedule, contact not differentiated in GA4 | Multiple pages |
+
+### Details
+
+- **A-1**: Added `export const analytics` object to `lib/analytics.ts` with typed methods: `whatsappClick(location)`, `demoRequest(plan)`, `videoPlay(title)`, `roiCalculated(params)`, `faqExpanded(question)`, `sectionViewed(sectionId)`, `ctaClicked(label, destination)`. Union types `CTALocation` and `PricingPlan` added for compile-time safety.
+- **A-3**: `ScrollTracker` uses `IntersectionObserver` at 30% threshold on `#features`, `#about`, `#faq`; injected into all three market pages (`/latam`, `/usa`, `/global`)
+- **A-4**: `analytics.roiCalculated({ churchSize, adminHours, volunteerHours, manualLevel, projectedROI })` fires on every calculation
+- **A-5**: `location` parameter differentiates `"hero"`, `"footer"`, `"banner"` in GA4 DebugView
+
+### GA4 Events Reference
+
+| Event Name | Trigger | Key Parameters |
+|---|---|---|
+| `whatsapp_click` | Any WhatsApp CTA | `location` |
+| `demo_request` | Pricing CTA click | `plan` |
+| `video_play` | Demo video starts | `video_title` |
+| `roi_calculated` | ROI form submit | `church_size`, `projected_roi` |
+| `faq_expanded` | FAQ accordion open | `question` |
+| `section_viewed` | Section enters viewport | `section_id` |
+| `cta_clicked` | Social/generic CTAs | `label`, `destination` |
+
+---
+
+## [1.1.0] - 2026-04-24 — SEO Fixes
+
+### Fixed
+
+| # | Issue | File(s) Changed |
+|---|---|---|
+| S-1 | Header CTA button invisible until 80 px scroll — not indexed by crawlers | `components/marketing/header.tsx` |
+| S-2 | Sitemap pointed to wrong domain (`khesed-tek.com`) and had only 2 URLs | `app/sitemap.ts` |
+| S-3 | `robots.txt` allowed `/_next/` and referenced wrong sitemap domain | `app/robots.ts` |
+| S-4 | No `hreflang` alternate tags for LATAM/ES/x-default | `app/layout.tsx` |
+| S-5 | Missing `<link rel="icon">`, apple-touch-icon, and `manifest` metadata | `app/layout.tsx` |
+| S-6 | FAQ section had no JSON-LD structured data | `app/layout.tsx` |
+| S-7 | Organization `sameAs` missing social profile URLs | `lib/seo.ts` |
+| S-8 | `<head>` lacked preconnect hints for critical third-party origins | `app/layout.tsx` |
+
+### Details
+
+- **S-1**: Removed `opacity-0` / scroll-gated class logic from CTA — button always visible
+- **S-2**: Sitemap expanded to 7 URLs (`/`, `/latam`, `/usa`, `/global`, `/contact`, `/schedule`, `/products`) with correct priorities and change frequencies; domain corrected to `khesed-tek-systems.org`
+- **S-3**: `disallow` updated to array `["/api/", "/_next/"]`; sitemap URL corrected
+- **S-4**: `metadata.alternates.languages` set to `{ "es-419": "...", "es": "...", "x-default": "..." }`
+- **S-6**: `faqSchema` const with 6 Spanish Q&A pairs injected as `<script type="application/ld+json">` in `<head>`
+
+---
+
+## Post-Deploy Verification Checklist
+
+Run after every production deployment. Check off each item.
+
+### SEO
+- [ ] `curl https://www.khesed-tek-systems.org/sitemap.xml` → 200, contains 7 URLs
+- [ ] `curl https://www.khesed-tek-systems.org/robots.txt` → disallows `/api/` and `/_next/`
+- [ ] View page source → `<link rel="alternate" hreflang="es-419">` present
+- [ ] View page source → `<link rel="icon">` and `<link rel="apple-touch-icon">` present
+- [ ] View page source → 4 `<script type="application/ld+json">` blocks (Organization, LocalBusiness, Website, FAQ)
+- [ ] [Rich Results Test](https://search.google.com/test/rich-results) → FAQ schema valid, no errors
+- [ ] Header CTA "Solicitar demo" visible on page load without scrolling
+- [ ] Submit `https://www.khesed-tek-systems.org/sitemap.xml` in Google Search Console
+
+### Analytics
+- [ ] GA4 DebugView active → click hero WhatsApp → `whatsapp_click {location: "hero"}` appears
+- [ ] GA4 DebugView → click footer WhatsApp → `whatsapp_click {location: "footer"}` appears
+- [ ] GA4 DebugView → click pricing CTA → `demo_request {plan: "pequeña"|"mediana"|"grande"}` appears
+- [ ] GA4 DebugView → play demo video → `video_play` appears
+- [ ] GA4 DebugView → submit ROI calculator → `roi_calculated` appears with `projected_roi`
+- [ ] GA4 DebugView → scroll to #features → `section_viewed {section_id: "features"}` appears
+- [ ] GA4 DebugView → scroll to #faq → `section_viewed {section_id: "faq"}` appears
+- [ ] GA4 DebugView → click LinkedIn in footer → `cta_clicked {label: "linkedin"}` appears
+
+### Content
+- [ ] All three pricing cards show `"Solicitar demo →"` as CTA text
+- [ ] "Más popular" badge appears **above** the plan name on the middle pricing card
+- [ ] Footer shows 4 columns including "Síguenos" with LinkedIn and YouTube icons
+- [ ] FAQ answers readable in page source when section is collapsed (DOM present)
+
+### Performance
+- [ ] Lighthouse → Performance score ≥ 85 on mobile
+- [ ] Lighthouse → no render-blocking resources flagged
+- [ ] Logo loads at ≤ 180 px on mobile (check Network tab → Img size)
+- [ ] CLS score < 0.1 in Lighthouse
+
+---
+
+## Performance Targets
+
+| Metric | Baseline (pre-fix) | Goal | Actual (post-deploy) |
+|---|---|---|---|
+| Lighthouse Performance (mobile) | ~72 | ≥ 85 | TBD |
+| Lighthouse SEO score | ~68 | ≥ 95 | TBD |
+| Lighthouse Accessibility | ~81 | ≥ 90 | TBD |
+| CLS | ~0.18 | < 0.10 | TBD |
+| LCP (mobile) | ~4.2 s | < 2.5 s | TBD |
+| Rich Results test errors | 3 | 0 | TBD |
+| GA4 events tracked | 2 | 9 | TBD |
+
+---
+
+## Deferred Items
+
+| Item | Reason Deferred | Owner | Target |
+|---|---|---|---|
+| GTM container setup | Requires Marketing sign-off on tag plan | Marketing | Q3 2026 |
+| Founder "Schedule a call" button CTA tracking | Button not yet present on live page | Dev | Next sprint |
+| Screenshot alt-text audit | Out of scope for this fix batch | Content | Q3 2026 |
+| Stats sourcing / social proof citations | Requires research | Content | Q3 2026 |
+| Individual market pages get own FAQ schemas | Layout-level schema covers all for now | Dev | Q4 2026 |
+
+---
+
+## Score History
+
+| Date | Deploy | Lighthouse Perf | Lighthouse SEO | CLS | GA4 Events |
+|---|---|---|---|---|---|
+| 2026-04-24 | v1.4.0 | TBD | TBD | TBD | TBD |
+
+*Run `npx lighthouse https://www.khesed-tek-systems.org --view` after each deploy to populate.*
+
+---
+
+## Tooling Reference
+
+| Tool | URL | Purpose |
+|---|---|---|
+| Lighthouse | `npx lighthouse <url> --view` | Performance + SEO audit |
+| Rich Results Test | https://search.google.com/test/rich-results | JSON-LD validation |
+| Google Search Console | https://search.google.com/search-console | Sitemap submission, coverage |
+| GA4 DebugView | https://analytics.google.com → DebugView | Live event validation |
+| hreflang tester | https://www.hreflang.org/google-checker/ | Alternate tag validation |
+| PageSpeed Insights | https://pagespeed.web.dev | CWV field data |
+
+**Next scheduled audit: July 2026**
+
+---
+
 ## [2.2.0] - 2026-03-18
 
 ### Added - PRODUCT SALES SYSTEM 🛒
