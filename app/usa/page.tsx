@@ -1,7 +1,7 @@
 'use client';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
-import { trackCTAClick } from '@/lib/analytics';
+import { trackCTAClick, analytics } from '@/lib/analytics';
 import { ScrollTracker } from '@/components/scroll-tracker';
 import { useABTest, getVariantContent, trackABTestConversion, USA_VALUE_PROP_TEST, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
 import { useGlobalMarket } from '@/lib/global-market';
@@ -348,7 +348,15 @@ export default function USAMarketPage() {
               key={plan.id}
               plan={plan as PricingPlan}
               index={idx}
-              onSelect={(planId: string) => trackCTAClick('usa_pricing', `Plan ${planId}`)}
+              language="en"
+              onSelect={(planId: string) => {
+                trackCTAClick('usa_pricing', `Plan ${planId}`);
+                const planMap: Record<string, 'básico' | 'profesional' | 'empresarial'> = {
+                  small: 'básico', medium: 'profesional', large: 'empresarial',
+                };
+                const resolvedPlan = planMap[planId];
+                if (resolvedPlan) analytics.demoRequest(resolvedPlan);
+              }}
             />
           ))}
         </div>

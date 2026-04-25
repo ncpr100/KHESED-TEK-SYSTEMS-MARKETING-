@@ -11,7 +11,11 @@ export default function Footer() {
             <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400" />
             <div className="text-xs uppercase tracking-wide text-[#b9bec7]">Correo</div>
           </div>
-          <a href="mailto:contacto@khesed-tek-systems.org" className="text-[var(--text)] hover:underline">
+          <a
+            href="mailto:contacto@khesed-tek-systems.org"
+            className="text-[var(--text)] hover:underline"
+            onClick={() => analytics.ctaClicked('email', 'footer')}
+          >
             contacto@khesed-tek-systems.org
           </a>
         </div>
@@ -26,7 +30,8 @@ export default function Footer() {
         </div>
         <div className="card p-4">
           <div className="flex items-center gap-2 mb-1">
-            <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400" />
+            {/* BUG-09 FIX: was accidentally "marker", restored to "map-pin" */}
+            <OutlineIcon name="map-pin" className="w-4 h-4 text-cyan-400" />
             <div className="text-xs uppercase tracking-wide text-[#b9bec7]">Ubicación</div>
           </div>
           <div className="text-[var(--text)]">Barranquilla, Atlántico, Colombia</div>

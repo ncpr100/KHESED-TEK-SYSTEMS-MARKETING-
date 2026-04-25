@@ -344,6 +344,7 @@ export default function LatamMarketPage() {
               key={plan.id}
               plan={plan as PricingPlan}
               index={idx}
+              language="es"
               onSelect={(planId) => {
                 trackCTAClick('latam_pricing', `Plan ${planId}`);
                 const planMap: Record<string, 'básico' | 'profesional' | 'empresarial'> = { small: 'básico', medium: 'profesional', large: 'empresarial' };

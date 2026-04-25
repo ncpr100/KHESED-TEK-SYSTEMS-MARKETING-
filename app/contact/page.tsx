@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
-import { trackFormSubmission, trackEmailClick, trackWhatsAppClick, trackFunnelStep, trackEngagementMilestone, analytics } from '@/lib/analytics';
+import { trackFormSubmission, trackEmailClick, trackFunnelStep, trackEngagementMilestone, analytics } from '@/lib/analytics';
 import { useABTest, getVariantContent, trackABTestConversion, FORM_TITLE_TEST, FORM_TITLE_CONTENT } from '@/lib/ab-testing';
 import { contactPageSchema, generateBreadcrumbSchema } from '@/lib/seo';
 import { useGlobalMarket } from '@/lib/global-market';
@@ -172,7 +172,7 @@ export default function ContactPage() {
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-[var(--text)] hover:underline"
-              onClick={() => trackWhatsAppClick('contact_page')}
+              onClick={() => analytics.whatsappClick('contact_page')}
             >
               {contactInfo.whatsapp}
             </a>

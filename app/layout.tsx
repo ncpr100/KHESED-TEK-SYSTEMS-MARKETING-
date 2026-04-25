@@ -102,6 +102,9 @@ export const metadata: Metadata = {
     languages: {
       "es-419":    "https://www.khesed-tek-systems.org",
       "es":        "https://www.khesed-tek-systems.org",
+      // BUG-04 FIX: English pages get proper hreflang entries
+      "en-US":     "https://www.khesed-tek-systems.org/usa",
+      "en":        "https://www.khesed-tek-systems.org/global",
       "x-default": "https://www.khesed-tek-systems.org",
     },
   },

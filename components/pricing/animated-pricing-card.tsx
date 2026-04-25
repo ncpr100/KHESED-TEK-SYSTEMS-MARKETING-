@@ -4,23 +4,38 @@
 import { useState } from 'react';
 import { PricingPlan } from '@/types/pricing';
 import OutlineIcon from '@/components/ui/outline-icon';
-import { analytics } from '@/lib/analytics';
+// BUG-06 FIX: analytics import REMOVED. Tracking is now the caller's
+// responsibility so demo_request never fires twice per click.
 
 interface AnimatedPricingCardProps {
   plan: PricingPlan;
   index: number;
   onSelect?: (planId: string) => void;
   className?: string;
+  /**
+   * BUG-07 FIX: language prop added so the card renders localized strings.
+   * Defaults to 'es' to keep existing LATAM pages working without changes.
+   */
+  language?: 'es' | 'en';
 }
+
+// BUG-07 FIX: all user-visible strings moved into this map
+const i18n = {
+  es: { popular: 'Más popular', loading: 'Cargando...', cta: 'Solicitar demo' },
+  en: { popular: 'Most popular', loading: 'Loading...',  cta: 'Request demo'  },
+} as const;
 
 export default function AnimatedPricingCard({ 
   plan, 
   index, 
   onSelect,
-  className = '' 
+  className = '',
+  language = 'es',
 }: AnimatedPricingCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const t = i18n[language];
 
   const handleGetStarted = async () => {
     setIsLoading(true);
@@ -28,14 +43,7 @@ export default function AnimatedPricingCard({
       if (onSelect) {
         onSelect(plan.id);
       }
-      const planMap: Record<string, 'básico' | 'profesional' | 'empresarial'> = {
-        small: 'básico',
-        medium: 'profesional',
-        large: 'empresarial',
-      };
-      const planKey = planMap[plan.id];
-      if (planKey) analytics.demoRequest(planKey);
-      // Navigate to contact form with pre-selected plan
+      // BUG-06 FIX: analytics.demoRequest removed — caller handles it via onSelect
       window.location.href = `/contact?plan=${plan.id}`;
     } finally {
       setIsLoading(false);
@@ -71,9 +79,10 @@ export default function AnimatedPricingCard({
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
         <div className="text-center mb-6">
+          {/* BUG-07 FIX: t.popular replaces hardcoded "Más popular" */}
           {plan.popular && (
             <span className="inline-block bg-[var(--brand)] text-black text-xs font-semibold px-3 py-1 rounded-full mb-3">
-              Más popular
+              {t.popular}
             </span>
           )}
           <h3 className={`
@@ -154,12 +163,17 @@ export default function AnimatedPricingCard({
           <span className="flex items-center justify-center gap-2">
             {isLoading ? (
               <>
+                {/* BUG-07 FIX: t.loading replaces hardcoded "Cargando..." */}
                 <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                Cargando...
+                {t.loading}
               </>
             ) : (
               <>
-                Solicitar demo
+                {/*
+                  BUG-07 FIX: plan.ctaText honoured first (per-plan override),
+                  then falls back to localised default (t.cta).
+                */}
+                {plan.ctaText ?? t.cta}
                 <span className={`
                   transition-transform duration-300
                   ${isHovered ? 'translate-x-1' : ''}

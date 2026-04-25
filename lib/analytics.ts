@@ -506,12 +506,13 @@ declare global {
   }
 }
 
-type CTALocation = "hero" | "header" | "pricing" | "footer" | "about" | "banner";
-type PricingPlan = "básico" | "profesional" | "empresarial" | "beta";
+export type CTALocation = "hero" | "header" | "pricing" | "footer" | "about" | "banner";
+export type PricingPlan = "básico" | "profesional" | "empresarial" | "beta";
 
 export const analytics = {
+  /** BUG-01 FIX: delegates to trackWhatsAppClick for unified schema */
   whatsappClick(location: CTALocation) {
-    window.gtag?.("event", "whatsapp_click", { location });
+    trackWhatsAppClick(location);
   },
 
   demoRequest(plan: PricingPlan) {
@@ -522,6 +523,10 @@ export const analytics = {
     window.gtag?.("event", "video_play", { video_title: videoTitle });
   },
 
+  /**
+   * BUG-02 FIX: was sending camelCase params directly.
+   * Now maps to snake_case to match GA4 custom dimension naming convention.
+   */
   roiCalculated(params: {
     churchSize: "pequeña" | "mediana" | "grande";
     adminHours: number;
@@ -529,7 +534,13 @@ export const analytics = {
     manualLevel: number;
     projectedROI: number;
   }) {
-    window.gtag?.("event", "roi_calculated", params);
+    window.gtag?.("event", "roi_calculated", {
+      church_size:     params.churchSize,
+      admin_hours:     params.adminHours,
+      volunteer_hours: params.volunteerHours,
+      manual_level:    params.manualLevel,
+      projected_roi:   params.projectedROI,
+    });
   },
 
   faqExpanded(question: string) {

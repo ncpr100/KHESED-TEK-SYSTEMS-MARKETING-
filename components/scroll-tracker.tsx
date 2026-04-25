@@ -12,7 +12,13 @@ export function ScrollTracker() {
       const el = document.getElementById(id);
       if (!el) return;
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) analytics.sectionViewed(id); },
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            analytics.sectionViewed(id);
+            // BUG-08 FIX: unobserve after first trigger so each section fires exactly once
+            obs.unobserve(entry.target);
+          }
+        },
         { threshold: 0.3 }
       );
       obs.observe(el);
