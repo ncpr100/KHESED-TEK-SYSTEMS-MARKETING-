@@ -100,12 +100,25 @@ export default function Header() {
             )}
           </nav>
 
-          {/* Demo CTA — always visible */}
+          {/*
+            BUG-10 FIX: restored scroll-reveal CTA. Previously the CTA was
+            always-visible, losing the opacity/translate animation and leaving
+            the button clickable while invisible (accessibility violation).
+            CTA is hidden until user scrolls 80 px, then animates in.
+          */}
           <Link
             href="/contact"
-            className="hidden sm:inline-flex items-center gap-2 gradient-btn text-black font-semibold px-4 py-2 rounded-full text-sm"
+            aria-hidden={!scrolled}
+            className={`
+              hidden sm:inline-flex items-center gap-2 gradient-btn text-black font-semibold px-4 py-2 rounded-full text-sm
+              transition-all duration-300
+              ${scrolled
+                ? 'opacity-100 translate-y-0 pointer-events-auto'
+                : 'opacity-0 -translate-y-2 pointer-events-none'
+              }
+            `}
           >
-            {effectiveLanguage === 'es' ? 'Agendar Demo' : 'Schedule Demo'} →
+            {effectiveLanguage === 'es' ? 'Agendar Demo →' : 'Schedule Demo →'}
           </Link>
 
           {/* Mobile Hamburger Menu Button */}
