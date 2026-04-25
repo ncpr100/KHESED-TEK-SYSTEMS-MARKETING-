@@ -16,7 +16,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: '¿Qué incluye el Programa Beta?',
-      acceptedAnswer: { '@type': 'Answer', text: 'El Programa Beta ofrece 30 días de acceso completo a la plataforma sin costo. Trabajamos directamente con su equipo para adaptar el sistema a las necesidades específicas de su iglesia. A cambio, valoramos su retroalimentación para seguir mejorando la plataforma. Las primeras iglesias en unirse tienen ventajas de precio preferencial para cuando lancemos oficialmente.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'El Programa Beta ofrece 30 días de acceso completo a la plataforma sin costo. Los participantes obtienen precios especiales de lanzamiento (hasta 40% de descuento), acceso prioritario a nuevas funciones, implementación acompañada por nuestro equipo y la oportunidad de dar retroalimentación directa que moldea el producto. Las primeras iglesias en unirse tienen precio preferencial congelado para el lanzamiento oficial.' },
     },
     {
       '@type': 'Question',
@@ -26,7 +26,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: '¿Cómo migro desde mi sistema actual?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Nuestro equipo en Barranquilla le acompaña en todo el proceso de migración sin costo adicional. Importamos su listado de miembros, historial de donaciones y datos existentes. El proceso típico toma entre 1 y 3 días. Ofrecemos capacitación completa en español para su equipo administrativo y pastoral.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Nuestro equipo en Barranquilla le acompaña en todo el proceso de migración sin costo adicional. Importamos su base de datos desde Excel, Planning Center, Breeze, ChurchTrac o cualquier sistema anterior. El proceso toma entre 3 y 10 días hábiles según el volumen de datos, con soporte dedicado durante todo el período de transición.' },
     },
     {
       '@type': 'Question',
@@ -36,7 +36,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: '¿Mis datos están seguros?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Absolutamente. Toda la información de su iglesia se almacena en servidores seguros con cifrado en tránsito y en reposo. Cumplimos con las regulaciones de protección de datos aplicables. Nunca compartimos información de su congregación con terceros. Usted es el dueño de sus datos y puede exportarlos en cualquier momento.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Absolutamente. Toda la información de su iglesia se almacena en servidores seguros con cifrado SSL de 256 bits en tránsito y en reposo, el mismo estándar de la banca en línea. Cumplimos con el GDPR y la Ley 1581 de protección de datos de Colombia. Realizamos auditorías de seguridad regulares y usted es dueño de sus datos — puede exportarlos en cualquier momento.' },
     },
     {
       '@type': 'Question',
@@ -67,10 +67,10 @@ export const metadata: Metadata = {
     siteName: 'KHESED-TEK SYSTEMS',
     images: [
       {
-        url: 'https://www.khesed-tek-systems.org/logo.png',
+        url: 'https://www.khesed-tek-systems.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'KHESED-TEK SYSTEMS Logo',
+        alt: 'KHESED-TEK SYSTEMS — Tecnología para iglesias en Latinoamérica',
       }
     ],
   },
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'KHESED-TEK SYSTEMS - Soluciones Tecnológicas para Iglesias',
     description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones.',
-    images: ['https://www.khesed-tek-systems.org/logo.png'],
+    images: ['https://www.khesed-tek-systems.org/og-image.png'],
   },
   robots: {
     index: true,
