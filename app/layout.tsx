@@ -5,56 +5,48 @@ import { GA_TRACKING_ID } from '@/lib/analytics';
 import { organizationSchema, localBusinessSchema, websiteSchema } from '@/lib/seo';
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
   mainEntity: [
     {
-      "@type": "Question",
-      name: "¿Cuánto cuesta KHESED-TEK-CMS?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ofrecemos tres planes: Básico a $149.99 USD/mes (hasta 500 miembros), Profesional a $299.99 USD/mes (hasta 2,000 miembros), y Empresarial con precio personalizado para iglesias grandes. Todos incluyen soporte en español y métodos de pago locales como PSE y Nequi.",
-      },
+      '@type': 'Question',
+      name: '¿Cuánto cuesta KHESED-TEK-CMS?',
+      acceptedAnswer: { '@type': 'Answer', text: 'El plan Básico (hasta 500 miembros) comienza en $149.99 USD/mes. El plan Profesional (hasta 2,000 miembros) es $299.99 USD/mes. Las iglesias grandes reciben un precio personalizado. Todos los planes incluyen soporte en español y métodos de pago locales. Paddle, nuestro procesador de pagos, convierte automáticamente a su moneda local.' },
     },
     {
-      "@type": "Question",
-      name: "¿Qué incluye el Programa Beta?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "El Programa Beta incluye acceso anticipado a todas las funcionalidades, soporte prioritario, precio especial de lanzamiento, y la oportunidad de influir directamente en el desarrollo del producto.",
-      },
+      '@type': 'Question',
+      name: '¿Qué incluye el Programa Beta?',
+      acceptedAnswer: { '@type': 'Answer', text: 'El Programa Beta ofrece 30 días de acceso completo a la plataforma sin costo. Trabajamos directamente con su equipo para adaptar el sistema a las necesidades específicas de su iglesia. A cambio, valoramos su retroalimentación para seguir mejorando la plataforma. Las primeras iglesias en unirse tienen ventajas de precio preferencial para cuando lancemos oficialmente.' },
     },
     {
-      "@type": "Question",
-      name: "¿Funciona con WhatsApp Business?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí. KHESED-TEK-CMS es el primer ChMS con WhatsApp Business completamente integrado de forma nativa. Puede enviar notificaciones, recordatorios y comunicados directamente desde la plataforma.",
-      },
+      '@type': 'Question',
+      name: '¿Funciona con WhatsApp Business?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Sí — somos el único ChMS con WhatsApp Business completamente integrado. Puede enviar recordatorios de eventos, comunicados pastorales, seguimientos de oración y notificaciones administrativas directamente desde la plataforma a los grupos de WhatsApp de su iglesia. Planning Center, Breeze y otros competidores internacionales no tienen esta funcionalidad.' },
     },
     {
-      "@type": "Question",
-      name: "¿Cómo migro desde mi sistema actual?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nuestro equipo le acompaña en todo el proceso de migración sin costo adicional. Soportamos importación desde Excel, CSV, Planning Center, Breeze, ChurchTrac y otros sistemas populares.",
-      },
+      '@type': 'Question',
+      name: '¿Cómo migro desde mi sistema actual?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Nuestro equipo en Barranquilla le acompaña en todo el proceso de migración sin costo adicional. Importamos su listado de miembros, historial de donaciones y datos existentes. El proceso típico toma entre 1 y 3 días. Ofrecemos capacitación completa en español para su equipo administrativo y pastoral.' },
     },
     {
-      "@type": "Question",
-      name: "¿Están disponibles en mi país?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Atendemos a toda Latinoamérica y el mercado hispano. Tenemos sede en Barranquilla, Colombia, con soporte en horario LATAM (Lunes a Viernes, 9AM–6PM COT).",
-      },
+      '@type': 'Question',
+      name: '¿Están disponibles en mi país?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Sí — operamos en toda Latinoamérica con sede en Barranquilla, Colombia. Nuestro soporte está disponible en horario LATAM (lunes a viernes, 9AM–6PM COT). Aceptamos métodos de pago locales como PSE, Nequi, Efecty, Bancolombia y transferencias bancarias.' },
     },
     {
-      "@type": "Question",
-      name: "¿Mis datos están seguros?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí. Utilizamos encriptación SSL de 256-bit (nivel bancario), cumplimos con GDPR, y garantizamos 99.9% de disponibilidad. Todos los datos están encriptados en tránsito y en reposo.",
-      },
+      '@type': 'Question',
+      name: '¿Mis datos están seguros?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Absolutamente. Toda la información de su iglesia se almacena en servidores seguros con cifrado en tránsito y en reposo. Cumplimos con las regulaciones de protección de datos aplicables. Nunca compartimos información de su congregación con terceros. Usted es el dueño de sus datos y puede exportarlos en cualquier momento.' },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Necesito conocimientos técnicos para usarlo?',
+      acceptedAnswer: { '@type': 'Answer', text: 'No. La plataforma está diseñada para pastores y administradores de iglesia, no para técnicos. La interfaz es en español, intuitiva y funciona desde cualquier dispositivo. Ofrecemos capacitación personalizada y soporte continuo. Si su equipo sabe usar WhatsApp, puede manejar KHESED-TEK-CMS.' },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuándo estará disponible oficialmente?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Actualmente estamos en fase Beta con iglesias seleccionadas. El lanzamiento oficial está planificado para los próximos meses. Las iglesias que se unan ahora al programa Beta tendrán precio preferencial congelado y acceso prioritario a nuevas funciones. Contáctenos hoy para asegurar su lugar.' },
     },
   ],
 };
@@ -64,7 +56,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://khesed-tek-systems.org'),
   title: 'KHESED-TEK SYSTEMS - Soluciones Tecnológicas para Iglesias',
   description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones. Innovación que impulsa tu misión con excelencia, integridad e innovación.',
-  keywords: 'tecnología para iglesias, software religioso, gestión de iglesias, Colombia, Barranquilla, sistemas para iglesias, transformación digital religiosa',
   authors: [{ name: 'KHESED-TEK SYSTEMS' }],
   creator: 'KHESED-TEK SYSTEMS',
   publisher: 'KHESED-TEK SYSTEMS',
@@ -123,6 +114,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#000000',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

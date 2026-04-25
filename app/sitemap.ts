@@ -1,16 +1,52 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
+
+const BASE_URL = 'https://www.khesed-tek-systems.org'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.khesed-tek-systems.org";
-  const now = new Date();
+  const lastModified = new Date()
 
   return [
-    { url: base,               lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
-    { url: `${base}/latam`,    lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
-    { url: `${base}/products`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/contact`,  lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/schedule`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/privacy`,  lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
-    { url: `${base}/terms`,    lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
-  ];
+    {
+      url: BASE_URL,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${BASE_URL}/latam`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/usa`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/global`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/products`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/contact`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/schedule`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+  ]
 }

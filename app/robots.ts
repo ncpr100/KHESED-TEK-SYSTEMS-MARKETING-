@@ -1,8 +1,21 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
+
+const BASE_URL = 'https://www.khesed-tek-systems.org'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/_next/"] },
-    sitemap: "https://www.khesed-tek-systems.org/sitemap.xml",
-  };
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/_next/'],
+      },
+      {
+        userAgent: ['Googlebot', 'Bingbot', 'Slurp', 'DuckDuckBot'],
+        allow: '/',
+      },
+    ],
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
+  }
 }

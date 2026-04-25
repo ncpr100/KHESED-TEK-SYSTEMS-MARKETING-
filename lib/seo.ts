@@ -57,7 +57,7 @@ export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 
     "logo": `${config.url}/logo.png`,
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+57-302-123-4410",
+      "telephone": "+573021234410",
       "contactType": "sales",
       "availableLanguage": config.language
     },
@@ -97,7 +97,7 @@ export const localBusinessSchema = {
   "name": "KHESED-TEK SYSTEMS",
   "description": "Especialistas en tecnología para iglesias y organizaciones religiosas",
   "image": "https://www.khesed-tek-systems.org/logo.png",
-  "telephone": "+57-302-123-4410",
+  "telephone": "+573021234410",
   "email": "contacto@khesed-tek-systems.org",
   "url": "https://www.khesed-tek-systems.org",
   "address": {
@@ -148,11 +148,6 @@ export const websiteSchema = {
   "name": "KHESED-TEK SYSTEMS",
   "description": "Soluciones tecnológicas para iglesias y organizaciones",
   "url": "https://www.khesed-tek-systems.org",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.khesed-tek-systems.org/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  },
   "publisher": {
     "@type": "Organization",
     "name": "KHESED-TEK SYSTEMS",
@@ -176,7 +171,7 @@ export const contactPageSchema = {
     "contactPoint": [
       {
         "@type": "ContactPoint",
-        "telephone": "+57-302-123-4410",
+        "telephone": "+573021234410",
         "contactType": "sales",
         "availableLanguage": "Spanish"
       },
