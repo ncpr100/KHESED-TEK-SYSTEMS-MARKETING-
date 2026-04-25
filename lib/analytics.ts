@@ -506,7 +506,7 @@ declare global {
   }
 }
 
-export type CTALocation = "hero" | "header" | "pricing" | "footer" | "about" | "banner";
+export type CTALocation = 'hero' | 'header' | 'pricing' | 'footer' | 'about' | 'banner' | 'contact_page';
 export type PricingPlan = "básico" | "profesional" | "empresarial" | "beta";
 
 export const analytics = {
