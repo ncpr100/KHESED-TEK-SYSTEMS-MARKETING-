@@ -63,6 +63,7 @@ export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 
     },
     "address": market === 'GLOBAL' ? undefined : {
       "@type": "PostalAddress",
+      "streetAddress": "La Campiña, Localidad Norte - Centro Histórico",
       "addressLocality": config.locality,
       "addressRegion": config.region,
       "postalCode": "80020",
@@ -103,6 +104,7 @@ export const localBusinessSchema = {
   "url": "https://www.khesed-tek-systems.org",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "La Campiña, Localidad Norte - Centro Histórico",
     "addressLocality": "Barranquilla",
     "addressRegion": "Atlántico",
     "postalCode": "80020",
