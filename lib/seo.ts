@@ -65,7 +65,8 @@ export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 
       "@type": "PostalAddress",
       "addressLocality": config.locality,
       "addressRegion": config.region,
-      "addressCountry": config.country
+      "postalCode": "80020",
+      "addressCountry": "CO"
     },
     "sameAs": [
       "https://wa.me/573021234410",
@@ -104,7 +105,7 @@ export const localBusinessSchema = {
     "@type": "PostalAddress",
     "addressLocality": "Barranquilla",
     "addressRegion": "Atlántico",
-    "postalCode": "080001",
+    "postalCode": "80020",
     "addressCountry": "CO"
   },
   "geo": {

@@ -314,7 +314,7 @@ export default function LatamMarketPage() {
               price: annualBilling ? "$1,499.90 USD" : "$149.99 USD",
               period: annualBilling ? "/año" : "/mes",
               members: "Hasta 500 miembros",
-              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos PSE", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
+              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos Locales", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               ctaText: "Solicitar Demo",
               ctaUrl: "/contact?plan=small"
             },
