@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones. Innovación que impulsa tu misión con excelencia, integridad e innovación."/>
+<title>KHESED-TEK SYSTEMS — Soluciones Tecnológicas para Iglesias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   COSMOS DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --gold:       #C9922A;
+  --gold-hi:    #F0B83C;
+  --gold-dim:   #7A5218;
+  --navy:       #05080F;
+  --navy-2:     #0D1628;
+  --navy-3:     #111A2F;
+  --cyan:       #26D9D9;
+  --emerald:    #1DC98C;
+  --font-d: 'Cinzel', Georgia, serif;
+  --font-b: 'DM Sans', system-ui, sans-serif;
+  --ease-s: cubic-bezier(0.16,1,0.3,1);
+  --ease-m: cubic-bezier(0.4,0,0.2,1);
+  --r: 14px;
+
+  /* dark theme */
+  --bg:        #05080F;
+  --bg-alt:    rgba(13,22,40,0.85);
+  --srf:       rgba(13,22,40,0.72);
+  --srf-lo:    rgba(13,22,40,0.42);
+  --bdr:       rgba(201,146,42,0.14);
+  --bdr-s:     rgba(255,255,255,0.05);
+  --txt:       #F0EDE8;
+  --muted:     #7A8A9E;
+  --lbl:       #7A5218;
+  --hd-bg:     rgba(5,8,15,0.88);
+  --ico-bg:    rgba(201,146,42,0.09);
+  --ico-bdr:   rgba(201,146,42,0.22);
+}
+[data-theme="light"] {
+  --bg:        #F5F0E8;
+  --bg-alt:    rgba(255,255,255,0.88);
+  --srf:       rgba(255,255,255,0.90);
+  --srf-lo:    rgba(240,234,218,0.60);
+  --bdr:       rgba(160,120,50,0.18);
+  --bdr-s:     rgba(0,0,0,0.07);
+  --txt:       #0D1628;
+  --muted:     #5A6478;
+  --lbl:       #9a6f2a;
+  --hd-bg:     rgba(245,240,232,0.92);
+  --ico-bg:    rgba(201,146,42,0.08);
+  --ico-bdr:   rgba(201,146,42,0.20);
+}
+
+/* ═══ RESET ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--txt);font-family:var(--font-b);line-height:1.6;overflow-x:hidden;transition:background .4s,color .3s}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--font-b);cursor:pointer;border:none}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(201,146,42,.25);border-radius:4px}
+
+/* ═══ KHESED ICON SYSTEM
+     Specs: 24×24 viewBox · 1.5px stroke · round caps/joins
+     Language: geometric, angular, faceted — echoes the logo gem
+     Gold diamond accent marks anchor key icons to brand
+═══ */
+.ki{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.ki svg{display:block}
+/* icon container pill */
+.ico-pill{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:12px;
+  background:var(--ico-bg);border:1px solid var(--ico-bdr);
+  flex-shrink:0;
+  transition:background .2s,border-color .2s,transform .2s var(--ease-s);
+}
+.ico-pill.sm{width:34px;height:34px;border-radius:9px}
+.ico-pill.lg{width:56px;height:56px;border-radius:16px}
+.ico-pill:hover{background:rgba(201,146,42,.15);border-color:rgba(201,146,42,.35);transform:translateY(-2px)}
+
+/* ═══ CANVAS ═══ */
+#cosmos-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ═══ LAYOUT ═══ */
+.z1{position:relative;z-index:1}
+.wrap{max-width:1120px;margin:0 auto;padding:0 36px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+section{padding:84px 0}
+
+/* ═══ HEADER ═══ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 36px;
+  background:var(--hd-bg);backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--bdr);
+  transition:background .4s,border-color .4s;
+}
+.logo{height:48px;width:auto}
+nav{display:flex;align-items:center;gap:28px}
+nav a{font-size:12px;letter-spacing:.05em;color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--gold-hi)}
+.hd-right{display:flex;align-items:center;gap:10px}
+.btn-demo{
+  padding:7px 20px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.04em;
+  background:linear-gradient(135deg,var(--gold),var(--gold-hi));
+  color:var(--navy);border:none;
+  transition:transform .2s var(--ease-s),box-shadow .2s;
+}
+.btn-demo:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(201,146,42,.45)}
+.btn-theme{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--srf-lo);border:1px solid var(--bdr);
+  display:grid;place-items:center;
+  transition:transform .2s var(--ease-s);
+}
+.btn-theme:hover{transform:scale(1.1)}
+.btn-theme svg{display:block}
+@media(max-width:860px){nav{display:none}}
+
+/* ═══ HERO ═══ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:120px 36px 80px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:6px 16px;border-radius:20px;margin-bottom:30px;
+  background:rgba(201,146,42,.08);border:1px solid rgba(201,146,42,.22);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);
+  animation:fadeUp .8s .1s var(--ease-s) both;
+}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px var(--emerald);animation:pulse-live 1.5s ease-in-out infinite}
+h1{
+  font-family:var(--font-d);
+  font-size:clamp(34px,5.5vw,70px);
+  font-weight:700;line-height:1.06;letter-spacing:-.01em;
+  color:var(--txt);margin-bottom:22px;
+  animation:fadeUp .9s .25s var(--ease-s) both;
+}
+h1 .g{color:var(--gold-hi)}
+.hero-p{
+  font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--muted);
+  max-width:640px;margin:0 auto 12px;line-height:1.75;
+  animation:fadeUp 1s .4s var(--ease-s) both;
+}
+.hero-verse{
+  font-size:14px;font-style:italic;color:var(--muted);opacity:.75;
+  max-width:560px;margin:0 auto 38px;line-height:1.65;
+  animation:fadeUp 1s .5s var(--ease-s) both;
+}
+.hero-acts{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-bottom:30px;
+  animation:fadeUp 1s .6s var(--ease-s) both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 34px;border-radius:30px;font-size:14px;font-weight:600;letter-spacing:.04em;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-hi) 50%,var(--gold) 100%);
+  background-size:200%;color:var(--navy);border:none;
+  box-shadow:0 0 28px rgba(201,146,42,.22);
+  transition:background-position .4s,transform .2s var(--ease-s),box-shadow .3s;
+}
+.btn-primary:hover{background-position:right;transform:translateY(-3px);box-shadow:0 0 44px rgba(201,146,42,.42)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;border-radius:30px;font-size:14px;font-weight:500;
+  background:transparent;color:var(--txt);border:1px solid var(--bdr);
+  transition:border-color .2s,background .2s,transform .2s var(--ease-s);
+}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(201,146,42,.07);transform:translateY(-2px)}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border-radius:30px;font-size:14px;font-weight:500;
+  background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.24);color:#25D366;
+  transition:background .2s,transform .2s var(--ease-s);
+}
+.btn-wa:hover{background:rgba(37,211,102,.18);transform:translateY(-2px)}
+.hero-trust{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px;
+  font-size:12px;color:var(--muted);
+  animation:fadeUp 1s .75s var(--ease-s) both;
+}
+.trust-chip{display:flex;align-items:center;gap:6px}
+.sep{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.5}
+
+/* ═══ SECTION ATOMS ═══ */
+.sec-lbl{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--lbl);
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.sec-lbl::after{content:'';flex:0 0 36px;height:1px;background:var(--bdr)}
+.sec-lbl.center{justify-content:center}
+.sec-lbl.center::before{content:'';flex:0 0 36px;height:1px;background:var(--bdr)}
+.sec-lbl.center::after{display:none}
+h2{font-family:var(--font-d);font-size:clamp(26px,3.5vw,40px);font-weight:600;letter-spacing:-.01em;color:var(--txt);line-height:1.15;margin-bottom:14px}
+h2 .g{color:var(--gold-hi)}
+.sec-sub{font-size:16px;font-weight:300;color:var(--muted);line-height:1.7}
+.tc{text-align:center}
+
+/* ═══ GLASS CARD ═══ */
+.gc{
+  background:var(--srf);border:1px solid var(--bdr-s);
+  border-radius:var(--r);backdrop-filter:blur(18px);
+}
+
+/* ═══ SCROLL REVEAL ═══ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease-s),transform .7s var(--ease-s)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}
+.d4{transition-delay:.24s}.d5{transition-delay:.30s}.d6{transition-delay:.36s}
+
+/* ═══ STORY ═══ */
+#story{background:var(--srf-lo);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.story-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:30px}
+.stab{
+  padding:8px 20px;border-radius:20px;font-size:13px;font-weight:500;
+  border:1px solid var(--bdr);background:transparent;color:var(--muted);transition:all .2s;
+}
+.stab.active{background:var(--gold-hi);color:var(--navy);border-color:transparent;font-weight:600}
+.video-box{
+  position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;
+  border:1px solid var(--bdr);background:var(--srf);cursor:pointer;
+}
+.video-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,22,40,.5),rgba(5,8,15,.3));z-index:1}
+.video-box img{width:100%;height:100%;object-fit:cover;display:block}
+.vid-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.video-box:hover .vid-overlay{background:rgba(0,0,0,.12)}
+.play-circle{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--gold-hi);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 36px rgba(201,146,42,.5);
+  transition:transform .3s var(--ease-s),box-shadow .3s;
+}
+.video-box:hover .play-circle{transform:scale(1.1);box-shadow:0 0 56px rgba(201,146,42,.7)}
+.vid-dur{position:absolute;bottom:12px;right:14px;z-index:3;background:rgba(0,0,0,.75);color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:500;letter-spacing:.04em}
+
+/* ═══ TRUST BADGES ═══ */
+#trust{padding:44px 0}
+.trust-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+@media(max-width:1000px){.trust-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:580px){.trust-grid{grid-template-columns:repeat(2,1fr)}}
+.trust-card{
+  padding:18px 12px;text-align:center;border-radius:var(--r);
+  background:var(--srf);border:1px solid var(--bdr-s);
+  backdrop-filter:blur(18px);
+  transition:border-color .25s,transform .25s var(--ease-s);
+}
+.trust-card:hover{border-color:rgba(201,146,42,.3);transform:translateY(-3px)}
+.trust-ico{display:flex;justify-content:center;margin-bottom:10px}
+.trust-v{font-weight:700;font-size:16px;font-family:var(--font-d);color:var(--gold-hi);line-height:1;margin-bottom:4px}
+.trust-lbl{font-size:10px;font-weight:600;color:var(--txt);margin-bottom:3px;letter-spacing:.04em}
+.trust-desc{font-size:10px;color:var(--muted);line-height:1.4}
+.trust-note{
+  margin-top:14px;padding:13px 18px;border-radius:10px;
+  background:var(--srf-lo);border:1px solid var(--bdr);
+  font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:10px;line-height:1.6;
+}
+
+/* ═══ FEATURES ═══ */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.feat-grid{grid-template-columns:1fr}}
+.feat-card{
+  padding:26px;border-radius:16px;
+  background:var(--srf);border:1px solid var(--bdr-s);
+  backdrop-filter:blur(18px);position:relative;overflow:hidden;
+  transition:transform .3s var(--ease-s),border-color .3s,box-shadow .3s;
+}
+.feat-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--fc,var(--gold)) 50%,transparent);
+  opacity:.45;
+}
+.feat-card:hover{transform:translateY(-6px);border-color:rgba(201,146,42,.25);box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 30px rgba(201,146,42,.07)}
+.feat-badge{
+  display:inline-block;padding:2px 10px;border-radius:10px;
+  font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--srf-lo);border:1px solid var(--bdr);color:var(--muted);margin-bottom:16px;
+}
+.feat-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.feat-title{font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--txt);letter-spacing:.02em}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.feat-vs{
+  font-size:10px;font-weight:500;color:var(--fc,var(--gold-hi));
+  display:flex;align-items:center;gap:5px;opacity:0;transition:opacity .2s;
+}
+.feat-card:hover .feat-vs{opacity:1}
+.why-box{
+  margin-top:24px;padding:22px 24px;border-radius:14px;
+  background:var(--srf-lo);border:1px solid var(--bdr);backdrop-filter:blur(16px);
+}
+.why-box h3{font-family:var(--font-d);font-size:15px;font-weight:600;margin-bottom:16px;color:var(--txt);display:flex;align-items:center;gap:10px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr}}
+.why-item strong{color:var(--gold-hi);font-size:12px;display:block;margin-bottom:5px}
+.why-item p{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* ═══ IMPACT METRICS ═══ */
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.impact-grid{grid-template-columns:1fr}}
+.impact-card{padding:24px;border-radius:var(--r);background:var(--srf);border:1px solid var(--bdr-s);backdrop-filter:blur(18px)}
+.impact-v{font-family:var(--font-d);font-size:28px;font-weight:700;color:var(--gold-hi);margin:12px 0 4px}
+.impact-sub{font-size:12px;color:var(--muted);margin-bottom:10px;font-style:italic}
+.impact-src{font-size:11px;color:var(--gold-hi);opacity:.7;margin-bottom:14px;font-style:italic}
+.impact-benefit{padding:10px 13px;border-radius:8px;background:rgba(201,146,42,.05);border:1px solid rgba(201,146,42,.12);font-size:12px;color:var(--txt)}
+.impact-benefit strong{color:var(--gold-hi)}
+.impact-cta{margin-top:32px;text-align:center}
+
+/* ═══ PRICING ═══ */
+.bill-toggle{
+  display:inline-flex;align-items:center;padding:4px;border-radius:24px;
+  background:var(--srf);border:1px solid var(--bdr);gap:2px;margin-bottom:40px;
+}
+.bill-btn{padding:7px 22px;border-radius:20px;font-size:13px;font-weight:500;border:none;background:transparent;color:var(--muted);transition:all .2s}
+.bill-btn.active{background:var(--gold-hi);color:var(--navy);font-weight:600}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+@media(max-width:800px){.price-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+.price-card{
+  padding:28px 24px;border-radius:16px;
+  background:var(--srf);border:1px solid var(--bdr-s);
+  backdrop-filter:blur(18px);position:relative;overflow:hidden;
+  transition:transform .3s var(--ease-s),box-shadow .3s;
+}
+.price-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.price-card.pop{border-color:rgba(201,146,42,.5);transform:scale(1.025)}
+.price-card.pop:hover{transform:scale(1.025) translateY(-5px)}
+.pop-badge{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  padding:4px 16px;border-radius:0 0 10px 10px;
+  background:var(--gold-hi);color:var(--navy);
+  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
+}
+.price-name{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:3px}
+.price-tier{font-size:11px;color:var(--muted);margin-bottom:18px;padding-top:2px}
+.price-amount{font-family:var(--font-d);font-size:36px;font-weight:700;color:var(--gold-hi);line-height:1}
+.price-amount .per{font-size:13px;font-family:var(--font-b);color:var(--muted);font-weight:400;margin-left:2px}
+.price-mbr{font-size:12px;color:var(--muted);margin-top:5px;margin-bottom:20px}
+.price-div{height:1px;background:var(--bdr);margin:18px 0}
+.price-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.price-feats li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);line-height:1.4}
+.pf-check{flex-shrink:0;margin-top:1px}
+.price-btn{
+  width:100%;padding:13px;border-radius:24px;font-size:13px;font-weight:600;
+  border:1px solid var(--bdr);background:transparent;color:var(--txt);
+  transition:all .2s var(--ease-s);
+}
+.price-btn:hover{border-color:var(--gold);background:rgba(201,146,42,.08)}
+.price-btn.gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold-hi));
+  color:var(--navy);border:none;box-shadow:0 0 22px rgba(201,146,42,.25);
+}
+.price-btn.gold:hover{box-shadow:0 0 38px rgba(201,146,42,.48);transform:translateY(-1px)}
+.price-foot{margin-top:22px;text-align:center;font-size:11px;color:var(--muted);display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.pdot{width:3px;height:3px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* ═══ COMPARISON TABLE ═══ */
+.comp-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--bdr);background:var(--srf);backdrop-filter:blur(18px)}
+table.comp{width:100%;border-collapse:collapse}
+.comp th,.comp td{padding:13px 16px;border-bottom:1px solid var(--bdr-s)}
+.comp th{font-size:12px;font-weight:600;color:var(--txt);background:var(--srf-lo);text-align:center}
+.comp th:first-child{text-align:left}
+.comp td{font-size:13px;color:var(--muted);text-align:center}
+.comp td:first-child{text-align:left}
+.comp tr:hover td{background:var(--srf-lo)}
+.comp th.hi{background:rgba(201,146,42,.08);border-left:1px solid rgba(201,146,42,.18);border-right:1px solid rgba(201,146,42,.18)}
+.comp td.hi{background:rgba(201,146,42,.04);border-left:1px solid rgba(201,146,42,.10);border-right:1px solid rgba(201,146,42,.10)}
+.fn{font-weight:500;font-size:13px;color:var(--txt)}
+.fn small{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}
+.chk-y{color:var(--emerald);font-size:15px;font-weight:700}
+.chk-n{color:var(--muted);font-size:14px}
+.comp-val{color:var(--txt);font-size:13px}
+
+/* ═══ ROI CALCULATOR ═══ */
+.roi-wrap{max-width:780px;margin:0 auto;border-radius:20px;overflow:hidden;background:var(--srf);border:1px solid var(--bdr);backdrop-filter:blur(18px)}
+.roi-hd{padding:24px 28px;background:rgba(201,146,42,.06);border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:14px}
+.roi-hd h3{font-family:var(--font-d);font-size:20px;font-weight:600;color:var(--txt)}
+.roi-hd p{font-size:13px;color:var(--muted);margin-top:4px}
+.roi-body{padding:28px}
+.roi-field label{display:block;font-size:13px;font-weight:500;color:var(--txt);margin-bottom:10px}
+.size-btns,.goal-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.sz-btn,.gl-btn{
+  padding:12px;border-radius:10px;border:1px solid var(--bdr);background:transparent;color:var(--muted);font-size:13px;font-weight:500;text-align:center;
+  transition:all .2s;
+}
+.sz-btn.active,.gl-btn.active{border-color:var(--gold);background:rgba(201,146,42,.10);color:var(--gold-hi)}
+.sz-btn:hover,.gl-btn:hover{border-color:var(--gold);color:var(--txt)}
+.sz-btn small,.gl-btn small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.roi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:500px){.roi-inputs{grid-template-columns:1fr}}
+.input-wrap{position:relative}
+.input-wrap input{
+  width:100%;padding:10px 44px 10px 36px;border-radius:10px;font-size:13px;font-family:var(--font-b);
+  background:var(--srf-lo);border:1px solid var(--bdr);color:var(--txt);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.input-wrap input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,146,42,.10)}
+.input-pre,.input-suf{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;color:var(--muted);pointer-events:none}
+.input-pre{left:12px}.input-suf{right:12px}
+.roi-slider label{display:block;font-size:13px;font-weight:500;color:var(--txt);margin-bottom:10px}
+.roi-slider input[type=range]{width:100%;accent-color:var(--gold-hi);margin-bottom:6px}
+.slider-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.roi-result-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+@media(max-width:500px){.roi-result-row{grid-template-columns:1fr}}
+.roi-result{padding:16px;border-radius:10px;background:var(--srf-lo);border:1px solid var(--bdr);text-align:center}
+.roi-result-v{font-family:var(--font-d);font-size:24px;font-weight:700;color:var(--gold-hi);margin-bottom:4px}
+.roi-result-l{font-size:11px;color:var(--muted)}
+
+/* ═══ MISSION ═══ */
+.mission-card{
+  padding:44px 48px;border-radius:20px;
+  background:var(--srf-lo);border:1px solid var(--bdr);backdrop-filter:blur(18px);
+  position:relative;overflow:hidden;margin-bottom:40px;
+}
+.mission-card::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-hi),transparent)}
+.mission-card p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.mission-card p.lead{font-weight:500;color:var(--txt);font-size:16px}
+.mission-card p.accent{color:var(--gold-hi);font-weight:600}
+.mission-card p.italic{font-style:italic;color:var(--gold-hi)}
+.mission-verse{border-top:1px solid var(--bdr);padding-top:22px;margin-top:22px}
+.mission-verse p{font-size:13px;font-style:italic;color:var(--muted);margin:0}
+.mission-verse strong{color:var(--gold-hi);display:block;font-size:11px;font-style:normal;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:700px){.about-stats{grid-template-columns:repeat(2,1fr)}}
+.astat{text-align:center;padding:20px 12px;border-radius:var(--r);background:var(--srf);border:1px solid var(--bdr-s)}
+.astat-v{font-family:var(--font-d);font-size:28px;font-weight:700;color:var(--gold-hi);margin-bottom:6px}
+.astat-l{font-size:12px;color:var(--muted)}
+
+/* ═══ CONTACT ═══ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{padding:26px;border-radius:var(--r);background:var(--srf);border:1px solid var(--bdr-s);backdrop-filter:blur(18px)}
+.contact-card h3{font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--txt);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.contact-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;color:var(--muted)}
+.demo-feat{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);margin-bottom:10px}
+
+/* ═══ FAQ ═══ */
+.faq-list{display:flex;flex-direction:column;gap:8px;max-width:760px;margin:0 auto}
+.faq-item{
+  border-radius:12px;background:var(--srf);border:1px solid var(--bdr-s);
+  backdrop-filter:blur(18px);overflow:hidden;
+  transition:border-color .2s;
+}
+.faq-item.open{border-color:rgba(201,146,42,.25)}
+.faq-btn{
+  width:100%;text-align:left;padding:18px 22px;background:transparent;border:none;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-size:14px;font-weight:500;color:var(--txt);cursor:pointer;
+  transition:color .2s;
+}
+.faq-btn:hover{color:var(--gold-hi)}
+.faq-item.open .faq-btn{color:var(--gold-hi)}
+.faq-chevron{flex-shrink:0;transition:transform .3s var(--ease-s)}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-ans{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s var(--ease-m),padding .35s;
+  font-size:13px;color:var(--muted);line-height:1.75;padding:0 22px;
+}
+.faq-item.open .faq-ans{max-height:260px;padding-bottom:18px}
+.faq-more{text-align:center;margin-top:24px}
+
+/* ═══ FOOTER ═══ */
+footer{padding:48px 0 28px;border-top:1px solid var(--bdr);background:var(--srf-lo)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.foot-grid{grid-template-columns:1fr}}
+.foot-brand p{font-size:13px;color:var(--muted);line-height:1.7;margin-top:12px;max-width:260px}
+.foot-col h4{font-family:var(--font-d);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--lbl);margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:8px}
+.foot-col a{font-size:13px;color:var(--muted);transition:color .2s;cursor:pointer}
+.foot-col a:hover{color:var(--gold-hi)}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:24px;border-top:1px solid var(--bdr-s)}
+.foot-bottom p{font-size:11px;color:var(--muted);opacity:.5}
+.foot-status{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);opacity:.6}
+.foot-status-dot{width:5px;height:5px;border-radius:50%;background:var(--emerald);box-shadow:0 0 5px var(--emerald)}
+.social-links{display:flex;gap:14px;margin-top:14px}
+.social-links a{color:var(--muted);transition:color .2s}
+.social-links a:hover{color:var(--gold-hi)}
+
+/* ═══ KEYFRAMES ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse-live{0%{box-shadow:0 0 0 0 rgba(29,201,140,.6)}70%{box-shadow:0 0 0 8px rgba(29,201,140,0)}100%{box-shadow:0 0 0 0 rgba(29,201,140,0)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+</style>
+</head>
+<body>
+
+<!-- ══ LIVING BACKGROUND ══ -->
+<canvas id="cosmos-bg"></canvas>
+
+<!-- ══════════════════════════════════════
+     KHESED ICON SYSTEM — reusable SVG defs
+     All icons: 24×24 · 1.5 stroke · round caps
+     Diamond accent on key icons = brand mark
+══════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <!-- Globe / LATAM market -->
+    <symbol id="ico-globe" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2.5 12h19M12 3c-2.5 2.5-4 5.5-4 9s1.5 6.5 4 9M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 4.5l1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><!-- gem accent -->
+    </symbol>
+    <!-- WhatsApp / messaging -->
+    <symbol id="ico-message" viewBox="0 0 24 24" fill="none">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9.5 12.5l.5.5 1-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><!-- gem mark -->
+    </symbol>
+    <!-- Payment / card -->
+    <symbol id="ico-payment" viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="5" width="20" height="14" rx="2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 10h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M6 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M19 13.5l1 1-1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- AI / Intelligence -->
+    <symbol id="ico-ai" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2l2.5 4.5H19l-3 3.5 1.5 5L12 13l-5.5 2 1.5-5-3-3.5h4.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 13v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M8 19h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Prayer / hands -->
+    <symbol id="ico-prayer" viewBox="0 0 24 24" fill="none">
+      <path d="M18 11V8a2 2 0 0 0-4 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 11V8a2 2 0 0 1 4 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 11h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5v-5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><!-- gem vertical accent -->
+    </symbol>
+    <!-- Chart / analytics -->
+    <symbol id="ico-chart" viewBox="0 0 24 24" fill="none">
+      <path d="M3 3v18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 16l4-6 4 3 4-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="19" cy="5" r="1.5" stroke="currentColor" stroke-width="1"/><!-- gem circle accent -->
+    </symbol>
+    <!-- Culture / adapt -->
+    <symbol id="ico-culture" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M2 12h20M12 2c-2.76 3.36-4 6.72-4 10s1.24 6.64 4 10M12 2c2.76 3.36 4 6.72 4 10s-1.24 6.64-4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Shield / security -->
+    <symbol id="ico-shield" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2l8 3.5V12c0 4.5-3.5 8.5-8 10-4.5-1.5-8-5.5-8-10V5.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Lock / SSL -->
+    <symbol id="ico-lock" viewBox="0 0 24 24" fill="none">
+      <rect x="5" y="11" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="16" r="1.5" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+    <!-- Uptime / circle-check -->
+    <symbol id="ico-uptime" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M8.5 12l2.5 2.5 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Users / members -->
+    <symbol id="ico-users" viewBox="0 0 24 24" fill="none">
+      <circle cx="9" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M2 21v-1a7 7 0 0 1 14 0v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M16 3.5a3.5 3.5 0 1 1 0 7M22 21v-1a7 7 0 0 0-5-6.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Support / headset -->
+    <symbol id="ico-support" viewBox="0 0 24 24" fill="none">
+      <path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M21 18a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3 18a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Ministry experience / cross-star -->
+    <symbol id="ico-ministry" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M8 7l4-4 4 4M16 17l-4 4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Integrations / connect nodes -->
+    <symbol id="ico-connect" viewBox="0 0 24 24" fill="none">
+      <circle cx="5" cy="12" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="19" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="19" cy="18" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7.5 12l9-6M7.5 12l9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Email -->
+    <symbol id="ico-email" viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="4" width="20" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M2 8l10 6 10-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Phone -->
+    <symbol id="ico-phone" viewBox="0 0 24 24" fill="none">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Location pin -->
+    <symbol id="ico-pin" viewBox="0 0 24 24" fill="none">
+      <path d="M12 22s-8-5.5-8-12a8 8 0 0 1 16 0c0 6.5-8 12-8 12z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <!-- Clock -->
+    <symbol id="ico-clock" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Arrow right -->
+    <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Chevron down -->
+    <symbol id="ico-chevron" viewBox="0 0 24 24" fill="none">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Check mark -->
+    <symbol id="ico-check" viewBox="0 0 24 24" fill="none">
+      <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Play -->
+    <symbol id="ico-play" viewBox="0 0 24 24" fill="none">
+      <path d="M8 5.5l11 6.5-11 6.5V5.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="currentColor"/>
+    </symbol>
+    <!-- Sun (light mode) -->
+    <symbol id="ico-sun" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Moon (dark mode) -->
+    <symbol id="ico-moon" viewBox="0 0 24 24" fill="none">
+      <path d="M21 12.8A9 9 0 0 1 11.2 3 9 9 0 1 0 21 12.8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- LinkedIn -->
+    <symbol id="ico-linkedin" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+    </symbol>
+    <!-- YouTube -->
+    <symbol id="ico-youtube" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.9 4 12 4 12 4s-6.9 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.1 20 12 20 12 20s6.9 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6z"/>
+      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--bg)"/>
+    </symbol>
+    <!-- Facebook -->
+    <symbol id="ico-facebook" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </symbol>
+    <!-- Instagram -->
+    <symbol id="ico-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <!-- TikTok -->
+    <symbol id="ico-tiktok" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+    </symbol>
+    <!-- Diamond gem — brand accent -->
+    <symbol id="ico-gem" viewBox="0 0 24 24" fill="none">
+      <path d="M6 3h12l4 6-10 13L2 9l4-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 9h20M12 3l4 6-4 13-4-13 4-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- ROI / calculator -->
+    <symbol id="ico-calc" viewBox="0 0 24 24" fill="none">
+      <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="7" y="5" width="10" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7 13h2M11 13h2M15 13h2M7 17h2M11 17h2M15 17h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Migrate / import -->
+    <symbol id="ico-migrate" viewBox="0 0 24 24" fill="none">
+      <path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 6v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <a href="/" style="display:flex;align-items:center;text-decoration:none" aria-label="KHESED-TEK SYSTEMS">
+    <svg viewBox="0 0 370 68" xmlns="http://www.w3.org/2000/svg" style="height:46px;width:auto" aria-hidden="true">
+      <text x="2" y="52" font-family="'Cinzel',Georgia,serif" font-weight="700" font-size="52" fill="var(--gold-hi)" letter-spacing="-0.5">KHESED</text>
+      <rect x="213" y="2" width="7" height="64" rx="2.5" fill="var(--gold-hi)"/>
+      <rect x="196" y="17" width="41" height="6" rx="2.5" fill="var(--gold-hi)"/>
+      <g transform="translate(200,36)" fill="none" stroke="var(--gold-hi)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 20C3 19 2 13 3 9c0-2 1-3 3-3V3c0-1 1-1.5 2-1s2 .5 2 1.5V5c1-.5 2 0 2 1.5V7c1-.5 2 0 2 2v8c0 3-2 5-4 5z"/>
+        <path d="M6 6v5M10 3v7M14 7v6"/>
+      </g>
+      <g transform="translate(204,5)" fill="none" stroke="var(--gold-hi)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 13C7 12 3 10 2 7 0 4 2 1 5 3 4 1 5 0 7 1c1-1 3 0 4 2 2-1 4 1 3 3-1 2-3 4-4 7z"/>
+        <path d="M10 13l-1 7M7 5L4 4"/>
+      </g>
+      <g transform="translate(212.5,8)" fill="var(--gold-hi)" opacity=".88">
+        <path d="M3 10C3 10 0 7 1 4c.5-1.5 2-3 2-3s1.5 1.5 2 3c1.5 3 1.5 6-2 6z"/>
+      </g>
+      <text x="237" y="52" font-family="'Cinzel',Georgia,serif" font-weight="700" font-size="52" fill="var(--gold-hi)" letter-spacing="-0.5">EK</text>
+      <text x="185" y="67" font-family="'Cinzel',Georgia,serif" font-weight="400" font-size="12" fill="var(--gold-hi)" letter-spacing="5" text-anchor="middle" opacity=".75">SYSTEMS</text>
+    </svg>
+  </a>
+
+  <nav>
+    <a href="#features">Funciones</a>
+    <a href="#about">Nosotros</a>
+    <a href="/schedule">Agendar</a>
+    <a href="/products">Productos</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+
+  <div class="hd-right">
+    <a href="/contact" class="btn-demo">Agendar Demo</a>
+    <button class="btn-theme" id="theme-btn" aria-label="Cambiar tema">
+      <svg width="16" height="16" style="color:var(--gold-hi)" id="theme-icon"><use href="#ico-sun"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="z1">
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div style="max-width:820px">
+    <div class="eyebrow">
+      <div class="live-dot"></div>
+      <svg width="14" height="14" style="color:var(--cyan)"><use href="#ico-globe"/></svg>
+      Mercado LATAM — Especialistas en mercado hispano
+    </div>
+
+    <h1>Tecnología que<br/>
+    <span class="g">transforma tu iglesia</span></h1>
+
+    <p class="hero-p">En KHESED-TEK SYSTEMS convergen la vanguardia tecnológica y el propósito divino. Nuestra solución insignia, KHESED-TEK-CMS, nace de una convicción profunda: el software no es el fin, sino el medio estratégico para potenciar el cumplimiento de La Gran Comisión.</p>
+
+    <p class="hero-verse">"Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños" — Proverbios 27:23</p>
+
+    <div class="hero-acts">
+      <a href="/contact" class="btn-primary">
+        Hablar con nosotros
+        <svg width="16" height="16" style="color:var(--navy)"><use href="#ico-arrow"/></svg>
+      </a>
+      <a href="https://wa.me/573021234410" target="_blank" rel="noopener" class="btn-wa">
+        <svg width="16" height="16"><use href="#ico-message"/></svg>
+        WhatsApp directo
+      </a>
+    </div>
+
+    <div class="hero-trust">
+      <span class="trust-chip">
+        <svg width="14" height="14" style="color:var(--gold-hi)"><use href="#ico-clock"/></svg>
+        Soporte horario LATAM
+      </span>
+      <span class="sep"></span>
+      <span class="trust-chip">
+        <svg width="14" height="14" style="color:var(--gold-hi)"><use href="#ico-message"/></svg>
+        Atención en español
+      </span>
+      <span class="sep"></span>
+      <span class="trust-chip">
+        <svg width="14" height="14" style="color:var(--gold-hi)"><use href="#ico-users"/></svg>
+        Especialistas en iglesias
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOUNDER STORY ══════════ -->
+<section id="story" style="padding:64px 0">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:10px">
+      <div class="sec-lbl center">La empresa</div>
+      <h2>La Historia Detrás de<br/><span class="g">KHESED-TEK</span></h2>
+      <p class="sec-sub" style="max-width:560px;margin:0 auto 28px">Nuestra Misión: Usar la tecnología como una expresión práctica del 'Khesed' de Dios para servir a Su Iglesia.</p>
+    </div>
+    <div class="story-tabs rv">
+      <button class="stab active">Historia del Fundador</button>
+      <button class="stab">Capturas del Sistema</button>
+    </div>
+    <div class="rv" style="max-width:800px;margin:0 auto">
+      <div class="video-box" onclick="window.open('https://www.youtube.com/watch?v=d4rKaIUTCQQ','_blank')">
+        <img src="/images/demo-thumbnail-latam.png" alt="Historia del Fundador de KHESED-TEK" onerror="this.style.background='var(--srf-lo)'"/>
+        <div class="vid-overlay">
+          <div class="play-circle">
+            <svg width="22" height="22" style="color:var(--navy);margin-left:3px"><use href="#ico-play"/></svg>
+          </div>
+        </div>
+        <div class="vid-dur">5:30</div>
+      </div>
+      <div class="tc" style="margin-top:24px">
+        <h3 style="font-family:var(--font-d);font-size:18px;font-weight:600;color:var(--txt);margin-bottom:10px">La Historia Detrás de KHESED-TEK</h3>
+        <p style="font-size:14px;color:var(--muted);max-width:520px;margin:0 auto 22px;line-height:1.7">Conozca la historia personal del fundador y nuestra misión de usar la tecnología como expresión práctica del Khesed de Dios para servir a Su Iglesia.</p>
+        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="window.open('https://www.youtube.com/watch?v=d4rKaIUTCQQ','_blank')">
+            <svg width="15" height="15" style="color:var(--navy)"><use href="#ico-play"/></svg>
+            Ver Historia del Fundador
+          </button>
+          <a href="/contact" class="btn-ghost">
+            <svg width="15" height="15" style="color:var(--gold-hi)"><use href="#ico-pin"/></svg>
+            Agendar Videollamada
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUST BADGES ══════════ -->
+<section id="trust">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:22px">
+      <h3 style="font-family:var(--font-d);font-size:18px;font-weight:600;color:var(--txt);margin-bottom:6px">Seguridad y Confianza</h3>
+      <p style="font-size:13px;color:var(--muted)">Protegemos tu información con los más altos estándares</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card rv d1">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-lock"/></svg></div>
+        <div class="trust-v">256<span style="font-size:13px">-bit</span></div>
+        <div class="trust-lbl">SSL Seguro</div>
+        <div class="trust-desc">Encriptación de nivel bancario</div>
+      </div>
+      <div class="trust-card rv d2">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-shield"/></svg></div>
+        <div class="trust-v">GDPR</div>
+        <div class="trust-lbl">Cumplimiento</div>
+        <div class="trust-desc">Protección de datos completa</div>
+      </div>
+      <div class="trust-card rv d3">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-uptime"/></svg></div>
+        <div class="trust-v">99.9<span style="font-size:13px">%</span></div>
+        <div class="trust-lbl">Disponibilidad</div>
+        <div class="trust-desc">Uptime garantizado</div>
+      </div>
+      <div class="trust-card rv d4">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-users"/></svg></div>
+        <div class="trust-v">10K<span style="font-size:13px">+</span></div>
+        <div class="trust-lbl">Capacidad</div>
+        <div class="trust-desc">Miembros soportados</div>
+      </div>
+      <div class="trust-card rv d5">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-support"/></svg></div>
+        <div class="trust-v">24/7</div>
+        <div class="trust-lbl">Soporte</div>
+        <div class="trust-desc">Disponible cuando lo necesitas</div>
+      </div>
+      <div class="trust-card rv d6">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-ministry"/></svg></div>
+        <div class="trust-v">40<span style="font-size:13px">+</span></div>
+        <div class="trust-lbl">Experiencia</div>
+        <div class="trust-desc">Años de experiencia ministerial</div>
+      </div>
+      <div class="trust-card rv d1">
+        <div class="trust-ico"><svg width="28" height="28" style="color:var(--gold-hi)"><use href="#ico-connect"/></svg></div>
+        <div class="trust-v">15<span style="font-size:13px">+</span></div>
+        <div class="trust-lbl">Integraciones</div>
+        <div class="trust-desc">Conecta tus herramientas</div>
+      </div>
+    </div>
+    <div class="trust-note rv" style="margin-top:14px">
+      <svg width="16" height="16" style="color:var(--cyan);flex-shrink:0;margin-top:1px"><use href="#ico-shield"/></svg>
+      <span><strong style="color:var(--txt)">Compromiso de Seguridad:</strong> Todos los datos están encriptados en tránsito y en reposo. Realizamos auditorías de seguridad regulares y cumplimos con las regulaciones internacionales de protección de datos, incluyendo la Ley 1581 de Colombia.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURES ══════════ -->
+<section id="features" style="padding:84px 0">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:48px">
+      <div class="sec-lbl">Diferenciadores</div>
+      <h2>Características únicas para<br/><span class="g">Latinoamérica</span></h2>
+      <p class="sec-sub" style="max-width:520px">Capacidades culturalmente adaptadas que ningún competidor internacional ofrece.</p>
+    </div>
+    <div style="text-align:center;margin-bottom:32px" class="rv">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:20px;background:rgba(201,146,42,.08);border:1px solid rgba(201,146,42,.22);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi)">
+        <svg width="13" height="13" style="color:var(--cyan)"><use href="#ico-gem"/></svg>
+        Superando a Planning Center, Breeze y ChurchTrac en el mercado latino
+      </div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-card rv d1" style="--fc:#26D9D9">
+        <div class="feat-badge">Exclusivo</div>
+        <div class="feat-head">
+          <div class="ico-pill" style="color:var(--cyan)"><svg width="20" height="20"><use href="#ico-message"/></svg></div>
+          <div class="feat-title">WhatsApp Business Nativo</div>
+        </div>
+        <p class="feat-desc">Primer ChMS con WhatsApp Business completamente integrado. Envíe recordatorios, comunicados pastorales y seguimientos directamente desde la plataforma. Planning Center, Breeze y otros no tienen esta funcionalidad esencial para Latinoamérica.</p>
+        <div class="feat-vs">
+          <svg width="10" height="10"><use href="#ico-gem"/></svg>
+          vs Todos: Único con WhatsApp Business nativo
+        </div>
+      </div>
+
+      <div class="feat-card rv d2" style="--fc:#F0B83C">
+        <div class="feat-badge">Cultural</div>
+        <div class="feat-head">
+          <div class="ico-pill" style="color:var(--gold-hi)"><svg width="20" height="20"><use href="#ico-payment"/></svg></div>
+          <div class="feat-title">Métodos de Pago LATAM</div>
+        </div>
+        <p class="feat-desc">Nequi, PSE, transferencias bancarias locales incluidas. Los competidores internacionales solo ofrecen Stripe y PayPal. Acepte donaciones y pagos con los métodos que su congregación ya usa.</p>
+        <div class="feat-vs">
+          <svg width="10" height="10"><use href="#ico-gem"/></svg>
+          vs Internacionales: Pagos locales 100% integrados
+        </div>
+      </div>
+
+      <div class="feat-card rv d3" style="--fc:#1DC98C">
+        <div class="feat-badge">IA Avanzada</div>
+        <div class="feat-head">
+          <div class="ico-pill" style="color:var(--emerald)"><svg width="20" height="20"><use href="#ico-ai"/></svg></div>
+          <div class="feat-title">Emparejamiento Inteligente</div>
+        </div>
+        <p class="feat-desc">IA empareja voluntarios con ministerios basado en dones espirituales. ChurchTrac y Breeze solo tienen programación básica. Nuestro algoritmo conecta personas con el ministerio perfecto.</p>
+        <div class="feat-vs">
+          <svg width="10" height="10"><use href="#ico-gem"/></svg>
+          vs ChurchTrac/Breeze: IA única para voluntarios
+        </div>
+      </div>
+
+      <div class="feat-card rv d4" style="--fc:#F0B83C">
+        <div class="feat-badge">Automatización</div>
+        <div class="feat-head">
+          <div class="ico-pill" style="color:var(--gold-hi)"><svg width="20" height="20"><use href="#ico-prayer"/></svg></div>
+          <div class="feat-title">Motor de Oración Automatizado</div>
+        </div>
+        <p class="feat-desc">Sistema único de seguimiento pastoral con IA para análisis emocional. Ningún competidor tiene automatización pastoral. Detecta peticiones críticas y enruta al pastor en tiempo real.</p>
+        <div class="feat-vs">
+          <svg width="10" height="10"><use href="#ico-gem"/></svg>
+          vs Todos: Automatización pastoral exclusiva
+        </div>
+      </div>
+
+      <div class="feat-card rv d5" style="--fc:#26D9D9">
+        <div class="feat-badge">Cultural</div>
+        <div class="feat-head">
+          <div class="ico-pill" style="color:var(--cyan)"><svg width="20" height="20"><use href="#ico-culture"/></svg></div>
+          <div class="feat-title">Adaptación Cultural IA</div>
+        </div>
+        <p class="feat-desc">Sistema que adapta automáticamente la interfaz al contexto cultural latino. Los competidores usan traducciones básicas. Nosotros entendemos la iglesia hispana desde adentro.</p>
+        <div class="feat-vs">
+          <svg width="10" height="10"><use href="#ico-gem"/></svg>
+          vs Todos: Adaptación cultural inteligente
+        </div>
+      </div>
+
+      <div class="feat-card rv d6" style="--fc:#9B8FFF">
+        <div class="feat-badge">Predictivo</div>
+        <div class="feat-head">
+          <div class="ico-pill" style="color:#9B8FFF"><svg width="20" height="20"><use href="#ico-chart"/></svg></div>
+          <div class="feat-title">Análisis de Participación</div>
+        </div>
+        <p class="feat-desc">IA predice deserción de miembros y sugiere intervenciones. Planning Center solo tiene reportes básicos. Intervenga antes de que una oveja se aleje del rebaño.</p>
+        <div class="feat-vs">
+          <svg width="10" height="10"><use href="#ico-gem"/></svg>
+          vs Planning Center: Predicción avanzada única
+        </div>
+      </div>
+    </div>
+
+    <div class="why-box rv" style="margin-top:24px">
+      <h3>
+        <svg width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-gem"/></svg>
+        Por qué las iglesias eligen KHESED-TEK sobre los competidores
+      </h3>
+      <div class="why-grid">
+        <div class="why-item">
+          <strong>vs Planning Center (Inglés)</strong>
+          <p>Culturalmente adaptado + métodos de pago locales + soporte en español</p>
+        </div>
+        <div class="why-item">
+          <strong>vs Breeze / ChurchTrac</strong>
+          <p>IA avanzada + WhatsApp Business nativo incluido sin costo adicional</p>
+        </div>
+        <div class="why-item">
+          <strong>vs Aplos</strong>
+          <p>ChMS completo para toda la iglesia vs solo contabilidad</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ IMPACT METRICS ══════════ -->
+<section style="padding:60px 0;background:var(--srf-lo);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:40px">
+      <div class="sec-lbl center">Resultados</div>
+      <h2>Potencial de impacto <span class="g">comprobado</span></h2>
+      <p class="sec-sub" style="max-width:480px;margin:0 auto">Basado en estudios de la industria y benchmarks de iglesias similares</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card rv d1">
+        <div class="ico-pill" style="color:var(--gold-hi)"><svg width="20" height="20"><use href="#ico-chart"/></svg></div>
+        <div class="impact-v">30–50%</div>
+        <p style="font-size:14px;font-weight:600;color:var(--txt);margin-bottom:4px">Eficiencia Administrativa</p>
+        <div class="impact-sub">reducción en tiempo administrativo</div>
+        <div class="impact-src">Fuente: Iglesias que digitalizan procesos</div>
+        <div class="impact-benefit"><strong>Beneficio:</strong> Más tiempo para ministerio pastoral</div>
+      </div>
+      <div class="impact-card rv d2">
+        <div class="ico-pill" style="color:var(--cyan)"><svg width="20" height="20"><use href="#ico-users"/></svg></div>
+        <div class="impact-v">25–40%</div>
+        <p style="font-size:14px;font-weight:600;color:var(--txt);margin-bottom:4px">Participación Digital</p>
+        <div class="impact-sub">aumento en engagement de miembros</div>
+        <div class="impact-src">Fuente: Estudios de transformación digital</div>
+        <div class="impact-benefit"><strong>Beneficio:</strong> Mayor conexión con la congregación</div>
+      </div>
+      <div class="impact-card rv d3">
+        <div class="ico-pill" style="color:var(--emerald)"><svg width="20" height="20"><use href="#ico-payment"/></svg></div>
+        <div class="impact-v">60%</div>
+        <p style="font-size:14px;font-weight:600;color:var(--txt);margin-bottom:4px">Gestión Financiera</p>
+        <div class="impact-sub">mejora en transparencia de donaciones</div>
+        <div class="impact-src">Fuente: Plataformas de donaciones digitales</div>
+        <div class="impact-benefit"><strong>Beneficio:</strong> Incremento en contribuciones regulares</div>
+      </div>
+    </div>
+    <div class="impact-cta rv" style="margin-top:36px">
+      <div style="max-width:500px;margin:0 auto;padding:28px;border-radius:16px;background:var(--srf);border:1px solid var(--bdr);backdrop-filter:blur(18px);text-align:center">
+        <h3 style="font-family:var(--font-d);font-size:18px;font-weight:600;color:var(--txt);margin-bottom:10px">¿Listo para estos resultados?</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7">Únete a nuestro programa beta y sé parte de las primeras iglesias en experimentar estos beneficios</p>
+        <a href="/contact?program=beta" class="btn-primary">
+          Comenzar Prueba Beta
+          <svg width="15" height="15" style="color:var(--navy)"><use href="#ico-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRICING ══════════ -->
+<section id="pricing" style="padding:84px 0">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:32px">
+      <div class="sec-lbl center">Planes</div>
+      <h2>Adaptados al <span class="g">mercado hispano</span></h2>
+      <p class="sec-sub" style="max-width:480px;margin:0 auto 8px">Precio fijo por tamaño de iglesia — sin cargos adicionales por módulos</p>
+      <p style="font-size:13px;color:var(--muted)">Métodos de pago locales y soporte en español incluidos en todos los planes</p>
+    </div>
+    <div class="tc rv" style="margin-bottom:36px">
+      <div class="bill-toggle">
+        <button class="bill-btn active" id="bill-m">Mensual</button>
+        <button class="bill-btn" id="bill-y">Anual <span style="font-size:10px;opacity:.75;margin-left:4px">2 meses gratis</span></button>
+      </div>
+    </div>
+    <div class="price-grid rv">
+      <!-- BÁSICO -->
+      <div class="price-card">
+        <div class="price-name">BÁSICO</div>
+        <div class="price-tier">Iglesia Pequeña</div>
+        <div class="price-amount" id="price-basic">$149.99 <span class="per">/mes</span></div>
+        <div class="price-mbr">Hasta 500 miembros</div>
+        <div class="price-div"></div>
+        <ul class="price-feats">
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Gestión básica de miembros</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>WhatsApp Business integrado</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Hasta 5 licencias de usuario</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Soporte en español</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Pagos locales (Nequi, PSE, Efecty)</li>
+        </ul>
+        <button class="price-btn" onclick="window.location='/contact'">Solicitar Demo</button>
+      </div>
+      <!-- PROFESIONAL -->
+      <div class="price-card pop">
+        <div class="pop-badge">Más popular</div>
+        <div class="price-name" style="margin-top:14px">PROFESIONAL</div>
+        <div class="price-tier">Iglesia Mediana</div>
+        <div class="price-amount" id="price-pro">$299.99 <span class="per">/mes</span></div>
+        <div class="price-mbr">Hasta 2,000 miembros</div>
+        <div class="price-div"></div>
+        <ul class="price-feats">
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Todo lo del plan Básico</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Hasta 10 licencias de usuario</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Gestión de eventos y actividades</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Reportes avanzados con IA</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Transmisiones en vivo integradas</li>
+        </ul>
+        <button class="price-btn gold" onclick="window.location='/contact'">
+          Más popular
+          <svg width="14" height="14" style="color:var(--navy);display:inline;margin-left:4px"><use href="#ico-arrow"/></svg>
+        </button>
+      </div>
+      <!-- EMPRESARIAL -->
+      <div class="price-card">
+        <div class="price-name">EMPRESARIAL</div>
+        <div class="price-tier">Iglesia Grande</div>
+        <div class="price-amount">Personalizado</div>
+        <div class="price-mbr">Miembros ilimitados</div>
+        <div class="price-div"></div>
+        <ul class="price-feats">
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Todo lo del plan Profesional</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Licencias ilimitadas</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Multi-campus</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>API personalizada</li>
+          <li><svg class="pf-check" width="14" height="14" style="color:var(--emerald)"><use href="#ico-check"/></svg>Soporte prioritario dedicado</li>
+        </ul>
+        <button class="price-btn" onclick="window.location='/contact'">Solicitar Demo</button>
+      </div>
+    </div>
+    <div class="price-foot rv">
+      <svg width="13" height="13" style="color:var(--cyan)"><use href="#ico-payment"/></svg>
+      Acepta PSE, Bancolombia, Efecty, Nequi y transferencias bancarias
+      <span class="pdot"></span>
+      <svg width="13" height="13" style="color:var(--cyan)"><use href="#ico-phone"/></svg>
+      Soporte telefónico en español incluido
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMPARISON TABLE ══════════ -->
+<section style="padding:60px 0 84px;background:var(--srf-lo);border-top:1px solid var(--bdr)">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:32px">
+      <div class="sec-lbl center">Detalles</div>
+      <h2>Comparación <span class="g">detallada</span></h2>
+      <p class="sec-sub" style="max-width:480px;margin:0 auto">Encuentra el plan perfecto para tu iglesia</p>
+    </div>
+    <div class="comp-wrap rv">
+      <div style="overflow-x:auto">
+        <table class="comp">
+          <thead>
+            <tr>
+              <th style="text-align:left;width:40%">Función</th>
+              <th>Básico</th>
+              <th class="hi">Profesional</th>
+              <th>Empresarial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="fn">Gestión de miembros<small>Base de datos completa con perfiles</small></div></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Límite de miembros</div></td>
+              <td class="center"><span class="comp-val">500</span></td>
+              <td class="center hi"><span class="comp-val">2,000</span></td>
+              <td class="center"><span class="comp-val">Ilimitado</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Licencias de usuario</div></td>
+              <td class="center"><span class="comp-val">Hasta 5</span></td>
+              <td class="center hi"><span class="comp-val">Hasta 10</span></td>
+              <td class="center"><span class="comp-val">Ilimitadas</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">WhatsApp Business nativo</div></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Pagos locales LATAM</div></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Motor de oración con IA</div></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Eventos y actividades</div></td>
+              <td class="center"><span class="chk-n">–</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Reportes avanzados</div></td>
+              <td class="center"><span class="chk-n">–</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Transmisiones en vivo</div></td>
+              <td class="center"><span class="chk-n">–</span></td>
+              <td class="center hi"><span class="chk-y">✓</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Multi-campus</div></td>
+              <td class="center"><span class="chk-n">–</span></td>
+              <td class="center hi"><span class="chk-n">–</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">API personalizada</div></td>
+              <td class="center"><span class="chk-n">–</span></td>
+              <td class="center hi"><span class="chk-n">–</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+            <tr>
+              <td><div class="fn">Soporte prioritario</div></td>
+              <td class="center"><span class="chk-n">–</span></td>
+              <td class="center hi"><span class="chk-n">–</span></td>
+              <td class="center"><span class="chk-y">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:22px;text-align:center;border-top:1px solid var(--bdr)">
+        <h4 style="font-size:14px;font-weight:600;color:var(--txt);margin-bottom:8px">¿Necesitas ayuda para decidir?</h4>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Nuestro equipo puede ayudarte a elegir el plan perfecto para tu iglesia</p>
+        <a href="/contact" class="btn-primary">Solicitar Consulta Gratuita <svg width="14" height="14" style="color:var(--navy)"><use href="#ico-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ROI CALCULATOR ══════════ -->
+<section style="padding:84px 0">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:40px">
+      <div class="sec-lbl center">Calculadora</div>
+      <h2>Calcule su <span class="g">Retorno de Inversión</span></h2>
+      <p class="sec-sub" style="max-width:480px;margin:0 auto">Descubra cuánto puede ahorrar su iglesia con KHESED-TEK</p>
+    </div>
+    <div class="roi-wrap rv">
+      <div class="roi-hd">
+        <div class="ico-pill lg" style="color:var(--gold-hi)"><svg width="26" height="26"><use href="#ico-calc"/></svg></div>
+        <div>
+          <h3>Calculadora de ROI</h3>
+          <p>Descubra cuánto puede ahorrar su iglesia con KHESED-TEK</p>
+        </div>
+      </div>
+      <div class="roi-body">
+        <div class="roi-field" style="margin-bottom:20px">
+          <label>Tamaño de su iglesia</label>
+          <div class="size-btns">
+            <button class="sz-btn" onclick="selectSize(this)"><div>Pequeña</div><small>500 miembros</small></button>
+            <button class="sz-btn active" onclick="selectSize(this)"><div>Mediana</div><small>2,000 miembros</small></button>
+            <button class="sz-btn" onclick="selectSize(this)"><div>Grande</div><small>10,000+ miembros</small></button>
+          </div>
+        </div>
+        <div class="roi-inputs">
+          <div class="roi-field">
+            <label>Costo actual de software (mensual)</label>
+            <div class="input-wrap">
+              <span class="input-pre">$</span>
+              <input type="number" id="roi-cost" value="200" placeholder="200" oninput="calcROI()"/>
+              <span class="input-suf">/mes</span>
+            </div>
+          </div>
+          <div class="roi-field">
+            <label>Horas administrativas por semana</label>
+            <div class="input-wrap">
+              <input type="number" id="roi-hrs" value="15" min="1" max="40" oninput="calcROI()" style="padding-left:12px"/>
+              <span class="input-suf">hrs/sem</span>
+            </div>
+          </div>
+        </div>
+        <div class="roi-slider" style="margin-bottom:20px">
+          <label>Nivel de procesos manuales</label>
+          <input type="range" id="roi-manual" min="1" max="10" value="5" oninput="document.getElementById('manual-val').textContent=this.value;calcROI()"/>
+          <div class="slider-labels">
+            <span>Mínimos</span>
+            <span style="color:var(--gold-hi);font-weight:600" id="manual-val">5</span>
+            <span>Extensos</span>
+          </div>
+        </div>
+        <div class="roi-field" style="margin-bottom:24px">
+          <label>Objetivos de crecimiento</label>
+          <div class="goal-btns">
+            <button class="gl-btn" onclick="selectGoal(this)">Mantener</button>
+            <button class="gl-btn active" onclick="selectGoal(this)">Moderado</button>
+            <button class="gl-btn" onclick="selectGoal(this)">Agresivo</button>
+          </div>
+        </div>
+        <div class="roi-result-row" id="roi-results" style="display:none">
+          <div class="roi-result">
+            <div class="roi-result-v" id="roi-save">$0</div>
+            <div class="roi-result-l">Ahorro mensual estimado</div>
+          </div>
+          <div class="roi-result">
+            <div class="roi-result-v" id="roi-hrs-saved">0 hrs</div>
+            <div class="roi-result-l">Horas recuperadas por semana</div>
+          </div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="calcROI();document.getElementById('roi-results').style.display='grid'">
+          <svg width="16" height="16" style="color:var(--navy)"><use href="#ico-calc"/></svg>
+          Calcular ROI
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MISSION / ABOUT ══════════ -->
+<section id="about" style="padding:84px 0;background:var(--srf-lo);border-top:1px solid var(--bdr)">
+  <div class="wrap" style="max-width:840px">
+    <div class="tc rv" style="margin-bottom:36px">
+      <div class="sec-lbl center">Misión</div>
+      <h2>Nuestra <span class="g">Misión</span></h2>
+    </div>
+    <div class="mission-card rv">
+      <p class="lead">Nuestra misión es desplegar la tecnología como una expresión práctica del Khesed de Dios — Su amor de pacto y misericordia — para servir a Su Iglesia.</p>
+      <p>Fieles a este llamado, transformamos nuestro trabajo en una ofrenda tangible: <strong style="color:var(--gold-hi)">el 33% de todas las ganancias de nuestras suscripciones</strong> se asignan directamente para financiar las obras comunitarias de Misión Khesed.</p>
+      <p>Este compromiso asegura que cada solución tecnológica que creamos se convierta en un acto de amor práctico y generacional.</p>
+      <p class="italic">Porque creemos que servir a la Iglesia es también servir al mundo al cual Ella es enviada.</p>
+      <div class="mission-verse">
+        <strong>Fundamento Bíblico</strong>
+        <p>"Sé diligente en conocer el estado de tus ovejas, y mira con cuidado por tus rebaños" — Proverbios 27:23</p>
+      </div>
+    </div>
+    <p class="rv" style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px">Somos una firma innovadora de software con sede en Barranquilla, dedicada exclusivamente a servir al Reino. Empoderamos a organizaciones basadas en la fe mediante soluciones de Inteligencia Artificial e integración de procesos, resolviendo sus desafíos operativos más complejos.</p>
+    <p class="rv" style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:36px">Optimizamos sus tareas administrativas para que su equipo recupere el activo más valioso: tiempo para pastorear y fortalecer a la comunidad, mientras nosotros gestionamos la complejidad tecnológica.</p>
+    <div class="about-stats rv">
+      <div class="astat"><div class="astat-v">10K+</div><div class="astat-l">Miembros soportados</div></div>
+      <div class="astat"><div class="astat-v">40+</div><div class="astat-l">Años experiencia ministerial</div></div>
+      <div class="astat"><div class="astat-v">99.9%</div><div class="astat-l">Uptime garantizado</div></div>
+      <div class="astat"><div class="astat-v">15+</div><div class="astat-l">Integraciones disponibles</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" style="padding:84px 0">
+  <div class="wrap" style="max-width:800px">
+    <div class="tc rv" style="margin-bottom:36px">
+      <div class="sec-lbl center">Conversemos</div>
+      <h2>Hablemos sobre <span class="g">tu iglesia</span></h2>
+      <p class="sec-sub" style="max-width:480px;margin:0 auto">Nuestro equipo en Barranquilla está listo para ayudarte a transformar tu ministerio</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="rv">
+      <div style="padding:28px;border-radius:var(--r);background:var(--srf);border:1px solid var(--bdr-s);backdrop-filter:blur(18px)">
+        <h3 style="font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--txt);margin-bottom:20px;display:flex;align-items:center;gap:10px">
+          <svg width="16" height="16" style="color:var(--cyan)"><use href="#ico-email"/></svg>
+          Contacto directo
+        </h3>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;color:var(--muted)">
+          <svg width="14" height="14" style="color:var(--gold-hi);flex-shrink:0"><use href="#ico-email"/></svg>
+          contacto@khesed-tek-systems.org
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;color:var(--muted)">
+          <svg width="14" height="14" style="color:var(--gold-hi);flex-shrink:0"><use href="#ico-phone"/></svg>
+          +57 302 123 4410 (WhatsApp)
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;color:var(--muted)">
+          <svg width="14" height="14" style="color:var(--gold-hi);flex-shrink:0"><use href="#ico-pin"/></svg>
+          Barranquilla, Atlántico, Colombia
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)">
+          <svg width="14" height="14" style="color:var(--gold-hi);flex-shrink:0"><use href="#ico-clock"/></svg>
+          Lunes a Viernes · 9AM–6PM (COT)
+        </div>
+      </div>
+      <div style="padding:28px;border-radius:var(--r);background:var(--srf);border:1px solid var(--bdr-s);backdrop-filter:blur(18px)">
+        <h3 style="font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--txt);margin-bottom:20px;display:flex;align-items:center;gap:10px">
+          <svg width="16" height="16" style="color:var(--cyan)"><use href="#ico-users"/></svg>
+          Demo personalizada
+        </h3>
+        <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);margin-bottom:10px">
+          <svg width="13" height="13" style="color:var(--emerald);margin-top:3px;flex-shrink:0"><use href="#ico-check"/></svg>
+          Demostración adaptada a tu iglesia
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);margin-bottom:10px">
+          <svg width="13" height="13" style="color:var(--emerald);margin-top:3px;flex-shrink:0"><use href="#ico-check"/></svg>
+          Análisis de necesidades sin costo
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);margin-bottom:10px">
+          <svg width="13" height="13" style="color:var(--emerald);margin-top:3px;flex-shrink:0"><use href="#ico-check"/></svg>
+          Plan de implementación personalizado
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);margin-bottom:24px">
+          <svg width="13" height="13" style="color:var(--emerald);margin-top:3px;flex-shrink:0"><use href="#ico-check"/></svg>
+          Acompañamiento en tu zona horaria
+        </div>
+        <a href="/schedule" class="btn-primary" style="display:inline-flex;width:100%;justify-content:center">
+          Agendar Videollamada
+          <svg width="14" height="14" style="color:var(--navy)"><use href="#ico-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section id="faq" style="padding:60px 0 84px;background:var(--srf-lo);border-top:1px solid var(--bdr)">
+  <div class="wrap">
+    <div class="tc rv" style="margin-bottom:40px">
+      <div class="sec-lbl center">FAQ</div>
+      <h2>Preguntas <span class="g">frecuentes</span></h2>
+      <p class="sec-sub" style="max-width:480px;margin:0 auto">¿Tiene dudas? Aquí respondemos las más comunes.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rv d1">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Cuánto cuesta KHESED-TEK-CMS?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">El plan Básico (hasta 500 miembros) comienza en $149.99 USD/mes. El plan Profesional (hasta 2,000 miembros) es $299.99 USD/mes. Las iglesias grandes reciben un precio personalizado. Todos los planes incluyen soporte en español y métodos de pago locales. Paddle, nuestro procesador de pagos, convierte automáticamente a su moneda local.</div>
+      </div>
+      <div class="faq-item rv d2">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Qué incluye el Programa Beta?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">El Programa Beta ofrece 30 días de acceso completo a la plataforma sin costo. Los participantes obtienen precios especiales de lanzamiento (hasta 40% de descuento), acceso prioritario a nuevas funciones, implementación acompañada por nuestro equipo y la oportunidad de dar retroalimentación directa que moldea el producto. Las primeras iglesias en unirse tienen precio preferencial congelado para el lanzamiento oficial.</div>
+      </div>
+      <div class="faq-item rv d3">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Funciona con WhatsApp Business?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">Sí — somos el único ChMS con WhatsApp Business completamente integrado. Puede enviar recordatorios de eventos, comunicados pastorales, seguimientos de oración y notificaciones administrativas directamente desde la plataforma a los grupos de WhatsApp de su iglesia. Planning Center, Breeze y otros competidores internacionales no tienen esta funcionalidad.</div>
+      </div>
+      <div class="faq-item rv d4">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Cómo migro desde mi sistema actual?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">Nuestro equipo en Barranquilla le acompaña en todo el proceso de migración sin costo adicional. Importamos su base de datos desde Excel, Planning Center, Breeze, ChurchTrac o cualquier sistema anterior. El proceso toma entre 3 y 10 días hábiles según el volumen de datos, con soporte dedicado durante todo el período de transición.</div>
+      </div>
+      <div class="faq-item rv d5">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Están disponibles en mi país?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">Sí — operamos en toda Latinoamérica con sede en Barranquilla, Colombia. Nuestro soporte está disponible en horario LATAM (lunes a viernes, 9AM–6PM COT). Aceptamos métodos de pago locales como PSE, Nequi, Efecty, Bancolombia y transferencias bancarias.</div>
+      </div>
+      <div class="faq-item rv d6">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Mis datos están seguros?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">Absolutamente. Toda la información de su iglesia se almacena en servidores seguros con cifrado SSL de 256 bits en tránsito y en reposo, el mismo estándar de la banca en línea. Cumplimos con el GDPR y la Ley 1581 de protección de datos de Colombia. Realizamos auditorías de seguridad regulares y usted es dueño de sus datos — puede exportarlos en cualquier momento.</div>
+      </div>
+      <div class="faq-item rv d1">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Necesito conocimientos técnicos para usarlo?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">No. La plataforma está diseñada para pastores y administradores de iglesia, no para técnicos. La interfaz es en español, intuitiva y funciona desde cualquier dispositivo. Ofrecemos capacitación personalizada y soporte continuo. Si su equipo sabe usar WhatsApp, puede manejar KHESED-TEK-CMS.</div>
+      </div>
+      <div class="faq-item rv d1">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Cómo calcula la Calculadora de ROI los ahorros?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">La calculadora combina tres variables para estimar el impacto mensual. Primero, reduce su costo actual de software en un 35% — el ahorro promedio al consolidar herramientas dispersas en una sola plataforma. Segundo, toma sus horas administrativas semanales y aplica un factor de eficiencia entre 30% y 50% según el nivel de procesos manuales que indicó, multiplicado por cuatro semanas y un valor de hora estimado en USD. Tercero, ajusta el total según su objetivo de crecimiento: "Mantener" es conservador, "Moderado" añade un 20% por ganancias de retención de miembros, "Agresivo" añade un 35%. El resultado es una estimación orientativa basada en benchmarks de la industria de transformación digital en iglesias — no una garantía contractual. Durante su demo gratuita, nuestro equipo puede hacer un análisis personalizado con los números reales de su congregación.</div>
+      </div>
+      <div class="faq-item rv d2">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          ¿Cuándo estará disponible oficialmente?
+          <svg class="faq-chevron" width="18" height="18" style="color:var(--gold-hi)"><use href="#ico-chevron"/></svg>
+        </button>
+        <div class="faq-ans">Actualmente estamos en fase Beta con iglesias seleccionadas. El lanzamiento oficial está planificado para los próximos meses. Las iglesias que se unan ahora al programa Beta tendrán precio preferencial congelado y acceso prioritario a nuevas funciones. Contáctenos hoy para asegurar su lugar.</div>
+      </div>
+    </div>
+    <div class="faq-more rv">
+      <a href="/contact" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--gold-hi);font-weight:500">
+        ¿Otra pregunta? Escríbanos
+        <svg width="14" height="14"><use href="#ico-arrow"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="z1">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg viewBox="0 0 370 68" xmlns="http://www.w3.org/2000/svg" style="height:40px;width:auto">
+          <text x="2" y="52" font-family="'Cinzel',Georgia,serif" font-weight="700" font-size="52" fill="var(--gold-hi)" letter-spacing="-0.5">KHESED</text>
+          <rect x="213" y="2" width="7" height="64" rx="2.5" fill="var(--gold-hi)"/>
+          <rect x="196" y="17" width="41" height="6" rx="2.5" fill="var(--gold-hi)"/>
+          <g transform="translate(200,36)" fill="none" stroke="var(--gold-hi)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 20C3 19 2 13 3 9c0-2 1-3 3-3V3c0-1 1-1.5 2-1s2 .5 2 1.5V5c1-.5 2 0 2 1.5V7c1-.5 2 0 2 2v8c0 3-2 5-4 5z"/>
+            <path d="M6 6v5M10 3v7M14 7v6"/>
+          </g>
+          <g transform="translate(204,5)" fill="none" stroke="var(--gold-hi)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13C7 12 3 10 2 7 0 4 2 1 5 3 4 1 5 0 7 1c1-1 3 0 4 2 2-1 4 1 3 3-1 2-3 4-4 7z"/>
+            <path d="M10 13l-1 7M7 5L4 4"/>
+          </g>
+          <g transform="translate(212.5,8)" fill="var(--gold-hi)" opacity=".88">
+            <path d="M3 10C3 10 0 7 1 4c.5-1.5 2-3 2-3s1.5 1.5 2 3c1.5 3 1.5 6-2 6z"/>
+          </g>
+          <text x="237" y="52" font-family="'Cinzel',Georgia,serif" font-weight="700" font-size="52" fill="var(--gold-hi)" letter-spacing="-0.5">EK</text>
+          <text x="185" y="67" font-family="'Cinzel',Georgia,serif" font-weight="400" font-size="12" fill="var(--gold-hi)" letter-spacing="5" text-anchor="middle" opacity=".75">SYSTEMS</text>
+        </svg>
+        <p>Tecnología pastoral con propósito, construida para iglesias en Latinoamérica. El 33% de nuestras ganancias financia Misión Khesed.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/khesed-tek-systems" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="18" height="18"><use href="#ico-linkedin"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@khesed-tek" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="18" height="18"><use href="#ico-youtube"/></svg>
+          </a>
+          <a href="https://facebook.com/khesedtek" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18"><use href="#ico-facebook"/></svg>
+          </a>
+          <a href="https://instagram.com/khesedtek" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18"><use href="#ico-instagram"/></svg>
+          </a>
+          <a href="https://tiktok.com/@khesedtek" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="18" height="18"><use href="#ico-tiktok"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="#features">Funciones</a></li>
+          <li><a href="#pricing">Precios</a></li>
+          <li><a href="/products">Productos</a></li>
+          <li><a href="/schedule">Agendar Demo</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="https://www.youtube.com/watch?v=d4rKaIUTCQQ" target="_blank" rel="noopener">Historia del Fundador</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy">Política de Privacidad</a></li>
+          <li><a href="/terms">Términos de Servicio</a></li>
+        </ul>
+        <div style="margin-top:16px;font-size:12px;color:var(--muted)">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <svg width="12" height="12" style="color:var(--gold-hi)"><use href="#ico-email"/></svg>
+            <a href="mailto:contacto@khesed-tek-systems.org" style="color:var(--muted)">contacto@khesed-tek-systems.org</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <svg width="12" height="12" style="color:var(--gold-hi)"><use href="#ico-phone"/></svg>
+            <a href="https://wa.me/573021234410" target="_blank" rel="noopener" style="color:var(--muted)">+57 302 123 4410</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 KHESED-TEK SYSTEMS. Barranquilla, Atlántico, Colombia. Todos los derechos reservados.</p>
+      <div class="foot-status">
+        <div class="foot-status-dot"></div>
+        Todos los sistemas operativos
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ════ THEME ════ */
+const html=document.documentElement;
+const btn=document.getElementById('theme-btn');
+const ico=document.getElementById('theme-icon');
+let dark=localStorage.getItem('khesed-theme')!=='light';
+function setTheme(){
+  html.setAttribute('data-theme',dark?'dark':'light');
+  ico.innerHTML=dark?'<use href="#ico-sun"/>':'<use href="#ico-moon"/>';
+  localStorage.setItem('khesed-theme',dark?'dark':'light');
+}
+btn.onclick=()=>{dark=!dark;setTheme()};
+setTheme();
+
+/* ════ CANVAS STARFIELD ════ */
+(function(){
+  const cv=document.getElementById('cosmos-bg');
+  const cx=cv.getContext('2d');
+  const N=190;let W,H,stars=[],mouse={x:0,y:0},raf;
+  const mk=()=>{
+    const d=html.getAttribute('data-theme')!=='light';
+    const cols=d?['#F0EDE8','#F0EDE8','#C9922A','#26D9D9']:['#c8bfaa','#c8bfaa','#b07d20','#1a9a9a'];
+    stars=Array.from({length:N},()=>({
+      x:Math.random()*2000,y:Math.random()*1200,
+      r:Math.random()*1.1+0.2,speed:Math.random()*.08+.02,
+      op:d?Math.random()*.44+.08:Math.random()*.16+.04,
+      ph:Math.random()*Math.PI*2,ps:Math.random()*.018+.004,
+      c:cols[Math.floor(Math.random()*cols.length)]
+    }));
+  };
+  const rsz=()=>{W=cv.width=window.innerWidth;H=cv.height=window.innerHeight};
+  rsz();mk();
+  window.addEventListener('resize',rsz);
+  window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    const d=html.getAttribute('data-theme')!=='light';
+    if(d){
+      const bg=cx.createRadialGradient(W*.3,H*.3,0,W*.5,H*.5,Math.max(W,H)*.9);
+      bg.addColorStop(0,'rgba(13,22,40,0.98)');bg.addColorStop(.5,'rgba(8,14,28,0.99)');bg.addColorStop(1,'rgba(5,8,15,1)');
+      cx.fillStyle=bg;
+    }else{
+      const bg=cx.createLinearGradient(0,0,W,H);
+      bg.addColorStop(0,'rgba(247,242,234,1)');bg.addColorStop(.5,'rgba(238,232,213,1)');bg.addColorStop(1,'rgba(232,223,196,1)');
+      cx.fillStyle=bg;
+    }
+    cx.fillRect(0,0,W,H);
+    const nb=cx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,300);
+    nb.addColorStop(0,`rgba(201,146,42,${d?.055:.03})`);nb.addColorStop(1,'transparent');
+    cx.fillStyle=nb;cx.fillRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.ph+=s.ps;
+      const p=s.op+Math.sin(s.ph)*(d?.12:.04);
+      const dx=(mouse.x-W/2)*s.speed*.05,dy=(mouse.y-H/2)*s.speed*.05;
+      const px=((s.x-dx)%W+W)%W,py=((s.y-dy)%H+H)%H;
+      cx.save();cx.globalAlpha=Math.max(0,Math.min(1,p));cx.fillStyle=s.c;
+      if(s.r>.8&&d){cx.shadowColor=s.c;cx.shadowBlur=4}
+      cx.beginPath();cx.arc(px,py,s.r,0,Math.PI*2);cx.fill();cx.restore();
+    });
+    raf=requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ════ SCROLL REVEAL ════ */
+new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}});
+},{threshold:.1}).observe||(()=>{});
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in')}});
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>observer.observe(el));
+
+/* ════ FAQ ════ */
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+/* ════ BILLING TOGGLE ════ */
+const prices={basic:{m:'$149.99',y:'$124.99'},pro:{m:'$299.99',y:'$249.99'}};
+document.getElementById('bill-m').onclick=function(){
+  this.classList.add('active');document.getElementById('bill-y').classList.remove('active');
+  document.getElementById('price-basic').innerHTML=prices.basic.m+' <span class="per">/mes</span>';
+  document.getElementById('price-pro').innerHTML=prices.pro.m+' <span class="per">/mes</span>';
+};
+document.getElementById('bill-y').onclick=function(){
+  this.classList.add('active');document.getElementById('bill-m').classList.remove('active');
+  document.getElementById('price-basic').innerHTML=prices.basic.y+' <span class="per">/mes</span>';
+  document.getElementById('price-pro').innerHTML=prices.pro.y+' <span class="per">/mes</span>';
+};
+
+/* ════ SIZE / GOAL SELECTORS ════ */
+function selectSize(el){document.querySelectorAll('.sz-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');calcROI()}
+function selectGoal(el){document.querySelectorAll('.gl-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');calcROI()}
+
+/* ════ ROI CALC ════ */
+function calcROI(){
+  const cost=parseFloat(document.getElementById('roi-cost').value)||200;
+  const hrs=parseFloat(document.getElementById('roi-hrs').value)||15;
+  const manual=parseFloat(document.getElementById('roi-manual').value)||5;
+  const hrRate=8;
+  const eff=(0.30+(manual/10)*0.20);
+  const saveMon=Math.round(cost*0.35+(hrs*4*hrRate*eff));
+  const hrsSaved=Math.round(hrs*eff);
+  document.getElementById('roi-save').textContent='$'+saveMon.toLocaleString('es-CO')+' USD';
+  document.getElementById('roi-hrs-saved').textContent=hrsSaved+' hrs';
+}
+</script>
+</body>
+</html>
