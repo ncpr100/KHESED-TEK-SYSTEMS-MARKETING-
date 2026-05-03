@@ -11,11 +11,38 @@
   --muted: #9aa0a6;
   --brand: #6ee7ff;
   --brand2: #8b5cf6;
+  --gold: #c9922a;
+  --gold-hi: #f0b83c;
+  --navy-2: #0d1628;
+  --bdr-gold: rgba(201, 146, 42, 0.18);
 }
 
 html, body { 
   background: var(--bg); 
   color: var(--text); 
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Cosmos atmosphere layer: subtle and non-interactive */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 12% -12%, rgba(201, 146, 42, 0.10), transparent 62%),
+    radial-gradient(760px 340px at 88% -18%, rgba(110, 231, 255, 0.10), transparent 60%),
+    radial-gradient(680px 300px at 50% 120%, rgba(139, 92, 246, 0.08), transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 a { color: var(--brand); }
@@ -25,6 +52,7 @@ a:hover { color: var(--brand2); }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
+  backdrop-filter: blur(10px);
 }
 
 .gradient-text {
@@ -45,4 +73,21 @@ a:hover { color: var(--brand2); }
 .gradient-btn {
   background: linear-gradient(90deg, var(--brand), var(--brand2));
   color: #0b0b0d;
+  box-shadow: 0 8px 24px rgba(110, 231, 255, 0.22);
+}
+
+.gradient-btn:hover {
+  box-shadow: 0 10px 30px rgba(201, 146, 42, 0.25);
+}
+
+.cosmos-hero {
+  position: relative;
+}
+
+.cosmos-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 22, 40, 0.10) 0%, rgba(5, 8, 15, 0.26) 100%);
+  pointer-events: none;
 }

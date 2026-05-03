@@ -54,7 +54,7 @@ export default function Header() {
   const productsText = effectiveLanguage === 'es' ? 'Productos' : 'Products';
 
   return (
-    <header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-[var(--border)]">
+    <header className="sticky top-0 z-50 bg-[var(--navy-2)]/85 backdrop-blur border-b border-[var(--bdr-gold)]">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-center">
           <Image

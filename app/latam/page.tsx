@@ -56,13 +56,13 @@ export default function LatamMarketPage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen cosmos-page">
       <ScrollTracker />
       <Header />
 
       {/* LATAM-Specific Hero Section */}
       <section
-        className="relative overflow-hidden text-center px-6 py-24"
+        className="relative overflow-hidden text-center px-6 py-24 cosmos-hero"
         style={{
           background:
             'radial-gradient(1200px 400px at 10% -10%, rgba(110,231,255,.07), transparent 60%), radial-gradient(900px 300px at 90% -20%, rgba(139,92,246,.08), transparent 55%), var(--bg)',
@@ -104,7 +104,7 @@ export default function LatamMarketPage() {
               <OutlineIcon name="phone" className="w-4 h-4 text-[var(--brand)]" /> WhatsApp directo
             </a>
           </div>
-          <div className="text-sm text-[var(--muted)] flex items-center gap-1">
+          <div className="text-sm text-[var(--muted)] flex flex-wrap items-center justify-center gap-2">
             <OutlineIcon name="clock" className="w-4 h-4 text-[var(--brand)]" /> Soporte en horario LATAM <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="mail" className="w-4 h-4 text-[var(--brand)]" /> Atención en español <OutlineIcon name="dot" className="w-2 h-2 text-[var(--brand)] mx-1" /> <OutlineIcon name="users" className="w-4 h-4 text-[var(--brand)]" /> Especialistas en iglesias
           </div>
         </div>

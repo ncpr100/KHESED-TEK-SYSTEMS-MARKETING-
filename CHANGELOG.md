@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-05-03 — Cosmos Theme UI/UX Implementation (Safe Integration)
+
+### Fixed (1.5.0)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| CX-1 | Cosmos V3 ZIP scaffold was not directly compatible with current app architecture (Next 14 scaffold, missing imports, duplicate token system) | Audit only (`khesed-tek-cosmos-v3-nextjs.zip`) |
+| CX-2 | Existing UI lacked the intended Cosmos atmospheric visual layer while preserving current routing and market logic | `app/globals.css` |
+| CX-3 | Header visual language did not reflect Cosmos palette and depth | `components/marketing/header.tsx` |
+| CX-4 | LATAM hero trust-chip row wrapped poorly on narrow layouts | `app/latam/page.tsx` |
+| CX-5 | Footer surface styling was visually disconnected from updated Cosmos layer | `components/marketing/footer.tsx` |
+
+### Details (1.5.0)
+
+- **CX-1 (Root cause analysis)**: The ZIP contains a standalone mini-app (`khesed-nextjs`) with incompatible assumptions: Next 14 dependency target, references to missing `@/components/cosmos/*` modules in this repository, duplicate token files, and metadata paths that do not match live assets.
+- **CX-2**: Added Cosmos-safe design tokens (`--gold`, `--gold-hi`, `--navy-2`, `--bdr-gold`) and a non-interactive atmospheric background layer in `globals.css` using `body::before`.
+- **CX-3**: Updated header container to `bg-[var(--navy-2)]/85` with `border-[var(--bdr-gold)]` while preserving navigation behavior and analytics hooks.
+- **CX-4**: Added `cosmos-hero` class to LATAM hero and changed trust-chip row to `flex-wrap` + `justify-center` to prevent cramped rendering.
+- **CX-5**: Updated footer container border/background to align with Cosmos palette and maintain readability.
+- Build validated: zero TypeScript/Next.js errors introduced.
+
+---
+
 ## [1.4.1] - 2026-05-03 — Regression & Metadata Corrections
 
 ### Fixed (1.4.1)

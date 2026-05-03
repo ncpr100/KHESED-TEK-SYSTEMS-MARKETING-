@@ -4,7 +4,7 @@ import OutlineIcon from '@/components/ui/outline-icon';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] text-center text-[var(--muted)] py-6 mt-10 px-4">
+    <footer className="border-t border-[var(--bdr-gold)] text-center text-[var(--muted)] py-6 mt-10 px-4 bg-[var(--navy-2)]/40">
       <div className="max-w-5xl mx-auto grid sm:grid-cols-4 gap-4 mb-4">
         <div className="card p-4">
           <div className="flex items-center gap-2 mb-1">
