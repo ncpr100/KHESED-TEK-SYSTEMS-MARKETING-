@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.1] - 2026-05-03 — Regression & Metadata Corrections
+
+### Fixed
+
+| # | Issue | File(s) Changed |
+|---|---|---|
+| R-1 | Header CTA was scroll-gated and not visible/crawlable on initial load | `components/marketing/header.tsx` |
+| R-2 | Metadata referenced non-existent favicon/manifest paths (`/favicon.ico`, `/apple-touch-icon.png`, `/favicon-16x16.png`, `/site.webmanifest`) | `app/layout.tsx` |
+| R-3 | Missing `preconnect` hints for `fonts.gstatic.com` and `google-analytics.com` | `app/layout.tsx` |
+
+### Details
+
+- **R-1**: Removed scroll listener and opacity gating from the desktop CTA. CTA is now visible at first render and remains interactive.
+- **R-2**: Updated metadata paths to existing assets: `/icon-192.png` and `/manifest.json`.
+- **R-3**: Added `preconnect` to `fonts.gstatic.com` (with `crossOrigin`) and `google-analytics.com` to reduce connection setup latency.
+
+---
+
 ## [1.4.0] - 2026-04-24 — Performance Fixes
 
 ### Fixed

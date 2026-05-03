@@ -3,19 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useGlobalMarket } from '@/lib/global-market';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
   const { language, market, geoData } = useGlobalMarket();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   
   // Determine market context from pathname for routing
   const isLatamMarket = pathname?.includes('/latam') || false;
@@ -108,14 +101,9 @@ export default function Header() {
           */}
           <Link
             href="/contact"
-            aria-hidden={!scrolled}
             className={`
               hidden sm:inline-flex items-center gap-2 gradient-btn text-black font-semibold px-4 py-2 rounded-full text-sm
-              transition-all duration-300
-              ${scrolled
-                ? 'opacity-100 translate-y-0 pointer-events-auto'
-                : 'opacity-0 -translate-y-2 pointer-events-none'
-              }
+              transition-all duration-300 hover:scale-105
             `}
           >
             {effectiveLanguage === 'es' ? 'Agendar Demo →' : 'Schedule Demo →'}
