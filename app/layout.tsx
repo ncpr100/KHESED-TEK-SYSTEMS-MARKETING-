@@ -1,4 +1,5 @@
 import './globals.css';
+import CosmosBackground from '@/components/CosmosBackground';
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@/components/analytics';
 import { GA_TRACKING_ID } from '@/lib/analytics';
@@ -178,8 +179,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body className="bg-[var(--bg)] text-[var(--text)]">
+        <CosmosBackground />
         <GlobalMarketProvider>
-          {children}
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {children}
+          </div>
           <Analytics />
         </GlobalMarketProvider>
       </body>

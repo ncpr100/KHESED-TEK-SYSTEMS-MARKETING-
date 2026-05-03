@@ -54,8 +54,8 @@ export default function Header() {
   const productsText = effectiveLanguage === 'es' ? 'Productos' : 'Products';
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--navy-2)]/85 backdrop-blur border-b border-[var(--bdr-gold)]">
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-3">
+    <header className="sticky top-0 z-50 backdrop-blur-[22px] border-b border-[var(--bdr)]" style={{ background: 'var(--hd-bg)', height: '66px', display: 'flex', alignItems: 'center' }}>
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-9 w-full">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
@@ -64,18 +64,18 @@ export default function Header() {
             height={232}
             priority
             sizes="(max-width: 640px) 180px, 260px"
-            className="h-[70px] w-auto sm:h-[90px]"
+            className="h-[56px] w-auto sm:h-[68px] cosmos-logo"
           />
         </Link>
         
         <div className="flex items-center gap-6">
           {/* Desktop Navigation */}
-          <nav className="hidden sm:flex gap-6 text-[var(--muted)]">
-            <Link href={featuresHref} className="hover:text-[var(--text)] transition">{featuresText}</Link>
-            <Link href={aboutHref} className="hover:text-[var(--text)] transition">{aboutText}</Link>
-            <Link href="/schedule" className="hover:text-[var(--text)] transition">{scheduleText}</Link>
-            <Link href="/products" className="hover:text-[var(--text)] transition">{productsText}</Link>
-            <Link href={contactHref} className="hover:text-[var(--text)] transition">{contactText}</Link>
+          <nav className="hidden sm:flex items-center gap-7">
+            <Link href={featuresHref} className="transition-colors" style={{ fontSize: '12px', letterSpacing: '0.05em', color: 'var(--muted)' }} onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-hi)')} onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>{featuresText}</Link>
+            <Link href={aboutHref} className="transition-colors" style={{ fontSize: '12px', letterSpacing: '0.05em', color: 'var(--muted)' }} onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-hi)')} onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>{aboutText}</Link>
+            <Link href="/schedule" className="transition-colors" style={{ fontSize: '12px', letterSpacing: '0.05em', color: 'var(--muted)' }} onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-hi)')} onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>{scheduleText}</Link>
+            <Link href="/products" className="transition-colors" style={{ fontSize: '12px', letterSpacing: '0.05em', color: 'var(--muted)' }} onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-hi)')} onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>{productsText}</Link>
+            <Link href={contactHref} className="transition-colors" style={{ fontSize: '12px', letterSpacing: '0.05em', color: 'var(--muted)' }} onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-hi)')} onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>{contactText}</Link>
             {/* Admin Access - Development Only */}
             {process.env.NODE_ENV === 'development' && (
               <Link 
@@ -101,10 +101,8 @@ export default function Header() {
           */}
           <Link
             href="/contact"
-            className={`
-              hidden sm:inline-flex items-center gap-2 gradient-btn text-black font-semibold px-4 py-2 rounded-full text-sm
-              transition-all duration-300 hover:scale-105
-            `}
+            className="hidden sm:inline-flex items-center gap-2 gradient-btn font-semibold rounded-full"
+            style={{ padding: '7px 20px', fontSize: '12px', letterSpacing: '0.04em', color: 'var(--navy)' }}
           >
             {effectiveLanguage === 'es' ? 'Agendar Demo →' : 'Schedule Demo →'}
           </Link>

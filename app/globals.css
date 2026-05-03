@@ -2,61 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+/* ═══════════════════════════════════════════
+   COSMOS DESIGN TOKENS — KHESED-TEK v3
+═══════════════════════════════════════════ */
 :root {
   color-scheme: dark;
-  --bg: #0e0e10;
-  --surface: #17171a;
-  --border: #232329;
-  --text: #e7e7ea;
-  --muted: #9aa0a6;
-  --brand: #6ee7ff;
-  --brand2: #8b5cf6;
-  --gold: #c9922a;
-  --gold-hi: #f0b83c;
-  --navy-2: #0d1628;
-  --bdr-gold: rgba(201, 146, 42, 0.18);
+  --gold:       #C9922A;
+  --gold-hi:    #F0B83C;
+  --gold-dim:   #7A5218;
+  --navy:       #05080F;
+  --navy-2:     #0D1628;
+  --navy-3:     #111A2F;
+  --cyan:       #26D9D9;
+  --emerald:    #1DC98C;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* dark theme */
+  --bg:        #05080F;
+  --bg-alt:    rgba(13,22,40,0.85);
+  --surface:   rgba(13,22,40,0.72);
+  --srf:       rgba(13,22,40,0.72);
+  --srf-lo:    rgba(13,22,40,0.42);
+  --border:    rgba(201,146,42,0.14);
+  --bdr:       rgba(201,146,42,0.14);
+  --bdr-s:     rgba(255,255,255,0.05);
+  --bdr-gold:  rgba(201,146,42,0.18);
+  --text:      #F0EDE8;
+  --txt:       #F0EDE8;
+  --muted:     #7A8A9E;
+  --lbl:       #7A5218;
+  --hd-bg:     rgba(5,8,15,0.88);
+  --ico-bg:    rgba(201,146,42,0.09);
+  --ico-bdr:   rgba(201,146,42,0.22);
+
+  /* legacy compat */
+  --brand:  #26D9D9;
+  --brand2: #F0B83C;
 }
 
-html, body { 
-  background: var(--bg); 
-  color: var(--text); 
+html, body {
+  background: var(--bg);
+  color: var(--txt);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  position: relative;
-  min-height: 100vh;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Cosmos atmosphere layer: subtle and non-interactive */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(900px 420px at 12% -12%, rgba(201, 146, 42, 0.10), transparent 62%),
-    radial-gradient(760px 340px at 88% -18%, rgba(110, 231, 255, 0.10), transparent 60%),
-    radial-gradient(680px 300px at 50% 120%, rgba(139, 92, 246, 0.08), transparent 62%);
-  pointer-events: none;
-  z-index: 0;
-}
+a { color: var(--cyan); }
+a:hover { color: var(--gold-hi); }
 
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
-a { color: var(--brand); }
-a:hover { color: var(--brand2); }
-
+/* Glass card */
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--srf);
+  border: 1px solid var(--bdr-s);
   border-radius: 14px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(18px);
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #ffffff, #c7c7d1);
+  background: linear-gradient(90deg, var(--txt), var(--gold-hi));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -71,23 +82,27 @@ a:hover { color: var(--brand2); }
 }
 
 .gradient-btn {
-  background: linear-gradient(90deg, var(--brand), var(--brand2));
-  color: #0b0b0d;
-  box-shadow: 0 8px 24px rgba(110, 231, 255, 0.22);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-hi) 50%, var(--gold) 100%);
+  background-size: 200%;
+  color: var(--navy);
+  box-shadow: 0 0 28px rgba(201,146,42,0.22);
+  transition: background-position 0.4s, transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
 }
 
 .gradient-btn:hover {
-  box-shadow: 0 10px 30px rgba(201, 146, 42, 0.25);
+  background-position: right;
+  box-shadow: 0 0 44px rgba(201,146,42,0.42);
+}
+
+.cosmos-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.cosmos-logo {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(54%) saturate(621%) hue-rotate(357deg) brightness(90%) contrast(92%);
 }
 
 .cosmos-hero {
   position: relative;
-}
-
-.cosmos-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(13, 22, 40, 0.10) 0%, rgba(5, 8, 15, 0.26) 100%);
-  pointer-events: none;
 }
