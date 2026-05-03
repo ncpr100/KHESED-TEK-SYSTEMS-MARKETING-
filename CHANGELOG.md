@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.2] - 2026-05-03 — Theme Toggle Consistency + Footer Icon Badges
+
+### Fixed (1.5.2)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| T-1 | Theme toggle was only available on desktop and not consistent on mobile navigation | `components/marketing/header.tsx` |
+| T-2 | Mobile menu used hardcoded dark background, creating light-theme inconsistency | `components/marketing/header.tsx` |
+| B-1 | Footer location/social icon badges were missing visual token styles | `app/globals.css`, `components/marketing/footer.tsx` |
+
+### Details (1.5.2)
+
+- **T-1**: Added a mobile-visible theme toggle button using the same persisted `khesed-theme` state (`dark`/`light`) as desktop.
+- **T-2**: Replaced mobile menu hardcoded black surface with theme-aware `var(--hd-bg)` + `var(--bdr)` styling.
+- **B-1**: Added `.ico-pill` and `.ico-pill.sm` reusable badge styles and applied them to footer location + social icons for Cosmos visual consistency across all markets.
+
 ## [1.5.1] - 2026-05-03 — Social Link Corrections + Strict Cosmos Color Enforcement
 
 ### Fixed (1.5.1)

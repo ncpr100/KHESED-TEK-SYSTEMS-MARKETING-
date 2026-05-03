@@ -155,6 +155,34 @@ export default function Header() {
             </button>
           )}
 
+          {themeReady && (
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Switch to sunshine light mode' : 'Switch to cosmos dark mode'}
+              className="sm:hidden grid place-items-center"
+              style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '9999px',
+                background: 'var(--srf-lo)',
+                border: '1px solid var(--bdr)',
+                color: 'var(--gold-hi)'
+              }}
+            >
+              {theme === 'dark' ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.8A9 9 0 0 1 11.2 3 9 9 0 1 0 21 12.8z" />
+                </svg>
+              )}
+            </button>
+          )}
+
           {/* Mobile Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -182,7 +210,7 @@ export default function Header() {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-black/95 backdrop-blur border-t border-[var(--border)]">
+        <div className="sm:hidden backdrop-blur border-t border-[var(--bdr)]" style={{ background: 'var(--hd-bg)' }}>
           <nav className="px-6 py-4 space-y-3">
             <Link 
               href={featuresHref} 

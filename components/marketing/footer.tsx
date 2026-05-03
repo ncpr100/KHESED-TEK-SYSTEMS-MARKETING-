@@ -31,7 +31,9 @@ export default function Footer() {
         <div className="card p-4">
           <div className="flex items-center gap-2 mb-1">
             {/* BUG-09 FIX: was accidentally "marker", restored to "map-pin" */}
-            <OutlineIcon name="map-pin" className="w-4 h-4 text-[var(--gold-hi)]" />
+            <span className="ico-pill sm" aria-hidden="true">
+              <OutlineIcon name="map-pin" className="w-4 h-4 text-[var(--gold-hi)]" />
+            </span>
             <div className="text-xs uppercase tracking-wide text-[#b9bec7]">Ubicación</div>
           </div>
           <div className="text-[var(--text)]">Barranquilla, Atlántico, Colombia</div>
@@ -40,14 +42,14 @@ export default function Footer() {
           <div className="flex items-center gap-2 mb-2">
             <div className="text-xs uppercase tracking-wide text-[#b9bec7]">Síguenos</div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             <a
               href="https://www.facebook.com/nc.khesed.tek.systems"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
               onClick={() => analytics.ctaClicked("facebook", "footer")}
-              className="text-[var(--muted)] hover:text-[var(--gold-hi)] transition"
+              className="ico-pill sm text-[var(--muted)] hover:text-[var(--gold-hi)]"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -59,7 +61,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="Instagram"
               onClick={() => analytics.ctaClicked("instagram", "footer")}
-              className="text-[var(--muted)] hover:text-[var(--gold-hi)] transition"
+              className="ico-pill sm text-[var(--muted)] hover:text-[var(--gold-hi)]"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -73,7 +75,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="YouTube"
               onClick={() => analytics.ctaClicked("youtube", "footer")}
-              className="text-[var(--muted)] hover:text-[var(--gold-hi)] transition"
+              className="ico-pill sm text-[var(--muted)] hover:text-[var(--gold-hi)]"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
@@ -86,7 +88,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="TikTok"
               onClick={() => analytics.ctaClicked("tiktok", "footer")}
-              className="text-[var(--muted)] hover:text-[var(--gold-hi)] transition"
+              className="ico-pill sm text-[var(--muted)] hover:text-[var(--gold-hi)]"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
