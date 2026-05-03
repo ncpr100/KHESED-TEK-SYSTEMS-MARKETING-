@@ -74,7 +74,7 @@ export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 
       "https://www.facebook.com/nc.khesed.tek.systems",
       "https://www.instagram.com/@khesed.tek.systems.org",
       "https://www.youtube.com/@Khesed-Tek-Systems",
-      "https://www.tiktok.com/@knesed.tek.systems/"
+      "https://www.tiktok.com/@khesed.tek.systems/"
     ],
     "serviceArea": {
       "@type": market === 'GLOBAL' ? "Place" : "Country",

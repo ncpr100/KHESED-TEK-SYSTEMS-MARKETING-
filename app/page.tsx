@@ -40,9 +40,9 @@ export default function HomePage() {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-cyan-400 mx-auto"></div>
-          <p className="mt-4 text-gray-400">Detectando tu ubicación...</p>
-          <p className="text-sm text-gray-500">Detecting your location...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[var(--gold-hi)] mx-auto"></div>
+          <p className="mt-4 text-[var(--txt)]">Detectando tu ubicación...</p>
+          <p className="text-sm text-[var(--muted)]">Detecting your location...</p>
         </div>
       </main>
     );
@@ -56,7 +56,7 @@ export default function HomePage() {
         className="relative overflow-hidden text-center px-6 py-24"
         style={{
           background:
-            'radial-gradient(1200px 400px at 10% -10%, rgba(110,231,255,.07), transparent 60%), radial-gradient(900px 300px at 90% -20%, rgba(139,92,246,.08), transparent 55%), var(--bg)',
+            'radial-gradient(1200px 400px at 10% -10%, rgba(201,146,42,.10), transparent 60%), radial-gradient(900px 300px at 90% -20%, rgba(240,184,60,.08), transparent 55%), var(--bg)',
         }}
       >
         <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">

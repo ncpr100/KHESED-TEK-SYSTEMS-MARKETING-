@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.3] - 2026-05-03 — Footer Icon Style Correction + Homepage Cosmos Loading + Theme Bootstrap
+
+### Fixed (1.5.3)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| S-3 | TikTok handle misspelled as `@knesed...` in footer and schema | `components/marketing/footer.tsx`, `lib/seo.ts` |
+| U-1 | Footer `Ubicación` and `Síguenos` cards used square badge wrappers not matching requested plain outline style | `components/marketing/footer.tsx` |
+| U-2 | Homepage location-detection loader and fallback hero still used legacy non-Cosmos cyan/purple styling | `app/page.tsx` |
+| T-3 | Theme mode was initialized only after hydration, allowing first-paint mismatch | `app/layout.tsx` |
+
+### Details (1.5.3)
+
+- **S-3**: Corrected TikTok URL to `https://www.tiktok.com/@khesed.tek.systems/` in both footer links and JSON-LD `sameAs`.
+- **U-1**: Removed square icon badges for `Ubicación` and social links; applied plain branded outline icon treatment consistent with `Correo`/`WhatsApp` card headers.
+- **U-2**: Updated homepage loading spinner and fallback hero gradients to Cosmos gold token styling.
+- **T-3**: Added inline pre-hydration theme bootstrap script and default `data-theme="dark"` on `<html>` to stabilize SSR/SSG first paint.
+
 ## [1.5.2] - 2026-05-03 — Theme Toggle Consistency + Footer Icon Badges
 
 ### Fixed (1.5.2)
