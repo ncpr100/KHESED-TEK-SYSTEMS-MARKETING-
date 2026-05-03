@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.4] - 2026-05-03 — Footer Ubicación Outline Icon Hotfix
+
+### Fixed (1.5.4)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| U-3 | `Ubicación` outline icon did not render because unsupported icon key (`map-pin`) was used | `components/marketing/footer.tsx` |
+
+### Details (1.5.4)
+
+- Replaced unsupported icon name `map-pin` with supported `marker` in shared footer outline icon mapping.
+- This fix applies to all market pages (`/latam`, `/usa`, `/global`) because the footer is shared.
+
 ## [1.5.3] - 2026-05-03 — Footer Icon Style Correction + Homepage Cosmos Loading + Theme Bootstrap
 
 ### Fixed (1.5.3)

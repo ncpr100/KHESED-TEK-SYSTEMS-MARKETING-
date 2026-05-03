@@ -30,7 +30,7 @@ export default function Footer() {
         </div>
         <div className="card p-4">
           <div className="flex items-center gap-2 mb-1">
-            <OutlineIcon name="map-pin" className="w-4 h-4 text-[var(--gold-hi)]" />
+            <OutlineIcon name="marker" className="w-4 h-4 text-[var(--gold-hi)]" />
             <div className="text-xs uppercase tracking-wide text-[#b9bec7]">Ubicación</div>
           </div>
           <div className="text-[var(--text)]">Barranquilla, Atlántico, Colombia</div>
