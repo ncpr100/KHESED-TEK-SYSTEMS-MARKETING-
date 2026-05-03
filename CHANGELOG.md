@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.1] - 2026-05-03 — Social Link Corrections + Strict Cosmos Color Enforcement
+
+### Fixed (1.5.1)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| S-1 | LinkedIn references remained in footer and structured data despite no LinkedIn account | `components/marketing/footer.tsx`, `lib/seo.ts` |
+| S-2 | Footer social block was incomplete and did not expose all active social channels | `components/marketing/footer.tsx` |
+| C-1 | Legacy cyan/purple color references persisted in runtime UI and email templates | `app/globals.css`, `components/products/product-request-form.tsx`, `app/products/page.tsx`, `app/schedule/page.tsx`, `app/latam/page.tsx`, `app/usa/page.tsx`, `app/global/page.tsx`, `components/social-proof/trust-signals.tsx`, `components/conversion/roi-calculator.tsx`, `lib/email/product-templates.ts`, `lib/email/templates.ts`, `lib/email/automation.ts` |
+| D-1 | Source-of-truth styling section no longer matched runtime Cosmos token system | `PROJECT_SOURCE_OF_TRUTH.md` |
+
+### Details (1.5.1)
+
+- **S-1**: Removed LinkedIn URL and footer icon/click tracking references.
+- **S-2**: Updated footer social links to:
+  - Facebook: `https://www.facebook.com/nc.khesed.tek.systems`
+  - Instagram: `https://www.instagram.com/@khesed.tek.systems.org`
+  - YouTube: `https://www.youtube.com/@Khesed-Tek-Systems`
+  - TikTok: `https://www.tiktok.com/@knesed.tek.systems/`
+- **C-1**: Replaced remaining cyan/purple hardcoded values and `text-cyan-400` usages with Cosmos gold tokens/values.
+- **D-1**: Updated documented CSS variables in `PROJECT_SOURCE_OF_TRUTH.md` to the active Cosmos palette.
+
 ## [1.5.0] - 2026-05-03 — Cosmos Theme UI/UX Implementation (Safe Integration)
 
 ### Fixed (1.5.0)

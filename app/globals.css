@@ -15,7 +15,7 @@
   --navy:       #05080F;
   --navy-2:     #0D1628;
   --navy-3:     #111A2F;
-  --cyan:       #26D9D9;
+  --cyan:       #F0B83C;
   --emerald:    #1DC98C;
   --font-display: 'Cinzel', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
@@ -39,8 +39,8 @@
   --ico-bdr:   rgba(201,146,42,0.22);
 
   /* legacy compat */
-  --brand:  #26D9D9;
-  --brand2: #F0B83C;
+  --brand:  #F0B83C;
+  --brand2: #C9922A;
 }
 
 html, body {
@@ -55,7 +55,7 @@ body {
   overflow-x: hidden;
 }
 
-a { color: var(--cyan); }
+a { color: var(--gold-hi); }
 a:hover { color: var(--gold-hi); }
 
 /* Glass card */

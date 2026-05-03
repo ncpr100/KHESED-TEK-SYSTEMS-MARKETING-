@@ -38,9 +38,9 @@ export function getPaymentLinkEmailTemplate(data: PaymentEmailData): { subject: 
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
+            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
             .mission-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
@@ -156,9 +156,9 @@ https://www.khesed-tek-systems.org
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
+            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
             .mission-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
@@ -292,9 +292,9 @@ export function getDownloadLinkEmailTemplate(data: DownloadEmailData): { subject
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
+            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
             .alert { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
             .mission-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
@@ -397,9 +397,9 @@ https://www.khesed-tek-systems.org
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
+            .button { display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
             .alert { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
             .mission-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 20px 0; border-radius: 5px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
@@ -511,7 +511,7 @@ export function getJournalAppInterestEmailTemplate(customerName: string, languag
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
@@ -575,7 +575,7 @@ https://khesed-tek-systems.org
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header { background: linear-gradient(135deg, #C9922A 0%, #F0B83C 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
             .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>

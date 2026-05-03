@@ -18,7 +18,7 @@ export default function ProductsPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#0e0e10] pt-24 pb-16">
+      <main className="min-h-screen bg-[var(--bg)] pt-24 pb-16">
         <ProductRequestForm />
       </main>
       <Footer />

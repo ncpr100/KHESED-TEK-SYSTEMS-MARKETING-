@@ -43,7 +43,7 @@ export default function USAMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4 flex items-center justify-center gap-2">
-            <OutlineIcon name="globe" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="globe" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>USA Market - Enterprise Church Solutions</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
@@ -75,13 +75,13 @@ export default function USAMarketPage() {
             </a>
           </div>
           <div className="text-sm text-[var(--muted)] flex items-center justify-center gap-2">
-            <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="clock" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>EST/PST Business Hours</span>
-            <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-            <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-1" />
+            <OutlineIcon name="mail" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>English Support</span>
-            <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-            <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-1" />
+            <OutlineIcon name="shield" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>Enterprise-Ready</span>
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function USAMarketPage() {
             Advanced capabilities that set KHESED-TEK apart from Planning Center, Breeze, and other competitors
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
-            <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>Outperforming ChurchTrac, Aplos, and TouchPoint in key areas</span>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default function USAMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition flex items-center">
-              <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400 mr-1" />
+              <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--gold-hi)] mr-1" />
               <span>{f.advantage}</span>
             </div>
           </div>
@@ -373,13 +373,13 @@ export default function USAMarketPage() {
         />
 
         <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
-          <OutlineIcon name="credit-card" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="credit-card" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>Stripe, ACH, Wire Transfer accepted</span>
-          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
-          <OutlineIcon name="user" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-2" />
+          <OutlineIcon name="user" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>Dedicated account manager included</span>
-          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
-          <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-2" />
+          <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>SOX compliant</span>
         </div>
       </section>
@@ -443,7 +443,7 @@ export default function USAMarketPage() {
             {
               category: (
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="square" className="w-4 h-4 text-[var(--gold-hi)]" />
                   <span>Multi-Campus Operations</span>
                 </div>
               ),
@@ -466,7 +466,7 @@ export default function USAMarketPage() {
             {
               category: (
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="square" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="square" className="w-4 h-4 text-[var(--gold-hi)]" />
                   <span>Advanced Analytics</span>
                 </div>
               ),
@@ -480,7 +480,7 @@ export default function USAMarketPage() {
             {
               category: (
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+                  <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--gold-hi)]" />
                   <span>Security & Compliance</span>
                 </div>
               ),
@@ -497,7 +497,7 @@ export default function USAMarketPage() {
               <ul className="space-y-2">
                 {section.features.map((feature, fidx) => (
                   <li key={fidx} className="flex items-start gap-2 text-sm">
-                    <OutlineIcon name="check" className="w-3 h-3 text-cyan-400 mt-1" />
+                    <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)] mt-1" />
                     <span style={{ color: 'var(--muted)' }}>{feature}</span>
                   </li>
                 ))}
@@ -598,56 +598,56 @@ export default function USAMarketPage() {
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4 flex items-center">
-              <OutlineIcon name="users" className="w-4 h-4 text-cyan-400 mr-2" />
+              <OutlineIcon name="users" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
               <span>USA Sales Team</span>
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center">
-                <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="mail" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>contact@khesed-tek-systems.org</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="phone" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="marker" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>Miami, FL (Expansion Office)</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="clock" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>Monday-Friday 9AM-6PM EST</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="globe" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="globe" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>Nationwide support coverage</span>
               </div>
             </div>
           </div>
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4 flex items-center">
-              <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400 mr-2" />
+              <OutlineIcon name="shield" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
               <span>Enterprise Demo</span>
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Customized platform demonstration
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Technical requirements assessment
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Integration planning session
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 ROI analysis and pricing
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Implementation timeline
               </div>
             </div>

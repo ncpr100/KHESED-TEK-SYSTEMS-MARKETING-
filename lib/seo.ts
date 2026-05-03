@@ -71,8 +71,10 @@ export function generateOrganizationSchema(market: 'LATAM' | 'USA' | 'GLOBAL' = 
     },
     "sameAs": [
       "https://wa.me/573021234410",
-      "https://linkedin.com/company/khesed-tek-systems",
-      "https://www.youtube.com/@khesed-tek"
+      "https://www.facebook.com/nc.khesed.tek.systems",
+      "https://www.instagram.com/@khesed.tek.systems.org",
+      "https://www.youtube.com/@Khesed-Tek-Systems",
+      "https://www.tiktok.com/@knesed.tek.systems/"
     ],
     "serviceArea": {
       "@type": market === 'GLOBAL' ? "Place" : "Country",

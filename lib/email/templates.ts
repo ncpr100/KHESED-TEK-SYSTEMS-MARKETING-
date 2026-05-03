@@ -50,7 +50,7 @@ export const defaultTemplates: Omit<EmailTemplate, 'id' | 'createdAt' | 'updated
         </p>
         
         <div style="text-align: center; margin: 30px 0;">
-          <a href="{{websiteUrl}}/contact" style="background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+          <a href="{{websiteUrl}}/contact" style="background: linear-gradient(90deg, #C9922A, #F0B83C); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
             Programa tu Demo Gratuita
           </a>
         </div>
@@ -115,7 +115,7 @@ El equipo de KHESED-TEK
         </div>
         
         <div style="text-align: center; margin: 30px 0;">
-          <a href="{{demoUrl}}" style="background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+          <a href="{{demoUrl}}" style="background: linear-gradient(90deg, #C9922A, #F0B83C); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
             Ver Mi Demo Ahora
           </a>
         </div>
@@ -168,35 +168,35 @@ El equipo de KHESED-TEK
           La transformación digital no es solo una tendencia, es una necesidad para las iglesias modernas. Aquí están las 5 señales principales:
         </p>
         
-        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #C9922A; margin: 20px 0;">
           <h3 style="color: #1e293b; margin-top: 0;">1. Gestión Manual de Miembros</h3>
           <p style="color: #475569; margin-bottom: 0;">
             Si aún usas hojas de cálculo o registros en papel, es momento de cambiar.
           </p>
         </div>
         
-        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #C9922A; margin: 20px 0;">
           <h3 style="color: #1e293b; margin-top: 0;">2. Comunicación Fragmentada</h3>
           <p style="color: #475569; margin-bottom: 0;">
             Múltiples plataformas para comunicarse con tu congregación.
           </p>
         </div>
         
-        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #C9922A; margin: 20px 0;">
           <h3 style="color: #1e293b; margin-top: 0;">3. Donaciones Limitadas</h3>
           <p style="color: #475569; margin-bottom: 0;">
             Solo efectivo o cheques, sin opciones digitales.
           </p>
         </div>
         
-        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #C9922A; margin: 20px 0;">
           <h3 style="color: #1e293b; margin-top: 0;">4. Falta de Métricas</h3>
           <p style="color: #475569; margin-bottom: 0;">
             No tienes datos sobre participación y crecimiento.
           </p>
         </div>
         
-        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+        <div style="background: #f8fafc; padding: 20px; border-left: 4px solid #C9922A; margin: 20px 0;">
           <h3 style="color: #1e293b; margin-top: 0;">5. Tiempo Administrativo Excesivo</h3>
           <p style="color: #475569; margin-bottom: 0;">
             Más tiempo en administración que en ministerio.
@@ -204,7 +204,7 @@ El equipo de KHESED-TEK
         </div>
         
         <div style="text-align: center; margin: 30px 0;">
-          <a href="{{websiteUrl}}/contact" style="background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+          <a href="{{websiteUrl}}/contact" style="background: linear-gradient(90deg, #C9922A, #F0B83C); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
             Descubre la Solución
           </a>
         </div>
@@ -286,7 +286,7 @@ El equipo de KHESED-TEK
         </div>
         
         <p style="font-size: 14px; color: #64748b; text-align: center;">
-          Si ya no deseas recibir estos correos, puedes <a href="{{unsubscribeUrl}}" style="color: #3b82f6;">darte de baja aquí</a>.
+          Si ya no deseas recibir estos correos, puedes <a href="{{unsubscribeUrl}}" style="color: #C9922A;">darte de baja aquí</a>.
         </p>
       </div>
     `,

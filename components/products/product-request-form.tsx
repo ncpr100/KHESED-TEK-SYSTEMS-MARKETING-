@@ -117,7 +117,7 @@ export default function ProductRequestForm() {
     <div className="max-w-2xl mx-auto p-6">
       <style jsx>{`
         .gradient-text {
-          background: linear-gradient(135deg, #6ee7ff 0%, #8b5cf6 100%);
+          background: linear-gradient(135deg, var(--gold-hi) 0%, var(--gold) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -126,13 +126,13 @@ export default function ProductRequestForm() {
 
       {/* Language Toggle */}
       <div className="flex justify-end mb-6">
-        <div className="inline-flex rounded-lg border border-[#232329] overflow-hidden">
+        <div className="inline-flex rounded-lg border border-[var(--bdr)] overflow-hidden">
           <button
             onClick={() => setLanguage('es')}
             className={`px-4 py-2 text-sm font-medium transition-colors ${
               language === 'es'
-                ? 'bg-gradient-to-r from-[#6ee7ff] to-[#8b5cf6] text-white'
-                : 'bg-[#17171a] text-[#9ca3af] hover:text-white'
+                ? 'bg-gradient-to-r from-[var(--gold-hi)] to-[var(--gold)] text-white'
+                : 'bg-[var(--srf)] text-[#9ca3af] hover:text-white'
             }`}
           >
             Español
@@ -141,8 +141,8 @@ export default function ProductRequestForm() {
             onClick={() => setLanguage('en')}
             className={`px-4 py-2 text-sm font-medium transition-colors ${
               language === 'en'
-                ? 'bg-gradient-to-r from-[#6ee7ff] to-[#8b5cf6] text-white'
-                : 'bg-[#17171a] text-[#9ca3af] hover:text-white'
+                ? 'bg-gradient-to-r from-[var(--gold-hi)] to-[var(--gold)] text-white'
+                : 'bg-[var(--srf)] text-[#9ca3af] hover:text-white'
             }`}
           >
             English
@@ -151,16 +151,16 @@ export default function ProductRequestForm() {
       </div>
 
       {/* Mission Banner - 33% Message */}
-      <div className="mb-8 p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(110, 231, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)', border: '1px solid rgba(110, 231, 255, 0.2)' }}>
+      <div className="mb-8 p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(201,146,42,0.10) 0%, rgba(240,184,60,0.08) 100%)', border: '1px solid rgba(201,146,42,0.22)' }}>
         <h3 className="text-lg font-bold mb-3 gradient-text">
           {isSpanish ? 'Tecnología y Recursos con Propósito' : 'Technology and Resources with Purpose'}
         </h3>
-        <p className="text-sm text-[#e7e7ea] leading-relaxed mb-3">
+        <p className="text-sm text-[var(--txt)] leading-relaxed mb-3">
           {isSpanish
             ? 'En Khesed-Tek Systems, cada donación no es solo una transacción, es una alianza. El 33% de todos los fondos recaudados a través de nuestros productos y servicios se destina directamente a Fundación Misión Khesed para apoyar su trabajo en alianza con programas locales, iglesias y organizaciones en Colombia y Latinoamérica, ayudando a comunidades vulnerables con alimentos, ropa y apoyo integral.'
             : 'At Khesed-Tek Systems, every donation is not just a transaction, it\'s a partnership. 33% of all funds raised through our products and services goes directly to Fundación Misión Khesed to support their work in partnership with local programs, churches, and organizations in Colombia and Latin America, helping vulnerable communities with food, clothing, and comprehensive support.'}
         </p>
-        <p className="text-sm font-semibold text-[#6ee7ff]">
+        <p className="text-sm font-semibold text-[var(--gold-hi)]">
           {isSpanish
             ? 'Tu contribución no solo te fortalece a ti; restaura vidas.'
             : 'Your contribution not only strengthens you; it restores lives.'}
@@ -185,7 +185,7 @@ export default function ProductRequestForm() {
       <form onSubmit={handleSubmit} className="card space-y-6">
         {/* Product Selection */}
         <div>
-          <label htmlFor="productType" className="block text-sm font-medium mb-2 text-[#e7e7ea]">
+          <label htmlFor="productType" className="block text-sm font-medium mb-2 text-[var(--txt)]">
             {isSpanish ? 'Producto *' : 'Product *'}
           </label>
           <select
@@ -193,7 +193,7 @@ export default function ProductRequestForm() {
             required
             value={formData.productType}
             onChange={(e) => setFormData({ ...formData, productType: e.target.value as ProductType })}
-            className="w-full px-4 py-3 rounded-lg bg-[#17171a] border border-[#232329] text-[#e7e7ea] focus:border-[#6ee7ff] focus:outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[var(--srf)] border border-[var(--bdr)] text-[var(--txt)] focus:border-[var(--gold-hi)] focus:outline-none transition-colors"
           >
             <option value="">
               {isSpanish ? '-- Selecciona un producto --' : '-- Select a product --'}
@@ -208,7 +208,7 @@ export default function ProductRequestForm() {
 
         {/* Customer Name */}
         <div>
-          <label htmlFor="customerName" className="block text-sm font-medium mb-2 text-[#e7e7ea]">
+          <label htmlFor="customerName" className="block text-sm font-medium mb-2 text-[var(--txt)]">
             {isSpanish ? 'Nombre completo *' : 'Full name *'}
           </label>
           <input
@@ -218,13 +218,13 @@ export default function ProductRequestForm() {
             value={formData.customerName}
             onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
             placeholder={isSpanish ? 'Juan Pérez' : 'John Doe'}
-            className="w-full px-4 py-3 rounded-lg bg-[#17171a] border border-[#232329] text-[#e7e7ea] placeholder-[#6b7280] focus:border-[#6ee7ff] focus:outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[var(--srf)] border border-[var(--bdr)] text-[var(--txt)] placeholder-[#6b7280] focus:border-[var(--gold-hi)] focus:outline-none transition-colors"
           />
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="customerEmail" className="block text-sm font-medium mb-2 text-[#e7e7ea]">
+          <label htmlFor="customerEmail" className="block text-sm font-medium mb-2 text-[var(--txt)]">
             {isSpanish ? 'Correo electrónico *' : 'Email address *'}
           </label>
           <input
@@ -234,13 +234,13 @@ export default function ProductRequestForm() {
             value={formData.customerEmail}
             onChange={(e) => setFormData({ ...formData, customerEmail: e.target.value })}
             placeholder={isSpanish ? 'tu@correo.com' : 'you@email.com'}
-            className="w-full px-4 py-3 rounded-lg bg-[#17171a] border border-[#232329] text-[#e7e7ea] placeholder-[#6b7280] focus:border-[#6ee7ff] focus:outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[var(--srf)] border border-[var(--bdr)] text-[var(--txt)] placeholder-[#6b7280] focus:border-[var(--gold-hi)] focus:outline-none transition-colors"
           />
         </div>
 
         {/* Country (Optional) */}
         <div>
-          <label htmlFor="country" className="block text-sm font-medium mb-2 text-[#e7e7ea]">
+          <label htmlFor="country" className="block text-sm font-medium mb-2 text-[var(--txt)]">
             {isSpanish ? 'País (opcional)' : 'Country (optional)'}
           </label>
           <input
@@ -249,7 +249,7 @@ export default function ProductRequestForm() {
             value={formData.country}
             onChange={(e) => setFormData({ ...formData, country: e.target.value })}
             placeholder={isSpanish ? 'Colombia' : 'Colombia'}
-            className="w-full px-4 py-3 rounded-lg bg-[#17171a] border border-[#232329] text-[#e7e7ea] placeholder-[#6b7280] focus:border-[#6ee7ff] focus:outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[var(--srf)] border border-[var(--bdr)] text-[var(--txt)] placeholder-[#6b7280] focus:border-[var(--gold-hi)] focus:outline-none transition-colors"
           />
           <p className="mt-1 text-xs text-[#6b7280]">
             {isSpanish
@@ -260,16 +260,16 @@ export default function ProductRequestForm() {
 
         {/* Processing Fees Checkbox (only show when product selected) */}
         {formData.productType && pricing && (
-          <div className="p-4 rounded-lg bg-[#17171a] border border-[#232329]">
+          <div className="p-4 rounded-lg bg-[var(--srf)] border border-[var(--bdr)]">
             <label className="flex items-start cursor-pointer">
               <input
                 type="checkbox"
                 checked={coverProcessingFees}
                 onChange={(e) => setCoverProcessingFees(e.target.checked)}
-                className="mt-1 h-4 w-4 rounded border-[#232329] bg-[#0e0e10] text-[#6ee7ff] focus:ring-[#6ee7ff] focus:ring-offset-0"
+                className="mt-1 h-4 w-4 rounded border-[var(--bdr)] bg-[var(--bg)] text-[var(--gold-hi)] focus:ring-[var(--gold-hi)] focus:ring-offset-0"
               />
               <span className="ml-3 flex-1">
-                <span className="block text-sm font-medium text-[#e7e7ea]">
+                <span className="block text-sm font-medium text-[var(--txt)]">
                   {isSpanish
                     ? '¿Deseas ayudarnos a cubrir los costos de procesamiento?'
                     : 'Would you like to help us cover the processing costs?'}
@@ -283,7 +283,7 @@ export default function ProductRequestForm() {
             </label>
             
             {/* Price Breakdown */}
-            <div className="mt-3 pt-3 border-t border-[#232329] text-sm">
+            <div className="mt-3 pt-3 border-t border-[var(--bdr)] text-sm">
               <div className="flex justify-between text-[#9ca3af]">
                 <span>{isSpanish ? 'Aporte base' : 'Base contribution'}:</span>
                 <span>${pricing.basePrice.toFixed(2)} USD</span>
@@ -294,7 +294,7 @@ export default function ProductRequestForm() {
                   <span>+${pricing.fee.toFixed(2)} USD</span>
                 </div>
               )}
-              <div className="flex justify-between font-bold text-[#e7e7ea] mt-2 pt-2 border-t border-[#232329]">
+              <div className="flex justify-between font-bold text-[var(--txt)] mt-2 pt-2 border-t border-[var(--bdr)]">
                 <span>{isSpanish ? 'Total' : 'Total'}:</span>
                 <span>${coverProcessingFees ? pricing.total.toFixed(2) : pricing.basePrice.toFixed(2)} USD</span>
               </div>

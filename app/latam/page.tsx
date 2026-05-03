@@ -70,7 +70,7 @@ export default function LatamMarketPage() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-sm uppercase tracking-wide text-[var(--brand)] mb-4 flex items-center justify-center gap-2">
-            <OutlineIcon name="globe" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="globe" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>Mercado LATAM - Especialistas en mercado hispano</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight hero-heading">
@@ -131,7 +131,7 @@ export default function LatamMarketPage() {
             Capacidades culturalmente adaptadas que ningún competidor internacional ofrece
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] text-sm">
-            <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+            <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--gold-hi)]" />
             <span>Superando a Planning Center, Breeze y ChurchTrac en el mercado latino</span>
           </div>
         </div>
@@ -366,10 +366,10 @@ export default function LatamMarketPage() {
         />
 
         <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
-          <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>Acepta PSE, Bancolombia, Efecty y transferencias</span>
-          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-2" />
-          <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-2" />
+          <OutlineIcon name="phone" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>Soporte telefónico incluido</span>
         </div>
       </section>
@@ -474,48 +474,48 @@ export default function LatamMarketPage() {
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4 flex items-center">
-              <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400 mr-2" />
+              <OutlineIcon name="mail" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
               <span>Contacto directo</span>
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center">
-                <OutlineIcon name="mail" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="mail" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>contacto@khesed-tek-systems.org</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="phone" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="phone" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>+57 302 123 4410 (WhatsApp)</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="marker" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="marker" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>Barranquilla, Atlántico, Colombia</span>
               </div>
               <div className="flex items-center">
-                <OutlineIcon name="clock" className="w-4 h-4 text-cyan-400 mr-2" />
+                <OutlineIcon name="clock" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
                 <span>Lunes a Viernes 9AM - 6PM (COT)</span>
               </div>
             </div>
           </div>
           <div className="card p-6 text-left">
             <h3 className="font-semibold mb-4 flex items-center">
-              <OutlineIcon name="users" className="w-4 h-4 text-cyan-400 mr-2" />
+              <OutlineIcon name="users" className="w-4 h-4 text-[var(--gold-hi)] mr-2" />
               <span>Demo personalizada</span>
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Demostración adaptada a tu iglesia
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Análisis de necesidades sin costo
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Plan de implementación personalizado
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 Acompañamiento en tu zona horaria
               </div>
             </div>

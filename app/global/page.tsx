@@ -253,7 +253,7 @@ export default function GlobalMarketPage() {
             <h3 className="text-xl font-semibold mt-3 mb-2">{f.title}</h3>
             <p style={{ color: 'var(--muted)' }} className="mb-3">{f.desc}</p>
             <div className="text-xs text-[var(--brand)] font-medium opacity-0 group-hover:opacity-100 transition flex items-center">
-              <OutlineIcon name="dot" className="w-3 h-3 text-cyan-400 mr-1" />
+              <OutlineIcon name="dot" className="w-3 h-3 text-[var(--gold-hi)] mr-1" />
               <span>{f.advantage}</span>
             </div>
           </div>
@@ -501,19 +501,19 @@ export default function GlobalMarketPage() {
         />
 
         <div className="text-sm text-[var(--muted)] text-center mt-8 flex items-center justify-center gap-2">
-          <OutlineIcon name="diamond" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="diamond" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>{language === 'es' 
             ? 'Stripe, Wise, transferencias bancarias'
             : 'Stripe, Wise, bank transfers'
           }</span>
-          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-          <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-1" />
+          <OutlineIcon name="shield" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>{language === 'es' 
             ? 'Cumplimiento GDPR/LGPD'
             : 'GDPR/LGPD compliant'
           }</span>
-          <OutlineIcon name="dot" className="w-2 h-2 text-cyan-400 mx-1" />
-          <OutlineIcon name="award" className="w-4 h-4 text-cyan-400" />
+          <OutlineIcon name="dot" className="w-2 h-2 text-[var(--gold-hi)] mx-1" />
+          <OutlineIcon name="award" className="w-4 h-4 text-[var(--gold-hi)]" />
           <span>{language === 'es' 
             ? 'Certificaciones ISO'
             : 'ISO certified'
@@ -634,19 +634,19 @@ export default function GlobalMarketPage() {
               <h3 className="font-semibold mb-2">{region.region}</h3>
               <div className="space-y-1 text-sm text-[var(--muted)]">
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="clock" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="clock" className="w-3 h-3 text-[var(--gold-hi)]" />
                   <span>{region.timezone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="globe" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="globe" className="w-3 h-3 text-[var(--gold-hi)]" />
                   <span>{region.languages}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--gold-hi)]" />
                   <span>{region.hours}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <OutlineIcon name="square" className="w-3 h-3 text-cyan-400" />
+                  <OutlineIcon name="square" className="w-3 h-3 text-[var(--gold-hi)]" />
                   <span>{region.contact}</span>
                 </div>
               </div>
@@ -788,23 +788,23 @@ export default function GlobalMarketPage() {
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="mail" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="mail" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>contact@khesed-tek-systems.org</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="phone" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="phone" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Líneas regionales disponibles' : 'Regional lines available'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Cobertura mundial' : 'Worldwide coverage'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="square" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="square" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Soporte 24/7 disponible' : '24/7 support available'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="zap" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="zap" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Soporte multiidioma' : 'Multi-language support'}</span>
               </div>
             </div>
@@ -816,23 +816,23 @@ export default function GlobalMarketPage() {
             </h3>
             <div className="space-y-2 text-sm text-[var(--muted)]">
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Demostración en tu idioma' : 'Demo in your language'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Análisis de cumplimiento local' : 'Local compliance analysis'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Integración con sistemas locales' : 'Local systems integration'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Plan de migración personalizado' : 'Customized migration plan'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                 <span>{language === 'es' ? 'Soporte en tu zona horaria' : 'Support in your timezone'}</span>
               </div>
             </div>
