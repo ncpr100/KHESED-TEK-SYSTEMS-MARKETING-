@@ -3,12 +3,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useGlobalMarket } from '@/lib/global-market';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
   const { language, market, geoData } = useGlobalMarket();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [themeReady, setThemeReady] = useState(false);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem('khesed-theme');
+    const initial = stored === 'light' ? 'light' : 'dark';
+    setTheme(initial);
+    document.documentElement.setAttribute('data-theme', initial);
+    setThemeReady(true);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    window.localStorage.setItem('khesed-theme', nextTheme);
+  };
   
   // Determine market context from pathname for routing
   const isLatamMarket = pathname?.includes('/latam') || false;
@@ -68,7 +85,7 @@ export default function Header() {
           />
         </Link>
         
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3">
           {/* Desktop Navigation */}
           <nav className="hidden sm:flex items-center gap-7">
             <Link href={featuresHref} className="transition-colors" style={{ fontSize: '12px', letterSpacing: '0.05em', color: 'var(--muted)' }} onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-hi)')} onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>{featuresText}</Link>
@@ -106,6 +123,37 @@ export default function Header() {
           >
             {effectiveLanguage === 'es' ? 'Agendar Demo →' : 'Schedule Demo →'}
           </Link>
+
+          {themeReady && (
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Switch to sunshine light mode' : 'Switch to cosmos dark mode'}
+              className="hidden sm:grid place-items-center"
+              style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '9999px',
+                background: 'var(--srf-lo)',
+                border: '1px solid var(--bdr)',
+                color: 'var(--gold-hi)',
+                transition: 'transform .2s cubic-bezier(0.16,1,0.3,1)'
+              }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.08)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+            >
+              {theme === 'dark' ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.8A9 9 0 0 1 11.2 3 9 9 0 1 0 21 12.8z" />
+                </svg>
+              )}
+            </button>
+          )}
 
           {/* Mobile Hamburger Menu Button */}
           <button

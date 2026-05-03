@@ -16,13 +16,18 @@ export default function CosmosBackground() {
     let stars: Star[] = [];
     const mouse = { x: 0, y: 0 };
     let raf: number;
+    let lastTheme: 'dark' | 'light' = 'dark';
 
-    const mk = () => {
-      const cols = ['#F0EDE8', '#F0EDE8', '#C9922A', '#26D9D9'];
+    const getIsDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
+
+    const mk = (isDark: boolean) => {
+      const cols = isDark
+        ? ['#F0EDE8', '#F0EDE8', '#C9922A', '#F0B83C']
+        : ['#C8BFAA', '#BFAE8A', '#B07D20', '#9A6F2A'];
       stars = Array.from({ length: N }, () => ({
         x: Math.random() * 2000, y: Math.random() * 1200,
         r: Math.random() * 1.1 + 0.2, speed: Math.random() * 0.08 + 0.02,
-        op: Math.random() * 0.44 + 0.08,
+        op: isDark ? Math.random() * 0.44 + 0.08 : Math.random() * 0.16 + 0.04,
         ph: Math.random() * Math.PI * 2, ps: Math.random() * 0.018 + 0.004,
         c: cols[Math.floor(Math.random() * cols.length)],
       }));
@@ -35,28 +40,44 @@ export default function CosmosBackground() {
 
     const onMouseMove = (e: MouseEvent) => { mouse.x = e.clientX; mouse.y = e.clientY; };
 
-    rsz(); mk();
+    rsz();
+    lastTheme = getIsDark() ? 'dark' : 'light';
+    mk(lastTheme === 'dark');
     window.addEventListener('resize', rsz);
     window.addEventListener('mousemove', onMouseMove);
 
     const draw = () => {
+      const isDark = getIsDark();
+      const currentTheme: 'dark' | 'light' = isDark ? 'dark' : 'light';
+      if (currentTheme !== lastTheme) {
+        mk(isDark);
+        lastTheme = currentTheme;
+      }
       cx.clearRect(0, 0, W, H);
-      const bg = cx.createRadialGradient(W * 0.3, H * 0.3, 0, W * 0.5, H * 0.5, Math.max(W, H) * 0.9);
-      bg.addColorStop(0, 'rgba(13,22,40,0.98)');
-      bg.addColorStop(0.5, 'rgba(8,14,28,0.99)');
-      bg.addColorStop(1, 'rgba(5,8,15,1)');
+      const bg = isDark
+        ? cx.createRadialGradient(W * 0.3, H * 0.3, 0, W * 0.5, H * 0.5, Math.max(W, H) * 0.9)
+        : cx.createLinearGradient(0, 0, W, H);
+      if (isDark) {
+        bg.addColorStop(0, 'rgba(13,22,40,0.98)');
+        bg.addColorStop(0.5, 'rgba(8,14,28,0.99)');
+        bg.addColorStop(1, 'rgba(5,8,15,1)');
+      } else {
+        bg.addColorStop(0, 'rgba(247,242,234,1)');
+        bg.addColorStop(0.5, 'rgba(238,232,213,1)');
+        bg.addColorStop(1, 'rgba(232,223,196,1)');
+      }
       cx.fillStyle = bg;
       cx.fillRect(0, 0, W, H);
 
       const nb = cx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 300);
-      nb.addColorStop(0, 'rgba(201,146,42,0.055)');
+      nb.addColorStop(0, isDark ? 'rgba(201,146,42,0.055)' : 'rgba(201,146,42,0.03)');
       nb.addColorStop(1, 'transparent');
       cx.fillStyle = nb;
       cx.fillRect(0, 0, W, H);
 
       stars.forEach(s => {
         s.ph += s.ps;
-        const p = s.op + Math.sin(s.ph) * 0.12;
+        const p = s.op + Math.sin(s.ph) * (isDark ? 0.12 : 0.04);
         const dx = (mouse.x - W / 2) * s.speed * 0.05;
         const dy = (mouse.y - H / 2) * s.speed * 0.05;
         const px = ((s.x - dx) % W + W) % W;
@@ -64,7 +85,7 @@ export default function CosmosBackground() {
         cx.save();
         cx.globalAlpha = Math.max(0, Math.min(1, p));
         cx.fillStyle = s.c;
-        if (s.r > 0.8) { cx.shadowColor = s.c; cx.shadowBlur = 4; }
+        if (s.r > 0.8 && isDark) { cx.shadowColor = s.c; cx.shadowBlur = 4; }
         cx.beginPath();
         cx.arc(px, py, s.r, 0, Math.PI * 2);
         cx.fill();
