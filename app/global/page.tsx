@@ -113,7 +113,7 @@ export default function GlobalMarketPage() {
             description: language === 'es' 
               ? 'Descubre cómo iglesias de todo el mundo están transformando sus ministerios'
               : 'Discover how churches worldwide are transforming their ministries',
-            thumbnailUrl: '/images/demo-thumbnail.jpg',
+            thumbnailUrl: '/images/demo-thumbnail-usa.png',
             videoUrl: 'https://www.youtube.com/watch?v=demo-video-id',
             duration: '5:30',
             type: 'youtube',
