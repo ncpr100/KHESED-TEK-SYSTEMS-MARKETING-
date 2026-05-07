@@ -151,7 +151,7 @@ const GLOBAL_SCREENSHOTS: CarouselImage[] = [
   },
   {
     src: '/images/product-screenshots/latam-1764976261309-Screenshot-2025-12-05-164639.png',
-    alt: 'Global Pastoral Insights',
+    alt: 'Pastoral Insights',
     title: '',
     description: 'Pastoral perspectives with leadership insights for global ministry coordination'
   },
