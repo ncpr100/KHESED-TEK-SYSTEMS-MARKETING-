@@ -30,11 +30,11 @@ const CHURCH_PROFILES: Record<string, ChurchProfile> = {
   }
 };
 
-// KHESED-TEK pricing based on church size - NO implementation or training fees!
+// KHESED-TEK pricing — implementation fee below competitors
 const PRICING_TIERS = {
-  small: { monthly: 49, setup: 0, training: 0 },    // Plan Semilla
-  medium: { monthly: 149, setup: 0, training: 0 },  // Plan Cosecha
-  large: { monthly: 299, setup: 0, training: 0 }    // Plan Reino
+  small: { monthly: 49, setup: 149, training: 0 },    // Plan Semilla
+  medium: { monthly: 149, setup: 299, training: 0 },  // Plan Cosecha
+  large: { monthly: 299, setup: 599, training: 0 }    // Plan Reino
 };
 
 export default function ROICalculator({
@@ -65,10 +65,10 @@ export default function ROICalculator({
     const monthlySubscriptionCost = pricing.monthly;
     const softwareCostSavings = inputs.currentSoftwareCost - monthlySubscriptionCost; // Can be negative
 
-    // Competitive advantage: Most church software charges $149-599 for setup + training
-    const competitorImplementationCost = inputs.churchSize === 'small' ? 149 :
-                                       inputs.churchSize === 'medium' ? 299 : 599;
-    const implementationSavings = competitorImplementationCost; // We charge $0, competitors charge this
+    // Competitive advantage: competitors charge $800-$2,000 for setup; we charge $149-$599
+    const competitorImplementationCost = inputs.churchSize === 'small' ? 800 :
+                                       inputs.churchSize === 'medium' ? 1200 : 2000;
+    const implementationSavings = competitorImplementationCost - pricing.setup; // savings vs competitors
     
     const adminEfficiency = inputs.adminHoursPerWeek * 0.15; // Realistic 15% time savings
     const volunteerEfficiency = inputs.volunteerHours * 0.10; // Conservative 10% volunteer time savings
@@ -81,22 +81,22 @@ export default function ROICalculator({
     const totalMonthlySavings = timeValueSavings + processEfficiencyValue; // Only count real operational savings
     const netMonthlySavings = totalMonthlySavings + softwareCostSavings; // Include software cost difference (can be negative)
     
-    // Calculate investment - KHESED-TEK advantage: $0 setup and training costs!
+    // Calculate investment
     const monthlyInvestment = monthlySubscriptionCost;
-    const totalInvestment = monthlySubscriptionCost; // Only first month, no setup costs!
+    const totalInvestment = monthlySubscriptionCost + pricing.setup; // First month + one-time setup fee
     
     // Realistic ROI calculations based on NET cash flow + implementation savings advantage
     const monthlyNetCashFlow = netMonthlySavings; // Net benefit after all costs
     const yearlyNetCashFlow = monthlyNetCashFlow * 12;
     const firstYearSavings = yearlyNetCashFlow + implementationSavings; // Add one-time implementation savings
-    const totalFirstYearCost = monthlySubscriptionCost * 12; // Only subscription cost, no setup!
+    const totalFirstYearCost = monthlySubscriptionCost * 12 + pricing.setup; // Subscription + one-time setup
     
     // ROI = (Net Benefit - Total Investment) / Total Investment * 100
     const yearlyROI = firstYearSavings > 0 ? ((firstYearSavings - totalFirstYearCost) / totalFirstYearCost) * 100 : -100;
     const monthlyROI = monthlyNetCashFlow > 0 ? ((monthlyNetCashFlow - monthlyInvestment) / monthlyInvestment) * 100 : -100;
     
     // Payback period: Much faster with no upfront costs!
-    const paybackPeriod = monthlyNetCashFlow > 0 ? totalInvestment / Math.max(monthlyNetCashFlow, 1) : 999; // 999 = never pays back
+    const paybackPeriod = monthlyNetCashFlow > 0 ? totalInvestment / Math.max(monthlyNetCashFlow, 1) : 999;
     const netYearlyValue = firstYearSavings;
 
     // Generate realistic insights
@@ -118,8 +118,8 @@ export default function ROICalculator({
       },
       investment: {
         monthlySubscription: monthlySubscriptionCost,
-        implementationCost: pricing.setup, // $0 - our competitive advantage!
-        trainingCost: pricing.training, // $0 - our competitive advantage!
+        implementationCost: pricing.setup,
+        trainingCost: pricing.training,
         total: totalInvestment
       },
       roi: {
@@ -321,7 +321,7 @@ export default function ROICalculator({
                     <ul className="text-sm space-y-1 text-left">
                       <li className="flex items-center gap-2">
                         <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
-                        <span>{language === 'es' ? 'Implementación GRATIS' : 'FREE Implementation'}</span>
+                        <span>{language === 'es' ? 'Implementación desde $149 USD' : 'Setup from $149 USD'}</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <OutlineIcon name="zap" className="w-3 h-3 text-[var(--gold-hi)]" />
@@ -443,18 +443,23 @@ export default function ROICalculator({
                     </div>
                     <div className="flex justify-between">
                       <span>{t.implementation}</span>
-                      <span className="font-bold text-green-400">GRATIS ($149 USD-$599 USD ahorro)</span>
+                      <span className="font-bold text-[var(--brand)]">
+                        {formatCurrency(calculation.investment.implementationCost)} USD
+                        <span className="text-xs text-green-400 ml-1">
+                          {language === 'es' ? '(vs $800+ competidores)' : '(vs $800+ competitors)'}
+                        </span>
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t.training}</span>
                       <span className="font-bold text-green-400">GRATIS (incluido)</span>
                     </div>
                     <div className="border-t border-[var(--border)] pt-2 flex justify-between font-semibold">
-                      <span>Total inicial</span>
+                      <span>{language === 'es' ? 'Total inicial' : 'Initial total'}</span>
                       <span className="text-[var(--brand)]">
-                        {calculation.investment.monthlySubscription === 0 ? 
-                          (language === 'es' ? 'Contactar para precio' : 'Contact for pricing') : 
-                          `${formatCurrency(calculation.investment.monthlySubscription)} (solo 1er mes)`
+                        {calculation.investment.monthlySubscription === 0 ?
+                          (language === 'es' ? 'Contactar para precio' : 'Contact for pricing') :
+                          `${formatCurrency(calculation.investment.total)} USD ${language === 'es' ? '(suscripción + implementación)' : '(subscription + setup)'}`
                         }
                       </span>
                     </div>
@@ -508,7 +513,7 @@ function generateInsights(
 
   if (language === 'es') {
     // Always highlight our implementation advantage
-    insights.push(`Ahorro en implementación: $149-$599 USD vs competidores (implementación y capacitación GRATIS).`);
+    insights.push(`Ahorro en implementación: $149-$599 USD vs competidores ($800-$2,000 USD) — tarifa por debajo del mercado.`);
     
     if (results.yearlyROI > 20) {
       insights.push('ROI positivo: Su inversión generará retornos superiores al 20% anual.');
@@ -535,7 +540,7 @@ function generateInsights(
     }
   } else {
     // Always highlight our implementation advantage
-    insights.push(`Implementation savings: $149-$599 USD vs competitors (FREE setup and training).`);
+    insights.push(`Implementation fee: $149-$599 USD vs competitors ($800-$2,000 USD) — below-market setup pricing.`);
     
     if (results.yearlyROI > 20) {
       insights.push('Positive ROI: Your investment will generate returns above 20% annually.');
