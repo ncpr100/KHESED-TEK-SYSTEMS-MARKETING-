@@ -306,38 +306,38 @@ export default function LatamMarketPage() {
           <BillingToggle annual={annualBilling} onChange={setAnnualBilling} />
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {[
             {
               id: "small",
-              name: "BÁSICO - Iglesia Pequeña",
-              price: annualBilling ? "$1,499.90 USD" : "$149.99 USD",
+              name: "SEMILLA - Iglesia Pequeña",
+              price: annualBilling ? "$480 USD" : "$49 USD",
               period: annualBilling ? "/año" : "/mes",
-              members: "Hasta 500 miembros",
-              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos Locales", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
-              ctaText: "Solicitar Demo",
-              ctaUrl: "/contact?plan=small"
+              members: "Hasta 150 miembros",
+              features: ["Triaje espiritual en tiempo real", "Recordatorios de oración WA", "Registro del Pastor semanal", "WhatsApp nativo integrado", "Pagos Locales · Soporte email 48h", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
+              ctaText: "Comenzar gratis",
+              ctaUrl: "/schedule?plan=semilla"
             },
             {
               id: "medium",
-              name: "PROFESIONAL - Iglesia Mediana", 
-              price: annualBilling ? "$2,999.90 USD" : "$299.99 USD",
+              name: "COSECHA - Iglesia Mediana",
+              price: annualBilling ? "$1,488 USD" : "$149 USD",
               period: annualBilling ? "/año" : "/mes",
-              members: "Hasta 2,000 miembros",
-              features: ["Todo lo anterior", "Hasta 10 licencias", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
+              members: "Hasta 500 miembros",
+              features: ["Todo lo del Plan Semilla", "Cobertura dominical automática (Ag.12)", "Análisis de sermones y contenido", "Pipeline de liderazgo e informe de junta", "800 conv. WhatsApp incluidas", "12 Agentes IA completos", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               popular: true,
               ctaText: "Más popular",
-              ctaUrl: "/contact?plan=medium"
+              ctaUrl: "/schedule?plan=cosecha"
             },
             {
               id: "large",
-              name: "EMPRESARIAL - Iglesia Grande",
-              price: "Personalizado", 
-              period: "",
-              members: "Miembros ilimitados",
-              features: ["Todo lo anterior", "Licencias ilimitadas", "Multi-campus", "API personalizada", "Soporte prioritario"],
+              name: "REINO - Iglesia Grande",
+              price: annualBilling ? "$2,988 USD" : "$299 USD",
+              period: annualBilling ? "/año" : "/mes",
+              members: "Hasta 1,500 miembros",
+              features: ["Todo lo del Plan Cosecha", "2,500 conv. WhatsApp incluidas", "Analítica predictiva completa (Ag.8-10)", "Coach de mayordomía espiritual", "SLA 99.9% · Soporte 2h respuesta", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               ctaText: "Solicitar demo",
-              ctaUrl: "/contact?plan=large"
+              ctaUrl: "/schedule?plan=reino"
             }
           ].map((plan, idx) => (
             <AnimatedPricingCard
@@ -354,12 +354,53 @@ export default function LatamMarketPage() {
           ))}
         </div>
 
+        {/* Enterprise & Network Plans */}
+        <div className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-widest text-[var(--muted)]">Para organizaciones mayores</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                id: "gloria",
+                name: "GLORIA - Megaiglesia / Multi-campus",
+                price: "Personalizado",
+                period: "",
+                members: "1,500+ miembros · Multi-campus",
+                features: ["Todo lo del Plan Reino", "Gestión multi-campus integrada", "SLA y soporte empresarial dedicado", "Implementación asistida", "$1.50/100 conv. WhatsApp excedente"],
+                ctaText: "Solicitar cotización",
+                ctaUrl: "/contact?plan=gloria"
+              },
+              {
+                id: "red",
+                name: "RED - Redes y Denominaciones",
+                price: "$94.90",
+                period: "/iglesia/mes",
+                members: "Redes · Denominaciones · Asociaciones",
+                features: ["Plan Cosecha por cada iglesia miembro", "1,200 conv. WhatsApp incluidas/iglesia", "Panel de administración de red", "Reportes consolidados de la red", "$1.75/100 conv. WhatsApp excedente"],
+                ctaText: "Contactar ventas",
+                ctaUrl: "/contact?plan=red"
+              }
+            ].map((plan, idx) => (
+              <AnimatedPricingCard
+                key={plan.id}
+                plan={plan as PricingPlan}
+                index={idx + 3}
+                language="es"
+                onSelect={(planId) => trackCTAClick('latam_pricing', `Plan ${planId}`)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Feature Comparison Table */}
-        <FeatureComparisonTable 
+        <FeatureComparisonTable
           plans={[
-            { id: "small", name: "BÁSICO - Iglesia Pequeña", price: "$149.99", period: "/mes", members: "500", features: [] },
-            { id: "medium", name: "PROFESIONAL - Iglesia Mediana", price: "$299.99", period: "/mes", members: "2,000", features: [], popular: true },
-            { id: "large", name: "EMPRESARIAL - Iglesia Grande", price: "Personalizado", period: "", members: "Ilimitado", features: [] }
+            { id: "small",  name: "SEMILLA",  price: "$49",        period: "/mes",       members: "150",      features: [] },
+            { id: "medium", name: "COSECHA",  price: "$149",       period: "/mes",       members: "500",      features: [], popular: true },
+            { id: "large",  name: "REINO",    price: "$299",       period: "/mes",       members: "1,500",    features: [] },
+            { id: "gloria", name: "GLORIA",   price: "Custom",     period: "",           members: "1,500+",   features: [] },
+            { id: "red",    name: "RED",      price: "$94.90",     period: "/igl/mes",   members: "Red",      features: [] }
           ]}
           language="es"
           className="mt-16"
@@ -382,12 +423,30 @@ export default function LatamMarketPage() {
             Descubra cuánto puede ahorrar su iglesia con KHESED-TEK
           </p>
         </div>
-        <ROICalculator 
-          language="es" 
-          market="LATAM" 
+        <ROICalculator
+          language="es"
+          market="LATAM"
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
+      </section>
+
+      {/* Interactive Plan Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold mb-4">Calculadora Interactiva de Plan</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Simula el costo exacto según el uso y tamaño de tu iglesia
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)]">
+          <iframe
+            src="/calc-v2-public-dual.html"
+            title="Calculadora de Plan Khesed-Tek"
+            className="w-full border-0"
+            style={{ height: '860px' }}
+          />
+        </div>
       </section>
 
       {/* About Section - Nosotros */}

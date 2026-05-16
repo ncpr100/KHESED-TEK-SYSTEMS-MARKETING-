@@ -9,21 +9,21 @@ import OutlineIcon from '@/components/ui/outline-icon';
 const CHURCH_PROFILES: Record<string, ChurchProfile> = {
   small: {
     size: 'small',
-    memberCount: 500,
+    memberCount: 150,
     typicalBudget: 8000,
     adminComplexity: 4,
     averageHourlyValue: 15
   },
   medium: {
     size: 'medium',
-    memberCount: 2000,
+    memberCount: 500,
     typicalBudget: 15000,
     adminComplexity: 6,
     averageHourlyValue: 20
   },
   large: {
     size: 'large',
-    memberCount: 9999, // Unlimited - using high number for calculations
+    memberCount: 1500,
     typicalBudget: 35000,
     adminComplexity: 8,
     averageHourlyValue: 25
@@ -32,9 +32,9 @@ const CHURCH_PROFILES: Record<string, ChurchProfile> = {
 
 // KHESED-TEK pricing based on church size - NO implementation or training fees!
 const PRICING_TIERS = {
-  small: { monthly: 149.99, setup: 0, training: 0 },
-  medium: { monthly: 299.99, setup: 0, training: 0 },
-  large: { monthly: 'custom', setup: 0, training: 0 } // Custom pricing for large churches
+  small: { monthly: 49, setup: 0, training: 0 },    // Plan Semilla
+  medium: { monthly: 149, setup: 0, training: 0 },  // Plan Cosecha
+  large: { monthly: 299, setup: 0, training: 0 }    // Plan Reino
 };
 
 export default function ROICalculator({
@@ -60,51 +60,11 @@ export default function ROICalculator({
   useEffect(() => {
     const profile = CHURCH_PROFILES[inputs.churchSize];
     const pricing = PRICING_TIERS[inputs.churchSize];
-    
-    // Handle custom pricing case for large churches
-    if (pricing.monthly === 'custom') {
-      // For custom pricing, show a message to contact sales
-      const customResult: ROICalculation = {
-        inputs,
-        savings: {
-          softwareCost: 0,
-          timeValue: 0,
-          efficiencyGains: 0,
-          total: 0
-        },
-        investment: {
-          monthlySubscription: 0,
-          implementationCost: 0,
-          trainingCost: 0,
-          total: 0
-        },
-        roi: {
-          monthly: 0,
-          yearly: 0,
-          paybackPeriod: 0,
-          netValue: 0
-        },
-        insights: [
-          language === 'es' 
-            ? 'Para iglesias grandes, ofrecemos soluciones completamente personalizadas'
-            : 'For ENTERPRISE plan organizations, we offer fully customized solutions',
-          language === 'es'
-            ? 'Implementación y capacitación completamente gratuitas'
-            : 'Completely free implementation and training',
-          language === 'es'
-            ? 'Precios adaptados a sus necesidades específicas'
-            : 'Pricing tailored to your specific needs'
-        ]
-      };
-      setCalculation(customResult);
-      onCalculationChange?.(customResult);
-      return;
-    }
-    
+
     // Calculate savings with realistic percentages
-    const monthlySubscriptionCost = pricing.monthly as number;
+    const monthlySubscriptionCost = pricing.monthly;
     const softwareCostSavings = inputs.currentSoftwareCost - monthlySubscriptionCost; // Can be negative
-    
+
     // Competitive advantage: Most church software charges $500-2000 for setup + training
     const competitorImplementationCost = inputs.churchSize === 'small' ? 800 : 
                                        inputs.churchSize === 'medium' ? 1200 : 2000;

@@ -1,6 +1,8 @@
 'use client';
+import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
+import FAQSection from '@/components/marketing/faq-section';
 import { trackCTAClick, analytics } from '@/lib/analytics';
 import { ScrollTracker } from '@/components/scroll-tracker';
 import { useABTest, getVariantContent, trackABTestConversion, HERO_HEADLINE_TEST, HERO_HEADLINE_CONTENT, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
@@ -14,6 +16,32 @@ import ROICalculator from '@/components/conversion/roi-calculator';
 import SystemFeaturesSection from '@/components/social-proof/system-features-section';
 import OutlineIcon from '@/components/ui/outline-icon';
 
+function BillingToggle({ annual, onChange, language }: { annual: boolean; onChange: (v: boolean) => void; language: string }) {
+  return (
+    <div className="inline-flex items-center gap-1 bg-[var(--surface)] p-1 rounded-full border border-[var(--border)] mt-4">
+      <button
+        onClick={() => onChange(false)}
+        className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+          !annual ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-[var(--text)]'
+        }`}
+      >
+        {language === 'es' ? 'Mensual' : 'Monthly'}
+      </button>
+      <button
+        onClick={() => onChange(true)}
+        className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+          annual ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-[var(--text)]'
+        }`}
+      >
+        {language === 'es' ? 'Anual' : 'Annual'}{' '}
+        <span className="text-xs ml-1 opacity-75">
+          {language === 'es' ? '2 meses gratis' : '2 months free'}
+        </span>
+      </button>
+    </div>
+  );
+}
+
 export default function GlobalMarketPage() {
   const { market, language } = useGlobalMarket();
   
@@ -22,6 +50,8 @@ export default function GlobalMarketPage() {
   
   const heroText = getVariantContent(HERO_HEADLINE_TEST, heroVariant, language, HERO_HEADLINE_CONTENT);
   const ctaText = getVariantContent(CTA_BUTTON_TEST, ctaVariant, language, CTA_BUTTON_CONTENT);
+
+  const [annualBilling, setAnnualBilling] = useState(false);
 
   const handleCTAClick = () => {
     trackCTAClick('global_hero_section', ctaText);
@@ -419,7 +449,7 @@ export default function GlobalMarketPage() {
             {language === 'es' ? 'Precios globales transparentes' : 'Transparent Global Pricing'}
           </h2>
           <p className="text-[var(--muted)] mb-4">
-            {language === 'es' 
+            {language === 'es'
               ? 'Precios justos en tu moneda local con métodos de pago regionales'
               : 'Fair pricing in your local currency with regional payment methods'
             }
@@ -430,46 +460,49 @@ export default function GlobalMarketPage() {
               : 'Fixed pricing by church size - No additional module fees'
             }
           </div>
+
+          {/* Billing Toggle */}
+          <BillingToggle annual={annualBilling} onChange={setAnnualBilling} language={language} />
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {[
             {
               id: "small",
-              name: language === 'es' ? 'BÁSICO - Iglesia Pequeña' : 'BASIC - Small Church',
-              price: "$149.99 USD",
-              period: language === 'es' ? '/mes' : '/month',
-              members: language === 'es' ? 'Hasta 500 miembros' : 'Up to 500 members',
-              features: language === 'es' 
-                ? ["Gestión básica de miembros", "Hasta 5 licencias", "Soporte multiidioma", "Pagos locales", "Migración asistida"]
-                : ["Basic member management", "Up to 5 user licenses", "Multi-language support", "Local payments", "Assisted migration"],
-              ctaText: language === 'es' ? 'Solicitar demo' : 'Request demo',
-              ctaUrl: "/contact?plan=small"
+              name: language === 'es' ? 'SEMILLA - Iglesia Pequeña' : 'SEMILLA - Small Church',
+              price: annualBilling ? "$480 USD" : "$49 USD",
+              period: language === 'es' ? (annualBilling ? '/año' : '/mes') : (annualBilling ? '/year' : '/month'),
+              members: language === 'es' ? 'Hasta 150 miembros' : 'Up to 150 members',
+              features: language === 'es'
+                ? ["Triaje espiritual en tiempo real", "Recordatorios de oración WA", "Registro del Pastor semanal", "WhatsApp nativo integrado", "Pagos locales · Soporte email 48h", ...(annualBilling ? ["2 meses gratis incluidos"] : [])]
+                : ["Spiritual triage in real time", "WhatsApp prayer reminders", "Pastor's weekly watch list", "Native WhatsApp integration", "Local payments · Email support 48h", ...(annualBilling ? ["2 months free included"] : [])],
+              ctaText: language === 'es' ? 'Comenzar gratis' : 'Start Free Trial',
+              ctaUrl: "/schedule?plan=semilla"
             },
             {
               id: "medium",
-              name: language === 'es' ? 'PROFESIONAL - Iglesia Mediana' : 'PROFESSIONAL - Medium Church', 
-              price: "$299.99 USD",
-              period: language === 'es' ? '/mes' : '/month',
-              members: language === 'es' ? 'Hasta 2,000 miembros' : 'Up to 2,000 members',
+              name: language === 'es' ? 'COSECHA - Iglesia Mediana' : 'COSECHA - Medium Church',
+              price: annualBilling ? "$1,488 USD" : "$149 USD",
+              period: language === 'es' ? (annualBilling ? '/año' : '/mes') : (annualBilling ? '/year' : '/month'),
+              members: language === 'es' ? 'Hasta 500 miembros' : 'Up to 500 members',
               features: language === 'es'
-                ? ["Todo lo anterior", "Hasta 10 licencias", "Reportes avanzados", "Soporte prioritario"]
-                : ["Everything above", "Up to 10 user licenses", "Advanced reporting", "Priority support"],
+                ? ["Todo lo del Plan Semilla", "Cobertura dominical automática (Ag.12)", "12 Agentes IA completos", "800 conv. WhatsApp incluidas", "Soporte prioritario 4h", ...(annualBilling ? ["2 meses gratis incluidos"] : [])]
+                : ["Everything in Semilla", "Automated Sunday coverage (Ag.12)", "All 12 AI agents", "800 WhatsApp conversations included", "Priority support 4h", ...(annualBilling ? ["2 months free included"] : [])],
               popular: true,
               ctaText: language === 'es' ? 'Más popular' : 'Most Popular',
-              ctaUrl: "/contact?plan=medium"
+              ctaUrl: "/schedule?plan=cosecha"
             },
             {
               id: "large",
-              name: language === 'es' ? 'EMPRESARIAL - Iglesia Grande' : 'ENTERPRISE - Large Church',
-              price: language === 'es' ? 'Personalizado' : 'Custom', 
-              period: '',
-              members: language === 'es' ? 'Miembros ilimitados' : 'Unlimited members',
+              name: language === 'es' ? 'REINO - Iglesia Grande' : 'REINO - Large Church',
+              price: annualBilling ? "$2,988 USD" : "$299 USD",
+              period: language === 'es' ? (annualBilling ? '/año' : '/mes') : (annualBilling ? '/year' : '/month'),
+              members: language === 'es' ? 'Hasta 1,500 miembros' : 'Up to 1,500 members',
               features: language === 'es'
-                ? ["Todo lo anterior", "Licencias ilimitadas", "Multi-campus", "API personalizada", "Cumplimiento GDPR", "Soporte 24/7"]
-                : ["Everything above", "Unlimited licenses", "Multi-campus support", "Custom API", "GDPR compliance", "24/7 support"],
-              ctaText: language === 'es' ? 'Contactar ventas' : 'Contact Sales',
-              ctaUrl: "/contact?plan=large"
+                ? ["Todo lo del Plan Cosecha", "2,500 conv. WhatsApp incluidas", "Analítica predictiva avanzada", "SLA 99.9% · Soporte 2h", ...(annualBilling ? ["2 meses gratis incluidos"] : [])]
+                : ["Everything in Cosecha", "2,500 WhatsApp conversations included", "Advanced predictive analytics", "99.9% SLA · 2h support", ...(annualBilling ? ["2 months free included"] : [])],
+              ctaText: language === 'es' ? 'Solicitar demo' : 'Request demo',
+              ctaUrl: "/schedule?plan=reino"
             }
           ].map((plan, idx) => (
             <AnimatedPricingCard
@@ -489,12 +522,59 @@ export default function GlobalMarketPage() {
           ))}
         </div>
 
+        {/* Enterprise & Network Plans */}
+        <div className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-widest text-[var(--muted)]">
+              {language === 'es' ? 'Para organizaciones mayores' : 'For larger organizations'}
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                id: "gloria",
+                name: language === 'es' ? 'GLORIA - Megaiglesia / Multi-campus' : 'GLORIA - Megachurch / Multi-campus',
+                price: language === 'es' ? 'Personalizado' : 'Custom',
+                period: "",
+                members: language === 'es' ? '1,500+ miembros · Multi-campus' : '1,500+ members · Multi-campus',
+                features: language === 'es'
+                  ? ["Todo lo del Plan Reino", "Gestión multi-campus integrada", "SLA y soporte empresarial dedicado", "Implementación asistida", "$1.50/100 conv. WhatsApp excedente"]
+                  : ["Everything in Reino", "Multi-campus integrated management", "Dedicated enterprise SLA & support", "Assisted implementation", "$1.50/100 WhatsApp conversations overage"],
+                ctaText: language === 'es' ? 'Solicitar cotización' : 'Request Quote',
+                ctaUrl: "/contact?plan=gloria"
+              },
+              {
+                id: "red",
+                name: language === 'es' ? 'RED - Redes y Denominaciones' : 'RED - Networks & Denominations',
+                price: "$94.90",
+                period: language === 'es' ? "/iglesia/mes" : "/church/month",
+                members: language === 'es' ? 'Redes · Denominaciones · Asociaciones' : 'Networks · Denominations · Associations',
+                features: language === 'es'
+                  ? ["Plan Cosecha por cada iglesia miembro", "1,200 conv. WhatsApp incluidas/iglesia", "Panel de administración de red", "Reportes consolidados de la red", "$1.75/100 conv. WhatsApp excedente"]
+                  : ["Cosecha plan per member church", "1,200 WhatsApp conversations/church", "Network administration dashboard", "Consolidated network reports", "$1.75/100 WhatsApp conversations overage"],
+                ctaText: language === 'es' ? 'Contactar ventas' : 'Contact Sales',
+                ctaUrl: "/contact?plan=red"
+              }
+            ].map((plan, idx) => (
+              <AnimatedPricingCard
+                key={plan.id}
+                plan={plan as PricingPlan}
+                index={idx + 3}
+                language={language as 'es' | 'en'}
+                onSelect={(planId: string) => trackCTAClick('global_pricing', `Plan ${planId}`)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Feature Comparison Table */}
-        <FeatureComparisonTable 
+        <FeatureComparisonTable
           plans={[
-            { id: "small", name: language === 'es' ? 'BÁSICO - Iglesia Pequeña' : 'BASIC - Small Church', price: "$149.99", period: language === 'es' ? '/mes' : '/month', members: "500", features: [] },
-            { id: "medium", name: language === 'es' ? 'PROFESIONAL - Iglesia Mediana' : 'PROFESSIONAL - Medium Church', price: "$299.99", period: language === 'es' ? '/mes' : '/month', members: "2,000", features: [], popular: true },
-            { id: "large", name: language === 'es' ? 'EMPRESARIAL - Iglesia Grande' : 'ENTERPRISE - Large Church', price: language === 'es' ? 'Personalizado' : 'Custom', period: '', members: "Unlimited", features: [] }
+            { id: "small",  name: "SEMILLA",  price: "$49",      period: language === 'es' ? '/mes' : '/month',  members: "150",      features: [] },
+            { id: "medium", name: "COSECHA",  price: "$149",     period: language === 'es' ? '/mes' : '/month',  members: "500",      features: [], popular: true },
+            { id: "large",  name: "REINO",    price: "$299",     period: language === 'es' ? '/mes' : '/month',  members: "1,500",    features: [] },
+            { id: "gloria", name: "GLORIA",   price: language === 'es' ? 'Custom' : 'Custom', period: "", members: "1,500+", features: [] },
+            { id: "red",    name: "RED",      price: "$94.90",   period: language === 'es' ? '/igl/mes' : '/ch/mo', members: language === 'es' ? 'Red' : 'Network', features: [] }
           ]}
           language={language}
           className="mt-16"
@@ -528,18 +608,41 @@ export default function GlobalMarketPage() {
             {language === 'es' ? 'Calcula tu ROI' : 'Calculate Your ROI'}
           </h2>
           <p className="text-[var(--muted)] text-lg">
-            {language === 'es' 
+            {language === 'es'
               ? 'Descubre cuánto puede ahorrar tu iglesia con KHESED-TEK'
               : 'Discover how much your church can save with KHESED-TEK'
             }
           </p>
         </div>
-        <ROICalculator 
-          language={language} 
-          market="GLOBAL" 
+        <ROICalculator
+          language={language}
+          market="GLOBAL"
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
+      </section>
+
+      {/* Interactive Plan Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Calculadora Interactiva de Plan' : 'Interactive Plan Calculator'}
+          </h2>
+          <p className="text-[var(--muted)] text-lg">
+            {language === 'es'
+              ? 'Simula el costo exacto según el uso y tamaño de tu iglesia'
+              : 'Simulate the exact cost based on your church\'s size and usage'
+            }
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)]">
+          <iframe
+            src="/calc-v2-public-dual.html"
+            title={language === 'es' ? 'Calculadora de Plan Khesed-Tek' : 'Khesed-Tek Plan Calculator'}
+            className="w-full border-0"
+            style={{ height: '860px' }}
+          />
+        </div>
       </section>
 
       {/* Global Beta Program Launch */}
@@ -839,6 +942,8 @@ export default function GlobalMarketPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection language={language} />
 
       <Footer />
     </main>
