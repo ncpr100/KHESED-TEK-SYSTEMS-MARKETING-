@@ -108,7 +108,7 @@ export const PRODUCTION_DEMO_VIDEOS: DemoVideo[] = [
     id: 'global-overview',
     title: 'A História por Trás da KHESED-TEK',
     description: 'Conheça o fundador e nossa missão de transformar a gestão de igrejas através de soluções tecnológicas inovadoras.',
-    thumbnailUrl: '/images/product-screenshots/usa/thumnail_usa/global_1.png',
+    thumbnailUrl: '/images/demo-thumbnail-usa.png',
     videoUrl: VIDEO_URLS.GLOBAL_OVERVIEW,
     duration: '7:45',
     type: 'youtube',

@@ -80,56 +80,50 @@ const LATAM_SCREENSHOTS: CarouselImage[] = [
 // USA Market Screenshots (English) - REAL APPLICATION SCREENSHOTS
 const USA_SCREENSHOTS: CarouselImage[] = [
   {
-    src: '/images/signin_page_1.png',
-    alt: 'KHESED-TEK Login Page',
+    src: '/images/product-screenshots/latam-1764975481233-Screenshot-2025-12-05-165734.png',
+    alt: 'KHESED-TEK Login System',
     title: '',
     description: 'Secure access to the comprehensive church management platform'
   },
   {
-    src: '/images/dashboard_2.png',
-    alt: 'KHESED-TEK Dashboard',
+    src: '/images/product-screenshots/latam-1764975123998-Screenshot-2025-12-05-163131.png',
+    alt: 'KHESED-TEK Real Dashboard',
     title: '',
     description: 'Church management dashboard with comprehensive metrics and insights'
   },
   {
-    src: '/images/agentes_ia_3.png',
-    alt: 'AI Agents',
+    src: '/images/product-screenshots/latam-1764975132708-Screenshot-2025-12-05-163232.png',
+    alt: 'Real Member Management System',
     title: '',
     description: 'Ministry automation powered by integrated artificial intelligence agents'
   },
   {
-    src: '/images/miembros_4.png',
-    alt: 'Member Management CRM',
-    title: '',
-    description: 'Complete member database with CRM functionality and congregational tracking'
-  },
-  {
-    src: '/images/voluntarios_5.png',
-    alt: 'Volunteer Management',
-    title: '',
-    description: 'Efficient coordination of ministry teams and volunteers'
-  },
-  {
-    src: '/images/muro_de_oracion_6.png',
-    alt: 'Prayer Wall',
-    title: '',
-    description: 'Digital intercession platform for community prayer requests'
-  },
-  {
-    src: '/images/visitantes_7.png',
-    alt: 'Visitor Tracking',
+    src: '/images/product-screenshots/latam-1764975149040-Screenshot-2025-12-05-163333.png',
+    alt: 'AI-Powered Volunteer Management',
     title: '',
     description: 'First-time visitor management and new member integration process'
   },
   {
-    src: '/images/formularios_8.png',
-    alt: 'Smart Forms',
+    src: '/images/product-screenshots/latam-1764975157059-Screenshot-2025-12-05-164534.png',
+    alt: 'KHESED-TEK Sermon Management',
     title: '',
     description: 'Custom form builder and management for ministry processes'
   },
   {
-    src: '/images/donaciones_online_9.png',
+    src: '/images/product-screenshots/latam-1764976058099-Screenshot-2025-12-05-164750.png',
     alt: 'Online Giving Platform',
+    title: '',
+    description: 'Secure multi-channel donation processing with real-time financial tracking'
+  },
+  {
+    src: '/images/product-screenshots/latam-1764976261309-Screenshot-2025-12-05-164639.png',
+    alt: 'Pastoral Insights',
+    title: '',
+    description: 'Pastoral insights with intelligent perspective tracking for leadership teams'
+  },
+  {
+    src: '/images/product-screenshots/latam-1764976324066-Screenshot-2025-12-05-164720.png',
+    alt: 'Pastoral Analytics Dashboard',
     title: '',
     description: 'Secure multi-channel donation processing with real-time financial tracking'
   },
@@ -150,61 +144,49 @@ const USA_SCREENSHOTS: CarouselImage[] = [
 // Global Market Screenshots (Multi-language) - REAL APPLICATION SCREENSHOTS
 const GLOBAL_SCREENSHOTS: CarouselImage[] = [
   {
-    src: '/images/signin_page_1.png',
-    alt: 'KHESED-TEK Login Page',
+    src: '/images/product-screenshots/latam-1764975481233-Screenshot-2025-12-05-165734.png',
+    alt: 'Sistema de Acesso KHESED-TEK',
     title: '',
     description: 'Secure access to the comprehensive church management platform'
   },
   {
-    src: '/images/dashboard_2.png',
+    src: '/images/product-screenshots/latam-1764975123998-Screenshot-2025-12-05-163131.png',
     alt: 'KHESED-TEK Global Dashboard',
     title: '',
     description: 'Global church management with pastoral insights and multi-timezone support'
   },
   {
-    src: '/images/agentes_ia_3.png',
-    alt: 'AI Agents',
-    title: '',
-    description: 'Ministry automation powered by integrated artificial intelligence agents'
-  },
-  {
-    src: '/images/miembros_4.png',
-    alt: 'Global Compliance & Member Management',
+    src: '/images/product-screenshots/latam-1764975132708-Screenshot-2025-12-05-163232.png',
+    alt: 'Global Compliance',
     title: '',
     description: 'GDPR, data privacy, and regional compliance with complete member management'
   },
   {
-    src: '/images/voluntarios_5.png',
+    src: '/images/product-screenshots/latam-1764975149040-Screenshot-2025-12-05-163333.png',
     alt: 'Global AI Volunteer Management',
     title: '',
     description: 'Intelligent volunteer coordination across multiple locations and time zones'
   },
   {
-    src: '/images/muro_de_oracion_6.png',
-    alt: 'Prayer Wall',
+    src: '/images/product-screenshots/latam-1764975157059-Screenshot-2025-12-05-164534.png',
+    alt: 'Multi-Language Sermon Planning',
     title: '',
     description: 'Digital intercession platform for community prayer requests'
   },
   {
-    src: '/images/visitantes_7.png',
-    alt: 'Visitor Tracking',
-    title: '',
-    description: 'First-time visitor management and new member integration process'
-  },
-  {
-    src: '/images/formularios_8.png',
-    alt: 'Smart Forms',
-    title: '',
-    description: 'Custom form builder and management for ministry processes'
-  },
-  {
-    src: '/images/donaciones_online_9.png',
-    alt: 'Multi-Currency Giving Platform',
+    src: '/images/product-screenshots/latam-1764976058099-Screenshot-2025-12-05-164750.png',
+    alt: 'Multi-Currency Support',
     title: '',
     description: 'Support for multiple currencies and payment methods worldwide with secure processing'
   },
   {
-    src: '/images/perspectivas_10.png',
+    src: '/images/product-screenshots/latam-1764976261309-Screenshot-2025-12-05-164639.png',
+    alt: 'Pastoral Insights',
+    title: '',
+    description: 'Pastoral perspectives with leadership insights for global ministry coordination'
+  },
+  {
+    src: '/images/product-screenshots/latam-1764976324066-Screenshot-2025-12-05-164720.png',
     alt: 'Global Church Analytics',
     title: '',
     description: 'Cross-cultural analytics and worldwide ministry effectiveness with AI intelligence'
@@ -230,10 +212,10 @@ export function getScreenshotsByMarket(market: 'LATAM' | 'USA' | 'GLOBAL'): Caro
 
 // Fallback placeholder images
 export const PLACEHOLDER_SCREENSHOTS = {
-  dashboard: '/images/dashboard_2.png',
-  members: '/images/miembros_4.png',
-  donations: '/images/donaciones_online_9.png',
-  volunteers: '/images/voluntarios_5.png',
-  insights: '/images/perspectivas_10.png',
-  login: '/images/signin_page_1.png'
+  dashboard: '/images/product-screenshots/dashboard.png',
+  members: '/images/product-screenshots/members.png',
+  donations: '/images/product-screenshots/donations.png',
+  events: '/images/product-screenshots/events.png',
+  reports: '/images/product-screenshots/reports.png',
+  communication: '/images/product-screenshots/communication.png'
 };
