@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Planes — Khesed-Tek CMS</title>
+<script>const _t=localStorage.getItem("khesed-theme");if(_t)document.documentElement.setAttribute("data-theme",_t)</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#05080F;--bg-m:#0d1628;--bg-l:#162035;--bg-card:rgba(13,22,40,.78);
+  --border:rgba(201,146,42,.15);--border-h:rgba(201,146,42,.38);
+  --text:#F0EDE8;--muted:#8A93A8;--muted2:rgba(138,147,168,.45);--shadow:0 4px 28px rgba(0,0,0,.5);
+  --gold:#C9922A;--gold-b:#F0B83C;--gold-d:#7A5218;
+  --emerald:#1DC98C;--cyan:#26D9D9;--rose:#E84855;--lavender:#9B8FFF;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+[data-theme="light"]{
+  --bg:#F8F6F1;--bg-m:#EEEAE0;--bg-l:#E5E0D2;--bg-card:rgba(255,255,255,.94);
+  --border:rgba(201,146,42,.22);--border-h:rgba(201,146,42,.5);
+  --text:#080E1C;--muted:#5A6272;--muted2:rgba(90,98,114,.45);--shadow:0 4px 28px rgba(0,0,0,.1);
+}
+html{font-size:16px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .35s,color .35s}
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
+[data-theme="light"] #cv{opacity:.15}
+.tt{position:fixed;top:16px;right:16px;z-index:9999;width:42px;height:42px;border-radius:50%;
+  background:var(--bg-card);border:1px solid var(--border);cursor:pointer;display:flex;
+  align-items:center;justify-content:center;font-size:20px;box-shadow:var(--shadow);
+  transition:all .2s var(--ease);backdrop-filter:blur(12px)}
+.tt:hover{border-color:var(--gold-b);transform:scale(1.08)}
+.dk{display:block}[data-theme="light"] .dk{display:none}
+.lk{display:none}[data-theme="light"] .lk{display:block}
+.sec{padding:80px 20px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.sec-sm{padding:48px 20px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(22px,3.5vw,32px);font-weight:700;
+  color:var(--gold-b);text-align:center;letter-spacing:.03em;line-height:1.2;margin-bottom:12px}
+.ssub{font-size:15px;color:var(--muted);text-align:center;max-width:620px;margin:0 auto 16px;line-height:1.7}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(201,146,42,.25),transparent);position:relative;z-index:1}
+
+/* TIER PROGRESSION */
+.tier-path{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.tier-dot{padding:4px 12px;border-radius:14px;font-size:12px;font-weight:600;letter-spacing:.03em}
+.tier-arrow{color:var(--muted);font-size:13px}
+.tier-diamond{color:var(--gold-d);font-size:11px;margin:0 2px}
+
+/* BILLING TOGGLE */
+.billing{display:flex;justify-content:center;gap:0;margin-bottom:44px}
+.tb{padding:9px 22px;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;
+  border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif}
+.tb.l{border-radius:20px 0 0 20px}.tb.r{border-radius:0 20px 20px 0}
+.tb.act{background:var(--gold-b);color:#080E1C;border-color:var(--gold-b);font-weight:600}
+.ab{display:inline-block;font-size:11px;background:rgba(29,201,140,.15);color:var(--emerald);
+  border:1px solid rgba(29,201,140,.3);border-radius:10px;padding:2px 8px;margin-left:6px}
+
+/* PLAN GRID — 3 top + 2 special bottom */
+.plans-top{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.plans-bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.plans-top{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.plans-top,.plans-bottom{grid-template-columns:1fr}}
+
+.pc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;
+  backdrop-filter:blur(12px);padding:26px 22px;position:relative;overflow:hidden;
+  transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;
+  display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.pc:hover{transform:translateY(-3px);border-color:var(--border-h);box-shadow:0 8px 36px rgba(0,0,0,.3)}
+[data-theme="light"] .pc:hover{box-shadow:0 8px 36px rgba(0,0,0,.1)}
+.pc.featured{border-color:var(--gold-b);transform:scale(1.02);box-shadow:0 0 40px rgba(201,146,42,.2)}
+.pc.sem::before{background:linear-gradient(90deg,transparent,var(--emerald),transparent)}
+.pc.cos::before{background:linear-gradient(90deg,transparent,var(--gold-b),transparent)}
+.pc.rei::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.pc.glo::before{background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+.pc.red::before{background:linear-gradient(90deg,transparent,var(--lavender),transparent)}
+/* Special tiers — horizontal layout on desktop */
+.pc.special{flex-direction:row;align-items:flex-start;gap:28px}
+.pc.special .pc-left{flex:1;min-width:0}
+.pc.special .pc-right{flex-shrink:0;width:220px}
+@media(max-width:560px){.pc.special{flex-direction:column}.pc.special .pc-right{width:100%}}
+
+.pop{position:absolute;top:14px;right:14px;background:var(--gold-b);color:#080E1C;
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.04em}
+.bespoke-chip{position:absolute;top:14px;right:14px;background:rgba(232,72,85,.15);color:var(--rose);
+  border:1px solid rgba(232,72,85,.35);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px}
+.network-chip{position:absolute;top:14px;right:14px;background:rgba(155,143,255,.15);color:var(--lavender);
+  border:1px solid rgba(155,143,255,.35);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px}
+
+.pn{font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px}
+.pn.s{color:var(--emerald)}.pn.c{color:var(--gold-b)}.pn.r{color:var(--cyan)}.pn.g{color:var(--rose)}.pn.rd{color:var(--lavender)}
+.ptag{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.4}
+.pp{font-family:'Cinzel',serif;font-size:38px;font-weight:700;color:var(--text);line-height:1;margin-bottom:4px}
+.pp sup{font-size:15px;vertical-align:super}.pp sub{font-size:12px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400}
+.ppa{display:none;font-family:'Cinzel',serif;font-size:38px;font-weight:700;color:var(--text);line-height:1;margin-bottom:4px}
+.plim{font-size:12px;color:var(--muted);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.pfs{flex:1;margin-bottom:18px}
+.pf{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:13px;color:var(--text);line-height:1.4}
+.pf .ck{color:var(--emerald);flex-shrink:0}.pf .ds{color:var(--muted2);flex-shrink:0}
+.fs{font-size:11px;color:var(--muted);display:block;margin-top:1px}
+.pags{padding:9px 11px;border-radius:8px;background:rgba(201,146,42,.06);border:1px solid var(--border);margin-bottom:16px}
+.pal{color:var(--muted);margin-bottom:4px;letter-spacing:.05em;text-transform:uppercase;font-size:9px}
+.aps{display:flex;flex-wrap:wrap;gap:4px}
+.apill{background:rgba(201,146,42,.12);color:var(--gold-b);border:1px solid rgba(201,146,42,.22);border-radius:6px;padding:2px 7px;font-size:10px}
+.apill.all{background:rgba(29,201,140,.1);color:var(--emerald);border-color:rgba(29,201,140,.25)}
+.pcta{display:block;width:100%;padding:12px;border-radius:10px;text-align:center;font-weight:600;font-size:14px;text-decoration:none;transition:all .2s var(--ease);cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+.cg{background:linear-gradient(135deg,var(--gold),var(--gold-b));color:#080E1C}
+.cg:hover{box-shadow:0 0 20px rgba(201,146,42,.4);transform:translateY(-1px)}
+.co{background:transparent;border:1px solid var(--border);color:var(--gold-b)}
+.co:hover{border-color:var(--gold-b);background:rgba(201,146,42,.08)}
+.crose{background:transparent;border:1px solid rgba(232,72,85,.4);color:var(--rose)}
+.crose:hover{background:rgba(232,72,85,.08)}
+.clav{background:transparent;border:1px solid rgba(155,143,255,.4);color:var(--lavender)}
+.clav:hover{background:rgba(155,143,255,.08)}
+
+/* SPECIAL TIER FEATURES (right column) */
+.spec-features{display:flex;flex-direction:column;gap:8px}
+.sf{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--muted);line-height:1.45}
+.sf .ck{flex-shrink:0;font-size:13px}
+
+/* DISCLAIMER */
+.disc{max-width:820px;margin:0 auto;padding:20px 24px;border-radius:12px;background:rgba(38,217,217,.05);border:1px solid rgba(38,217,217,.15)}
+[data-theme="light"] .disc{background:rgba(38,217,217,.04)}
+.disc-t{font-size:12px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.disc p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:8px}.disc p:last-child{margin-bottom:0}.disc strong{color:var(--text)}
+.dt{width:100%;margin-top:12px;border-collapse:collapse}
+.dt th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.dt td{font-size:12px;color:var(--text);padding:7px 10px;border-bottom:1px solid rgba(201,146,42,.06)}
+.dt td:first-child{color:var(--gold-b);font-weight:500}
+
+/* COMPARE TABLE */
+.cf{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;justify-content:center}
+.cfb{padding:7px 16px;border-radius:20px;font-size:12px;cursor:pointer;transition:all .2s;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif}
+.cfb.act,.cfb:hover{border-color:var(--gold-b);color:var(--gold-b);background:rgba(240,184,60,.08)}
+.cw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.ct{width:100%;min-width:780px;border-collapse:separate;border-spacing:0}
+table.ct th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 14px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap}
+table.ct th:first-child{text-align:left;min-width:180px}
+table.ct th.fc{color:var(--gold-b);background:rgba(240,184,60,.04);border-bottom-color:rgba(240,184,60,.3)}
+table.ct td{font-size:12px;color:var(--text);padding:10px 14px;border-bottom:1px solid rgba(201,146,42,.06);text-align:center;vertical-align:top}
+table.ct td:first-child{text-align:left}
+table.ct td.fc{background:rgba(240,184,60,.03)}
+table.ct tr:hover td{background:rgba(201,146,42,.04)}
+table.ct tr:hover td.fc{background:rgba(240,184,60,.07)}
+.fn{font-weight:500;font-size:13px}.fd{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+.cy{color:var(--emerald);font-size:16px}.cn2{color:var(--muted2);font-size:14px}
+.tb2{display:inline-block;font-size:11px;color:var(--gold-b);font-weight:600}
+.tb2.c{color:var(--cyan)}.tb2.ro{color:var(--rose)}.tb2.la{color:var(--lavender)}
+.catr td{background:rgba(201,146,42,.06)!important;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);font-weight:600;padding:8px 14px}
+.hr{display:none}
+
+/* LATAM */
+.lg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.lg{grid-template-columns:1fr}}
+.lc{padding:18px 20px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border);transition:border-color .2s;box-shadow:var(--shadow)}
+.lc:hover{border-color:var(--border-h)}
+.lt2{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.lb2{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* AGENTS */
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.ag{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.ag{grid-template-columns:1fr}}
+.ac{padding:22px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);position:relative;overflow:hidden;transition:all .2s var(--ease);box-shadow:var(--shadow)}
+.ac::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.ac.cp::before{background:linear-gradient(90deg,transparent,var(--gold-b),transparent)}
+.ac.cc::before{background:linear-gradient(90deg,transparent,var(--lavender),transparent)}
+.ac.ci::before{background:linear-gradient(90deg,transparent,var(--emerald),transparent)}
+.ac.co2::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.ac:hover{transform:translateY(-2px);border-color:var(--border-h)}
+.ah{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.an{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:12px;font-weight:700;flex-shrink:0}
+.an.p{background:rgba(240,184,60,.15);color:var(--gold-b)}
+.an.c{background:rgba(155,143,255,.15);color:var(--lavender)}
+.an.i{background:rgba(29,201,140,.15);color:var(--emerald)}
+.an.o{background:rgba(38,217,217,.15);color:var(--cyan)}
+.at{flex:1}
+.aname{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.acat{font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.cp .acat{color:var(--gold-d)}.cc .acat{color:var(--lavender)}.ci .acat{color:var(--emerald)}.co2 .acat{color:var(--cyan)}
+.apl{font-size:9px;padding:2px 7px;border-radius:6px;margin-top:4px;display:inline-block;font-weight:600;letter-spacing:.04em}
+.bs{background:rgba(29,201,140,.1);color:var(--emerald);border:1px solid rgba(29,201,140,.25)}
+.bc{background:rgba(240,184,60,.1);color:var(--gold-b);border:1px solid rgba(240,184,60,.25)}
+.adesc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.abf{padding:10px 12px;border-radius:8px;background:rgba(201,146,42,.05);border-left:2px solid;font-size:11px;color:var(--muted);line-height:1.6}
+.cp .abf{border-color:var(--gold-b)}.cc .abf{border-color:var(--lavender)}.ci .abf{border-color:var(--emerald)}.co2 .abf{border-color:var(--cyan)}
+.abf strong{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.cp .abf strong{color:var(--gold-b)}.cc .abf strong{color:var(--lavender)}.ci .abf strong{color:var(--emerald)}.co2 .abf strong{color:var(--cyan)}
+
+/* COMPETITOR */
+.cg2{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+@media(max-width:640px){.cg2{grid-template-columns:1fr}}
+.cc2{padding:20px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border);text-align:center;box-shadow:var(--shadow)}
+.cvs{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.cn2b{font-size:14px;font-weight:600;color:var(--text);margin-bottom:10px}
+.cr2{font-size:13px;color:var(--muted);line-height:1.6}.cr2 strong{color:var(--gold-b)}
+
+::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-thumb{background:rgba(201,146,42,.2);border-radius:3px}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<button class="tt" onclick="toggleTheme()" aria-label="Cambiar tema claro/oscuro">
+  <span class="dk">🌙</span><span class="lk">☀️</span>
+</button>
+
+<!-- ① PLAN CARDS -->
+<div class="sec" id="planes">
+  <p style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:8px">PLANES</p>
+  <h2 class="stitle">Cinco Planes para Cada Etapa del Ministerio</h2>
+  <p class="ssub">Desde la iglesia que está comenzando hasta la red denominacional. Precio fijo según tu realidad — sin cargos por módulos.</p>
+  <div class="tier-path">
+    <span class="tier-dot" style="background:rgba(29,201,140,.15);color:#1DC98C;border:1px solid rgba(29,201,140,.3)">Semilla</span>
+    <span class="tier-arrow">→</span>
+    <span class="tier-dot" style="background:rgba(240,184,60,.15);color:#F0B83C;border:1px solid rgba(240,184,60,.3)">Cosecha</span>
+    <span class="tier-arrow">→</span>
+    <span class="tier-dot" style="background:rgba(38,217,217,.15);color:#26D9D9;border:1px solid rgba(38,217,217,.3)">Reino</span>
+    <span class="tier-arrow">→</span>
+    <span class="tier-dot" style="background:rgba(232,72,85,.15);color:#E84855;border:1px solid rgba(232,72,85,.3)">Gloria</span>
+    <span class="tier-diamond">◇</span>
+    <span class="tier-dot" style="background:rgba(155,143,255,.15);color:#9B8FFF;border:1px solid rgba(155,143,255,.3)">Red</span>
+  </div>
+  <div class="billing">
+    <button class="tb l act" onclick="setBilling('m',this)" aria-label="Facturación mensual">Mensual</button>
+    <button class="tb r" onclick="setBilling('a',this)" aria-label="Facturación anual">Anual <span class="ab">2 meses gratis</span></button>
+  </div>
+
+  <!-- TOP ROW: Semilla, Cosecha, Reino -->
+  <div class="plans-top">
+    <div class="pc sem">
+      <div class="pn s">Plan Semilla</div>
+      <div class="ptag">Valor pastoral desde el primer día</div>
+      <div class="pp"><sup>$</sup>49<sub> USD/mes</sub></div>
+      <div class="ppa"><sup>$</sup>40<sub> USD/mes</sub></div>
+      <div class="plim">Hasta 150 miembros · Iglesias independientes</div>
+      <div class="pfs">
+        <div class="pf"><span class="ck">✓</span><div>Triaje espiritual en tiempo real<span class="fs">Ag.2 — alerta de crisis al pastor</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Recordatorios de oración WA<span class="fs">Ag.4 — en el momento exacto</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Registro del Pastor semanal<span class="fs">Ag.5 — lista de miembros en riesgo</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>WhatsApp nativo integrado</div></div>
+        <div class="pf"><span class="ck">✓</span><div>Pagos locales · Soporte email 48h</div></div>
+      </div>
+      <div class="pags"><div class="pal">Agentes incluidos</div><div class="aps"><span class="apill">Ag.2</span><span class="apill">Ag.4</span><span class="apill">Ag.5</span></div></div>
+      <a href="/schedule?plan=semilla" class="pcta co">Comenzar gratis →</a>
+    </div>
+
+    <div class="pc cos featured">
+      <div class="pop">Más popular</div>
+      <div class="pn c">Plan Cosecha</div>
+      <div class="ptag">La plataforma completa para iglesias activas</div>
+      <div class="pp"><sup>$</sup>149<sub> USD/mes</sub></div>
+      <div class="ppa"><sup>$</sup>124<sub> USD/mes</sub></div>
+      <div class="plim">Hasta 500 miembros · 800 conv. WhatsApp incluidas</div>
+      <div class="pfs">
+        <div class="pf"><span class="ck">✓</span><div>Todo lo del Plan Semilla</div></div>
+        <div class="pf"><span class="ck">✓</span><div>Cobertura dominical automática<span class="fs">Ag.12 ★ — cascada de suplentes WA</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Análisis de sermones y contenido<span class="fs">Ag.1 y Ag.3 — puntos ciegos</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Pipeline de liderazgo e informe de junta<span class="fs">Ag.6 y Ag.11</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Centinela de agotamiento voluntario<span class="fs">Ag.7 — detecta burnout antes</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Soporte WhatsApp prioritario · 4h</div></div>
+      </div>
+      <div class="pags"><div class="pal">Agentes incluidos</div><div class="aps"><span class="apill all">12 Agentes completos</span></div></div>
+      <a href="/schedule?plan=cosecha" class="pcta cg">Más popular →</a>
+    </div>
+
+    <div class="pc rei">
+      <div class="pn r">Plan Reino</div>
+      <div class="ptag">Para iglesias grandes con alta actividad</div>
+      <div class="pp"><sup>$</sup>299<sub> USD/mes</sub></div>
+      <div class="ppa"><sup>$</sup>249<sub> USD/mes</sub></div>
+      <div class="plim">Hasta 1,500 miembros · 2,500 conv. WhatsApp</div>
+      <div class="pfs">
+        <div class="pf"><span class="ck">✓</span><div>Todo lo del Plan Cosecha</div></div>
+        <div class="pf"><span class="ck">✓</span><div>3× más conversaciones WA incluidas<span class="fs">Para múltiples servicios semanales</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Analítica predictiva completa<span class="fs">Ag.8-10 — retención y generosidad</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>Coach de mayordomía espiritual<span class="fs">Ag.9 — formación, no recaudación</span></div></div>
+        <div class="pf"><span class="ck">✓</span><div>SLA 99.9% · Soporte 2h respuesta</div></div>
+      </div>
+      <div class="pags"><div class="pal">Agentes incluidos</div><div class="aps"><span class="apill all">12 Agentes completos</span></div></div>
+      <a href="/schedule?plan=reino" class="pcta co">Solicitar demo →</a>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW: Gloria (Bespoke) + Red (Network) -->
+  <div class="plans-bottom">
+
+    <!-- GLORIA -->
+    <div class="pc glo special">
+      <div class="bespoke-chip">✦ Bespoke</div>
+      <div class="pc-left">
+        <div class="pn g">Plan Gloria</div>
+        <div class="ptag" style="margin-bottom:12px">Para megaiglesias y campuses múltiples — la gloria del cuerpo de Cristo</div>
+        <div class="pp" style="font-size:30px;margin-bottom:3px">Precio <span style="color:var(--rose)">personalizado</span></div>
+        <div class="ppa" style="font-size:30px;margin-bottom:3px">Precio <span style="color:var(--rose)">personalizado</span></div>
+        <div class="plim" style="margin-bottom:14px">Más de 1,500 miembros · Multi-campus · WhatsApp negociado</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px">
+          El siguiente paso después del reino. Diseñado para megaiglesias y organizaciones con campuses múltiples donde el volumen, la complejidad y el soporte requerido van más allá de un precio fijo.
+          <br><br>
+          <span style="color:var(--text);font-weight:500">Referencia orientativa:</span> <span style="color:var(--rose)">$400–$900 USD/mes</span> según configuración.
+        </p>
+        <a href="/contact?plan=gloria" class="pcta crose" style="max-width:220px">Solicitar cotización →</a>
+      </div>
+      <div class="pc-right">
+        <div class="spec-features">
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:10px">Incluye todo de Reino más:</div>
+          <div class="sf"><span class="ck">✓</span><div>Multi-campus y sedes múltiples</div></div>
+          <div class="sf"><span class="ck">✓</span><div>WhatsApp volume negociado directamente con Meta</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Soporte dedicado — respuesta en 1 hora</div></div>
+          <div class="sf"><span class="ck">✓</span><div>SLA personalizado con penalidades contractuales</div></div>
+          <div class="sf"><span class="ck">✓</span><div>API personalizada para integraciones</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Reunión mensual de revisión estratégica</div></div>
+          <div class="sf"><span class="ck">✓</span><div>12 Agentes IA completos</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Implementación asistida incluida</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RED -->
+    <div class="pc red special">
+      <div class="network-chip">🌐 Red</div>
+      <div class="pc-left">
+        <div class="pn rd">Plan Red</div>
+        <div class="ptag" style="margin-bottom:12px">Para redes, denominaciones y asociaciones pastorales</div>
+        <div class="pp" style="font-size:28px;margin-bottom:3px"><sup style="font-size:13px">desde $</sup>94<sup style="font-size:15px">.90</sup><sub> USD/iglesia</sub></div>
+        <div class="ppa" style="font-size:28px;margin-bottom:3px"><sup style="font-size:13px">desde $</sup>70<sub> USD/iglesia</sub></div>
+        <div class="plim" style="margin-bottom:14px">Cualquier tamaño · Contrato de red · Panel centralizado</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px">
+          El Plan Red no es un tier de tamaño — es un <strong style="color:var(--text)">modelo de relación</strong>. Una iglesia de 200 miembros dentro de la Confraternidad Evangélica califica. Una megaiglesia independiente no.
+          <br><br>
+          Un contrato, una factura, todas tus iglesias. Cada congregación opera con autonomía completa.
+        </p>
+        <a href="/contact?plan=red" class="pcta clav" style="max-width:220px">Contactar →</a>
+      </div>
+      <div class="pc-right">
+        <div class="spec-features">
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--lavender);margin-bottom:10px">Cada iglesia en la red recibe:</div>
+          <div class="sf"><span class="ck">✓</span><div>12 Agentes IA completos por iglesia</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Autonomía operativa total</div></div>
+          <div class="sf"><span class="ck">✓</span><div>1,200 conv. WA incluidas</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Tarifa excedente preferencial $1.75/100 conv</div></div>
+          <div style="margin-top:12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--lavender);margin-bottom:10px">La red recibe además:</div>
+          <div class="sf"><span class="ck">✓</span><div>Panel centralizado con métricas de toda la red</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Informe ejecutivo de red mensual con IA</div></div>
+          <div class="sf"><span class="ck">✓</span><div>Soporte dedicado a la organización central</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /plans-bottom -->
+</div><!-- /plans section -->
+<div class="divider"></div>
+
+<!-- ② OVERAGE DISCLAIMER -->
+<div class="sec-sm">
+  <div class="disc">
+    <div class="disc-t">💬 Transparencia en el costo de WhatsApp</div>
+    <p>Khesed-Tek usa la <strong>API oficial de WhatsApp Business de Meta</strong>. Meta cobra por conversación dentro de una ventana de 24 horas. Cada plan estándar incluye un número mensual. El excedente se factura en bloques de 100 conversaciones.</p>
+    <p><strong>Ejemplo real (Plan Cosecha):</strong> Una iglesia con 100 voluntarios y 2 servicios semanales genera ~800 confirmaciones mensuales — exactamente lo incluido. Las cascadas por cancelaciones agregan entre 5 y 15 conversaciones adicionales: menos de $1 USD extra en un mes típico.</p>
+    <table class="dt">
+      <thead><tr><th>Plan</th><th>Incluido</th><th>Excedente</th><th>Tarifa Meta*</th></tr></thead>
+      <tbody>
+        <tr><td>Cosecha</td><td>800 conv/mes</td><td>$2.50 / 100 conv adicionales</td><td>~$0.0147/conv</td></tr>
+        <tr><td>Reino</td><td>2,500 conv/mes</td><td>$2.25 / 100 conv adicionales</td><td>~$0.0147/conv</td></tr>
+        <tr><td>Gloria</td><td>Negociado directamente</td><td>$2.00 / 100 conv adicionales</td><td>Volumen</td></tr>
+        <tr><td>Red</td><td>1,200 conv/iglesia/mes</td><td>$1.75 / 100 conv adicionales</td><td>Volumen</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px;font-size:11px;color:var(--muted2)">*Tarifa Meta para Colombia, categoría Utility. Varía por país. No cobramos por mensajes recibidos ni intercambios dentro de la misma ventana activa.</p>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ③ COMPARE TABLE -->
+<div class="sec" id="comparacion">
+  <h2 class="stitle">Comparación Detallada — Los 5 Planes</h2>
+  <p class="ssub">Incluye infraestructura técnica (Vercel, Supabase, Anthropic Claude, Redis, Twilio).</p>
+  <div class="cf">
+    <button class="cfb act" onclick="filt('all',this)" aria-label="Todas las funciones">Todas</button>
+    <button class="cfb" onclick="filt('p',this)">Pastoral</button>
+    <button class="cfb" onclick="filt('c',this)">Comunicación</button>
+    <button class="cfb" onclick="filt('i',this)">Infraestructura</button>
+    <button class="cfb" onclick="filt('s',this)">Soporte</button>
+  </div>
+  <div class="cw">
+    <table class="ct">
+      <thead>
+        <tr>
+          <th>Función</th>
+          <th>Semilla<br><span style="color:var(--emerald);font-size:12px">$49/mes</span></th>
+          <th class="fc">Cosecha ⭐<br><span style="color:var(--gold-b);font-size:12px">$149/mes</span></th>
+          <th>Reino<br><span style="color:var(--cyan);font-size:12px">$299/mes</span></th>
+          <th>Gloria<br><span style="color:var(--rose);font-size:12px">Bespoke</span></th>
+          <th>Red<br><span style="color:var(--lavender);font-size:12px">desde $94.90/igl</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="catr" data-c="p"><td colspan="6">Cuidado Pastoral</td></tr>
+        <tr data-c="p"><td><div class="fn">Límite de miembros</div></td><td>150</td><td class="fc">500</td><td>1,500</td><td><span class="tb2 ro">Ilimitados</span></td><td><span class="tb2 la">Ilimitados</span></td></tr>
+        <tr data-c="p"><td><div class="fn">Triaje espiritual<div class="fd">Ag.2 — crisis tiempo real</div></div></td><td><span class="cy">✓</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="p"><td><div class="fn">Registro del Pastor<div class="fd">Ag.5 — miembros en riesgo</div></div></td><td><span class="cy">✓</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="p"><td><div class="fn">Pipeline de liderazgo<div class="fd">Ag.6</div></div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="p"><td><div class="fn">Monitor grupos pequeños<div class="fd">Ag.10</div></div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="p"><td><div class="fn">Multi-campus</div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cn2">—</span></td><td><span class="cn2">—</span></td><td><span class="tb2 ro">✓ Incluido</span></td><td><span class="cy">✓</span></td></tr>
+        <tr class="catr" data-c="c"><td colspan="6">Comunicación y WhatsApp</td></tr>
+        <tr data-c="c"><td><div class="fn">WhatsApp Business nativo</div></td><td><span class="cy">✓</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="c"><td><div class="fn">Conversaciones WA incluidas</div></td><td>Básico</td><td class="fc"><span class="tb2">800/mes</span></td><td><span class="tb2 c">2,500/mes</span></td><td><span class="tb2 ro">Negociado</span></td><td><span class="tb2 la">1,200/igl</span></td></tr>
+        <tr data-c="c"><td><div class="fn">Cobertura dominical<div class="fd">Ag.12 ★ — cascada</div></div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="c"><td><div class="fn">Filtro contenido social<div class="fd">Ag.3</div></div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="c"><td><div class="fn">Panel centralizado de red</div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cn2">—</span></td><td><span class="cn2">—</span></td><td><span class="cn2">—</span></td><td><span class="tb2 la">✓ Incluido</span></td></tr>
+        <tr class="catr" data-c="i"><td colspan="6">Infraestructura Técnica</td></tr>
+        <tr data-c="i"><td><div class="fn">Despliegue serverless</div></td><td>Vercel</td><td class="fc">Vercel</td><td>Vercel</td><td>Vercel</td><td>Vercel</td></tr>
+        <tr data-c="i"><td><div class="fn">Base de datos PostgreSQL</div></td><td>Supabase</td><td class="fc">Supabase</td><td>Supabase</td><td>Supabase</td><td>Supabase</td></tr>
+        <tr data-c="i"><td><div class="fn">Modelos IA — Claude 4 Sonnet</div></td><td>Anthropic</td><td class="fc">Anthropic</td><td>Anthropic</td><td>Anthropic</td><td>Anthropic</td></tr>
+        <tr data-c="i"><td><div class="fn">SLA disponibilidad</div></td><td>99.5%</td><td class="fc"><span class="tb2">99.9%</span></td><td><span class="tb2">99.9%</span></td><td><span class="tb2 ro">Personalizado</span></td><td><span class="tb2">99.9%</span></td></tr>
+        <tr data-c="i"><td><div class="fn">Informe junta IA<div class="fd">Ag.11 mensual</div></div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="i"><td><div class="fn">API personalizada</div></td><td><span class="cn2">—</span></td><td class="fc"><span class="cn2">—</span></td><td><span class="cn2">—</span></td><td><span class="tb2 ro">✓ Incluida</span></td><td>Opcional</td></tr>
+        <tr class="catr" data-c="s"><td colspan="6">Soporte y Pagos</td></tr>
+        <tr data-c="s"><td><div class="fn">Idioma del soporte</div></td><td>Español</td><td class="fc">Español</td><td>Español</td><td>Español</td><td>Español</td></tr>
+        <tr data-c="s"><td><div class="fn">Canal y tiempo de respuesta</div></td><td>Email 48h</td><td class="fc"><span class="tb2">WA 4h</span></td><td><span class="tb2">WA 2h</span></td><td><span class="tb2 ro">Dedicado 1h</span></td><td><span class="tb2 la">Dedicado 1h</span></td></tr>
+        <tr data-c="s"><td><div class="fn">Pagos locales en tu moneda</div></td><td><span class="cy">✓</span></td><td class="fc"><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td><td><span class="cy">✓</span></td></tr>
+        <tr data-c="s"><td><div class="fn">Prueba / Demo</div></td><td>14 días gratis</td><td class="fc">14 días gratis</td><td>14 días gratis</td><td>Demo personalizada</td><td>Demo personalizada</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ④ LATAM -->
+<div class="sec" id="latinoamerica">
+  <h2 class="stitle">Construido para la Iglesia Latinoamericana</h2>
+  <p class="ssub">No somos una plataforma anglosajona traducida. Cada decisión de diseño refleja el contexto ministerial real de nuestra región.</p>
+  <div class="lg">
+    <div class="lc"><div class="lt2"><span>🗣️</span>Español latinoamericano real</div><div class="lb2">Toda la interfaz, los agentes y el soporte operan en español regional. Los agentes usan terminología pastoral latinoamericana — no traducción de software norteamericano.</div></div>
+    <div class="lc"><div class="lt2"><span>💬</span>WhatsApp como canal nativo</div><div class="lb2">En Latinoamérica WhatsApp no es opcional: es el canal real de la congregación. Los 12 agentes están diseñados alrededor de él desde el primer día.</div></div>
+    <div class="lc"><div class="lt2"><span>💳</span>Precio en USD, pagos locales</div><div class="lb2">Precio en USD para estabilidad presupuestaria. Aceptamos métodos de pago locales según el país. Sin fricción cambiaria para la iglesia.</div></div>
+    <div class="lc"><div class="lt2"><span>📱</span>Optimizado para conexiones lentas</div><div class="lb2">Caché agresivo (Redis) y arquitectura serverless para que la experiencia sea fluida incluso en conexiones 3G — donde opera la mayoría de los pastores móviles.</div></div>
+    <div class="lc"><div class="lt2"><span>🏛️</span>Redes y denominaciones</div><div class="lb2">El Plan Red reconoce que muchas iglesias latinoamericanas operan dentro de estructuras denominacionales. Un contrato, visibilidad centralizada, autonomía local.</div></div>
+    <div class="lc"><div class="lt2"><span>🏢</span>Para megaiglesias latinoamericanas</div><div class="lb2">El Plan Gloria reconoce que las megaiglesias de la región tienen escala y complejidad únicas. Un precio fijo no captura esa realidad — la cotización personalizada sí.</div></div>
+    <div class="lc"><div class="lt2"><span>🤝</span>Soporte que entiende el ministerio</div><div class="lb2">Cuando el pastor llama, no tiene que explicar qué es un ujier ni por qué el domingo es crítico. Nuestro equipo entiende el contexto ministerial.</div></div>
+    <div class="lc"><div class="lt2"><span>📊</span>Precio proporcional al ministerio</div><div class="lb2">Semilla a $49/mes es accesible para iglesias con presupuesto ajustado. El costo escala con la realidad de la congregación, no con módulos arbitrarios.</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ⑤ AGENT CATALOG -->
+<div class="sec" id="agentes">
+  <h2 class="stitle">Los 12 Agentes que Trabajan Cuando Tú Descansas</h2>
+  <p class="ssub">Khesed-Tek no reemplaza al pastor. Amplía su capacidad de presencia cuando los límites humanos impiden estar en todos lados.</p>
+  <div class="ag">
+    <div class="ac cp"><div class="ah"><div class="an p">1</div><div class="at"><div class="aname">Motor Antifonal</div><div class="acat">Predicación</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Analiza cada sermón buscando puntos ciegos culturales, tensiones doctrinales y desconexiones con el contexto socioeconómico latinoamericano. No censura — señala para que el pastor decida con más información.</div><div class="abf"><strong>Beneficio pastoral</strong>El pastor predica con la confianza de que su mensaje fue revisado desde el contexto real de su congregación.</div></div>
+    <div class="ac cp"><div class="ah"><div class="an p">2</div><div class="at"><div class="aname">Triaje Espiritual</div><div class="acat">Cuidado Pastoral</div><span class="apl bs">Semilla+</span></div></div><div class="adesc">Monitorea en tiempo real cada formulario y petición. Cuando detecta palabras de crisis (violencia, pensamientos suicidas, desesperación aguda), alerta al pastor vía WhatsApp en segundos.</div><div class="abf"><strong>Beneficio pastoral</strong>Nadie llora en silencio. El pastor recibe el aviso antes de que la persona se desconecte.</div></div>
+    <div class="ac cc"><div class="ah"><div class="an c">3</div><div class="at"><div class="aname">Filtro de Contenido</div><div class="acat">Comunicaciones</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Evalúa publicaciones de redes sociales antes de publicarlas. Verifica coherencia doctrinal, tono pastoral y pertinencia cultural. No bloquea — sugiere ajustes con explicación.</div><div class="abf"><strong>Beneficio pastoral</strong>El equipo comunica con agilidad sin temor a que un error de tono afecte la reputación de la iglesia.</div></div>
+    <div class="ac cp"><div class="ah"><div class="an p">4</div><div class="at"><div class="aname">Vigilante de Oración</div><div class="acat">Cuidado Pastoral</div><span class="apl bs">Semilla+</span></div></div><div class="adesc">Extrae fechas de peticiones de oración y programa recordatorios WhatsApp en el momento exacto: la mañana de la cirugía, el día del juicio, la hora del viaje misionero.</div><div class="abf"><strong>Beneficio pastoral</strong>Las promesas de oración se cumplen. El seguimiento a 24 horas cierra el ciclo: "¿Cómo te fue hoy?"</div></div>
+    <div class="ac cp"><div class="ah"><div class="an p">5</div><div class="at"><div class="aname">Registro del Pastor</div><div class="acat">Cuidado Pastoral</div><span class="apl bs">Semilla+</span></div></div><div class="adesc">Analiza patrones de asistencia semanalmente y genera cada lunes una lista priorizada de miembros en riesgo de desconexión silenciosa.</div><div class="abf"><strong>Beneficio pastoral</strong>El pastor sabe a quién llamar antes de que se vayan. Convierte el instinto pastoral en un proceso sistemático.</div></div>
+    <div class="ac ci"><div class="ah"><div class="an i">6</div><div class="at"><div class="aname">Pipeline de Liderazgo</div><div class="acat">Discipulado</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Identifica mensualmente candidatos con patrones de liderazgo emergente: constancia en el servicio, crecimiento en compromiso, capacidad de influencia relacional.</div><div class="abf"><strong>Beneficio pastoral</strong>Los futuros líderes son identificados por comportamiento real. El discipulado se vuelve estratégico.</div></div>
+    <div class="ac ci"><div class="ah"><div class="an i">7</div><div class="at"><div class="aname">Centinela de Agotamiento</div><div class="acat">Voluntarios</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Monitorea la carga de cada voluntario semanalmente y alerta al pastor cuando detecta un patrón de agotamiento antes de que el voluntario renuncie.</div><div class="abf"><strong>Beneficio pastoral</strong>Retener a un voluntario comprometido vale más que reclutar cinco nuevos.</div></div>
+    <div class="ac ci"><div class="ah"><div class="an i">8</div><div class="at"><div class="aname">Conversión de Visitantes</div><div class="acat">Crecimiento</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Analiza mensualmente qué visitantes se convirtieron en miembros y qué eventos aceleraron esa decisión. Entrega recomendaciones basadas en tu propia iglesia.</div><div class="abf"><strong>Beneficio pastoral</strong>La evangelización deja de operar por intuición. El pastor sabe qué funciona en su contexto.</div></div>
+    <div class="ac ci"><div class="ah"><div class="an i">9</div><div class="at"><div class="aname">Coach de Mayordomía</div><div class="acat">Discipulado</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Acompaña el viaje de generosidad reconociendo hitos sin enviar recordatorios de dar. El enfoque es formación espiritual, no recaudación.</div><div class="abf"><strong>Beneficio pastoral</strong>La cultura de generosidad se cultiva sin presión ni transacciones.</div></div>
+    <div class="ac ci"><div class="ah"><div class="an i">10</div><div class="at"><div class="aname">Monitor de Grupos</div><div class="acat">Discipulado</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Evalúa semanalmente la salud de cada grupo pequeño generando un semáforo (verde, amarillo, rojo) por grupo para que el pastor sepa dónde intervenir.</div><div class="abf"><strong>Beneficio pastoral</strong>El pastor de 20 grupos no puede estar en todos. Este agente es su sistema de alerta temprana.</div></div>
+    <div class="ac ci"><div class="ah"><div class="an i">11</div><div class="at"><div class="aname">Sintetizador de Junta</div><div class="acat">Administración</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">El 1ro de cada mes genera el informe ejecutivo para la junta: métricas, tendencias, estado de voluntarios y recomendaciones estratégicas basadas en datos reales.</div><div class="abf"><strong>Beneficio pastoral</strong>La junta decide con datos reales. El pastor no prepara reportes — el agente lo hace.</div></div>
+    <div class="ac co2" style="border-color:rgba(38,217,217,.25)"><div class="ah"><div class="an o">12★</div><div class="at"><div class="aname">Motor de Cobertura</div><div class="acat">Operaciones · Misión crítica</div><span class="apl bc">Cosecha+</span></div></div><div class="adesc">Gestiona la cobertura dominical de principio a fin. Envía confirmaciones el viernes, detecta cancelaciones y activa cascada automática de suplentes vía WhatsApp sin intervención humana.</div><div class="abf"><strong>Beneficio pastoral</strong>Ningún domingo sin cobertura. El pastor llega sabiendo que los roles están cubiertos — no rezando para que aparezca el ujier.</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- COMPETITORS -->
+<div class="sec-sm" style="text-align:center">
+  <p style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px">POSICIONAMIENTO</p>
+  <h2 class="stitle">Por Qué las Iglesias Eligen Khesed-Tek</h2>
+  <div class="cg2">
+    <div class="cc2"><div class="cvs">vs Planning Center</div><div class="cn2b">Culturalmente tuyo</div><div class="cr2"><strong>Khesed-Tek</strong> opera en español latinoamericano con pagos locales y 12 agentes de IA entrenados para el contexto ministerial hispano — no para iglesias de Estados Unidos.</div></div>
+    <div class="cc2"><div class="cvs">vs Breeze / ChurchTrac</div><div class="cn2b">IA que actúa, no solo reporta</div><div class="cr2">Mientras Breeze administra datos, <strong>Khesed-Tek</strong> tiene 12 agentes que actúan: confirman voluntarios, detectan crisis, generan informes de junta — con WhatsApp nativo incluido.</div></div>
+    <div class="cc2"><div class="cvs">vs Aplos</div><div class="cn2b">Ministerio completo</div><div class="cr2">Aplos resuelve la contabilidad. <strong>Khesed-Tek</strong> abarca el ministerio completo: pastoral, cobertura dominical, discipulado y administración en una sola plataforma integrada.</div></div>
+  </div>
+</div>
+
+<script>
+function toggleTheme(){const h=document.documentElement;const t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);localStorage.setItem('khesed-theme',t)}
+function setBilling(m,btn){
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('act'));btn.classList.add('act');
+  const sh=m==='a'?'ppa':'pp',hd=m==='a'?'pp':'ppa';
+  document.querySelectorAll('.'+sh).forEach(e=>e.style.display='block');
+  document.querySelectorAll('.'+hd).forEach(e=>e.style.display='none');
+}
+function filt(cat,btn){
+  document.querySelectorAll('.cfb').forEach(b=>b.classList.remove('act'));btn.classList.add('act');
+  document.querySelectorAll('table.ct tr[data-c]').forEach(r=>{r.style.display=(cat==='all'||r.dataset.c===cat)?'':'none';});
+}
+document.querySelectorAll('.ppa').forEach(e=>e.style.display='none');
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+let W,H,stars=[],mouse={x:400,y:300};
+function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+for(let i=0;i<160;i++)stars.push({x:Math.random()*2000,y:Math.random()*1200,r:Math.random()*.9+.2,sp:Math.random()*.05+.01,op:Math.random()*.4+.1,ph:Math.random()*Math.PI*2,ps:Math.random()*.012+.003,col:Math.random()>.85?'#C9922A':Math.random()>.7?'#26D9D9':'#F0EDE8'});
+document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+document.addEventListener('touchmove',e=>{if(e.touches[0]){mouse.x=e.touches[0].clientX;mouse.y=e.touches[0].clientY}},{passive:true});
+let hidden=false;document.addEventListener('visibilitychange',()=>{hidden=document.hidden});
+function draw(){
+  if(!hidden){
+    cx.clearRect(0,0,W,H);
+    const isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(!isLight){const bg=cx.createRadialGradient(W*.3,H*.3,0,W*.5,H*.5,Math.max(W,H)*.9);bg.addColorStop(0,'rgba(13,22,40,.98)');bg.addColorStop(1,'rgba(5,8,15,1)');cx.fillStyle=bg;cx.fillRect(0,0,W,H);}
+    stars.forEach(s=>{s.ph+=s.ps;const op=s.op+Math.sin(s.ph)*.1;const dx=(mouse.x-W/2)*s.sp*.04,dy=(mouse.y-H/2)*s.sp*.04;const px=((s.x-dx)%W+W)%W,py=((s.y-dy)%H+H)%H;cx.save();cx.globalAlpha=Math.max(0,Math.min(1,op));cx.fillStyle=s.col;if(s.r>.8){cx.shadowColor=s.col;cx.shadowBlur=3}cx.beginPath();cx.arc(px,py,s.r,0,Math.PI*2);cx.fill();cx.restore();});
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>

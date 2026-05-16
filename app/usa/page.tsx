@@ -1,6 +1,8 @@
 'use client';
+import { useState } from 'react';
 import Header from '@/components/marketing/header';
 import Footer from '@/components/marketing/footer';
+import FAQSection from '@/components/marketing/faq-section';
 import { trackCTAClick, analytics } from '@/lib/analytics';
 import { ScrollTracker } from '@/components/scroll-tracker';
 import { useABTest, getVariantContent, trackABTestConversion, USA_VALUE_PROP_TEST, CTA_BUTTON_TEST, CTA_BUTTON_CONTENT } from '@/lib/ab-testing';
@@ -14,6 +16,29 @@ import ROICalculator from '@/components/conversion/roi-calculator';
 import DemoVideoSection from '@/components/conversion/demo-video-section';
 import OutlineIcon from '@/components/ui/outline-icon';
 
+function BillingToggle({ annual, onChange }: { annual: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <div className="inline-flex items-center gap-1 bg-[var(--surface)] p-1 rounded-full border border-[var(--border)] mt-4">
+      <button
+        onClick={() => onChange(false)}
+        className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+          !annual ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-[var(--text)]'
+        }`}
+      >
+        Monthly
+      </button>
+      <button
+        onClick={() => onChange(true)}
+        className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+          annual ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-[var(--text)]'
+        }`}
+      >
+        Annual <span className="text-xs ml-1 opacity-75">2 months free</span>
+      </button>
+    </div>
+  );
+}
+
 export default function USAMarketPage() {
   const { market, language } = useGlobalMarket();
   
@@ -22,6 +47,8 @@ export default function USAMarketPage() {
   
   const valuePropText = getVariantContent(USA_VALUE_PROP_TEST, valuePropsVariant, 'en');
   const ctaText = getVariantContent(CTA_BUTTON_TEST, ctaVariant, 'en', CTA_BUTTON_CONTENT);
+
+  const [annualBilling, setAnnualBilling] = useState(false);
 
   const handleCTAClick = () => {
     trackCTAClick('usa_hero_section', ctaText);
@@ -303,45 +330,48 @@ export default function USAMarketPage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-semibold mb-4">Enterprise Pricing for Hispanic Churches</h2>
           <p className="text-[var(--muted)] mb-4">
-            Transparent pricing with no hidden fees. Annual discounts available.
+            Transparent pricing with no hidden fees.
           </p>
           <div className="text-lg text-[var(--muted)] mb-4">
             Fixed pricing by church size - No additional module fees
           </div>
+
+          {/* Billing Toggle */}
+          <BillingToggle annual={annualBilling} onChange={setAnnualBilling} />
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {[
             {
               id: "small",
-              name: "BASIC - Small Church",
-              price: "$149.99",
-              period: "/month",
-              members: "Up to 500 members",
-              features: ["Core church management", "Up to 5 user licenses", "Basic integrations", "Email support", "Training included"],
+              name: "SEMILLA - Small Church",
+              price: annualBilling ? "$480" : "$49",
+              period: annualBilling ? "/year" : "/month",
+              members: "Up to 150 members",
+              features: ["Spiritual triage in real time", "WhatsApp prayer reminders", "Pastor's weekly watch list", "Native WhatsApp integration", "Local payments · Email support 48h", ...(annualBilling ? ["2 months free included"] : [])],
               ctaText: "Start Free Trial",
-              ctaUrl: "/contact?plan=small"
+              ctaUrl: "/schedule?plan=semilla"
             },
             {
               id: "medium",
-              name: "PROFESSIONAL - Medium Church", 
-              price: "$299.99",
-              period: "/month",
-              members: "Up to 2,000 members",
-              features: ["Up to 10 user licenses", "Advanced integrations", "Phone + email support", "Custom training"],
+              name: "COSECHA - Medium Church",
+              price: annualBilling ? "$1,488" : "$149",
+              period: annualBilling ? "/year" : "/month",
+              members: "Up to 500 members",
+              features: ["Everything in Semilla", "Automated Sunday coverage (Ag.12)", "Sermon analysis & content filter", "Leadership pipeline & board report", "800 WhatsApp conversations included", "All 12 AI agents", ...(annualBilling ? ["2 months free included"] : [])],
               popular: true,
               ctaText: "Most Popular",
-              ctaUrl: "/contact?plan=medium"
+              ctaUrl: "/schedule?plan=cosecha"
             },
             {
               id: "large",
-              name: "ENTERPRISE - Large Church",
-              price: "Custom", 
-              period: "",
-              members: "Unlimited members",
-              features: ["Unlimited licenses", "Multi-campus support", "Enterprise features", "Dedicated support", "Custom integrations", "SLA guarantees"],
-              ctaText: "Contact Sales",
-              ctaUrl: "/contact?plan=large"
+              name: "REINO - Large Church",
+              price: annualBilling ? "$2,988" : "$299",
+              period: annualBilling ? "/year" : "/month",
+              members: "Up to 1,500 members",
+              features: ["Everything in Cosecha", "2,500 WhatsApp conversations included", "Predictive analytics (Ag.8-10)", "Stewardship coach agent", "99.9% SLA · 2h support response", ...(annualBilling ? ["2 months free included"] : [])],
+              ctaText: "Request Demo",
+              ctaUrl: "/schedule?plan=reino"
             }
           ].map((plan, idx) => (
             <AnimatedPricingCard
@@ -361,12 +391,53 @@ export default function USAMarketPage() {
           ))}
         </div>
 
+        {/* Enterprise & Network Plans */}
+        <div className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-widest text-[var(--muted)]">For larger organizations</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                id: "gloria",
+                name: "GLORIA - Megachurch / Multi-campus",
+                price: "Custom",
+                period: "",
+                members: "1,500+ members · Multi-campus",
+                features: ["Everything in Reino", "Multi-campus integrated management", "Dedicated enterprise SLA & support", "Assisted implementation", "$1.50/100 WhatsApp conversations overage"],
+                ctaText: "Request Quote",
+                ctaUrl: "/contact?plan=gloria"
+              },
+              {
+                id: "red",
+                name: "RED - Networks & Denominations",
+                price: "$94.90",
+                period: "/church/month",
+                members: "Networks · Denominations · Associations",
+                features: ["Cosecha plan per member church", "1,200 WhatsApp conversations/church", "Network administration dashboard", "Consolidated network reports", "$1.75/100 WhatsApp conversations overage"],
+                ctaText: "Contact Sales",
+                ctaUrl: "/contact?plan=red"
+              }
+            ].map((plan, idx) => (
+              <AnimatedPricingCard
+                key={plan.id}
+                plan={plan as PricingPlan}
+                index={idx + 3}
+                language="en"
+                onSelect={(planId: string) => trackCTAClick('usa_pricing', `Plan ${planId}`)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Feature Comparison Table */}
-        <FeatureComparisonTable 
+        <FeatureComparisonTable
           plans={[
-            { id: "small", name: "BASIC - Small Church", price: "$149.99", period: "/month", members: "500", features: [] },
-            { id: "medium", name: "PROFESSIONAL - Medium Church", price: "$299.99", period: "/month", members: "2,000", features: [], popular: true },
-            { id: "large", name: "ENTERPRISE - Large Church", price: "Custom", period: "", members: "Unlimited", features: [] }
+            { id: "small",  name: "SEMILLA",  price: "$49",      period: "/month",     members: "150",    features: [] },
+            { id: "medium", name: "COSECHA",  price: "$149",     period: "/month",     members: "500",    features: [], popular: true },
+            { id: "large",  name: "REINO",    price: "$299",     period: "/month",     members: "1,500",  features: [] },
+            { id: "gloria", name: "GLORIA",   price: "Custom",   period: "",           members: "1,500+", features: [] },
+            { id: "red",    name: "RED",      price: "$94.90",   period: "/ch/mo",     members: "Network",features: [] }
           ]}
           language="en"
           className="mt-16"
@@ -392,12 +463,30 @@ export default function USAMarketPage() {
             Discover how much your church can save with KHESED-TEK
           </p>
         </div>
-        <ROICalculator 
-          language="en" 
-          market="USA" 
+        <ROICalculator
+          language="en"
+          market="USA"
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
+      </section>
+
+      {/* Interactive Plan Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold mb-4">Interactive Plan Calculator</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Simulate the exact cost based on your church&apos;s size and usage
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)]">
+          <iframe
+            src="/calc-v2-public-dual.html"
+            title="Khesed-Tek Plan Calculator"
+            className="w-full border-0"
+            style={{ height: '860px' }}
+          />
+        </div>
       </section>
 
       {/* Beta Program Launch */}
@@ -654,6 +743,8 @@ export default function USAMarketPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection language="en" />
 
       <Footer />
     </main>

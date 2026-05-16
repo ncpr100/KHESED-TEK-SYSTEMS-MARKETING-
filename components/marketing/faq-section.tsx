@@ -10,7 +10,7 @@ interface FAQItem {
 const FAQ_ES: FAQItem[] = [
   {
     question: '¿Cuánto cuesta KHESED-TEK-CMS?',
-    answer: 'El plan Básico (hasta 500 miembros) comienza en $149.99 USD/mes. El plan Profesional (hasta 2,000 miembros) es $299.99 USD/mes. Las iglesias grandes reciben un precio personalizado. Todos los planes incluyen soporte en español y métodos de pago locales. Paddle, nuestro procesador de pagos, convierte automáticamente a su moneda local.'
+    answer: 'Cinco planes según la etapa del ministerio: Plan Semilla $49/mes (hasta 150 miembros), Plan Cosecha $149/mes (hasta 500 miembros), Plan Reino $299/mes (hasta 1,500 miembros), Plan Gloria con precio personalizado para megaiglesias y campuses múltiples, y Plan Red desde $94.90/iglesia/mes para redes y denominaciones. Todos los planes incluyen soporte en español, pagos locales y los 12 agentes de IA según el tier — sin cargos por módulos adicionales.'
   },
   {
     question: '¿Qué incluye el Programa Beta?',
@@ -45,7 +45,7 @@ const FAQ_ES: FAQItem[] = [
 const FAQ_EN: FAQItem[] = [
   {
     question: 'How much does KHESED-TEK-CMS cost?',
-    answer: 'The Basic plan (up to 500 members) starts at $149.99 USD/month. The Professional plan (up to 2,000 members) is $299.99 USD/month. Large churches receive custom pricing. All plans include English/Spanish support. Paddle, our payment processor, automatically converts to your local currency.'
+    answer: 'Five plans based on your church\'s stage: Semilla $49/month (up to 150 members), Cosecha $149/month (up to 500 members), Reino $299/month (up to 1,500 members), Gloria with custom pricing for megachurches and multi-campus organizations, and Red from $94.90/church/month for networks and denominations. All plans include bilingual support, local payment methods, and AI agents included by tier — no extra module fees.'
   },
   {
     question: 'What does the Beta Program include?',

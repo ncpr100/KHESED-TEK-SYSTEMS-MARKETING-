@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calculadora de Plan — Khesed-Tek CMS</title>
+<script>const _t=localStorage.getItem("khesed-theme");if(_t)document.documentElement.setAttribute("data-theme",_t)</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#05080F;--bg-m:#0d1628;--bg-card:rgba(13,22,40,.78);
+  --border:rgba(201,146,42,.15);--border-h:rgba(201,146,42,.4);
+  --text:#F0EDE8;--muted:#8A93A8;--muted2:rgba(138,147,168,.5);
+  --shadow:0 4px 24px rgba(0,0,0,.5);
+  --gold:#C9922A;--gold-b:#F0B83C;--gold-d:#7A5218;
+  --emerald:#1DC98C;--cyan:#26D9D9;--rose:#E84855;--lavender:#9B8FFF;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+[data-theme="light"]{
+  --bg:#F8F6F1;--bg-m:#EEEAE0;--bg-card:rgba(255,255,255,.94);
+  --border:rgba(201,146,42,.25);--border-h:rgba(201,146,42,.55);
+  --text:#080E1C;--muted:#5A6272;--muted2:rgba(90,98,114,.5);
+  --shadow:0 4px 24px rgba(0,0,0,.1);
+}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;transition:background .3s,color .3s}
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
+[data-theme="light"] #cv{opacity:.18}
+.tt{position:fixed;top:16px;right:16px;z-index:9999;width:42px;height:42px;border-radius:50%;
+  background:var(--bg-card);border:1px solid var(--border);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:var(--shadow);transition:all .2s var(--ease);backdrop-filter:blur(12px)}
+.tt:hover{border-color:var(--gold-b);transform:scale(1.08)}
+.dk{display:block}[data-theme="light"] .dk{display:none}
+.lk{display:none}[data-theme="light"] .lk{display:block}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:40px 20px 80px}
+.header{text-align:center;margin-bottom:44px}
+.cross-wrap{display:flex;justify-content:center;margin-bottom:14px}
+.cross{position:relative;width:34px;height:34px}
+.cross::before,.cross::after{content:'';position:absolute;background:var(--gold-b);border-radius:2px}
+.cross::before{width:3px;height:100%;left:50%;transform:translateX(-50%)}
+.cross::after{width:100%;height:3px;top:38%;transform:translateY(-50%)}
+.dove{position:absolute;top:-2px;right:-2px;width:11px;height:11px;background:var(--gold-b);border-radius:50% 50% 50% 0;transform:rotate(45deg);box-shadow:0 0 7px var(--gold-b)}
+.brand{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--gold-d);text-transform:uppercase;margin-bottom:8px}
+h1{font-family:'Cinzel',serif;font-size:clamp(22px,4vw,34px);font-weight:700;color:var(--gold-b);letter-spacing:.03em;line-height:1.2;margin-bottom:10px}
+.sub{font-size:14px;color:var(--muted);max-width:560px;margin:0 auto 8px;line-height:1.6}
+.tier-path{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:16px;font-size:11px}
+.tier-dot{padding:3px 10px;border-radius:12px;font-weight:600;letter-spacing:.03em}
+.tier-arrow{color:var(--muted);font-size:12px}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:10px;color:var(--gold-d);background:rgba(201,146,42,.08);border:1px solid rgba(201,146,42,.18);transition:all .3s}
+.live-badge.on{color:var(--emerald);background:rgba(29,201,140,.1);border-color:rgba(29,201,140,.25)}
+.ld{width:5px;height:5px;border-radius:50%;background:currentColor}
+.ld.pulse{animation:dp 1.4s ease-in-out infinite}
+@keyframes dp{0%{box-shadow:0 0 0 0 rgba(29,201,140,.6)}70%{box-shadow:0 0 0 6px rgba(29,201,140,0)}100%{box-shadow:0 0 0 0 rgba(29,201,140,0)}}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(14px);padding:26px;position:relative;overflow:hidden;margin-bottom:18px;box-shadow:var(--shadow);transition:all .25s}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,146,42,.4),transparent)}
+.sl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sl::after{content:'';flex:1;height:1px;background:rgba(201,146,42,.15)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.g2,.tc{grid-template-columns:1fr!important}.rp{position:static!important}}
+.fl label{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.fl input,.fl select{width:100%;background:var(--bg-m);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 11px;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none}
+.fl input:focus,.fl select:focus{border-color:rgba(201,146,42,.5);box-shadow:0 0 0 3px rgba(201,146,42,.1)}
+.fl select option{background:var(--bg-m);color:var(--text)}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:4px;background:rgba(201,146,42,.2);outline:none;cursor:pointer;margin-top:4px}
+[data-theme="light"] input[type=range]{background:rgba(201,146,42,.4)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--gold-b);border:2px solid var(--bg);cursor:pointer;box-shadow:0 0 8px rgba(240,184,60,.4)}
+.sv{display:flex;justify-content:space-between;margin-top:4px;font-size:10px;color:var(--muted)}
+.scv{font-size:13px;font-weight:500;color:var(--gold-b)}
+.wa-box{margin-top:12px;padding:11px 13px;border-radius:9px;background:rgba(38,217,217,.05);border:1px solid rgba(38,217,217,.15)}
+.wa-title{font-size:10px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.wa-row{display:flex;justify-content:space-between;font-size:11px;padding:3px 0;color:var(--muted);border-bottom:1px solid rgba(201,146,42,.07)}
+.wa-row .v{color:var(--text);font-weight:500}
+.tr2{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(201,146,42,.08)}
+.tr2:last-child{border:none;padding-bottom:0}
+.ti strong{font-size:12px;font-weight:500;color:var(--text);display:block}
+.ti span{font-size:10px;color:var(--muted)}
+.tog{position:relative;width:38px;height:21px;flex-shrink:0;margin-left:12px}
+.tog input{opacity:0;width:0;height:0;position:absolute}
+.tog-t{position:absolute;inset:0;background:rgba(201,146,42,.2);border-radius:20px;cursor:pointer;transition:background .2s}
+.tog input:checked+.tog-t{background:var(--gold)}
+.tog-t::after{content:'';position:absolute;top:2.5px;left:2.5px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s var(--ease)}
+.tog input:checked+.tog-t::after{transform:translateX(17px)}
+.rp{background:var(--bg-card);border:1px solid rgba(201,146,42,.28);border-radius:16px;padding:26px;position:sticky;top:20px;overflow:hidden;box-shadow:var(--shadow)}
+.rp::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-b),transparent)}
+.plan-badge{display:inline-flex;align-items:center;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.05em;margin-bottom:14px;transition:all .3s}
+.big-price{font-family:'Cinzel',serif;font-size:48px;font-weight:700;color:var(--gold-b);line-height:1;margin-bottom:2px;transition:all .3s}
+.pl{font-size:11px;color:var(--muted);margin-bottom:20px}
+.inc-box{background:rgba(29,201,140,.06);border:1px solid rgba(29,201,140,.18);border-radius:10px;padding:14px;margin-bottom:14px}
+.inc-title{font-size:10px;color:var(--emerald);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.inc-row{display:flex;align-items:flex-start;gap:8px;padding:4px 0;font-size:12px;color:var(--text);line-height:1.45}
+.inc-icon{flex-shrink:0;font-size:14px}
+.inc-sub{font-size:10px;color:var(--muted);display:block;margin-top:1px}
+/* GLORIA — bespoke note */
+.gloria-note{background:rgba(232,72,85,.06);border:1px solid rgba(232,72,85,.2);border-radius:10px;padding:14px;margin-bottom:14px}
+.gloria-note-title{font-size:10px;color:var(--rose);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+/* RED — network note */
+.red-note{background:rgba(155,143,255,.06);border:1px solid rgba(155,143,255,.2);border-radius:10px;padding:14px;margin-bottom:14px}
+.red-note-title{font-size:10px;color:var(--lavender);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.note-body{font-size:12px;color:var(--muted);line-height:1.7}
+.wa-summary{background:rgba(38,217,217,.05);border:1px solid rgba(38,217,217,.15);border-radius:9px;padding:12px;margin-bottom:14px}
+.wa-s-title{font-size:10px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.wa-s-row{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:3px 0}
+.wa-s-row .v{color:var(--text)}
+.wa-s-note{font-size:10px;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid rgba(38,217,217,.15);line-height:1.5}
+.ov-note{font-size:11px;color:var(--muted);padding:8px 10px;border-radius:7px;background:rgba(201,146,42,.06);border:1px solid rgba(201,146,42,.15);margin-bottom:14px;line-height:1.6}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px}
+.ap{padding:5px 7px;border-radius:6px;font-size:10px;display:flex;align-items:center;gap:5px;transition:all .2s}
+.ap .d{width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.cta-btn{display:block;width:100%;padding:14px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-b));color:#080E1C;font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-align:center;border:none;cursor:pointer;margin-top:16px;text-decoration:none;transition:all .2s var(--ease)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(201,146,42,.4)}
+.cta-btn.outline{background:transparent;border:1px solid var(--border);color:var(--gold-b)}
+.cta-btn.outline:hover{border-color:var(--gold-b);background:rgba(201,146,42,.08)}
+.note{font-size:11px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.7;opacity:.7}
+.note a{color:var(--gold-d);text-decoration:none}
+.tc{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start}
+table{width:100%;border-collapse:separate;border-spacing:0}
+th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:7px 11px;text-align:left;border-bottom:1px solid rgba(201,146,42,.12)}
+td{font-size:12px;color:var(--text);padding:9px 11px;border-bottom:1px solid rgba(201,146,42,.06);transition:background .1s}
+tr:hover td{background:rgba(201,146,42,.04)}
+tr.rec td{background:rgba(201,146,42,.08)}
+.pc2{font-family:'Cinzel',serif;font-weight:700;color:var(--gold-b)}
+.chk{color:var(--emerald)}.dsh{color:var(--muted2)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(201,146,42,.2);border-radius:3px}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<button class="tt" onclick="toggleTheme()" aria-label="Cambiar tema claro/oscuro">
+  <span class="dk">🌙</span><span class="lk">☀️</span>
+</button>
+<div class="wrap">
+  <div class="header">
+    <div class="cross-wrap"><div class="cross"><div class="dove"></div></div></div>
+    <div class="brand">Khesed-Tek Systems</div>
+    <h1>Encuentra el Plan<br>Perfecto para tu Iglesia</h1>
+    <p class="sub">Cinco planes diseñados para cada etapa del ministerio. Sin sorpresas en la factura.</p>
+    <div class="tier-path">
+      <span class="tier-dot" style="background:rgba(29,201,140,.15);color:#1DC98C;border:1px solid rgba(29,201,140,.3)">Semilla</span>
+      <span class="tier-arrow">→</span>
+      <span class="tier-dot" style="background:rgba(240,184,60,.15);color:#F0B83C;border:1px solid rgba(240,184,60,.3)">Cosecha</span>
+      <span class="tier-arrow">→</span>
+      <span class="tier-dot" style="background:rgba(38,217,217,.15);color:#26D9D9;border:1px solid rgba(38,217,217,.3)">Reino</span>
+      <span class="tier-arrow">→</span>
+      <span class="tier-dot" style="background:rgba(232,72,85,.15);color:#E84855;border:1px solid rgba(232,72,85,.3)">Gloria</span>
+      <span class="tier-arrow">◇</span>
+      <span class="tier-dot" style="background:rgba(155,143,255,.15);color:#9B8FFF;border:1px solid rgba(155,143,255,.3)">Red</span>
+    </div>
+    <div class="live-badge" id="lb" style="margin-top:8px"><div class="ld" id="ld"></div><span id="lt">Precios actualizados</span></div>
+  </div>
+  <div class="tc">
+    <div>
+      <div class="card">
+        <div class="sl">Perfil de tu Iglesia</div>
+        <div class="g2" style="margin-bottom:14px">
+          <div class="fl"><label>Nombre</label><input type="text" id="cn" placeholder="Iglesia Vida Nueva" oninput="calc()"></div>
+          <div class="fl"><label>País</label>
+            <select id="co" onchange="calc()">
+              <option value="CO">Colombia</option><option value="MX">México</option><option value="PE">Perú</option><option value="CL">Chile</option><option value="AR">Argentina</option><option value="VE">Venezuela</option><option value="EC">Ecuador</option><option value="BO">Bolivia</option><option value="GT">Guatemala</option><option value="DO">Rep. Dominicana</option><option value="OTHER">Otro país</option>
+            </select>
+          </div>
+        </div>
+        <div class="fl" style="margin-bottom:14px">
+          <label>Miembros activos: <span class="scv" id="mb-v">250</span></label>
+          <input type="range" id="members" min="20" max="5000" value="250" step="10" oninput="ss('members','mb');calc()">
+          <div class="sv"><span>20</span><span>500</span><span>1,500</span><span>3,000</span><span>5,000+</span></div>
+        </div>
+        <div class="fl" style="margin-bottom:14px">
+          <label>Voluntarios activos: <span class="scv" id="vl-v">60</span></label>
+          <input type="range" id="volunteers" min="5" max="600" value="60" step="5" oninput="ss('volunteers','vl');calc()">
+          <div class="sv"><span>5</span><span>150</span><span>300</span><span>600</span></div>
+        </div>
+        <div class="g2">
+          <div class="fl"><label>Servicios por semana</label>
+            <select id="services" onchange="calc()"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option></select>
+          </div>
+          <div class="fl"><label>¿Parte de una red?</label>
+            <select id="isnetwork" onchange="calc()"><option value="0">No — iglesia independiente</option><option value="1">Sí — pertenece a una red</option></select>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sl">Cobertura Dominical — Conversaciones WA</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6">El Agente 12 confirma voluntarios y gestiona reemplazos automáticamente. Ajusta tu perfil para calcular tu volumen real de WhatsApp.</p>
+        <div class="fl" style="margin-bottom:13px">
+          <label>Cancelaciones/mes: <span class="scv" style="color:var(--rose)" id="cn-v">5</span></label>
+          <input type="range" id="cancels" min="0" max="40" value="5" step="1" oninput="ss('cancels','cn');calc()">
+          <div class="sv"><span>0</span><span>10</span><span>20</span><span>40</span></div>
+        </div>
+        <div class="fl">
+          <label>Suplentes/cancelación: <span class="scv" style="color:var(--cyan)" id="bk-v">2</span></label>
+          <input type="range" id="backups" min="1" max="5" value="2" step="1" oninput="ss('backups','bk');calc()">
+          <div class="sv"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        </div>
+        <div class="wa-box" id="wa-breakdown-box">
+          <div class="wa-title">💬 Conversaciones WhatsApp de tu iglesia</div>
+          <div class="wa-row">Confirmaciones (vol × serv × 4 sem)<span class="v" id="wp">—</span></div>
+          <div class="wa-row">Gestión de reemplazos<span class="v" id="wc">—</span></div>
+          <div class="wa-row">Total mensual estimado<span class="v" id="wt">—</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sl">¿Qué necesitas?</div>
+        <div id="togs"></div>
+      </div>
+      <div class="card">
+        <div class="sl">Comparación de los 5 planes</div>
+        <div style="overflow-x:auto">
+          <table><thead><tr><th>Plan</th><th>Precio</th><th>Miembros</th><th>Ag.12</th><th>WhatsApp</th><th>Tipo</th></tr></thead>
+          <tbody id="cmp"></tbody></table>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="rp">
+        <div class="sl">Tu Plan Recomendado</div>
+        <div class="plan-badge" id="rb">—</div>
+        <div class="big-price" id="rp2">—</div>
+        <div class="pl" id="rtag">por mes</div>
+        <!-- Standard plan includes -->
+        <div class="inc-box" id="inc-section">
+          <div class="inc-title">✨ Incluido en tu plan</div>
+          <div id="rinc"></div>
+        </div>
+        <!-- Gloria bespoke section -->
+        <div class="gloria-note" id="gloria-section" style="display:none">
+          <div class="gloria-note-title">✦ Plan Gloria — Cotización personalizada</div>
+          <div class="note-body">Diseñado para megaiglesias con más de 1,500 miembros, campuses múltiples y alta actividad ministerial.<br><br>
+          Tu precio se determina por el volumen real de WhatsApp, número de campuses y nivel de soporte dedicado.<br><br>
+          <strong style="color:var(--text)">Incluye:</strong> 12 Agentes IA completos · Soporte dedicado · SLA personalizado · Panel multi-campus · WhatsApp negociado.</div>
+        </div>
+        <!-- Red network section -->
+        <div class="red-note" id="red-section" style="display:none">
+          <div class="red-note-title">🌐 Plan Red — Para redes y denominaciones</div>
+          <div class="note-body">Tu iglesia forma parte de una red o denominación. El contrato se establece con la organización central.<br><br>
+          <strong style="color:var(--text)">Precio promedio:</strong> $94.90 USD/iglesia/mes · Contrato anual.<br><br>
+          Cada iglesia opera independientemente con sus propios 12 agentes. Panel centralizado para la red incluido. Tarifa de excedente WA preferencial.</div>
+        </div>
+        <!-- WA summary — standard plans -->
+        <div class="wa-summary" id="rws">
+          <div class="wa-s-title">💬 Cobertura WhatsApp incluida</div>
+          <div class="wa-s-row">Conversaciones/mes en tu plan<span class="v" id="rwi">—</span></div>
+          <div class="wa-s-row">Tu volumen estimado<span class="v" id="rwy">—</span></div>
+          <div class="wa-s-note" id="rwn">—</div>
+        </div>
+        <div class="ov-note" id="rov">—</div>
+        <div><div class="sl" style="margin-bottom:8px">Agentes IA incluidos</div><div class="ag" id="agr"></div></div>
+        <a href="#" class="cta-btn" id="rcta">Comenzar →</a>
+        <p class="note">14 días gratis · Sin tarjeta de crédito<br>¿Red o denominación? <a href="mailto:nelson@khesed-tek-systems.org">Contactar →</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const API_BASE='https://www.khesed-tek-systems.org';
+let PLANS=[
+  {tier:'SEMILLA',n:'Plan Semilla',tl:'Para iglesias que comienzan',color:'#1DC98C',price:49,maxM:150,maxV:40,maxS:1,waI:0,waO:0,ag12:false,ag:[2,4,5],bespoke:false,network:false,cta:'Comenzar gratis →',ctaHref:'/schedule?plan=semilla'},
+  {tier:'COSECHA',n:'Plan Cosecha',tl:'Para iglesias en crecimiento activo',color:'#F0B83C',price:149,maxM:500,maxV:150,maxS:2,waI:800,waO:2.50,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:false,cta:'Más popular →',ctaHref:'/schedule?plan=cosecha'},
+  {tier:'REINO',n:'Plan Reino',tl:'Para iglesias grandes',color:'#26D9D9',price:299,maxM:1500,maxV:400,maxS:4,waI:2500,waO:2.00,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:false,cta:'Solicitar demo →',ctaHref:'/schedule?plan=reino'},
+  {tier:'GLORIA',n:'Plan Gloria',tl:'Para megaiglesias y campuses múltiples',color:'#E84855',price:0,maxM:99999,maxV:9999,maxS:9,waI:0,waO:1.50,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:true,network:false,cta:'Solicitar cotización →',ctaHref:'/contact?plan=gloria'},
+  {tier:'RED',n:'Plan Red',tl:'Para redes y denominaciones',color:'#9B8FFF',price:94.90,maxM:99999,maxV:9999,maxS:9,waI:1200,waO:1.75,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:true,cta:'Contactar →',ctaHref:'/contact?plan=red'},
+];
+let WR={CO:.0147,MX:.0169,PE:.0151,CL:.0138,AR:.0122,VE:.0147,EC:.0155,BO:.0149,GT:.0143,DO:.0152,OTHER:.015};
+const AN={1:'Ag.1 Antifonal',2:'Ag.2 Triaje',3:'Ag.3 Contenido',4:'Ag.4 Oración',5:'Ag.5 Pastor',6:'Ag.6 Liderazgo',7:'Ag.7 Burnout',8:'Ag.8 Visitantes',9:'Ag.9 Mayor.',10:'Ag.10 Grupos',11:'Ag.11 Junta',12:'★ Cobertura'};
+const INCL={
+  SEMILLA:[{i:'🙏',l:'Triaje espiritual en tiempo real',s:'Ag.2 — alerta al pastor en crisis'},{i:'⏰',l:'Recordatorios de oración WA',s:'Ag.4 — en el momento exacto'},{i:'🐑',l:'Registro del Pastor semanal',s:'Ag.5 — miembros en riesgo'},{i:'💬',l:'WhatsApp nativo integrado',s:''},{i:'💳',l:'Pagos locales en tu moneda',s:''}],
+  COSECHA:[{i:'🛡',l:'Cobertura dominical automática',s:'Ag.12 ★ — cascada de suplentes WA'},{i:'📖',l:'Análisis de sermones IA',s:'Ag.1 — puntos ciegos culturales'},{i:'👥',l:'Pipeline de liderazgo',s:'Ag.6 — candidatos emergentes'},{i:'📋',l:'Informe de junta mensual IA',s:'Ag.11 — reporte ejecutivo'},{i:'⚡',l:'800 conv. WhatsApp incluidas',s:''},{i:'✨',l:'12 Agentes IA completos',s:''}],
+  REINO:[{i:'🛡',l:'Cobertura dominical — hasta 4 servicios',s:'Ag.12 ★'},{i:'⚡',l:'2,500 conv. WhatsApp incluidas',s:'Para alta actividad'},{i:'📊',l:'Analítica predictiva avanzada',s:'Ag.8-10 — retención y generosidad'},{i:'🏛',l:'Soporte WhatsApp prioritario 2h',s:''},{i:'✨',l:'12 Agentes IA completos',s:''}],
+};
+const FEATS=[
+  {id:'ag12',l:'Cobertura dominical automática',s:'Agente 12 — Cosecha+',r:'COSECHA'},
+  {id:'ser',l:'Análisis de sermones IA',s:'Agente 1 — Cosecha+',r:'COSECHA'},
+  {id:'lead',l:'Pipeline de liderazgo',s:'Agente 6 — Cosecha+',r:'COSECHA'},
+  {id:'board',l:'Informe de junta IA',s:'Agente 11 — Cosecha+',r:'COSECHA'},
+  {id:'analy',l:'Analítica predictiva',s:'Agentes 8-10 — Reino+',r:'REINO'},
+  {id:'multicampus',l:'Multi-campus / sedes múltiples',s:'Requiere Plan Gloria o Red',r:'GLORIA'},
+];
+const fs={};
+(()=>{const w=document.getElementById('togs');FEATS.forEach(f=>{fs[f.id]=false;const d=document.createElement('div');d.className='tr2';d.innerHTML=`<div class="ti"><strong>${f.l}</strong><span>${f.s}</span></div><label class="tog"><input type="checkbox" id="f-${f.id}" onchange="fc('${f.id}',this.checked)"><div class="tog-t"></div></label>`;w.appendChild(d);});})();
+function fc(id,v){fs[id]=v;calc()}
+function ss(id,sh){document.getElementById(sh+'-v').textContent=parseInt(document.getElementById(id).value).toLocaleString('es-CO')}
+function wr(){return WR[document.getElementById('co').value]||.015}
+function rec(mb,vl,sv,tot){
+  const isNet=document.getElementById('isnetwork').value==='1';
+  if(isNet)return'RED';
+  if(fs.multicampus||mb>1500||vl>400||sv>4)return'GLORIA';
+  if(fs.analy&&mb>500)return'REINO';
+  const re=PLANS.find(x=>x.tier==='REINO');
+  if(tot>re.waI&&mb>500)return'REINO';
+  if(mb>500||vl>150||sv>2)return'REINO';
+  if(fs.analy||fs.ag12||fs.ser||fs.lead||fs.board||mb>150||vl>40||sv>1)return'COSECHA';
+  return'SEMILLA';
+}
+function calc(){
+  const mb=parseInt(document.getElementById('members').value);
+  const vl=parseInt(document.getElementById('volunteers').value);
+  const sv=parseInt(document.getElementById('services').value);
+  const cn=parseInt(document.getElementById('cancels').value);
+  const bk=parseInt(document.getElementById('backups').value);
+  const rate=wr();
+  const pre=vl*sv*4,cas=cn*bk,tot=pre+cas;
+  document.getElementById('wp').textContent=pre.toLocaleString('es-CO');
+  document.getElementById('wc').textContent=cas.toLocaleString('es-CO');
+  document.getElementById('wt').textContent=tot.toLocaleString('es-CO');
+  document.getElementById('wa-breakdown-box').style.display='';
+  const rk=rec(mb,vl,sv,tot);
+  const plan=PLANS.find(p=>p.tier===rk);if(!plan)return;
+  // Section visibility
+  document.getElementById('inc-section').style.display=(plan.bespoke||plan.network)?'none':'';
+  document.getElementById('gloria-section').style.display=plan.bespoke?'':'none';
+  document.getElementById('red-section').style.display=plan.network?'':'none';
+  document.getElementById('wa-breakdown-box').style.display=plan.ag12?'':'none';
+  // WA summary
+  if(plan.ag12&&!plan.bespoke&&!plan.network&&plan.waI>0){
+    document.getElementById('rwi').textContent=plan.waI.toLocaleString()+' conv';
+    document.getElementById('rwy').textContent=tot.toLocaleString()+' conv estimadas';
+    document.getElementById('rwn').textContent=tot<=plan.waI?'✓ Tu volumen está cubierto. El sistema gestionará todas las confirmaciones y cascadas automáticamente.':'Tu volumen supera el límite. Se aplicará tarifa de excedente por las conversaciones adicionales.';
+    document.getElementById('rws').style.display='';
+  } else document.getElementById('rws').style.display='none';
+  // Overage
+  let oe=0,ot='';
+  if(!plan.bespoke&&!plan.network&&plan.ag12&&plan.waI>0){
+    if(tot>plan.waI){const ex=tot-plan.waI;oe=Math.ceil(ex/100)*plan.waO;ot=`Tu iglesia generará ~${ex.toLocaleString()} conversaciones adicionales. Se facturarán $${oe.toFixed(2)} extras.`;}
+    else ot=`✓ Tu volumen (${tot.toLocaleString()} conv) está dentro del plan. Sin cobros adicionales.`;
+  } else if(!plan.ag12) ot='La cobertura automática WA está disponible desde el Plan Cosecha.';
+  document.getElementById('rov').textContent=ot;
+  document.getElementById('rov').style.display=ot?'':'none';
+  const tp=plan.price+oe;
+  const badge=document.getElementById('rb');
+  badge.textContent=plan.n;
+  badge.style.cssText=`display:inline-flex;align-items:center;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.05em;margin-bottom:14px;background:${plan.color}20;border:1px solid ${plan.color}50;color:${plan.color};transition:all .3s`;
+  document.getElementById('rp2').textContent=plan.bespoke?'A cotizar':plan.network?`$${plan.price}`:'$'+tp;
+  document.getElementById('rtag').textContent=plan.bespoke?'precio según perfil de la megaiglesia':plan.network?'USD/iglesia/mes · contrato de red':plan.tl+' · por mes';
+  // Includes
+  const inc=document.getElementById('rinc');inc.innerHTML='';
+  (INCL[rk]||[]).forEach(item=>{const r=document.createElement('div');r.className='inc-row';r.innerHTML=`<div class="inc-icon">${item.i}</div><div><span style="font-size:12px;color:var(--text)">${item.l}</span>${item.s?`<span class="inc-sub">${item.s}</span>`:''}</div>`;inc.appendChild(r);});
+  // Agents
+  const ag=document.getElementById('agr');ag.innerHTML='';
+  Object.entries(AN).forEach(([num,name])=>{
+    const on=plan.ag.includes(parseInt(num));
+    const pill=document.createElement('div');pill.className='ap';
+    pill.style.cssText=on?`background:${plan.color}14;border:1px solid ${plan.color}35;color:${plan.color}`:`background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--muted);opacity:.5`;
+    pill.innerHTML=`<div class="d" style="background:${on?plan.color:'rgba(138,147,168,.2)'}"></div>${name}`;
+    ag.appendChild(pill);
+  });
+  // CTA
+  const cta=document.getElementById('rcta');
+  cta.textContent=plan.cta;
+  cta.href=`${plan.ctaHref}&members=${mb}&vol=${vl}`;
+  cta.className=plan.bespoke||plan.network?'cta-btn outline':'cta-btn';
+  // Compare
+  const tb=document.getElementById('cmp');tb.innerHTML='';
+  PLANS.forEach(p=>{
+    const isR=p.tier===rk;
+    const tr=document.createElement('tr');if(isR)tr.className='rec';
+    const pDisp=p.bespoke?'A cotizar':p.network?`$${p.price}/igl`:`$${p.price}`;
+    const mxDisp=p.maxM>=9999?'Ilimitados':p.maxM.toLocaleString();
+    const wDisp=p.bespoke?'Negociado':p.network?`${p.waI.toLocaleString()} conv`:p.ag12?`${p.waI.toLocaleString()} conv`:'—';
+    const typeDisp=p.bespoke?'🏢 Bespoke':p.network?'🌐 Red':'Estándar';
+    tr.innerHTML=`<td>${isR?'<strong>'+p.n+'</strong>':p.n}</td><td class="pc2">${pDisp}</td><td>${mxDisp}</td><td>${p.ag12?'<span class="chk">✓</span>':'<span class="dsh">—</span>'}</td><td style="font-size:11px">${wDisp}</td><td style="font-size:10px">${typeDisp}</td>`;
+    tb.appendChild(tr);
+  });
+}
+async function tryLive(){
+  if(!API_BASE||API_BASE.includes('your-app'))return;
+  try{const ctrl=new AbortController();setTimeout(()=>ctrl.abort(),5000);const res=await fetch(`${API_BASE}/api/public/pricing-config`,{signal:ctrl.signal,cache:'no-store'});if(!res.ok)return;const data=await res.json();if(data.plans&&data.plans.length>0){PLANS=data.plans;if(data.rates)data.rates.forEach(r=>{WR[r.countryCode]=r.ratePerConv});const b=document.getElementById('lb');b.className='live-badge on';document.getElementById('ld').classList.add('pulse');document.getElementById('lt').textContent='Precios en tiempo real';calc();}}catch{}
+}
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+let W,H,stars=[],mouse={x:400,y:300};
+function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+for(let i=0;i<150;i++)stars.push({x:Math.random()*2000,y:Math.random()*1200,r:Math.random()*1+.2,sp:Math.random()*.07+.01,op:Math.random()*.45+.1,ph:Math.random()*Math.PI*2,ps:Math.random()*.015+.003,col:Math.random()>.85?'#C9922A':Math.random()>.7?'#26D9D9':'#F0EDE8'});
+document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+document.addEventListener('touchmove',e=>{if(e.touches[0]){mouse.x=e.touches[0].clientX;mouse.y=e.touches[0].clientY}},{passive:true});
+let hidden=false;document.addEventListener('visibilitychange',()=>{hidden=document.hidden});
+function draw(){
+  if(!hidden){
+    cx.clearRect(0,0,W,H);
+    const isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(!isLight){const bg=cx.createRadialGradient(W*.3,H*.3,0,W*.5,H*.5,Math.max(W,H)*.9);bg.addColorStop(0,'rgba(13,22,40,.98)');bg.addColorStop(1,'rgba(5,8,15,1)');cx.fillStyle=bg;cx.fillRect(0,0,W,H);}
+    stars.forEach(s=>{s.ph+=s.ps;const op=s.op+Math.sin(s.ph)*.12;const dx=(mouse.x-W/2)*s.sp*.04,dy=(mouse.y-H/2)*s.sp*.04;const px=((s.x-dx)%W+W)%W,py=((s.y-dy)%H+H)%H;cx.save();cx.globalAlpha=Math.max(0,Math.min(1,op));cx.fillStyle=s.col;if(s.r>.85){cx.shadowColor=s.col;cx.shadowBlur=3}cx.beginPath();cx.arc(px,py,s.r,0,Math.PI*2);cx.fill();cx.restore();});
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+function toggleTheme(){const h=document.documentElement;const t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);localStorage.setItem('khesed-theme',t)}
+ss('members','mb');ss('volunteers','vl');ss('cancels','cn');ss('backups','bk');calc();tryLive();
+</script>
+</body>
+</html>
