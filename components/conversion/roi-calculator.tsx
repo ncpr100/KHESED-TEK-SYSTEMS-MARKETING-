@@ -65,9 +65,9 @@ export default function ROICalculator({
     const monthlySubscriptionCost = pricing.monthly;
     const softwareCostSavings = inputs.currentSoftwareCost - monthlySubscriptionCost; // Can be negative
 
-    // Competitive advantage: Most church software charges $500-2000 for setup + training
-    const competitorImplementationCost = inputs.churchSize === 'small' ? 800 : 
-                                       inputs.churchSize === 'medium' ? 1200 : 2000;
+    // Competitive advantage: Most church software charges $149-599 for setup + training
+    const competitorImplementationCost = inputs.churchSize === 'small' ? 149 :
+                                       inputs.churchSize === 'medium' ? 299 : 599;
     const implementationSavings = competitorImplementationCost; // We charge $0, competitors charge this
     
     const adminEfficiency = inputs.adminHoursPerWeek * 0.15; // Realistic 15% time savings
@@ -443,7 +443,7 @@ export default function ROICalculator({
                     </div>
                     <div className="flex justify-between">
                       <span>{t.implementation}</span>
-                      <span className="font-bold text-green-400">GRATIS (${formatCurrency(800)}-${formatCurrency(3000)} ahorro)</span>
+                      <span className="font-bold text-green-400">GRATIS ($149 USD-$599 USD ahorro)</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t.training}</span>
@@ -508,7 +508,7 @@ function generateInsights(
 
   if (language === 'es') {
     // Always highlight our implementation advantage
-    insights.push(`Ahorro en implementación: $${results.implementationSavings.toLocaleString('en-US')} vs competidores (implementación y capacitación GRATIS).`);
+    insights.push(`Ahorro en implementación: $149-$599 USD vs competidores (implementación y capacitación GRATIS).`);
     
     if (results.yearlyROI > 20) {
       insights.push('ROI positivo: Su inversión generará retornos superiores al 20% anual.');
@@ -535,7 +535,7 @@ function generateInsights(
     }
   } else {
     // Always highlight our implementation advantage
-    insights.push(`Implementation savings: $${results.implementationSavings.toLocaleString('en-US')} vs competitors (FREE setup and training).`);
+    insights.push(`Implementation savings: $149-$599 USD vs competitors (FREE setup and training).`);
     
     if (results.yearlyROI > 20) {
       insights.push('Positive ROI: Your investment will generate returns above 20% annually.');

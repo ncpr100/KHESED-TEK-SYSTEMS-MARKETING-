@@ -123,7 +123,7 @@ const FEATURE_COMPARISONS: FeatureComparison[] = [
     description: 'Costo por cada 100 conversaciones adicionales',
     descriptionEn: 'Cost per 100 additional conversations',
     category: 'communication',
-    plans: { small: 'N/A', medium: '$2.50/100', large: '$2.00/100', gloria: '$1.50/100', red: '$1.75/100' }
+    plans: { small: 'N/A', medium: '$2.50/100', large: '$2.25/100', gloria: '$2.00/100', red: '$1.75/100' }
   },
   // Support
   {
