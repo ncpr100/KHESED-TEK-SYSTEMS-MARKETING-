@@ -142,7 +142,7 @@ export class EmailAutomationEngine {
     // and then send via the email provider
     
     const from = process.env.GMAIL_USER || 'contacto@khesed-tek-systems.org';
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.khesed-tek.com';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.khesed-tek-systems.org';
     
     // Add default variables
     const templateVariables = {

@@ -54,7 +54,7 @@ const faqSchema = {
 import { GlobalMarketProvider } from '@/lib/global-market';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://khesed-tek-systems.org'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.khesed-tek-systems.org'),
   title: 'KHESED-TEK SYSTEMS - Soluciones Tecnológicas para Iglesias',
   description: 'Soluciones tecnológicas confiables, seguras y elegantes para iglesias y organizaciones. Innovación que impulsa tu misión con excelencia, integridad e innovación.',
   authors: [{ name: 'KHESED-TEK SYSTEMS' }],

@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.5] - 2026-05-16 — Dual Pricing Assets Recovery + Canonical URL Alignment
+
+### Fixed (1.5.5)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| P-6 | Missing dual pricing/calculator public HTML assets after recovery | `pricing-section-dual.html`, `calc-v2-public-dual.html` |
+| U-4 | Production site URL fallback still used non-canonical or outdated domain in runtime/config docs | `app/layout.tsx`, `lib/email/automation.ts`, `PROJECT_SOURCE_OF_TRUTH.md` |
+
+### Details (1.5.5)
+
+- Restored `pricing-section-dual.html` and `calc-v2-public-dual.html` from branch `origin/ncpr100-patch-3` without structural modifications.
+- Updated metadata fallback URL to `https://www.khesed-tek-systems.org` in root layout.
+- Updated email automation fallback URL from legacy `www.khesed-tek.com` to `https://www.khesed-tek-systems.org`.
+- Updated Source of Truth deployment verification URL to canonical `https://www.khesed-tek-systems.org`.
+
 ## [1.5.4] - 2026-05-03 — Footer Ubicación Outline Icon Hotfix
 
 ### Fixed (1.5.4)

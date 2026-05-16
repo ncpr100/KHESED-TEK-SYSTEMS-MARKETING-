@@ -562,7 +562,7 @@ git commit -m "feat: description"
 git push origin main  # Triggers Vercel auto-deploy
 
 # Verify
-https://khesed-tek-systems.org  # Production URL
+https://www.khesed-tek-systems.org  # Production URL
 ```
 
 ### **Healthcheck**: `/api/health` (returns 200 OK + system status)
