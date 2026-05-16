@@ -391,12 +391,53 @@ export default function USAMarketPage() {
           ))}
         </div>
 
+        {/* Enterprise & Network Plans */}
+        <div className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-widest text-[var(--muted)]">For larger organizations</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                id: "gloria",
+                name: "GLORIA - Megachurch / Multi-campus",
+                price: "Custom",
+                period: "",
+                members: "1,500+ members · Multi-campus",
+                features: ["Everything in Reino", "Multi-campus integrated management", "Dedicated enterprise SLA & support", "Assisted implementation", "$1.50/100 WhatsApp conversations overage"],
+                ctaText: "Request Quote",
+                ctaUrl: "/contact?plan=gloria"
+              },
+              {
+                id: "red",
+                name: "RED - Networks & Denominations",
+                price: "$94.90",
+                period: "/church/month",
+                members: "Networks · Denominations · Associations",
+                features: ["Cosecha plan per member church", "1,200 WhatsApp conversations/church", "Network administration dashboard", "Consolidated network reports", "$1.75/100 WhatsApp conversations overage"],
+                ctaText: "Contact Sales",
+                ctaUrl: "/contact?plan=red"
+              }
+            ].map((plan, idx) => (
+              <AnimatedPricingCard
+                key={plan.id}
+                plan={plan as PricingPlan}
+                index={idx + 3}
+                language="en"
+                onSelect={(planId: string) => trackCTAClick('usa_pricing', `Plan ${planId}`)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Feature Comparison Table */}
-        <FeatureComparisonTable 
+        <FeatureComparisonTable
           plans={[
-            { id: "small", name: "SEMILLA - Small Church", price: "$49", period: "/month", members: "150", features: [] },
-            { id: "medium", name: "COSECHA - Medium Church", price: "$149", period: "/month", members: "500", features: [], popular: true },
-            { id: "large", name: "REINO - Large Church", price: "$299", period: "/month", members: "1,500", features: [] }
+            { id: "small",  name: "SEMILLA",  price: "$49",      period: "/month",     members: "150",    features: [] },
+            { id: "medium", name: "COSECHA",  price: "$149",     period: "/month",     members: "500",    features: [], popular: true },
+            { id: "large",  name: "REINO",    price: "$299",     period: "/month",     members: "1,500",  features: [] },
+            { id: "gloria", name: "GLORIA",   price: "Custom",   period: "",           members: "1,500+", features: [] },
+            { id: "red",    name: "RED",      price: "$94.90",   period: "/ch/mo",     members: "Network",features: [] }
           ]}
           language="en"
           className="mt-16"
@@ -422,12 +463,30 @@ export default function USAMarketPage() {
             Discover how much your church can save with KHESED-TEK
           </p>
         </div>
-        <ROICalculator 
-          language="en" 
-          market="USA" 
+        <ROICalculator
+          language="en"
+          market="USA"
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
+      </section>
+
+      {/* Interactive Plan Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold mb-4">Interactive Plan Calculator</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Simulate the exact cost based on your church&apos;s size and usage
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)]">
+          <iframe
+            src="/calc-v2-public-dual.html"
+            title="Khesed-Tek Plan Calculator"
+            className="w-full border-0"
+            style={{ height: '860px' }}
+          />
+        </div>
       </section>
 
       {/* Beta Program Launch */}

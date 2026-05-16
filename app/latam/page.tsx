@@ -306,7 +306,7 @@ export default function LatamMarketPage() {
           <BillingToggle annual={annualBilling} onChange={setAnnualBilling} />
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {[
             {
               id: "small",
@@ -354,12 +354,53 @@ export default function LatamMarketPage() {
           ))}
         </div>
 
+        {/* Enterprise & Network Plans */}
+        <div className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-widest text-[var(--muted)]">Para organizaciones mayores</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                id: "gloria",
+                name: "GLORIA - Megaiglesia / Multi-campus",
+                price: "Personalizado",
+                period: "",
+                members: "1,500+ miembros · Multi-campus",
+                features: ["Todo lo del Plan Reino", "Gestión multi-campus integrada", "SLA y soporte empresarial dedicado", "Implementación asistida", "$1.50/100 conv. WhatsApp excedente"],
+                ctaText: "Solicitar cotización",
+                ctaUrl: "/contact?plan=gloria"
+              },
+              {
+                id: "red",
+                name: "RED - Redes y Denominaciones",
+                price: "$94.90",
+                period: "/iglesia/mes",
+                members: "Redes · Denominaciones · Asociaciones",
+                features: ["Plan Cosecha por cada iglesia miembro", "1,200 conv. WhatsApp incluidas/iglesia", "Panel de administración de red", "Reportes consolidados de la red", "$1.75/100 conv. WhatsApp excedente"],
+                ctaText: "Contactar ventas",
+                ctaUrl: "/contact?plan=red"
+              }
+            ].map((plan, idx) => (
+              <AnimatedPricingCard
+                key={plan.id}
+                plan={plan as PricingPlan}
+                index={idx + 3}
+                language="es"
+                onSelect={(planId) => trackCTAClick('latam_pricing', `Plan ${planId}`)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Feature Comparison Table */}
-        <FeatureComparisonTable 
+        <FeatureComparisonTable
           plans={[
-            { id: "small", name: "SEMILLA - Iglesia Pequeña", price: "$49", period: "/mes", members: "150", features: [] },
-            { id: "medium", name: "COSECHA - Iglesia Mediana", price: "$149", period: "/mes", members: "500", features: [], popular: true },
-            { id: "large", name: "REINO - Iglesia Grande", price: "$299", period: "/mes", members: "1,500", features: [] }
+            { id: "small",  name: "SEMILLA",  price: "$49",        period: "/mes",       members: "150",      features: [] },
+            { id: "medium", name: "COSECHA",  price: "$149",       period: "/mes",       members: "500",      features: [], popular: true },
+            { id: "large",  name: "REINO",    price: "$299",       period: "/mes",       members: "1,500",    features: [] },
+            { id: "gloria", name: "GLORIA",   price: "Custom",     period: "",           members: "1,500+",   features: [] },
+            { id: "red",    name: "RED",      price: "$94.90",     period: "/igl/mes",   members: "Red",      features: [] }
           ]}
           language="es"
           className="mt-16"
@@ -382,12 +423,30 @@ export default function LatamMarketPage() {
             Descubra cuánto puede ahorrar su iglesia con KHESED-TEK
           </p>
         </div>
-        <ROICalculator 
-          language="es" 
-          market="LATAM" 
+        <ROICalculator
+          language="es"
+          market="LATAM"
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
+      </section>
+
+      {/* Interactive Plan Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold mb-4">Calculadora Interactiva de Plan</h2>
+          <p className="text-[var(--muted)] text-lg">
+            Simula el costo exacto según el uso y tamaño de tu iglesia
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)]">
+          <iframe
+            src="/calc-v2-public-dual.html"
+            title="Calculadora de Plan Khesed-Tek"
+            className="w-full border-0"
+            style={{ height: '860px' }}
+          />
+        </div>
       </section>
 
       {/* About Section - Nosotros */}

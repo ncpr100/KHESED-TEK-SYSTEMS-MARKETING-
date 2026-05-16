@@ -522,12 +522,59 @@ export default function GlobalMarketPage() {
           ))}
         </div>
 
+        {/* Enterprise & Network Plans */}
+        <div className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-widest text-[var(--muted)]">
+              {language === 'es' ? 'Para organizaciones mayores' : 'For larger organizations'}
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                id: "gloria",
+                name: language === 'es' ? 'GLORIA - Megaiglesia / Multi-campus' : 'GLORIA - Megachurch / Multi-campus',
+                price: language === 'es' ? 'Personalizado' : 'Custom',
+                period: "",
+                members: language === 'es' ? '1,500+ miembros · Multi-campus' : '1,500+ members · Multi-campus',
+                features: language === 'es'
+                  ? ["Todo lo del Plan Reino", "Gestión multi-campus integrada", "SLA y soporte empresarial dedicado", "Implementación asistida", "$1.50/100 conv. WhatsApp excedente"]
+                  : ["Everything in Reino", "Multi-campus integrated management", "Dedicated enterprise SLA & support", "Assisted implementation", "$1.50/100 WhatsApp conversations overage"],
+                ctaText: language === 'es' ? 'Solicitar cotización' : 'Request Quote',
+                ctaUrl: "/contact?plan=gloria"
+              },
+              {
+                id: "red",
+                name: language === 'es' ? 'RED - Redes y Denominaciones' : 'RED - Networks & Denominations',
+                price: "$94.90",
+                period: language === 'es' ? "/iglesia/mes" : "/church/month",
+                members: language === 'es' ? 'Redes · Denominaciones · Asociaciones' : 'Networks · Denominations · Associations',
+                features: language === 'es'
+                  ? ["Plan Cosecha por cada iglesia miembro", "1,200 conv. WhatsApp incluidas/iglesia", "Panel de administración de red", "Reportes consolidados de la red", "$1.75/100 conv. WhatsApp excedente"]
+                  : ["Cosecha plan per member church", "1,200 WhatsApp conversations/church", "Network administration dashboard", "Consolidated network reports", "$1.75/100 WhatsApp conversations overage"],
+                ctaText: language === 'es' ? 'Contactar ventas' : 'Contact Sales',
+                ctaUrl: "/contact?plan=red"
+              }
+            ].map((plan, idx) => (
+              <AnimatedPricingCard
+                key={plan.id}
+                plan={plan as PricingPlan}
+                index={idx + 3}
+                language={language as 'es' | 'en'}
+                onSelect={(planId: string) => trackCTAClick('global_pricing', `Plan ${planId}`)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Feature Comparison Table */}
-        <FeatureComparisonTable 
+        <FeatureComparisonTable
           plans={[
-            { id: "small", name: language === 'es' ? 'SEMILLA - Iglesia Pequeña' : 'SEMILLA - Small Church', price: "$49", period: language === 'es' ? '/mes' : '/month', members: "150", features: [] },
-            { id: "medium", name: language === 'es' ? 'COSECHA - Iglesia Mediana' : 'COSECHA - Medium Church', price: "$149", period: language === 'es' ? '/mes' : '/month', members: "500", features: [], popular: true },
-            { id: "large", name: language === 'es' ? 'REINO - Iglesia Grande' : 'REINO - Large Church', price: "$299", period: language === 'es' ? '/mes' : '/month', members: "1,500", features: [] }
+            { id: "small",  name: "SEMILLA",  price: "$49",      period: language === 'es' ? '/mes' : '/month',  members: "150",      features: [] },
+            { id: "medium", name: "COSECHA",  price: "$149",     period: language === 'es' ? '/mes' : '/month',  members: "500",      features: [], popular: true },
+            { id: "large",  name: "REINO",    price: "$299",     period: language === 'es' ? '/mes' : '/month',  members: "1,500",    features: [] },
+            { id: "gloria", name: "GLORIA",   price: language === 'es' ? 'Custom' : 'Custom', period: "", members: "1,500+", features: [] },
+            { id: "red",    name: "RED",      price: "$94.90",   period: language === 'es' ? '/igl/mes' : '/ch/mo', members: language === 'es' ? 'Red' : 'Network', features: [] }
           ]}
           language={language}
           className="mt-16"
@@ -561,18 +608,41 @@ export default function GlobalMarketPage() {
             {language === 'es' ? 'Calcula tu ROI' : 'Calculate Your ROI'}
           </h2>
           <p className="text-[var(--muted)] text-lg">
-            {language === 'es' 
+            {language === 'es'
               ? 'Descubre cuánto puede ahorrar tu iglesia con KHESED-TEK'
               : 'Discover how much your church can save with KHESED-TEK'
             }
           </p>
         </div>
-        <ROICalculator 
-          language={language} 
-          market="GLOBAL" 
+        <ROICalculator
+          language={language}
+          market="GLOBAL"
           showDetailed={true}
           className="max-w-4xl mx-auto"
         />
+      </section>
+
+      {/* Interactive Plan Calculator */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold mb-4">
+            {language === 'es' ? 'Calculadora Interactiva de Plan' : 'Interactive Plan Calculator'}
+          </h2>
+          <p className="text-[var(--muted)] text-lg">
+            {language === 'es'
+              ? 'Simula el costo exacto según el uso y tamaño de tu iglesia'
+              : 'Simulate the exact cost based on your church\'s size and usage'
+            }
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-[var(--border)]">
+          <iframe
+            src="/calc-v2-public-dual.html"
+            title={language === 'es' ? 'Calculadora de Plan Khesed-Tek' : 'Khesed-Tek Plan Calculator'}
+            className="w-full border-0"
+            style={{ height: '860px' }}
+          />
+        </div>
       </section>
 
       {/* Global Beta Program Launch */}

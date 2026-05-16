@@ -4,7 +4,6 @@
 import { useState } from 'react';
 import type { PricingPlan } from '@/types/pricing';
 
-// Icon component for outline icons
 const OutlineIcon = ({ name, className = "w-4 h-4" }: { name: string; className?: string }) => {
   const icons: Record<string, JSX.Element> = {
     'zap': (
@@ -56,10 +55,10 @@ const OutlineIcon = ({ name, className = "w-4 h-4" }: { name: string; className?
 
 interface FeatureComparison {
   feature: string;
+  featureEn?: string;
   description?: string;
-  plans: {
-    [planId: string]: boolean | string | number;
-  };
+  descriptionEn?: string;
+  plans: { [planId: string]: boolean | string | number };
   category?: string;
 }
 
@@ -70,129 +69,190 @@ interface FeatureComparisonTableProps {
 }
 
 const FEATURE_COMPARISONS: FeatureComparison[] = [
-  // Core Features
+  // Core
   {
     feature: 'Gestión de miembros',
+    featureEn: 'Member management',
     description: 'Base de datos completa de miembros con perfiles detallados',
+    descriptionEn: 'Complete member database with detailed profiles',
     category: 'core',
-    plans: {
-      small: true,
-      medium: true,
-      large: true
-    }
+    plans: { small: true, medium: true, large: true, gloria: true, red: true }
   },
   {
     feature: 'Límite de miembros',
+    featureEn: 'Member limit',
     category: 'core',
-    plans: {
-      small: '500',
-      medium: '2,000', 
-      large: 'Ilimitado'
-    }
+    plans: { small: '150', medium: '500', large: '1,500', gloria: 'Multi-campus', red: 'Por iglesia' }
+  },
+  {
+    feature: 'Agentes IA incluidos',
+    featureEn: 'AI agents included',
+    description: 'Sistema de 12 agentes de inteligencia artificial especializados',
+    descriptionEn: '12 specialized AI ministry agents',
+    category: 'core',
+    plans: { small: 'Ag.2,4,5 (3)', medium: '12 completos', large: '12 completos', gloria: '12 completos', red: '12 completos' }
   },
   {
     feature: 'Licencias de usuario',
+    featureEn: 'User licenses',
     description: 'Número de usuarios administrativos permitidos',
+    descriptionEn: 'Number of administrative users allowed',
     category: 'core',
-    plans: {
-      small: 'Hasta 5',
-      medium: 'Hasta 10',
-      large: 'Ilimitadas'
-    }
+    plans: { small: 'Hasta 3', medium: 'Hasta 10', large: 'Hasta 25', gloria: 'Ilimitadas', red: '5/iglesia' }
+  },
+  // Communication
+  {
+    feature: 'WhatsApp Business nativo',
+    featureEn: 'Native WhatsApp Business',
+    description: 'Comunicación directa con miembros via WhatsApp Business',
+    descriptionEn: 'Direct member communication via WhatsApp Business',
+    category: 'communication',
+    plans: { small: true, medium: true, large: true, gloria: true, red: true }
   },
   {
-    feature: 'WhatsApp integrado',
-    description: 'Comunicación directa con miembros via WhatsApp',
+    feature: 'Conversaciones WA incluidas',
+    featureEn: 'Included WA conversations',
+    description: 'Conversaciones WhatsApp incluidas mensualmente',
+    descriptionEn: 'Monthly WhatsApp conversations included',
     category: 'communication',
-    plans: {
-      small: true,
-      medium: true,
-      large: true
-    }
+    plans: { small: 'No incluidas', medium: '800/mes', large: '2,500/mes', gloria: 'Personalizado', red: '1,200/mes' }
   },
+  {
+    feature: 'Excedente WhatsApp',
+    featureEn: 'WhatsApp overage',
+    description: 'Costo por cada 100 conversaciones adicionales',
+    descriptionEn: 'Cost per 100 additional conversations',
+    category: 'communication',
+    plans: { small: 'N/A', medium: '$2.50/100', large: '$2.00/100', gloria: '$1.50/100', red: '$1.75/100' }
+  },
+  // Support
   {
     feature: 'Soporte técnico',
+    featureEn: 'Technical support',
     category: 'support',
-    plans: {
-      small: 'Email',
-      medium: 'Email + Chat',
-      large: '24/7 Prioritario'
-    }
+    plans: { small: 'Email 48h', medium: 'Chat 4h', large: 'Prioritario 2h', gloria: 'Dedicado SLA', red: 'Email 48h' }
+  },
+  {
+    feature: 'SLA uptime',
+    featureEn: 'Uptime SLA',
+    category: 'support',
+    plans: { small: '99.5%', medium: '99.9%', large: '99.9%', gloria: 'Personalizado', red: '99.5%' }
   },
   // Advanced Features
   {
     feature: 'Multi-campus',
-    description: 'Gestión de múltiples ubicaciones y sedes',
+    featureEn: 'Multi-campus',
+    description: 'Gestión de múltiples sedes y ubicaciones',
+    descriptionEn: 'Manage multiple campuses and locations',
     category: 'advanced',
-    plans: {
-      small: false,
-      medium: false,
-      large: true
-    }
+    plans: { small: false, medium: false, large: false, gloria: true, red: 'Multi-iglesia' }
+  },
+  {
+    feature: 'Panel de red',
+    featureEn: 'Network dashboard',
+    description: 'Administración centralizada de múltiples iglesias miembro',
+    descriptionEn: 'Centralized admin for multiple member churches',
+    category: 'advanced',
+    plans: { small: false, medium: false, large: false, gloria: false, red: true }
   },
   {
     feature: 'API personalizada',
+    featureEn: 'Custom API',
     description: 'Integraciones personalizadas con otros sistemas',
+    descriptionEn: 'Custom integrations with third-party systems',
     category: 'advanced',
-    plans: {
-      small: false,
-      medium: false,
-      large: true
-    }
+    plans: { small: false, medium: false, large: true, gloria: true, red: true }
   },
   {
-    feature: 'Reportes avanzados',
-    description: 'Analytics detallados y reportes personalizables',
-    category: 'analytics',
-    plans: {
-      small: 'Básicos',
-      medium: 'Avanzados',
-      large: 'Completos + BI'
-    }
+    feature: 'Analítica predictiva',
+    featureEn: 'Predictive analytics',
+    description: 'IA predice deserción y sugiere intervenciones pastorales',
+    descriptionEn: 'AI predicts disengagement and suggests pastoral interventions',
+    category: 'advanced',
+    plans: { small: false, medium: false, large: true, gloria: true, red: true }
   },
+  // Analytics
+  {
+    feature: 'Reportes',
+    featureEn: 'Reports',
+    description: 'Dashboards y reportes de gestión ministerial',
+    descriptionEn: 'Ministry management dashboards and reports',
+    category: 'analytics',
+    plans: { small: 'Básicos', medium: 'Avanzados', large: 'Completos + BI', gloria: 'Empresarial', red: 'Red consolidada' }
+  },
+  // Media
   {
     feature: 'Transmisiones en vivo',
+    featureEn: 'Live streaming',
     description: 'Streaming y gestión de eventos virtuales',
+    descriptionEn: 'Streaming and virtual event management',
     category: 'media',
-    plans: {
-      small: false,
-      medium: true,
-      large: true
-    }
+    plans: { small: false, medium: true, large: true, gloria: true, red: true }
   },
+  // Security
   {
     feature: 'Cumplimiento GDPR',
+    featureEn: 'GDPR compliance',
     description: 'Protección de datos según regulaciones internacionales',
+    descriptionEn: 'Data protection per international regulations',
     category: 'security',
-    plans: {
-      small: false,
-      medium: 'Básico',
-      large: 'Completo'
-    }
+    plans: { small: false, medium: 'Básico', large: 'Completo', gloria: 'Completo', red: 'Básico' }
+  },
+  {
+    feature: 'Encriptación de datos',
+    featureEn: 'Data encryption',
+    description: 'Protección de información sensible de miembros',
+    descriptionEn: 'Protection of sensitive member information',
+    category: 'security',
+    plans: { small: true, medium: true, large: true, gloria: true, red: true }
   }
 ];
 
 const CATEGORIES = {
-  core: { name: 'Funciones Básicas', icon: 'zap' },
-  communication: { name: 'Comunicación', icon: 'message-circle' },
-  support: { name: 'Soporte', icon: 'headphones' },
-  advanced: { name: 'Funciones Avanzadas', icon: 'rocket' },
-  analytics: { name: 'Reportes y Analytics', icon: 'bar-chart' },
-  media: { name: 'Multimedia', icon: 'video' },
-  security: { name: 'Seguridad', icon: 'shield' }
+  core:         { name: 'Funciones Básicas',    nameEn: 'Core Features',        icon: 'zap' },
+  communication:{ name: 'Comunicación',          nameEn: 'Communication',         icon: 'message-circle' },
+  support:      { name: 'Soporte',               nameEn: 'Support',               icon: 'headphones' },
+  advanced:     { name: 'Funciones Avanzadas',   nameEn: 'Advanced Features',     icon: 'rocket' },
+  analytics:    { name: 'Reportes y Analytics',  nameEn: 'Reports & Analytics',   icon: 'bar-chart' },
+  media:        { name: 'Multimedia',            nameEn: 'Multimedia',            icon: 'video' },
+  security:     { name: 'Seguridad',             nameEn: 'Security',              icon: 'shield' }
 };
 
-export default function FeatureComparisonTable({ 
-  plans, 
+const i18n = {
+  es: {
+    title: 'Comparación Detallada de Funciones',
+    subtitle: 'Encuentra el plan perfecto comparando todas las funciones disponibles para tu iglesia.',
+    allFeatures: 'Todas las funciones',
+    featureCol: 'Función',
+    helpTitle: '¿Necesitas ayuda para decidir?',
+    helpBody: 'Nuestro equipo puede ayudarte a elegir el plan perfecto para tu iglesia.',
+    helpCta: 'Solicitar Consulta Gratuita →',
+    mostPopular: 'MÁS POPULAR',
+  },
+  en: {
+    title: 'Detailed Feature Comparison',
+    subtitle: 'Find the perfect plan by comparing all features available for your church.',
+    allFeatures: 'All features',
+    featureCol: 'Feature',
+    helpTitle: 'Need help deciding?',
+    helpBody: 'Our team can help you choose the perfect plan for your church.',
+    helpCta: 'Request Free Consultation →',
+    mostPopular: 'MOST POPULAR',
+  }
+} as const;
+
+export default function FeatureComparisonTable({
+  plans,
   language = 'es',
-  className = '' 
+  className = ''
 }: FeatureComparisonTableProps) {
   const [expandedCategory, setExpandedCategory] = useState<string | null>('core');
   const [showAllFeatures, setShowAllFeatures] = useState(false);
 
+  const t = i18n[language];
   const planIds = plans.map(plan => plan.id);
-  const visibleFeatures = showAllFeatures 
-    ? FEATURE_COMPARISONS 
+  const visibleFeatures = showAllFeatures
+    ? FEATURE_COMPARISONS
     : FEATURE_COMPARISONS.filter(f => f.category === expandedCategory);
 
   const renderFeatureValue = (value: boolean | string | number) => {
@@ -221,12 +281,8 @@ export default function FeatureComparisonTable({
     <div className={`feature-comparison ${className}`}>
       {/* Header */}
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-semibold mb-4">
-          Comparación Detallada de Funciones
-        </h3>
-        <p className="text-[var(--muted)] max-w-2xl mx-auto">
-          Encuentra el plan perfecto comparando todas las funciones disponibles para tu iglesia.
-        </p>
+        <h3 className="text-2xl font-semibold mb-4">{t.title}</h3>
+        <p className="text-[var(--muted)] max-w-2xl mx-auto">{t.subtitle}</p>
       </div>
 
       {/* Category Filter */}
@@ -234,12 +290,11 @@ export default function FeatureComparisonTable({
         <button
           onClick={() => setShowAllFeatures(!showAllFeatures)}
           className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
-            showAllFeatures 
-              ? 'bg-[var(--brand)] text-black' 
+            showAllFeatures
+              ? 'bg-[var(--brand)] text-black'
               : 'border border-[var(--border)] hover:border-[var(--brand)]'
           }`}
         >
-          {/* Outline List Icon */}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="8" y1="6" x2="21" y2="6"></line>
             <line x1="8" y1="12" x2="21" y2="12"></line>
@@ -248,9 +303,9 @@ export default function FeatureComparisonTable({
             <line x1="3" y1="12" x2="3.01" y2="12"></line>
             <line x1="3" y1="18" x2="3.01" y2="18"></line>
           </svg>
-          Todas las funciones
+          {t.allFeatures}
         </button>
-        
+
         {Object.entries(CATEGORIES).map(([key, category]) => (
           <button
             key={key}
@@ -260,12 +315,12 @@ export default function FeatureComparisonTable({
             }}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
               expandedCategory === key && !showAllFeatures
-                ? 'bg-[var(--brand)] text-black' 
+                ? 'bg-[var(--brand)] text-black'
                 : 'border border-[var(--border)] hover:border-[var(--brand)]'
             }`}
           >
             <OutlineIcon name={category.icon} className="w-4 h-4" />
-            {category.name}
+            {language === 'en' ? category.nameEn : category.name}
           </button>
         ))}
       </div>
@@ -273,27 +328,24 @@ export default function FeatureComparisonTable({
       {/* Comparison Table */}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
-          {/* Table Header */}
           <thead>
             <tr className="border-b border-[var(--border)]">
-              <th className="text-left p-4 font-semibold">Función</th>
+              <th className="text-left p-4 font-semibold min-w-[180px]">{t.featureCol}</th>
               {plans.map((plan) => (
-                <th key={plan.id} className="text-center p-4 min-w-[140px]">
+                <th key={plan.id} className="text-center p-4 min-w-[120px]">
                   <div className={`
                     p-3 rounded-lg border transition-all
-                    ${plan.popular 
-                      ? 'border-[var(--brand)] bg-[var(--brand)]/10' 
+                    ${plan.popular
+                      ? 'border-[var(--brand)] bg-[var(--brand)]/10'
                       : 'border-[var(--border)]'
                     }
                   `}>
-                    <div className="font-semibold">{plan.name}</div>
+                    <div className="font-semibold text-sm leading-tight">{plan.name}</div>
                     <div className="text-sm text-[var(--brand)] font-bold">
                       {plan.price}{plan.period}
                     </div>
                     {plan.popular && (
-                      <div className="text-xs text-[var(--brand)] mt-1">
-                        MÁS POPULAR
-                      </div>
+                      <div className="text-xs text-[var(--brand)] mt-1">{t.mostPopular}</div>
                     )}
                   </div>
                 </th>
@@ -301,40 +353,38 @@ export default function FeatureComparisonTable({
             </tr>
           </thead>
 
-          {/* Table Body */}
           <tbody>
-            {visibleFeatures.map((feature, index) => (
-              <tr 
+            {visibleFeatures.map((feature) => (
+              <tr
                 key={feature.feature}
-                className={`
-                  border-b border-[var(--border)]/50 hover:bg-[var(--surface)]/50 
-                  transition-colors group
-                `}
+                className="border-b border-[var(--border)]/50 hover:bg-[var(--surface)]/50 transition-colors group"
               >
                 <td className="p-4">
                   <div className="flex items-start gap-3">
                     <div className="flex-1">
-                      <div className="font-medium">{feature.feature}</div>
-                      {feature.description && (
+                      <div className="font-medium">
+                        {language === 'en' && feature.featureEn ? feature.featureEn : feature.feature}
+                      </div>
+                      {(language === 'en' ? feature.descriptionEn : feature.description) && (
                         <div className="text-sm text-[var(--muted)] mt-1">
-                          {feature.description}
+                          {language === 'en' ? feature.descriptionEn : feature.description}
                         </div>
                       )}
                     </div>
                     {feature.category && (
                       <div className="text-xs bg-[var(--surface)] px-2 py-1 rounded flex items-center justify-center">
-                        <OutlineIcon 
-                          name={CATEGORIES[feature.category as keyof typeof CATEGORIES]?.icon} 
+                        <OutlineIcon
+                          name={CATEGORIES[feature.category as keyof typeof CATEGORIES]?.icon}
                           className="w-4 h-4 text-[var(--brand)]"
                         />
                       </div>
                     )}
                   </div>
                 </td>
-                
+
                 {planIds.map((planId) => (
                   <td key={planId} className="text-center p-4">
-                    {renderFeatureValue(feature.plans[planId as keyof typeof feature.plans] || false)}
+                    {renderFeatureValue(feature.plans[planId as keyof typeof feature.plans] ?? false)}
                   </td>
                 ))}
               </tr>
@@ -345,15 +395,13 @@ export default function FeatureComparisonTable({
 
       {/* CTA Section */}
       <div className="text-center mt-8 p-6 bg-[var(--surface)] rounded-xl">
-        <h4 className="font-semibold mb-2">¿Necesitas ayuda para decidir?</h4>
-        <p className="text-[var(--muted)] mb-4">
-          Nuestro equipo puede ayudarte a elegir el plan perfecto para tu iglesia.
-        </p>
+        <h4 className="font-semibold mb-2">{t.helpTitle}</h4>
+        <p className="text-[var(--muted)] mb-4">{t.helpBody}</p>
         <a
           href="/contact"
           className="inline-flex items-center gap-2 gradient-btn text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-transform"
         >
-          Solicitar Consulta Gratuita →
+          {t.helpCta}
         </a>
       </div>
     </div>
