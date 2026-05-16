@@ -310,34 +310,34 @@ export default function LatamMarketPage() {
           {[
             {
               id: "small",
-              name: "BÁSICO - Iglesia Pequeña",
-              price: annualBilling ? "$1,499.90 USD" : "$149.99 USD",
+              name: "SEMILLA - Iglesia Pequeña",
+              price: annualBilling ? "$480 USD" : "$49 USD",
               period: annualBilling ? "/año" : "/mes",
-              members: "Hasta 500 miembros",
-              features: ["Gestión básica de miembros", "WhatsApp integrado", "Hasta 5 licencias", "Soporte en español", "Pagos Locales", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
-              ctaText: "Solicitar Demo",
-              ctaUrl: "/contact?plan=small"
+              members: "Hasta 150 miembros",
+              features: ["Triaje espiritual en tiempo real", "Recordatorios de oración WA", "Registro del Pastor semanal", "WhatsApp nativo integrado", "Pagos Locales · Soporte email 48h", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
+              ctaText: "Comenzar gratis",
+              ctaUrl: "/schedule?plan=semilla"
             },
             {
               id: "medium",
-              name: "PROFESIONAL - Iglesia Mediana", 
-              price: annualBilling ? "$2,999.90 USD" : "$299.99 USD",
+              name: "COSECHA - Iglesia Mediana",
+              price: annualBilling ? "$1,488 USD" : "$149 USD",
               period: annualBilling ? "/año" : "/mes",
-              members: "Hasta 2,000 miembros",
-              features: ["Todo lo anterior", "Hasta 10 licencias", "Eventos y actividades", "Reportes avanzados", "Transmisiones en vivo", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
+              members: "Hasta 500 miembros",
+              features: ["Todo lo del Plan Semilla", "Cobertura dominical automática (Ag.12)", "Análisis de sermones y contenido", "Pipeline de liderazgo e informe de junta", "800 conv. WhatsApp incluidas", "12 Agentes IA completos", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               popular: true,
               ctaText: "Más popular",
-              ctaUrl: "/contact?plan=medium"
+              ctaUrl: "/schedule?plan=cosecha"
             },
             {
               id: "large",
-              name: "EMPRESARIAL - Iglesia Grande",
-              price: "Personalizado", 
-              period: "",
-              members: "Miembros ilimitados",
-              features: ["Todo lo anterior", "Licencias ilimitadas", "Multi-campus", "API personalizada", "Soporte prioritario"],
+              name: "REINO - Iglesia Grande",
+              price: annualBilling ? "$2,988 USD" : "$299 USD",
+              period: annualBilling ? "/año" : "/mes",
+              members: "Hasta 1,500 miembros",
+              features: ["Todo lo del Plan Cosecha", "2,500 conv. WhatsApp incluidas", "Analítica predictiva completa (Ag.8-10)", "Coach de mayordomía espiritual", "SLA 99.9% · Soporte 2h respuesta", ...(annualBilling ? ["2 meses gratis incluidos"] : [])],
               ctaText: "Solicitar demo",
-              ctaUrl: "/contact?plan=large"
+              ctaUrl: "/schedule?plan=reino"
             }
           ].map((plan, idx) => (
             <AnimatedPricingCard
@@ -357,9 +357,9 @@ export default function LatamMarketPage() {
         {/* Feature Comparison Table */}
         <FeatureComparisonTable 
           plans={[
-            { id: "small", name: "BÁSICO - Iglesia Pequeña", price: "$149.99", period: "/mes", members: "500", features: [] },
-            { id: "medium", name: "PROFESIONAL - Iglesia Mediana", price: "$299.99", period: "/mes", members: "2,000", features: [], popular: true },
-            { id: "large", name: "EMPRESARIAL - Iglesia Grande", price: "Personalizado", period: "", members: "Ilimitado", features: [] }
+            { id: "small", name: "SEMILLA - Iglesia Pequeña", price: "$49", period: "/mes", members: "150", features: [] },
+            { id: "medium", name: "COSECHA - Iglesia Mediana", price: "$149", period: "/mes", members: "500", features: [], popular: true },
+            { id: "large", name: "REINO - Iglesia Grande", price: "$299", period: "/mes", members: "1,500", features: [] }
           ]}
           language="es"
           className="mt-16"
