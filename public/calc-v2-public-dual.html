@@ -254,11 +254,11 @@ tr.rec td{background:rgba(201,146,42,.08)}
 <script>
 const API_BASE='https://www.khesed-tek-systems.org';
 let PLANS=[
-  {tier:'SEMILLA',n:'Plan Semilla',tl:'Para iglesias que comienzan',color:'#1DC98C',price:49,maxM:150,maxV:40,maxS:1,waI:0,waO:0,ag12:false,ag:[2,4,5],bespoke:false,network:false,cta:'Comenzar gratis →',ctaHref:'/registro?plan=semilla'},
-  {tier:'COSECHA',n:'Plan Cosecha',tl:'Para iglesias en crecimiento activo',color:'#F0B83C',price:149,maxM:500,maxV:150,maxS:2,waI:800,waO:2.50,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:false,cta:'Más popular →',ctaHref:'/registro?plan=cosecha'},
-  {tier:'REINO',n:'Plan Reino',tl:'Para iglesias grandes',color:'#26D9D9',price:299,maxM:1500,maxV:400,maxS:4,waI:2500,waO:1.80,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:false,cta:'Solicitar demo →',ctaHref:'/registro?plan=reino'},
-  {tier:'GLORIA',n:'Plan Gloria',tl:'Para megaiglesias y campuses múltiples',color:'#E84855',price:0,maxM:99999,maxV:9999,maxS:9,waI:0,waO:1.50,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:true,network:false,cta:'Solicitar cotización →',ctaHref:'/contacto?plan=gloria'},
-  {tier:'RED',n:'Plan Red',tl:'Para redes y denominaciones',color:'#9B8FFF',price:84.90,maxM:99999,maxV:9999,maxS:9,waI:1200,waO:1.75,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:true,cta:'Contactar →',ctaHref:'/contacto?plan=red'},
+  {tier:'SEMILLA',n:'Plan Semilla',tl:'Para iglesias que comienzan',color:'#1DC98C',price:49,maxM:150,maxV:40,maxS:1,waI:0,waO:0,ag12:false,ag:[2,4,5],bespoke:false,network:false,cta:'Comenzar gratis →',ctaHref:'/schedule?plan=semilla'},
+  {tier:'COSECHA',n:'Plan Cosecha',tl:'Para iglesias en crecimiento activo',color:'#F0B83C',price:149,maxM:500,maxV:150,maxS:2,waI:800,waO:2.50,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:false,cta:'Más popular →',ctaHref:'/schedule?plan=cosecha'},
+  {tier:'REINO',n:'Plan Reino',tl:'Para iglesias grandes',color:'#26D9D9',price:299,maxM:1500,maxV:400,maxS:4,waI:2500,waO:1.80,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:false,cta:'Solicitar demo →',ctaHref:'/schedule?plan=reino'},
+  {tier:'GLORIA',n:'Plan Gloria',tl:'Para megaiglesias y campuses múltiples',color:'#E84855',price:0,maxM:99999,maxV:9999,maxS:9,waI:0,waO:1.50,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:true,network:false,cta:'Solicitar cotización →',ctaHref:'/contact?plan=gloria'},
+  {tier:'RED',n:'Plan Red',tl:'Para redes y denominaciones',color:'#9B8FFF',price:94.90,maxM:99999,maxV:9999,maxS:9,waI:1200,waO:1.75,ag12:true,ag:[1,2,3,4,5,6,7,8,9,10,11,12],bespoke:false,network:true,cta:'Contactar →',ctaHref:'/contact?plan=red'},
 ];
 let WR={CO:.0147,MX:.0169,PE:.0151,CL:.0138,AR:.0122,VE:.0147,EC:.0155,BO:.0149,GT:.0143,DO:.0152,OTHER:.015};
 const AN={1:'Ag.1 Antifonal',2:'Ag.2 Triaje',3:'Ag.3 Contenido',4:'Ag.4 Oración',5:'Ag.5 Pastor',6:'Ag.6 Liderazgo',7:'Ag.7 Burnout',8:'Ag.8 Visitantes',9:'Ag.9 Mayor.',10:'Ag.10 Grupos',11:'Ag.11 Junta',12:'★ Cobertura'};

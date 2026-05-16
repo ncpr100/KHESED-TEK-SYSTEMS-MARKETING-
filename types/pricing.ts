@@ -65,3 +65,33 @@ export interface LocalizedPrice {
   formatted: string;
   isEstimate?: boolean;
 }
+
+// Public pricing config — consumed by /public/calc-v2-public-dual.html via /api/public/pricing-config
+export interface PublicPlanConfig {
+  tier: string;
+  n: string;
+  tl: string;
+  color: string;
+  price: number;
+  maxM: number;
+  maxV: number;
+  maxS: number;
+  waI: number;
+  waO: number;
+  ag12: boolean;
+  ag: number[];
+  bespoke: boolean;
+  network: boolean;
+  cta: string;
+  ctaHref: string;
+}
+
+export interface WaCountryRate {
+  countryCode: string;
+  ratePerConv: number;
+}
+
+export interface PublicPricingConfigResponse {
+  plans: PublicPlanConfig[];
+  rates: WaCountryRate[];
+}
