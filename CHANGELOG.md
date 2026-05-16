@@ -7,19 +7,129 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.4.0] - 2026-04-24 — Performance Fixes
+## [1.5.4] - 2026-05-03 — Footer Ubicación Outline Icon Hotfix
 
-### Fixed
+### Fixed (1.5.4)
 
 | # | Issue | File(s) Changed |
-|---|---|---|
+| --- | --- | --- |
+| U-3 | `Ubicación` outline icon did not render because unsupported icon key (`map-pin`) was used | `components/marketing/footer.tsx` |
+
+### Details (1.5.4)
+
+- Replaced unsupported icon name `map-pin` with supported `marker` in shared footer outline icon mapping.
+- This fix applies to all market pages (`/latam`, `/usa`, `/global`) because the footer is shared.
+
+## [1.5.3] - 2026-05-03 — Footer Icon Style Correction + Homepage Cosmos Loading + Theme Bootstrap
+
+### Fixed (1.5.3)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| S-3 | TikTok handle misspelled as `@knesed...` in footer and schema | `components/marketing/footer.tsx`, `lib/seo.ts` |
+| U-1 | Footer `Ubicación` and `Síguenos` cards used square badge wrappers not matching requested plain outline style | `components/marketing/footer.tsx` |
+| U-2 | Homepage location-detection loader and fallback hero still used legacy non-Cosmos cyan/purple styling | `app/page.tsx` |
+| T-3 | Theme mode was initialized only after hydration, allowing first-paint mismatch | `app/layout.tsx` |
+
+### Details (1.5.3)
+
+- **S-3**: Corrected TikTok URL to `https://www.tiktok.com/@khesed.tek.systems/` in both footer links and JSON-LD `sameAs`.
+- **U-1**: Removed square icon badges for `Ubicación` and social links; applied plain branded outline icon treatment consistent with `Correo`/`WhatsApp` card headers.
+- **U-2**: Updated homepage loading spinner and fallback hero gradients to Cosmos gold token styling.
+- **T-3**: Added inline pre-hydration theme bootstrap script and default `data-theme="dark"` on `<html>` to stabilize SSR/SSG first paint.
+
+## [1.5.2] - 2026-05-03 — Theme Toggle Consistency + Footer Icon Badges
+
+### Fixed (1.5.2)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| T-1 | Theme toggle was only available on desktop and not consistent on mobile navigation | `components/marketing/header.tsx` |
+| T-2 | Mobile menu used hardcoded dark background, creating light-theme inconsistency | `components/marketing/header.tsx` |
+| B-1 | Footer location/social icon badges were missing visual token styles | `app/globals.css`, `components/marketing/footer.tsx` |
+
+### Details (1.5.2)
+
+- **T-1**: Added a mobile-visible theme toggle button using the same persisted `khesed-theme` state (`dark`/`light`) as desktop.
+- **T-2**: Replaced mobile menu hardcoded black surface with theme-aware `var(--hd-bg)` + `var(--bdr)` styling.
+- **B-1**: Added `.ico-pill` and `.ico-pill.sm` reusable badge styles and applied them to footer location + social icons for Cosmos visual consistency across all markets.
+
+## [1.5.1] - 2026-05-03 — Social Link Corrections + Strict Cosmos Color Enforcement
+
+### Fixed (1.5.1)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| S-1 | LinkedIn references remained in footer and structured data despite no LinkedIn account | `components/marketing/footer.tsx`, `lib/seo.ts` |
+| S-2 | Footer social block was incomplete and did not expose all active social channels | `components/marketing/footer.tsx` |
+| C-1 | Legacy cyan/purple color references persisted in runtime UI and email templates | `app/globals.css`, `components/products/product-request-form.tsx`, `app/products/page.tsx`, `app/schedule/page.tsx`, `app/latam/page.tsx`, `app/usa/page.tsx`, `app/global/page.tsx`, `components/social-proof/trust-signals.tsx`, `components/conversion/roi-calculator.tsx`, `lib/email/product-templates.ts`, `lib/email/templates.ts`, `lib/email/automation.ts` |
+| D-1 | Source-of-truth styling section no longer matched runtime Cosmos token system | `PROJECT_SOURCE_OF_TRUTH.md` |
+
+### Details (1.5.1)
+
+- **S-1**: Removed LinkedIn URL and footer icon/click tracking references.
+- **S-2**: Updated footer social links to:
+  - Facebook: `https://www.facebook.com/nc.khesed.tek.systems`
+  - Instagram: `https://www.instagram.com/@khesed.tek.systems.org`
+  - YouTube: `https://www.youtube.com/@Khesed-Tek-Systems`
+  - TikTok: `https://www.tiktok.com/@knesed.tek.systems/`
+- **C-1**: Replaced remaining cyan/purple hardcoded values and `text-cyan-400` usages with Cosmos gold tokens/values.
+- **D-1**: Updated documented CSS variables in `PROJECT_SOURCE_OF_TRUTH.md` to the active Cosmos palette.
+
+## [1.5.0] - 2026-05-03 — Cosmos Theme UI/UX Implementation (Safe Integration)
+
+### Fixed (1.5.0)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| CX-1 | Cosmos V3 ZIP scaffold was not directly compatible with current app architecture (Next 14 scaffold, missing imports, duplicate token system) | Audit only (`khesed-tek-cosmos-v3-nextjs.zip`) |
+| CX-2 | Existing UI lacked the intended Cosmos atmospheric visual layer while preserving current routing and market logic | `app/globals.css` |
+| CX-3 | Header visual language did not reflect Cosmos palette and depth | `components/marketing/header.tsx` |
+| CX-4 | LATAM hero trust-chip row wrapped poorly on narrow layouts | `app/latam/page.tsx` |
+| CX-5 | Footer surface styling was visually disconnected from updated Cosmos layer | `components/marketing/footer.tsx` |
+
+### Details (1.5.0)
+
+- **CX-1 (Root cause analysis)**: The ZIP contains a standalone mini-app (`khesed-nextjs`) with incompatible assumptions: Next 14 dependency target, references to missing `@/components/cosmos/*` modules in this repository, duplicate token files, and metadata paths that do not match live assets.
+- **CX-2**: Added Cosmos-safe design tokens (`--gold`, `--gold-hi`, `--navy-2`, `--bdr-gold`) and a non-interactive atmospheric background layer in `globals.css` using `body::before`.
+- **CX-3**: Updated header container to `bg-[var(--navy-2)]/85` with `border-[var(--bdr-gold)]` while preserving navigation behavior and analytics hooks.
+- **CX-4**: Added `cosmos-hero` class to LATAM hero and changed trust-chip row to `flex-wrap` + `justify-center` to prevent cramped rendering.
+- **CX-5**: Updated footer container border/background to align with Cosmos palette and maintain readability.
+- Build validated: zero TypeScript/Next.js errors introduced.
+
+---
+
+## [1.4.1] - 2026-05-03 — Regression & Metadata Corrections
+
+### Fixed (1.4.1)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
+| R-1 | Header CTA was scroll-gated and not visible/crawlable on initial load | `components/marketing/header.tsx` |
+| R-2 | Metadata referenced non-existent favicon/manifest paths (`/favicon.ico`, `/apple-touch-icon.png`, `/favicon-16x16.png`, `/site.webmanifest`) | `app/layout.tsx` |
+| R-3 | Missing `preconnect` hints for `fonts.gstatic.com` and `google-analytics.com` | `app/layout.tsx` |
+
+### Details (1.4.1)
+
+- **R-1**: Removed scroll listener and opacity gating from the desktop CTA. CTA is now visible at first render and remains interactive.
+- **R-2**: Updated metadata paths to existing assets: `/icon-192.png` and `/manifest.json`.
+- **R-3**: Added `preconnect` to `fonts.gstatic.com` (with `crossOrigin`) and `google-analytics.com` to reduce connection setup latency.
+
+---
+
+## [1.4.0] - 2026-04-24 — Performance Fixes
+
+### Fixed (1.4.0)
+
+| # | Issue | File(s) Changed |
+| --- | --- | --- |
 | P-1 | Sonner toast CSS import caused layout shift on load | `app/globals.css` |
 | P-2 | Vercel Analytics/Speed Insights script loaded blocking | `app/layout.tsx` |
 | P-3 | Missing `<link rel="preconnect">` for Google Fonts and GTM | `app/layout.tsx` |
 | P-4 | Logo `<Image>` missing `sizes` hint — browser downloaded oversized srcset | `components/marketing/header.tsx` |
 | P-5 | Hero section lacked explicit `min-height` causing CLS on font swap | `app/latam/page.tsx` |
 
-### Details
+### Details (1.4.0)
 
 - **P-3**: Added `preconnect` to `fonts.googleapis.com`, `fonts.gstatic.com`, `googletagmanager.com`; added `dns-prefetch` for `static.cloudflareinsights.com`
 - **P-4**: `sizes="(max-width: 640px) 180px, 260px"` added to logo — reduces mobile image payload from 512 px to 180 px equivalent
@@ -29,10 +139,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.0] - 2026-04-24 — Content Consistency Fixes
 
-### Fixed
+### Fixed (1.3.0)
 
 | # | Issue | File(s) Changed |
-|---|---|---|
+| --- | --- | --- |
 | C-1 | Pricing CTA buttons showed three different labels depending on plan | `components/pricing/animated-pricing-card.tsx` |
 | C-2 | "Más popular" badge rendered below plan title instead of above it | `components/pricing/animated-pricing-card.tsx` |
 | C-3 | Footer missing LinkedIn and YouTube links | `components/marketing/footer.tsx` |
@@ -42,7 +152,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | C-7 | Demo video play events not tracked | `components/conversion/demo-video-section.tsx` |
 | C-8 | Schedule and contact pages missing WhatsApp CTA analytics | `app/schedule/page.tsx`, `app/contact/page.tsx` |
 
-### Details
+### Details (1.3.0)
 
 - **C-1/C-2**: All pricing CTAs unified to `"Solicitar demo →"`; badge moved above `<h3>` in DOM order
 - **C-3**: Added 4th "Síguenos" column to footer grid with LinkedIn and YouTube SVG icon links
@@ -53,27 +163,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2026-04-24 — Analytics Fixes
 
-### Fixed
+### Fixed (1.2.0)
 
 | # | Issue | File(s) Changed |
-|---|---|---|
+| --- | --- | --- |
 | A-1 | No structured GA4 event tracking — all CTAs fired raw `gtag` calls ad-hoc | `lib/analytics.ts` |
 | A-2 | Vercel toolbar injected feedback widget into production UI | Disabled via Vercel project settings |
 | A-3 | No scroll-depth tracking — section view events never fired | `components/scroll-tracker.tsx` *(new)* |
 | A-4 | ROI calculator results not sent to GA4 | `components/conversion/roi-calculator.tsx` |
 | A-5 | WhatsApp clicks from hero, footer, schedule, contact not differentiated in GA4 | Multiple pages |
 
-### Details
+### Details (1.2.0)
 
 - **A-1**: Added `export const analytics` object to `lib/analytics.ts` with typed methods: `whatsappClick(location)`, `demoRequest(plan)`, `videoPlay(title)`, `roiCalculated(params)`, `faqExpanded(question)`, `sectionViewed(sectionId)`, `ctaClicked(label, destination)`. Union types `CTALocation` and `PricingPlan` added for compile-time safety.
 - **A-3**: `ScrollTracker` uses `IntersectionObserver` at 30% threshold on `#features`, `#about`, `#faq`; injected into all three market pages (`/latam`, `/usa`, `/global`)
 - **A-4**: `analytics.roiCalculated({ churchSize, adminHours, volunteerHours, manualLevel, projectedROI })` fires on every calculation
 - **A-5**: `location` parameter differentiates `"hero"`, `"footer"`, `"banner"` in GA4 DebugView
 
-### GA4 Events Reference
+### GA4 Events Reference (1.2.0)
 
 | Event Name | Trigger | Key Parameters |
-|---|---|---|
+| --- | --- | --- |
 | `whatsapp_click` | Any WhatsApp CTA | `location` |
 | `demo_request` | Pricing CTA click | `plan` |
 | `video_play` | Demo video starts | `video_title` |
@@ -86,10 +196,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2026-04-24 — SEO Fixes
 
-### Fixed
+### Fixed (1.1.0)
 
 | # | Issue | File(s) Changed |
-|---|---|---|
+| --- | --- | --- |
 | S-1 | Header CTA button invisible until 80 px scroll — not indexed by crawlers | `components/marketing/header.tsx` |
 | S-2 | Sitemap pointed to wrong domain (`khesed-tek.com`) and had only 2 URLs | `app/sitemap.ts` |
 | S-3 | `robots.txt` allowed `/_next/` and referenced wrong sitemap domain | `app/robots.ts` |
@@ -99,7 +209,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | S-7 | Organization `sameAs` missing social profile URLs | `lib/seo.ts` |
 | S-8 | `<head>` lacked preconnect hints for critical third-party origins | `app/layout.tsx` |
 
-### Details
+### Details (1.1.0)
 
 - **S-1**: Removed `opacity-0` / scroll-gated class logic from CTA — button always visible
 - **S-2**: Sitemap expanded to 7 URLs (`/`, `/latam`, `/usa`, `/global`, `/contact`, `/schedule`, `/products`) with correct priorities and change frequencies; domain corrected to `khesed-tek-systems.org`
@@ -113,7 +223,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Run after every production deployment. Check off each item.
 
-### SEO
+### SEO (1.1.0)
 - [ ] `curl https://www.khesed-tek-systems.org/sitemap.xml` → 200, contains 7 URLs
 - [ ] `curl https://www.khesed-tek-systems.org/robots.txt` → disallows `/api/` and `/_next/`
 - [ ] View page source → `<link rel="alternate" hreflang="es-419">` present
@@ -123,7 +233,7 @@ Run after every production deployment. Check off each item.
 - [ ] Header CTA "Solicitar demo" visible on page load without scrolling
 - [ ] Submit `https://www.khesed-tek-systems.org/sitemap.xml` in Google Search Console
 
-### Analytics
+### Analytics (1.1.0)
 - [ ] GA4 DebugView active → click hero WhatsApp → `whatsapp_click {location: "hero"}` appears
 - [ ] GA4 DebugView → click footer WhatsApp → `whatsapp_click {location: "footer"}` appears
 - [ ] GA4 DebugView → click pricing CTA → `demo_request {plan: "pequeña"|"mediana"|"grande"}` appears
@@ -133,13 +243,13 @@ Run after every production deployment. Check off each item.
 - [ ] GA4 DebugView → scroll to #faq → `section_viewed {section_id: "faq"}` appears
 - [ ] GA4 DebugView → click LinkedIn in footer → `cta_clicked {label: "linkedin"}` appears
 
-### Content
+### Content (1.1.0)
 - [ ] All three pricing cards show `"Solicitar demo →"` as CTA text
 - [ ] "Más popular" badge appears **above** the plan name on the middle pricing card
 - [ ] Footer shows 4 columns including "Síguenos" with LinkedIn and YouTube icons
 - [ ] FAQ answers readable in page source when section is collapsed (DOM present)
 
-### Performance
+### Performance (1.1.0)
 - [ ] Lighthouse → Performance score ≥ 85 on mobile
 - [ ] Lighthouse → no render-blocking resources flagged
 - [ ] Logo loads at ≤ 180 px on mobile (check Network tab → Img size)
@@ -150,7 +260,7 @@ Run after every production deployment. Check off each item.
 ## Performance Targets
 
 | Metric | Baseline (pre-fix) | Goal | Actual (post-deploy) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Lighthouse Performance (mobile) | ~72 | ≥ 85 | TBD |
 | Lighthouse SEO score | ~68 | ≥ 95 | TBD |
 | Lighthouse Accessibility | ~81 | ≥ 90 | TBD |
@@ -164,7 +274,7 @@ Run after every production deployment. Check off each item.
 ## Deferred Items
 
 | Item | Reason Deferred | Owner | Target |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | GTM container setup | Requires Marketing sign-off on tag plan | Marketing | Q3 2026 |
 | Founder "Schedule a call" button CTA tracking | Button not yet present on live page | Dev | Next sprint |
 | Screenshot alt-text audit | Out of scope for this fix batch | Content | Q3 2026 |
@@ -176,7 +286,7 @@ Run after every production deployment. Check off each item.
 ## Score History
 
 | Date | Deploy | Lighthouse Perf | Lighthouse SEO | CLS | GA4 Events |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 2026-04-24 | v1.4.0 | TBD | TBD | TBD | TBD |
 
 *Run `npx lighthouse https://www.khesed-tek-systems.org --view` after each deploy to populate.*
@@ -186,7 +296,7 @@ Run after every production deployment. Check off each item.
 ## Tooling Reference
 
 | Tool | URL | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Lighthouse | `npx lighthouse <url> --view` | Performance + SEO audit |
 | Rich Results Test | https://search.google.com/test/rich-results | JSON-LD validation |
 | Google Search Console | https://search.google.com/search-console | Sitemap submission, coverage |
@@ -200,7 +310,7 @@ Run after every production deployment. Check off each item.
 
 ## [2.2.0] - 2026-03-18
 
-### Added - PRODUCT SALES SYSTEM 🛒
+### Added - PRODUCT SALES SYSTEM 🛒 (2.2.0)
 
 **New E-commerce Capabilities:**
 - Complete product sales system for E-books and digital products
@@ -221,10 +331,10 @@ Run after every production deployment. Check off each item.
 
 **Product Management** (`lib/products/`):
 - `catalog.ts` - Product definitions (3 e-books + journal app)
-  * "Paz en la Tormenta" / "Peace in the Storm" ($9.99)
-  * "Floreciendo en el Fuego" / "Blooming in the Fire" ($9.99)
-  * "Vida de Impacto" / "Impactful Living" ($9.99)
-  * "Mi Identidad Real" / "Real ID" (Coming Soon)
+  - "Paz en la Tormenta" / "Peace in the Storm" ($9.99)
+  - "Floreciendo en el Fuego" / "Blooming in the Fire" ($9.99)
+  - "Vida de Impacto" / "Impactful Living" ($9.99)
+  - "Mi Identidad Real" / "Real ID" (Coming Soon)
 - `supabase-client.ts` - Database operations, signed URL generation
 
 **Payment Processing** (`lib/payment/`):
@@ -232,9 +342,9 @@ Run after every production deployment. Check off each item.
 
 **Email Templates** (`lib/email/`):
 - `product-templates.ts` - Bilingual templates (Spanish/English)
-  * Payment link email (sent after form submission)
-  * Download link email (sent after payment confirmation)
-  * Journal app interest email (for pre-orders)
+  - Payment link email (sent after form submission)
+  - Download link email (sent after payment confirmation)
+  - Journal app interest email (for pre-orders)
 
 **API Routes:**
 - `app/api/products/request/route.ts` - Product purchase form handler
@@ -242,21 +352,21 @@ Run after every production deployment. Check off each item.
 
 **Components:**
 - `components/products/product-request-form.tsx` - Bilingual product request form
-  * Language toggle (Spanish/English)
-  * Product dropdown (4 options)
-  * Customer info capture (name, email, country)
-  * Payment link delivery via email
+  - Language toggle (Spanish/English)
+  - Product dropdown (4 options)
+  - Customer info capture (name, email, country)
+  - Payment link delivery via email
 
 **Documentation:**
 - `docs/guides/PRODUCT_SALES_SETUP.md` - Complete setup guide
-  * Supabase database schema and configuration
-  * Paddle account setup and product creation
-  * Environment variable configuration
-  * Testing procedures (sandbox mode)
-  * Go-live checklist
-  * Troubleshooting guide
+  - Supabase database schema and configuration
+  - Paddle account setup and product creation
+  - Environment variable configuration
+  - Testing procedures (sandbox mode)
+  - Go-live checklist
+  - Troubleshooting guide
 
-### Database Schema
+### Database Schema (2.2.0)
 
 **Supabase Table: `product_requests`**
 ```sql
@@ -275,7 +385,7 @@ Run after every production deployment. Check off each item.
 - Generates time-limited signed URLs (24-hour expiry)
 - Private bucket with authenticated access only
 
-### Purchase Flow
+### Purchase Flow (2.2.0)
 
 1. Customer fills product request form (selects product, language, enters info)
 2. System creates record in Supabase (`status: 'pending'`)
@@ -286,7 +396,7 @@ Run after every production deployment. Check off each item.
 7. System generates signed download URL from Supabase Storage
 8. Download link emailed to customer (`status: 'delivered'`)
 
-### Environment Variables Required
+### Environment Variables Required (2.2.0)
 
 **Supabase (New):**
 ```bash
@@ -310,7 +420,7 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_ES=pri_xxx
 PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
 ```
 
-### Technical Details
+### Technical Details (2.2.0)
 
 - **Architecture Pattern**: Event-driven (Paddle webhook → database update → email delivery)
 - **Security**: Webhook signature verification, time-limited download URLs
@@ -319,13 +429,13 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
 - **File Storage**: Supabase Storage with signed URLs (prevents unauthorized access)
 - **Payment Provider**: Paddle (handles tax compliance, international payments)
 
-### Testing
+### Testing (2.2.0)
 
 - Sandbox mode supported for development/testing
 - Test cards available in Paddle sandbox
 - Complete flow tested: form → payment → download
 
-### Updated Documentation
+### Updated Documentation (2.2.0)
 
 - **PROJECT_SOURCE_OF_TRUTH.md** updated with Product Sales System architecture
 - Version bumped to 2.2
@@ -333,7 +443,7 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
 - File structure updated to include new directories
 - Version history updated
 
-### Quality Assurance
+### Quality Assurance (2.2.0)
 
 - ✅ Build validated: All TypeScript types correct
 - ✅ Existing CMS demo request form: UNTOUCHED (isolated system)
@@ -341,7 +451,7 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
 - ✅ Zero breaking changes to existing functionality
 - ✅ Graceful degradation: System warns if Supabase/Paddle not configured
 
-### Next Steps for Activation
+### Next Steps for Activation (2.2.0)
 
 1. Create Supabase account and project
 2. Run database schema SQL
@@ -358,7 +468,7 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
 
 ## [2.1.0] - 2025-03-13
 
-### Added
+### Added (2.1.0)
 - **PROJECT_SOURCE_OF_TRUTH.md** (597 lines) - Comprehensive authoritative documentation covering:
   - Complete file structure with canonical paths
   - Naming conventions (kebab-case strictly enforced)
@@ -372,7 +482,7 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
   - 8-step Protocol Check for all code changes
   - Version history and current status
 
-### Changed
+### Changed (2.1.0)
 - **Logo Update** - Updated from icon+text to rectangular brand logo
   - New file: `public/logo.png` (512×232 PNG, 44KB with transparency)
   - Responsive sizing: 90px desktop, 70px mobile, auto-width (maintains aspect ratio)
@@ -394,11 +504,11 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
   - Updated 1 import reference in `components/super-admin-help-tab.tsx`
   - All changes built and tested individually before committing
 
-### Removed
+### Removed (2.1.0)
 - 4 orphaned temporary logo files from `public/images/product-screenshots/`
   - `latam-carousel-*.png` (uploaded via carousel admin by mistake)
 
-### Quality Assurance
+### Quality Assurance (2.1.0)
 - ✅ Build validated after each change (zero errors introduced)
 - ✅ Git history preserved (renames tracked, not deletions)
 - ✅ 8 logical commits with detailed messages
@@ -407,7 +517,7 @@ PADDLE_PRODUCT_EBOOK_IMPACTFUL_EN=pri_xxx
 - ✅ TypeScript type checking passing
 - ✅ Production-ready at every commit
 
-### Testing
+### Testing (2.1.0)
 Each phase was tested independently:
 - **Phase 1 (File Organization)**: No code changes, zero risk
 - **Phase 2 (Component Renaming)**: Each of 4 components renamed, built, and committed separately
@@ -416,7 +526,7 @@ Each phase was tested independently:
   - DataRightsForms: 0 imports found, renamed, built successfully (commit 5afc2cf)
   - CookieConsentBanner: 0 imports found, renamed, built successfully (commit 5954dbb)
 
-### Deployment
+### Deployment (2.1.0)
 - Commits: 8 total (5d1c4b3, 19ff192, 159da4b, a7641b2, edc458b, 57e1ecf, 5afc2cf, 5954dbb)
 - Platform: Vercel (auto-deploy from GitHub main branch)
 - Build time: ~15-20 seconds
@@ -426,7 +536,7 @@ Each phase was tested independently:
 
 ## [2.0.0] - 2025-03-01 (Baseline)
 
-### Initial Production Release
+### Initial Production Release (2.0.0)
 - Next.js 14 App Router with TypeScript
 - Multi-market support (LATAM/USA/Global)
 - Gmail SMTP email integration

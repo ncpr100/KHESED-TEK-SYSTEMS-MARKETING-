@@ -181,13 +181,13 @@ export class EmailAutomationEngine {
         </p>
         
         <div style="text-align: center; margin: 30px 0;">
-          <a href="${variables.websiteUrl}/contact" style="background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+          <a href="${variables.websiteUrl}/contact" style="background: linear-gradient(90deg, #C9922A, #F0B83C); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
             Programa tu Demo
           </a>
         </div>
         
         <p style="font-size: 14px; color: #64748b; text-align: center;">
-          Si ya no deseas recibir estos correos, puedes <a href="${variables.unsubscribeUrl}" style="color: #3b82f6;">darte de baja aquí</a>.
+          Si ya no deseas recibir estos correos, puedes <a href="${variables.unsubscribeUrl}" style="color: #C9922A;">darte de baja aquí</a>.
         </p>
       </div>
     `;

@@ -145,7 +145,7 @@
   - Add competitor migration guides and data import tools
 
 - [ ] **Sales Enablement Enhancement**
-  - Generate competitor battle cards for sales team
+  - Generate competitor battle cards for sales tea
   - Create ROI comparison tools showing KHESED-TEK advantages
   - Develop competitive objection handling resources
 

@@ -231,13 +231,13 @@ let isLoading = false;
 
 ```css
 :root {
-  --bg: #0e0e10;          /* Dark background */
-  --surface: #17171a;     /* Card backgrounds */
-  --border: #232329;      /* Border color */
-  --text: #e7e7ea;        /* Primary text */
-  --muted: #8e8e93;       /* Muted text */
-  --brand: #6ee7ff;       /* Cyan accent */
-  --brand2: #8b5cf6;      /* Purple accent */
+   --bg: #05080F;          /* Deep cosmos background */
+   --surface: rgba(13,22,40,0.72); /* Glass card surfaces */
+   --border: rgba(201,146,42,0.14); /* Gold-tinted borders */
+   --text: #F0EDE8;        /* Warm primary text */
+   --muted: #7A8A9E;       /* Muted text */
+   --brand: #F0B83C;       /* Primary brand accent (gold high) */
+   --brand2: #C9922A;      /* Secondary brand accent (gold) */
 }
 ```
 

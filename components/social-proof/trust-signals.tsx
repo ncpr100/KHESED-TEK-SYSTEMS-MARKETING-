@@ -331,7 +331,7 @@ export default function TrustSignalsSection({
           <div className="text-sm text-[var(--muted)] leading-relaxed flex items-start gap-2">
             {market === 'LATAM' ? (
               <>
-                <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                <OutlineIcon name="shield" className="w-4 h-4 text-[var(--gold-hi)] mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Compromiso de Seguridad:</strong> Todos los datos están encriptados en tránsito y en reposo. 
                   Realizamos auditorías de seguridad regulares y cumplimos con las regulaciones internacionales de protección de datos.
@@ -339,7 +339,7 @@ export default function TrustSignalsSection({
               </>
             ) : (
               <>
-                <OutlineIcon name="shield" className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                <OutlineIcon name="shield" className="w-4 h-4 text-[var(--gold-hi)] mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Security Commitment:</strong> All data is encrypted in transit and at rest. 
                   We conduct regular security audits and comply with international data protection regulations.
@@ -375,7 +375,7 @@ export function TrustBadges({
           key={index}
           className="flex items-center gap-2 px-3 py-1 bg-[var(--surface)] border border-[var(--border)] rounded-full text-xs text-[var(--muted)] hover:border-[var(--brand)] transition"
         >
-          <OutlineIcon name={badge.icon} className="w-3 h-3 text-cyan-400" />
+          <OutlineIcon name={badge.icon} className="w-3 h-3 text-[var(--gold-hi)]" />
           <span className={badge.highlight ? 'text-[var(--brand)] font-medium' : ''}>{badge.text}</span>
         </div>
       ))}

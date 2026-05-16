@@ -360,19 +360,19 @@ export default function ROICalculator({
                     </h5>
                     <ul className="text-sm space-y-1 text-left">
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="check" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="check" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'Implementación GRATIS' : 'FREE Implementation'}</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="zap" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="zap" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'Capacitación completa' : 'Complete Training'}</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="headphones" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="headphones" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'Soporte dedicado' : 'Dedicated Support'}</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="diamond" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="diamond" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'API personalizada' : 'Custom API'}</span>
                       </li>
                     </ul>
@@ -383,19 +383,19 @@ export default function ROICalculator({
                     </h5>
                     <ul className="text-sm space-y-1 text-left">
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="marker" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="marker" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'Multi-campus' : 'Multi-campus'}</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="square" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="square" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'Integración completa' : 'Full Integration'}</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="shield" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="shield" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'Cumplimiento GDPR' : 'GDPR Compliance'}</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <OutlineIcon name="users" className="w-3 h-3 text-cyan-400" />
+                        <OutlineIcon name="users" className="w-3 h-3 text-[var(--gold-hi)]" />
                         <span>{language === 'es' ? 'SLA garantizado' : 'Guaranteed SLA'}</span>
                       </li>
                     </ul>

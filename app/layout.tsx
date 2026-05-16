@@ -1,4 +1,5 @@
 import './globals.css';
+import CosmosBackground from '@/components/CosmosBackground';
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@/components/analytics';
 import { GA_TRACKING_ID } from '@/lib/analytics';
@@ -100,11 +101,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon-16x16.png",
+    icon: "/icon-192.png",
+    apple: "/icon-192.png",
+    shortcut: "/icon-192.png",
   },
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.json",
   category: 'Technology',
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
@@ -119,11 +120,18 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" data-theme="dark" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('khesed-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
+          }}
+        />
         {/* Preconnect for critical third parties */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
 
         {/* Structured Data */}
@@ -176,8 +184,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body className="bg-[var(--bg)] text-[var(--text)]">
+        <CosmosBackground />
         <GlobalMarketProvider>
-          {children}
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {children}
+          </div>
           <Analytics />
         </GlobalMarketProvider>
       </body>
